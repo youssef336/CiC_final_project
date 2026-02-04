@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
-import 'package:mysterybag/features/home/presentation/views/home_view.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 
 void main() {

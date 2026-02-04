@@ -6,7 +6,7 @@ class SignUpViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         CustomTextFormFeild(
           hintText: "Name",
