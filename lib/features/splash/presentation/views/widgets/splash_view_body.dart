@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mysterybag/core/utils/app_images.dart';
+import 'package:mysterybag/assets.dart';
+
 import 'package:mysterybag/features/home/presentation/views/home_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -59,7 +60,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
         opacity: _fadeAnimation,
         child: ScaleTransition(
           scale: _scaleAnimation,
-          child: Image.asset(Assets.imagesAppIcon),
+          child: Image.asset(
+            Assets.images.app_icon_jpg,
+            width: 200,
+            height: 200,
+          ),
         ),
       ),
     );

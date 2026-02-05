@@ -1,0 +1,121 @@
+{
+    "on_boarding_skip": "تخطى",
+    "on_boarding_title": " مرحبًا بك في ",
+    "on_boarding_subtitle": "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+    "on_boarding_title2": " ابحث وتسوق",
+    "on_boarding_subtitle2": "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+    "on_boarding_buttom_text": "ابدأ الان",
+    "on_Login_email": "البريد الإلكتروني",
+    "on_Login_password": "كلمة المرور",
+    "on_Login_forgot_password": "نسيت كلمة المرور؟",
+    "on_Login_login": "تسجيل الدخول",
+    "on_Login_create_account": "قم بإنشاء حساب",
+    "on_Login_create_account_text": "لا تمتلك حسابًا؟",
+    "on_Login_login_or_divider": "او",
+    "on_Login_login_with_google": "تسجيل الدخول باستخدام جوجل",
+    "on_Login_login_with_facebook": "تسجيل الدخول باستخدام فيسبوك",
+    "on_Login_login_with_apple": "تسجيل الدخول باستخدام ابل",
+    "on_signup_Signup": "  حساب جديد",
+    "on_signup_name": "الاسم",
+    "on_signup_email": "البريد الإلكتروني",
+    "on_signup_password": "كلمة المرور",
+    "on_signup_TermsandConditions": " من خلال إنشاء حساب ، فإنك توافق على ",
+    "on_signup_TermsandConditions_text": "الشروط والأحكام",
+    "on_signup_TermsandConditions_text2": "الخاصة",
+    "on_signup_TermsandConditions_text3": "بنا",
+    "on_signup_TermsandConditions_error_bar": "يرجى قبول الشروط والأحكام وسياسة الخصوصية",
+    "on_signup_create_NewAccount": "إنشاء حساب جديد",
+    "on_signup_create_NewAccount_text": "هل لديك حساب بالفعل؟",
+    "on_signup_create_NewAccount_text2": "تسجيل الدخول",
+    "on_signup_Text_feils": "يرجى ملء جميع الحقول",
+    "top_selling":"الأكثر مبيعًا",
+    "Products_view_title": "المنتجات",
+    "product_added_to_cart": "تمت اضافة المنتج للسلة",
+    "product_removed_from_cart": "تم حذف المنتج من السلة",
+    "Custom_Exception_weak_password": "كلمة المرور المقدمة ضعيفة جدًا.",
+    "Custom_Exception_email_already_in_use": "عنوان البريد الإلكتروني قيد الاستخدام بالفعل بواسطة حساب آخر.",
+    "Custom_Exception_unknown": "حدث خطأ غير معروف يرجى المحاولة مرة أخرى لاحقًا.",
+    "Custom_Exception_network_request_failed": "فشل الطلب الشبكي ، يرجى التحقق من اتصالك بالإنترنت.",
+    "Custom_Exception_invalid_email": "عنوان البريد الإلكتروني غير صالح.",
+    "Custom_Exception_there_is_problem_in_email_or_password": "هناك مشكلة في البريد الإلكتروني أو كلمة المرور",
+    "Custom_Exception_failed_toget_product": "فشل في الحصول على المنتج",
+    "Home_view_welcome_appbar": "صباح الخير !..",
+    "Home_view_search_text_feild": "ابحث عن.......",
+    "Home_view_feature_home_item_first_text": "عروض العيد",
+    "Home_view_feature_home_item_second_text": "خصم 25%",
+    "Home_view_feature_home_item_third_text": "تسوق الآن",
+    "Home_Best_Seller_Header": "الأكثر مبيعًا",
+    "Home_Best_Seller_Header_subtitle": "المزيد",
+    "Frute_first_item": "بطيخ",
+    "Frute_first_item_price": "20جنية ",
+    "Frute_first_item_weight": "الكيلو",
+    "Button_NavigationBar_Entity_Home": "الرئيسية",
+    "Button_NavigationBar_Entity_Cart": "عربة التسوق",
+    "Button_NavigationBar_Entity_Profile": "الملف الشخصي",
+    "Button_NavigationBar_Entity_Products": "المنتجات",
+    "ProfileViewLanguage":"اللغة",
+    "ProfileViewProfileImage":"صورة الملف الشخصي",
+    "ProfileViewProfileImage_value":"الصورة الافتراضية",
+    "ProfileViewLanguage_value":"العربية",
+    "CartViewHeader":"عربة التسوق",
+    "ProfileViewLanguage_value_Item":"اللغة العربية",
+    "ProfileViewLanguage_value_Item2":"اللغة الانجليزية",
+
+
+    "CheckOutView_title":"الشحن",
+    "CheckOutView_address":"العنوان",
+    "CheckOutView_payment":"الدفع",
+    "CheckOutView_recheck":"المراجعه",
+    "CheckOutView_Next":"التالي",
+    "CheckOutView_PayWithPayPal":"الدفع باستخدام PayPal",
+
+    "CheckOutView_Shipinng_title1":"الدفع عند الاستلام",
+     "CheckOutView_Shipinng_Subtitle1":"التسليم من المكان",
+     "CheckOutView_Shipinng_title2":"الدفع اونلاين",
+     "CheckOutView_Shipinng_price":" جنيه ",
+     "CheckOutView_Shipinng_Error": "يرجى تحديد طريقة الدفع",
+     "CheckOutView_Shipinng_Subtitle2":"تحديد طريقة الدفع",
+ 
+       "OrderSummaryWidget_title":"ملخص الطلب :",
+       "OrderSummaryWidget_subtotal":"المجموع الفرعي :",
+       "OrderSummaryWidget_shipping":"التوصيل :",
+       "OrderSummaryWidget_total":"الكلي",
+
+       "AddressSummaryWidget_title":"عنوان التوصيل :",
+       "AddressSummaryWidget_change":"تعديل",
+
+       "AddressInputSection_name":"الاسم كامل",
+       "AddressInputSection_email":"البريد الالكتروني",
+       "AddressInputSection_phone":"رقم الهاتف",
+       "AddressInputSection_address":"العنوان",
+       "AddressInputSection_city":"المدينة",
+       "AddressInputSection_floor":"رقم الطابق , رقم الشقه ..",
+
+       "OrderCubitBlocConsumer":"تم تسجيل الطلب بنجاح",
+
+       "NotificationHeader_appbar":"الاشعارات",
+
+       "NotificationHeader_new":"جديد",
+       "NotificationHeader_viewAll":"تحديد الكل مقروء",
+
+
+       "ProfileViewFavourites" : "المفضلة",
+       "ProfileViewFavouritesBody1" : "لا يوجد منتجات في المفضلة",
+       "ProfileViewFavouritesBody2":"اضغط علي القلب لاضافة المنتجات الى المفضلة",
+
+       "coponView" : "كوبونات",
+       "CoponView_title3" : " كود كوبون ",
+
+
+       "ProfileViewLogout":"تسجيل الخروج",
+       "ProfileViewLogout_text":"هل تريد تسجيل الخروج ؟",
+       "ProfileViewLogout_text2":"تسجيل الخروج",
+       "ProfileViewLogout_text3":"الغاء"
+    
+      
+   
+      
+       
+
+ 
+}

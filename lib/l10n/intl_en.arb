@@ -1,0 +1,121 @@
+{
+    "on_boarding_skip": "Skip",
+    "on_boarding_title": "welcome to   ",
+    "on_boarding_subtitle": "Discover a unique shopping experience with FruitHUB. Explore our wide selection of premium fresh fruits and enjoy the best offers with top quality.",
+    "on_boarding_title2": "Browse and Shop ",
+    "on_boarding_subtitle2": "We offer you the finest handpicked fruits. Check details, photos, and reviews to ensure you select the perfect fruit.",
+    "on_boarding_buttom_text": "Start now",
+    "on_Login_login": "Login",
+    "on_Login_email": "Email",
+    "on_Login_password": "Password",
+    "on_Login_forgot_password": "Forgot Password?",
+    "on_Login_create_account": "Create Account",
+    "on_Login_create_account_text": "Don't have an account?",
+    "on_Login_login_or_divider": "or",
+    "on_Login_login_with_google": "Login with Google",
+    "on_Login_login_with_facebook": "Login with Facebook",
+    "on_Login_login_with_apple": "Login with Apple",
+    "on_signup_Signup": "Sign Up",
+    "on_signup_name": "Name",
+    "on_signup_email": "Email",
+    "on_signup_password": "Password",
+    "on_signup_TermsandConditions": "By creating an account, you agree to ",
+    "on_signup_TermsandConditions_text": "Terms and Conditions",
+    "on_signup_TermsandConditions_text2": "and",
+    "on_signup_TermsandConditions_text3": "Privacy Policy",
+    "on_signup_TermsandConditions_error_bar": "Please accept the Terms and Conditions and Privacy Policy",
+    "on_signup_create_NewAccount": "Create New Account",
+    "on_signup_create_NewAccount_text": "Already have an account?",
+    "on_signup_create_NewAccount_text2": "Login",
+    "on_signup_Text_feils": "Please fill in all fields",
+    "top_selling":" Top Selling",
+    "Products_view_title": "Products",
+    "product_added_to_cart": "Product added to cart",
+    "product_removed_from_cart": "Product removed from cart",
+    "Custom_Exception_weak_password": "The password provided is too weak.",
+    "Custom_Exception_email_already_in_use": "The email address is already in use by another account.",
+    "Custom_Exception_unknown": "An unknown error occurred please try again later.",
+    "Custom_Exception_network_request_failed": "Network request failed, please check your internet connection.",
+    "Custom_Exception_invalid_email": "The email address is not valid.",
+    "Custom_Exception_there_is_problem_in_email_or_password": "There is a problem in email or password",
+    "Custom_Exception_failed_toget_product": "Failed to get product",
+    "Home_view_welcome_appbar": "Good Morning !..",
+    "Home_view_search_text_feild": "Search for.......",
+    "Home_view_feature_home_item_first_text": "Eid Offers",
+    "Home_view_feature_home_item_second_text": "25% Discount",
+    "Home_view_feature_home_item_third_text": "Shop Now",
+    "Home_Best_Seller_Header": "Best Selling",
+    "Home_Best_Seller_Header_subtitle": "More",
+    "Frute_first_item": "Watermelon",
+    "Frute_first_item_price": "20 EGP",
+    "Frute_first_item_weight": "1kg",
+    "Button_NavigationBar_Entity_Home": "Home",
+    "Button_NavigationBar_Entity_Cart": "Cart",
+    "Button_NavigationBar_Entity_Profile": "Profile",
+    "Button_NavigationBar_Entity_Products": "products",
+    "ProfileViewLanguage":"Language",
+    "ProfileViewProfileImage":"Profile Image",
+    "ProfileViewProfileImage_value":"Avatar",
+    
+    "ProfileViewLanguage_value_Item":"Arabic Language",
+    "ProfileViewLanguage_value_Item2":"English Language",
+
+    "ProfileViewLanguage_value":"English",
+    "CartViewHeader":"Cart",
+
+    "CheckOutView_title":"Checkout",
+    "CheckOutView_address":"Address",
+    "CheckOutView_payment":"Payment",
+    "CheckOutView_recheck":"Recheck",
+    "CheckOutView_Next":"Next",
+    "CheckOutView_PayWithPayPal":"Pay with PayPal",
+
+    "CheckOutView_Shipinng_title1":"Cash On Delivery",
+     "CheckOutView_Shipinng_Subtitle1":"Delivery From Location",
+     "CheckOutView_Shipinng_title2":"Online Payment",
+     "CheckOutView_Shipinng_price":" EGP",
+     "CheckOutView_Shipinng_Error": "Please Select Payment Method",
+     "CheckOutView_Shipinng_Subtitle2":"Select Payment Method",
+
+
+     "OrderSummaryWidget_title":"Order Summary :",
+     "OrderSummaryWidget_subtotal":"Subtotal :",
+     "OrderSummaryWidget_shipping":"Shipping :",
+     "OrderSummaryWidget_total":"Total",
+
+     "AddressSummaryWidget_title":"Delivery Address :",
+     "AddressSummaryWidget_change":"Change",
+
+
+     "AddressInputSection_name":"Full Name",
+     "AddressInputSection_email":"Email",
+     "AddressInputSection_phone":"Phone Number",
+     "AddressInputSection_address":"Address",
+     "AddressInputSection_city":"City",
+     "AddressInputSection_floor":"Floor Number , Apartment Number ..",
+     "OrderCubitBlocConsumer":"Order Placed Successfully",
+
+   "NotificationHeader_appbar":"Notifications",
+
+   "NotificationHeader_new":"New",
+   "NotificationHeader_viewAll":"View All",
+
+
+    "ProfileViewFavourites":"Favourites",
+    "ProfileViewFavouritesBody1":"No favorites yet",
+    "ProfileViewFavouritesBody2":"Tap the heart icon on any product to add it to your favorites",
+
+    "coponView":"Copon View",
+
+    "CoponView_title3":"Copon Discount : ",
+
+
+    "ProfileViewLogout":"Logout",
+    "ProfileViewLogout_text":"Are you sure you want to logout?",
+    "ProfileViewLogout_text2":"Logout",
+    "ProfileViewLogout_text3":"Cancel"
+   
+
+    
+    
+}

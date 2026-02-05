@@ -1,6 +1,24 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:mysterybag/core/utils/text_styles.dart';
 
-AppBar build_appbar(String title) =>
-    AppBar(title: Text(title), centerTitle: true);
+AppBar Custom_app_bar(
+  BuildContext context, {
+  required String title,
+  void Function()? onPressed,
+}) {
+  return AppBar(
+    backgroundColor: Colors.white,
+    leading: IconButton(
+      icon: const Icon(Icons.arrow_back_ios_new_rounded),
+      onPressed: onPressed,
+    ),
+    centerTitle: true,
+    title: Text(
+      title,
+      textAlign: TextAlign.center,
+      style: AppTextStyles.bodyLargeBold,
+    ),
+  );
+}
