@@ -13,8 +13,6 @@ final class Assets {
   Assets._();
   static final _Fonts fonts = _Fonts._();
   static final _Images images = _Images._();
-
-
 }
 
 @immutable
@@ -25,17 +23,14 @@ final class _Fonts {
   final String cairo_medium_ttf = 'assets\fonts\Cairo-Medium.ttf';
   final String cairo_regular_ttf = 'assets\fonts\Cairo-Regular.ttf';
   final String cairo_semibold_ttf = 'assets\fonts\Cairo-SemiBold.ttf';
-
 }
 
 @immutable
 final class _Images {
   _Images._();
 
-  final String app_icon_jpg = 'assets\images\app_icon.jpg';
-  final String check_svg = 'assets\images\Check.svg';
-  final String facebook_icon_svg = 'assets\images\facebook_icon.svg';
-  final String google_icon_svg = 'assets\images\google_icon.svg';
-
+  final String app_icon_jpg = 'assets/images/app_icon.jpg';
+  final String check_svg = 'assets/images/Check.svg';
+  final String facebook_icon_svg = 'assets/images/facebook_icon.svg';
+  final String google_icon_svg = 'assets/images/google_icon.svg';
 }
-

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/assets.dart';
-
-import 'package:mysterybag/features/home/presentation/views/home_view.dart';
+import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -42,7 +41,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     Future.delayed(const Duration(seconds: 6), () {
       if (mounted) {
-        Navigator.of(context).pushReplacementNamed(HomeView.routeName);
+        Navigator.of(context).pushReplacementNamed(SigninView.routeName);
       }
     });
   }

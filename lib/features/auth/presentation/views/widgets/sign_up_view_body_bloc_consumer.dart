@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:mysterybag/core/helper_functions/build_error_bar.dart';
 import 'package:mysterybag/features/auth/presentation/manager/cubits/sign_up_cubit/signup_cubit.dart';
 import 'package:mysterybag/features/auth/presentation/views/widgets/sign_up_view_body.dart';
