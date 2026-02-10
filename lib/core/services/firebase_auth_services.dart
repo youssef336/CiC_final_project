@@ -95,7 +95,7 @@ class FirebaseAuthServices {
 
       await googleSignIn.initialize(
         serverClientId:
-            '725140031864-s1hu0sk68c5dflhptgh20n958pbp4jd1.apps.googleusercontent.com',
+            '219424244128-0cnjkbv4spl2igvdii61ombir7r7aijc.apps.googleusercontent.com',
       );
 
       final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
