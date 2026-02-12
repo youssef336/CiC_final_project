@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mysterybag/assets.dart';
 import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
 
+import '../../../../onBoarding/presentation/views/on_boarding.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -41,7 +43,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     Future.delayed(const Duration(seconds: 6), () {
       if (mounted) {
-        Navigator.of(context).pushReplacementNamed(SigninView.routeName);
+        Navigator.of(context).pushReplacementNamed(OnBoarding.routeName);
       }
     });
   }
