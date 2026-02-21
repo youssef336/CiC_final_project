@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/assets.dart';
+import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/services/firebase_auth_services.dart';
+import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
+import 'package:mysterybag/features/home/presentation/views/home_view.dart';
 
 import '../../../../onBoarding/presentation/views/on_boarding.dart';
 
@@ -13,6 +17,7 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
+  bool isBorderingViewSeen = Prefs.getBool(KisBoardingViewSeen);
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
@@ -38,14 +43,22 @@ class _SplashViewBodyState extends State<SplashViewBody>
       end: 1.0,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
-    // Start animation
-    _controller.forward();
-
-    Future.delayed(const Duration(seconds: 6), () {
-      if (mounted) {
-        Navigator.of(context).pushReplacementNamed(OnBoarding.routeName);
+    Future.delayed(const Duration(seconds: 5), () {
+      if (isBorderingViewSeen) {
+        var isLoggedIn = FirebaseAuthServices().isUserLoggedIn();
+        if (isLoggedIn) {
+          // User is logged in, navigate to home
+          Navigator.pushReplacementNamed(context, HomeView.routeName);
+        } else {
+          // User is not logged in, navigate to sign-in
+          Navigator.pushReplacementNamed(context, SigninView.routeName);
+        }
+      } else {
+        Navigator.pushReplacementNamed(context, OnBoarding.routeName);
       }
     });
+    // Start animation
+    _controller.forward();
   }
 
   @override
