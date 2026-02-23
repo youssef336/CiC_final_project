@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mysterybag/assets.dart';
+import 'package:mysterybag/core/utils/assets.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/firebase_auth_services.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
@@ -31,10 +31,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
       duration: const Duration(seconds: 4),
     );
 
-    // Scale from 0.7x to 1.2x
+    // Scale from 0.8x to 1.1x (growing animation)
     _scaleAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.5,
+      begin: 0.8,
+      end: 1.9,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     // Fade from transparent to fully visible
@@ -75,9 +75,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
         child: ScaleTransition(
           scale: _scaleAnimation,
           child: Image.asset(
-            Assets.images.app_icon_jpg,
-            width: 200,
-            height: 200,
+            AssetsData.light().images.app_icon_jpg,
+            width: 300,
+            height: 300,
           ),
         ),
       ),

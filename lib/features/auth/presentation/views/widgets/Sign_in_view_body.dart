@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/foundation.dart';
-import 'package:mysterybag/assets.dart';
+import 'package:mysterybag/core/utils/assets.dart';
 
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
@@ -89,7 +89,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               const SizedBox(height: 16),
 
               SocialTextButtom(
-                image: Assets.images.google_icon_svg,
+                image: AssetsData.light().images.google_icon_svg,
                 text: S.of(context).on_Login_login_with_google,
                 onPressed: () {
                   context.read<SignInCubit>().signInWithGoogle();
@@ -100,7 +100,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   ? Column(
                       children: [
                         SocialTextButtom(
-                          image: Assets.images.google_icon_svg,
+                          image: AssetsData.light().images.google_icon_svg,
                           text: S.of(context).on_Login_login_with_apple,
                           onPressed: () {},
                         ),
@@ -110,7 +110,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   : const SizedBox(),
 
               SocialTextButtom(
-                image: Assets.images.facebook_icon_svg,
+                image: AssetsData.light().images.facebook_icon_svg,
                 text: S.of(context).on_Login_login_with_facebook,
                 onPressed: () {
                   context.read<SignInCubit>().signInWithFacebook();
