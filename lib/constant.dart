@@ -5,8 +5,8 @@ const KTopPadding = 16.0;
 
 const KprimaryColor = Color.fromARGB(255, 0, 81, 255);
 const KprimaryColorLight = Color.fromARGB(255, 85, 7, 7);
-const KprimaryColorDark = Color.fromARGB(255, 0, 81, 255);
-const KsecondaryColor = Color.fromARGB(255, 128, 128, 128);
+const KprimaryColorDark = Color.fromARGB(255, 5, 28, 79);
+const KsecondaryColor = Color.fromARGB(255, 129, 54, 54);
 
 const KisBoardingViewSeen = 'isBoardingViewSeen';
 
