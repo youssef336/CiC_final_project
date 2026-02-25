@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
@@ -17,7 +19,7 @@ class SigninView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_app_bar(context, title: S.of(context).on_Login_login),
+      appBar: Custom_app_bar(context, title: S.of(context)!.onLoginLogin),
       // body: const LoginViewBody(),
       body: BlocProvider(
         create: (context) => SignInCubit(

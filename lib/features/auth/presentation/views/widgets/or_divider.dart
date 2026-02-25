@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 
 import 'package:mysterybag/core/utils/text_styles.dart';
@@ -14,7 +16,7 @@ class OrDivider extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: Text(
-            S.of(context).on_Login_login_or_divider,
+            S.of(context)!.onLoginLoginOrDivider,
             style: AppTextStyles.bodyBaseSemibold,
           ),
         ),

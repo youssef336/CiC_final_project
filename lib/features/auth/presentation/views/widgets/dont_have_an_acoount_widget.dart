@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/gestures.dart';
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 
@@ -13,7 +15,7 @@ Text DontHaveAnAcoountWidget(BuildContext context) {
     TextSpan(
       children: [
         TextSpan(
-          text: S.of(context).on_Login_create_account_text,
+          text: S.of(context)!.onLoginCreateAccountText,
           style: AppTextStyles.bodyBaseSemibold.copyWith(
             color: const Color(0xFF949D9E) /* Grayscale-600 */,
           ),
@@ -30,7 +32,7 @@ Text DontHaveAnAcoountWidget(BuildContext context) {
             ..onTap = () {
               Navigator.pushNamed(context, SignUpView.routeName);
             },
-          text: S.of(context).on_Login_create_account,
+          text: S.of(context)!.onLoginCreateAccount,
           style: AppTextStyles.bodyBaseSemibold.copyWith(
             color: KprimaryColor /* Grayscale-600 */,
           ),

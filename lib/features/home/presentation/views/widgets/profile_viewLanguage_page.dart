@@ -1,13 +1,15 @@
 // ignore_for_file: file_names, camel_case_types
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/core/widgets/custom_divider.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/widgets/build_app_bar.dart';
-import '../../../../../generated/l10n.dart';
 
 class ProfileViewLanguagePage extends StatefulWidget {
   const ProfileViewLanguagePage({super.key});
@@ -29,18 +31,18 @@ class _ProfileViewLanguagePageState extends State<ProfileViewLanguagePage> {
           children: [
             buildAppbar(
               context,
-              title: S.of(context).ProfileViewLanguage,
+              title: S.of(context)!.profileViewLanguage,
               showNotification: false,
             ),
             Language_container(
-              text: S.of(context).ProfileViewLanguage_value_Item,
+              text: S.of(context)!.profileViewLanguageValueItem,
               onPressed: () {
                 BlocProvider.of<LocaleCubit>(context).changeLocaleToArabic();
               },
             ),
             const CustomDivider(),
             Language_container(
-              text: S.of(context).ProfileViewLanguage_value_Item2,
+              text: S.of(context)!.profileViewLanguageValueItem2,
               onPressed: () {
                 BlocProvider.of<LocaleCubit>(context).changeLocaleToEnglish();
               },

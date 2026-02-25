@@ -43,22 +43,32 @@ class _SplashViewBodyState extends State<SplashViewBody>
       end: 1.0,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
-    Future.delayed(const Duration(seconds: 5), () {
-      if (isBorderingViewSeen) {
-        var isLoggedIn = FirebaseAuthServices().isUserLoggedIn();
-        if (isLoggedIn) {
-          // User is logged in, navigate to home
-          Navigator.pushReplacementNamed(context, HomeView.routeName);
-        } else {
-          // User is not logged in, navigate to sign-in
-          Navigator.pushReplacementNamed(context, SigninView.routeName);
-        }
-      } else {
-        Navigator.pushReplacementNamed(context, OnBoarding.routeName);
-      }
-    });
     // Start animation
     _controller.forward();
+
+    // Navigate after animation completes
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 5), () {
+        if (!mounted) return; // Check if widget is still mounted
+
+        try {
+          if (isBorderingViewSeen) {
+            var isLoggedIn = FirebaseAuthServices().isUserLoggedIn();
+            if (isLoggedIn) {
+              // User is logged in, navigate to home
+              Navigator.pushReplacementNamed(context, HomeView.routeName);
+            } else {
+              // User is not logged in, navigate to sign-in
+              Navigator.pushReplacementNamed(context, SigninView.routeName);
+            }
+          } else {
+            Navigator.pushReplacementNamed(context, OnBoarding.routeName);
+          }
+        } catch (e) {
+          print('Navigation error: $e');
+        }
+      });
+    });
   }
 
   @override

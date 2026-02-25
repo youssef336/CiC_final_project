@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
 import 'package:mysterybag/core/widgets/build_app_bar.dart';
@@ -36,19 +38,19 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               children: [
                 buildAppbar(
                   context,
-                  title: S.of(context).Home_view_welcome_appbar,
+                  title: S.of(context)!.homeViewWelcomeAppbar,
                   showBackButton: false,
                   showNotification: false,
                 ),
                 const CustomHomeAppBar(showNotification: false),
                 const SizedBox(height: KTopPadding),
                 Text(
-                  S.of(context).Home_view_welcome_appbar,
+                  S.of(context)!.homeViewWelcomeAppbar,
                   style: AppTextStyles.cairoBold.copyWith(height: 1.70),
                 ),
                 const SizedBox(height: 16),
                 ProfileViewItem(
-                  headText: S.of(context).ProfileViewLanguage,
+                  headText: S.of(context)!.profileViewLanguage,
                   icon: Icons.language_outlined,
                   onPressed: () {
                     Navigator.pushNamed(
@@ -59,7 +61,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                 ),
                 Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
                 ProfileViewItem(
-                  headText: S.of(context).ProfileViewProfileImage,
+                  headText: S.of(context)!.profileViewProfileImage,
                   icon: Icons.person_outline_outlined,
                   onPressed: () {
                     Navigator.pushNamed(
@@ -70,7 +72,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                 ),
                 Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
                 ProfileViewItem(
-                  headText: S.of(context).ProfileViewFavourites,
+                  headText: S.of(context)!.profileViewFavourites,
                   icon: Icons.favorite_outline_outlined,
                   onPressed: () {
                     // Navigator.pushNamed(context, ProfileViewFavPage.routeName);
@@ -78,7 +80,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                 ),
                 Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
                 ProfileViewItem(
-                  headText: S.of(context).ProfileViewLogout,
+                  headText: S.of(context)!.profileViewLogout,
                   icon: Icons.logout_outlined,
                   onPressed: () => _showLogoutDialog(),
                 ),

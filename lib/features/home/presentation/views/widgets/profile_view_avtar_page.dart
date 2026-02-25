@@ -1,5 +1,7 @@
 // ignore_for_file: file_names, camel_case_types
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -43,7 +45,7 @@ class ProfileViewAvtarBody extends StatelessWidget {
           children: [
             buildAppbar(
               context,
-              title: S.of(context).ProfileViewProfileImage,
+              title: S.of(context)!.profileViewProfileImage,
               showNotification: false,
             ),
             GestureDetector(

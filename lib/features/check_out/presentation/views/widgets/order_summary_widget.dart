@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/payment_item.dart';
@@ -12,13 +14,13 @@ class OrderSummaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaymentItem(
-      title: S.of(context).OrderSummaryWidget_title,
+      title: S.of(context)!.orderSummaryWidgetTitle,
       child: Column(
         children: [
           Row(
             children: [
               Text(
-                S.of(context).OrderSummaryWidget_subtotal,
+                S.of(context)!.orderSummaryWidgetSubtotal,
                 style: AppTextStyles.cairoRegular.copyWith(
                   color: const Color(0xFF4E5556),
                 ),
@@ -38,7 +40,7 @@ class OrderSummaryWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: S.of(context).CheckOutView_Shipinng_price,
+                      text: S.of(context)!.checkOutViewShipingPrice,
                       style: AppTextStyles.bodyBaseSemibold.copyWith(
                         color: const Color(0xFF0C0D0D),
                       ),
@@ -52,7 +54,7 @@ class OrderSummaryWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                S.of(context).OrderSummaryWidget_shipping,
+                S.of(context)!.orderSummaryWidgetShipping,
                 style: AppTextStyles.cairoRegular.copyWith(
                   color: const Color(0xFF4E5556),
                 ),
@@ -71,7 +73,7 @@ class OrderSummaryWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: S.of(context).CheckOutView_Shipinng_price,
+                      text: S.of(context)!.checkOutViewShipingPrice,
                       style: AppTextStyles.cairoRegular.copyWith(
                         color: const Color(0xFF4E5556),
                       ),
@@ -115,7 +117,7 @@ class OrderSummaryWidget extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: S.of(context).CheckOutView_Shipinng_price,
+                        text: S.of(context)!.checkOutViewShipingPrice,
                         style: AppTextStyles.cairoRegular.copyWith(
                           color: Colors.red,
                         ),
@@ -133,7 +135,7 @@ class OrderSummaryWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                S.of(context).OrderSummaryWidget_total,
+                S.of(context)!.orderSummaryWidgetTotal,
                 style: AppTextStyles.cairoBold.copyWith(
                   fontSize: 16,
                   color: const Color(0xFF0C0D0D),
@@ -154,7 +156,7 @@ class OrderSummaryWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: S.of(context).CheckOutView_Shipinng_price,
+                      text: S.of(context)!.checkOutViewShipingPrice,
                       style: AppTextStyles.cairoBold.copyWith(
                         fontSize: 16,
                         color: const Color(0xFF0C0D0D),

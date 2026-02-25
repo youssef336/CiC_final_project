@@ -1,0 +1,89 @@
+{
+    "onBoardingSkip": "تخطى",
+    "onBoardingTitle": " مرحبًا بك في ",
+    "onBoardingSubtitle": "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+    "onBoardingTitle2": " ابحث وتسوق",
+    "onBoardingSubtitle2": "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+    "onBoardingButtomText": "ابدأ الان",
+
+
+    "onLoginLogin": "تسجيل الدخول",
+    "onLoginEmail": "البريد الإلكتروني",
+    "onLoginPassword": "كلمة المرور",
+    "onLoginForgotPassword": "نسيت كلمة المرور؟",
+    "onLoginCreateAccount": "قم بإنشاء حساب",
+    "onLoginCreateAccountText": "لا تمتلك حسابًا؟",
+    "onLoginLoginOrDivider": "او",
+    "onLoginLoginWithGoogle": "تسجيل الدخول باستخدام جوجل",
+    "onLoginLoginWithFacebook": "تسجيل الدخول باستخدام فيسبوك",
+    "onLoginLoginWithApple": "تسجيل الدخول باستخدام ابل",
+
+
+    "onSignupSignup": "  حساب جديد",
+    "onSignupName": "الاسم",
+    "onSignupEmail": "البريد الإلكتروني",
+    "onSignupPassword": "كلمة المرور",
+    "onSignupTermsandConditions": " من خلال إنشاء حساب ، فإنك توافق على ",
+    "onSignupTermsandConditionsText": "الشروط والأحكام",
+    "onSignupTermsandConditionsText2": "الخاصة",
+    "onSignupTermsandConditionsText3": "بنا",
+    "onSignupTermsandConditionsErrorBar": "يرجى قبول الشروط والأحكام وسياسة الخصوصية",
+    "onSignupCreateNewAccount": "إنشاء حساب جديد",
+    "onSignupCreateNewAccountText": "هل لديك حساب بالفعل؟",
+    "onSignupCreateNewAccountText2": "تسجيل الدخول",
+    "onSignupTextFeils": "يرجى ملء جميع الحقول",
+
+
+    "homeViewWelcomeAppbar": "صباح الخير !..",
+    "homeViewAppbarPoint": "نيقات",
+
+
+    "buttonNavigationBarEntityHome": "الرئيسية",
+    "buttonNavigationBarEntityProducts": "المنتجات",
+    "buttonNavigationBarEntityCart": "عربة التسوق",
+    "buttonNavigationBarEntityProfile": "الملف الشخصي",
+
+
+    "cartViewHeader": "عربة التسوق",
+
+
+    "checkOutViewTitle": "الشحن",
+    "checkOutViewAddress": "العنوان",
+    "checkOutViewPayment": "الدفع",
+    "checkOutViewShipingTitle1": "الدفع عند الاستلام",
+    "checkOutViewShipingSubtitle1": "التسليم من المكان",
+    "checkOutViewShipingTitle2": "الدفع اونلاين",
+    "checkOutViewShipingPrice": " جنيه ",
+    "checkOutViewShipingError": "يرجى تحديد طريقة الدفع",
+    "checkOutViewShipingSubtitle2": "تحديد طريقة الدفع",
+    "checkOutViewPayWithPayPal": "الدفع باستخدام PayPal",
+    "checkOutViewNext": "التالي",
+
+
+    "orderSummaryWidgetTitle": "ملخص الطلب :",
+    "orderSummaryWidgetSubtotal": "المجموع الفرعي :",
+    "orderSummaryWidgetShipping": "التوصيل :",
+    "orderSummaryWidgetTotal": "الكلي",
+    "orderCubitBlocConsumer": "تم تسجيل الطلب بنجاح",
+
+
+    "addressSummaryWidgetTitle": "عنوان التوصيل :",
+    "addressSummaryWidgetChange": "تعديل",
+    "addressInputSectionName": "الاسم كامل",
+    "addressInputSectionEmail": "البريد الالكتروني",
+    "addressInputSectionPhone": "رقم الهاتف",
+    "addressInputSectionAddress": "العنوان",
+    "addressInputSectionCity": "المدينة",
+    "addressInputSectionFloor": "رقم الطابق , رقم الشقه ..",
+
+
+    "profileViewLanguage": "اللغة",
+    "profileViewLanguageValueItem": "اللغة العربية",
+    "profileViewLanguageValueItem2": "اللغة الانجليزية",
+    "profileViewProfileImage": "صورة الملف الشخصي",
+    "profileViewFavourites": "المفضلة",
+    "profileViewLogout": "تسجيل الخروج",
+    "profileViewLogoutText": "هل تريد تسجيل الخروج ؟",
+    "profileViewLogoutText2": "تسجيل الخروج",
+    "profileViewLogoutText3": "الغاء"
+}

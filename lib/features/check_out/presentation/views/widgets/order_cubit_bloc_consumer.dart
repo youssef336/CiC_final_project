@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/widgets/custom_modal_progress_hub.dart';
@@ -14,7 +16,7 @@ class OrderCubitBlocConsumer extends StatelessWidget {
     return BlocConsumer<OrderCubit, OrderState>(
       listener: (context, state) {
         if (state is OrderSuccess) {
-          showErrorBar(context, S.of(context).OrderCubitBlocConsumer);
+          showErrorBar(context, S.of(context)!.orderCubitBlocConsumer);
           Navigator.pop(context);
         }
         if (state is Orderfailure) {

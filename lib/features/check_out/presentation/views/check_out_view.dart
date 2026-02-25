@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/helper_functions/get_user.dart';
@@ -55,7 +57,7 @@ class _CheckOutViewState extends State<CheckOutView> {
       child: Scaffold(
         appBar: buildAppbar(
           context,
-          title: S.of(context).CheckOutView_title,
+          title: S.of(context)!.checkOutViewTitle,
           showNotification: false,
         ),
         body: Provider.value(

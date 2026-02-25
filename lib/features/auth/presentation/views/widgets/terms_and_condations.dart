@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 
 import 'package:mysterybag/constant.dart';
@@ -36,13 +38,13 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
             TextSpan(
               children: [
                 TextSpan(
-                  text: S.of(context).on_signup_TermsandConditions,
+                  text: S.of(context)!.onSignupTermsandConditions,
                   style: AppTextStyles.bodySmallSemibold.copyWith(
                     color: const Color(0xFF949D9E) /* Grayscale-600 */,
                   ),
                 ),
                 TextSpan(
-                  text: S.of(context).on_signup_TermsandConditions_text,
+                  text: S.of(context)!.onSignupTermsandConditionsText,
                   style: AppTextStyles.bodySmallSemibold.copyWith(
                     color: KprimaryColorLight /* Green1-600 */,
                   ),
@@ -54,7 +56,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                   ),
                 ),
                 TextSpan(
-                  text: S.of(context).on_signup_TermsandConditions_text2,
+                  text: S.of(context)!.onSignupTermsandConditionsText2,
                   style: AppTextStyles.bodySmallSemibold.copyWith(
                     color: KprimaryColorLight /* Green1-600 */,
                   ),
@@ -66,7 +68,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                   ),
                 ),
                 TextSpan(
-                  text: S.of(context).on_signup_TermsandConditions_text3,
+                  text: S.of(context)!.onSignupTermsandConditionsText3,
                   style: AppTextStyles.bodySmallSemibold.copyWith(
                     color: KprimaryColorLight /* Green1-600 */,
                   ),

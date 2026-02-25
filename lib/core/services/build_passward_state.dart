@@ -20,7 +20,7 @@ class _BiludPasswordStateState extends State<BiludPasswordState> {
     return CustomTextFormFeild(
       obscureText: _isObscure,
       onSaved: widget.onSaved,
-      hintText: S.of(context).on_signup_password,
+      hintText: S.of(context)!.onSignupPassword,
       textInputType: TextInputType.visiblePassword,
       suffixIcon: GestureDetector(
         onTap: () {

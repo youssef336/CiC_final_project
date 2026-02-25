@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
@@ -77,7 +79,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 } else {
                   showErrorBar(
                     context,
-                    S.of(context).CheckOutView_Shipinng_Error,
+                    S.of(context)!.checkOutViewShipingError,
                   );
                 }
               } else {
@@ -123,20 +125,20 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         curve: Curves.fastOutSlowIn,
       );
     } else {
-      showErrorBar(context, S.of(context).CheckOutView_Shipinng_Error);
+      showErrorBar(context, S.of(context)!.checkOutViewShipingError);
     }
   }
 
   String getNextButtonText(int currentPageindex) {
     switch (currentPageindex) {
       case 0:
-        return S.of(context).CheckOutView_Next;
+        return S.of(context)!.checkOutViewNext;
       case 1:
-        return S.of(context).CheckOutView_Next;
+        return S.of(context)!.checkOutViewNext;
       case 2:
-        return S.of(context).CheckOutView_PayWithPayPal;
+        return S.of(context)!.checkOutViewPayWithPayPal;
       default:
-        return S.of(context).CheckOutView_Next;
+        return S.of(context)!.checkOutViewNext;
     }
   }
 

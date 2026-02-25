@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/foundation.dart';
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/widgets/custom_text_feild.dart'
     show CustomTextFormFeild, CustomTextFormFeildforCopon;
@@ -37,7 +39,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.name =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_name,
+                hintText: S.of(context)!.addressInputSectionName,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 16),
@@ -46,7 +48,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.email =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_email,
+                hintText: S.of(context)!.addressInputSectionEmail,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 16),
@@ -55,7 +57,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.address =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_address,
+                hintText: S.of(context)!.addressInputSectionAddress,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 16),
@@ -64,7 +66,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.city =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_city,
+                hintText: S.of(context)!.addressInputSectionCity,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 16),
@@ -73,7 +75,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.floor =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_floor,
+                hintText: S.of(context)!.addressInputSectionFloor,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 16),
@@ -82,7 +84,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().shipingAddressEntity.phone =
                       value!;
                 },
-                hintText: S.of(context).AddressInputSection_phone,
+                hintText: S.of(context)!.addressInputSectionPhone,
                 textInputType: TextInputType.phone,
               ),
               const SizedBox(height: 16),

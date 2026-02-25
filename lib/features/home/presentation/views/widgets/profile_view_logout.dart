@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mysterybag/core/services/firebase_auth_services.dart';
@@ -26,16 +28,16 @@ class ProfileViewLogout {
 
   static Widget _buildLogoutDialog(BuildContext context) {
     return AlertDialog(
-      title: Text(S.of(context).ProfileViewLogout),
-      content: Text(S.of(context).ProfileViewLogout_text),
+      title: Text(S.of(context)!.profileViewLogout),
+      content: Text(S.of(context)!.profileViewLogoutText),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
-          child: Text(S.of(context).ProfileViewLogout_text3),
+          child: Text(S.of(context)!.profileViewLogoutText3),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, true),
-          child: Text(S.of(context).ProfileViewLogout_text2),
+          child: Text(S.of(context)!.profileViewLogoutText2),
         ),
       ],
     );
