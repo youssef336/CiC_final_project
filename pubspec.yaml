@@ -59,8 +59,11 @@ dependencies:
   flutter_paypal_payment: ^1.0.8
 
 dev_dependencies:
+  flutter_native_splash: ^2.4.0
   flutter_test:
     sdk: flutter
+
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -85,6 +88,7 @@ flutter:
     - assets/images/
     - assets/images/bold/
     - assets/images/outline/
+    - assets/icon/icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -111,12 +115,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/app_icon.jpg"
-  min_sdk_android: 21
+
 flutter-assets:
   assets-path: assets/
   output-path: lib/core/utils
   ignore-ext: false
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21
+
