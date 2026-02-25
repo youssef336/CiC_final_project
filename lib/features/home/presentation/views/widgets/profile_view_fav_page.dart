@@ -11,7 +11,7 @@
 //     return Scaffold(
 //       appBar: AppBar(
 //         surfaceTintColor: Colors.transparent,
-//         title: Text(S.of(context).ProfileViewFavourites),
+//         title: Text(S.of(context)!.ProfileViewFavourites),
 //         centerTitle: true,
 //         leading: IconButton(
 //           icon: const Icon(Icons.arrow_back_ios_new),

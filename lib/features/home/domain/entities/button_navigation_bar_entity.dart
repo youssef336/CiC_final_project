@@ -21,22 +21,22 @@ List<ButtonNavigationBarEntity> getButtonNavigationBarItems(
     ButtonNavigationBarEntity(
       activeImagePath: AssetsData.light().images.bold.home_svg,
       inactiveImagePath: AssetsData.light().images.outline.home_svg,
-      name: S.of(context).Button_NavigationBar_Entity_Home,
+      name: S.of(context)!.buttonNavigationBarEntityHome,
     ),
     ButtonNavigationBarEntity(
       activeImagePath: AssetsData.light().images.bold.products_svg,
       inactiveImagePath: AssetsData.light().images.outline.products_svg,
-      name: S.of(context).Button_NavigationBar_Entity_Products,
+      name: S.of(context)!.buttonNavigationBarEntityProducts,
     ),
     ButtonNavigationBarEntity(
       activeImagePath: AssetsData.light().images.bold.shopping_cart_svg,
       inactiveImagePath: AssetsData.light().images.outline.shopping_cart_svg,
-      name: S.of(context).Button_NavigationBar_Entity_Cart,
+      name: S.of(context)!.buttonNavigationBarEntityCart,
     ),
     ButtonNavigationBarEntity(
       activeImagePath: AssetsData.light().images.bold.user_svg,
       inactiveImagePath: AssetsData.light().images.outline.user_svg,
-      name: S.of(context).Button_NavigationBar_Entity_Profile,
+      name: S.of(context)!.buttonNavigationBarEntityProfile,
     ),
   ];
 }

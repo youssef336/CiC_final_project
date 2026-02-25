@@ -26,7 +26,7 @@ class OrderProductModel {
       quantity: entity.count,
     );
   }
-  toJson() => {
+  Map<String, Object> toJson() => {
     'nameEn': nameEn,
     'nameAr': nameAr,
     'imageUrl': imageUrl,

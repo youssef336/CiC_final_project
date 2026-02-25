@@ -24,7 +24,7 @@ class CustomTextFormFeild extends StatelessWidget {
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return S.of(context).on_signup_Text_feils;
+          return S.of(context)!.onSignupTextFeils;
         }
         return null;
       },

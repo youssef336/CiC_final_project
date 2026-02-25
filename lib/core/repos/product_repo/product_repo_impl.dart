@@ -5,7 +5,6 @@ import 'package:mysterybag/core/models/product_model.dart';
 import 'package:mysterybag/core/repos/product_repo/product_repo.dart';
 import 'package:mysterybag/core/services/database_servies.dart';
 import 'package:mysterybag/core/utils/back_end_endpoints.dart';
-import 'package:mysterybag/generated/l10n.dart';
 
 class ProductRepoImpl extends ProductRepo {
   final DatabaseServies databaseServies;
@@ -49,9 +48,7 @@ class ProductRepoImpl extends ProductRepo {
 
       return right(productsEntity);
     } catch (e) {
-      return Left(
-        ServerFailure(S.current.Custom_Exception_failed_toget_product),
-      );
+      return const Left(ServerFailure('Failed to get product'));
     }
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/utils/assets.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
@@ -16,12 +18,12 @@ class OnBoardingPageView extends StatelessWidget {
           isVisible: true,
           image: AssetsData.light().images.app_icon_jpg,
           backgroundimage: AssetsData.light().images.app_icon_jpg,
-          subtitle: S.of(context).on_boarding_subtitle,
+          subtitle: S.of(context)!.onBoardingSubtitle,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                S.of(context).on_boarding_title,
+                S.of(context)!.onBoardingTitle,
                 style: AppTextStyles.heading5Bold,
               ),
             ],
@@ -32,12 +34,12 @@ class OnBoardingPageView extends StatelessWidget {
 
           image: AssetsData.light().images.app_icon_jpg,
           backgroundimage: AssetsData.light().images.app_icon_jpg,
-          subtitle: S.of(context).on_boarding_subtitle2,
+          subtitle: S.of(context)!.onBoardingSubtitle2,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                S.of(context).on_boarding_title2,
+                S.of(context)!.onBoardingTitle2,
                 style: AppTextStyles.heading5Bold,
               ),
             ],

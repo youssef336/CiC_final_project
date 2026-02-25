@@ -4,7 +4,6 @@ import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/features/check_out/presentation/views/check_out_view.dart';
 
 import '../../../../../core/widgets/custom_buttom.dart';
-import '../../../../../main.dart';
 
 import '../../manager/cubits/cart/cart_cubit.dart';
 import '../../manager/cubits/cart_item/cart_item_cubit.dart';

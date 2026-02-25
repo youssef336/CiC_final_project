@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore
+// ignore_for_file: file_names, duplicate_ignore, unchecked_use_of_nullable_value
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +44,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 onSaved: (value) {
                   email = value!;
                 },
-                hintText: S.of(context).on_Login_email,
+                hintText: S.of(context)!.onLoginEmail,
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
@@ -58,7 +58,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    S.of(context).on_Login_forgot_password,
+                    S.of(context)!.onLoginForgotPassword,
                     style: AppTextStyles.bodySmallSemibold.copyWith(
                       color: KprimaryColorLight,
                     ),
@@ -67,7 +67,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               ),
               const SizedBox(height: 33),
               CustomButtom(
-                text: S.of(context).on_Login_login,
+                text: S.of(context)!.onLoginLogin,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
@@ -90,7 +90,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
 
               SocialTextButtom(
                 image: AssetsData.light().images.google_icon_svg,
-                text: S.of(context).on_Login_login_with_google,
+                text: S.of(context)!.onLoginLoginWithGoogle,
                 onPressed: () {
                   context.read<SignInCubit>().signInWithGoogle();
                 },
@@ -101,7 +101,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                       children: [
                         SocialTextButtom(
                           image: AssetsData.light().images.google_icon_svg,
-                          text: S.of(context).on_Login_login_with_apple,
+                          text: S.of(context)!.onLoginLoginWithApple,
                           onPressed: () {},
                         ),
                         const SizedBox(height: 16),
@@ -111,7 +111,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
 
               SocialTextButtom(
                 image: AssetsData.light().images.facebook_icon_svg,
-                text: S.of(context).on_Login_login_with_facebook,
+                text: S.of(context)!.onLoginLoginWithFacebook,
                 onPressed: () {
                   context.read<SignInCubit>().signInWithFacebook();
                 },

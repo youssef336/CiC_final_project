@@ -1,0 +1,89 @@
+{
+    "onBoardingSkip": "Skip",
+    "onBoardingTitle": "welcome to   ",
+    "onBoardingSubtitle": "Discover a unique shopping experience with FruitHUB. Explore our wide selection of premium fresh fruits and enjoy the best offers with top quality.",
+    "onBoardingTitle2": "Browse and Shop ",
+    "onBoardingSubtitle2": "We offer you the finest handpicked fruits. Check details, photos, and reviews to ensure you select the perfect fruit.",
+    "onBoardingButtomText": "Start now",
+
+
+    "onLoginLogin": "Login",
+    "onLoginEmail": "Email",
+    "onLoginPassword": "Password",
+    "onLoginForgotPassword": "Forgot Password?",
+    "onLoginCreateAccount": "Create Account",
+    "onLoginCreateAccountText": "Don't have an account?",
+    "onLoginLoginOrDivider": "or",
+    "onLoginLoginWithGoogle": "Login with Google",
+    "onLoginLoginWithFacebook": "Login with Facebook",
+    "onLoginLoginWithApple": "Login with Apple",
+
+
+    "onSignupSignup": "Sign Up",
+    "onSignupName": "Name",
+    "onSignupEmail": "Email",
+    "onSignupPassword": "Password",
+    "onSignupTermsandConditions": "By creating an account, you agree to ",
+    "onSignupTermsandConditionsText": "Terms and Conditions",
+    "onSignupTermsandConditionsText2": "and",
+    "onSignupTermsandConditionsText3": "Privacy Policy",
+    "onSignupTermsandConditionsErrorBar": "Please accept the Terms and Conditions and Privacy Policy",
+    "onSignupCreateNewAccount": "Create New Account",
+    "onSignupCreateNewAccountText": "Already have an account?",
+    "onSignupCreateNewAccountText2": "Login",
+    "onSignupTextFeils": "Please fill in all fields",
+
+
+    "homeViewWelcomeAppbar": "Good Morning !..",
+    "homeViewAppbarPoint": "points",
+
+
+    "buttonNavigationBarEntityHome": "Home",
+    "buttonNavigationBarEntityProducts": "products",
+    "buttonNavigationBarEntityCart": "Cart",
+    "buttonNavigationBarEntityProfile": "Profile",
+
+
+    "cartViewHeader": "Cart",
+
+
+    "checkOutViewTitle": "Checkout",
+    "checkOutViewAddress": "Address",
+    "checkOutViewPayment": "Payment",
+    "checkOutViewShipingTitle1": "Cash On Delivery",
+    "checkOutViewShipingSubtitle1": "Delivery From Location",
+    "checkOutViewShipingTitle2": "Online Payment",
+    "checkOutViewShipingPrice": " EGP",
+    "checkOutViewShipingError": "Please Select Payment Method",
+    "checkOutViewShipingSubtitle2": "Select Payment Method",
+    "checkOutViewPayWithPayPal": "Pay with PayPal",
+    "checkOutViewNext": "Next",
+
+
+    "orderSummaryWidgetTitle": "Order Summary :",
+    "orderSummaryWidgetSubtotal": "Subtotal :",
+    "orderSummaryWidgetShipping": "Shipping :",
+    "orderSummaryWidgetTotal": "Total",
+    "orderCubitBlocConsumer": "Order Placed Successfully",
+
+
+    "addressSummaryWidgetTitle": "Delivery Address :",
+    "addressSummaryWidgetChange": "Change",
+    "addressInputSectionName": "Full Name",
+    "addressInputSectionEmail": "Email",
+    "addressInputSectionPhone": "Phone Number",
+    "addressInputSectionAddress": "Address",
+    "addressInputSectionCity": "City",
+    "addressInputSectionFloor": "Floor Number , Apartment Number ..",
+
+
+    "profileViewLanguage": "Language",
+    "profileViewLanguageValueItem": "Arabic Language",
+    "profileViewLanguageValueItem2": "English Language",
+    "profileViewProfileImage": "Profile Image",
+    "profileViewFavourites": "Favourites",
+    "profileViewLogout": "Logout",
+    "profileViewLogoutText": "Are you sure you want to logout?",
+    "profileViewLogoutText2": "Logout",
+    "profileViewLogoutText3": "Cancel"
+}

@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +17,7 @@ class AddressSummaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaymentItem(
-      title: S.of(context).AddressSummaryWidget_title,
+      title: S.of(context)!.addressSummaryWidgetTitle,
       child: Column(
         children: [
           Row(
@@ -42,7 +44,7 @@ class AddressSummaryWidget extends StatelessWidget {
                       SvgPicture.asset(AssetsData.light().images.edit_svg),
                       const SizedBox(width: 4),
                       Text(
-                        S.of(context).AddressSummaryWidget_change,
+                        S.of(context)!.addressSummaryWidgetChange,
                         style: AppTextStyles.bodyBaseSemibold.copyWith(
                           fontSize: 13,
                           color: const Color(0xFF949D9E),

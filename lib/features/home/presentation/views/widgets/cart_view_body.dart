@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/constant.dart' show KTopPadding;
@@ -25,7 +27,7 @@ class CartViewBody extends StatelessWidget {
                 children: [
                   buildAppbar(
                     context,
-                    title: S.of(context).CartViewHeader,
+                    title: S.of(context)!.cartViewHeader,
                     showNotification: false,
                     showBackButton: false,
                   ),

@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mysterybag/constant.dart';
@@ -55,7 +57,7 @@ class PageViewItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Text(
-                      S.of(context).on_boarding_skip,
+                      S.of(context)!.onBoardingSkip,
                       style: AppTextStyles.bodySmallRegular.copyWith(
                         color: const Color(0xFF949D9E),
                       ),

@@ -52,7 +52,7 @@ class MysteryBag extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: S.delegate.supportedLocales,
+          supportedLocales: S.supportedLocales,
           locale: state is LocaleChangedtoEnglish
               ? const Locale('en')
               : state is LocaleChangedtoArabic

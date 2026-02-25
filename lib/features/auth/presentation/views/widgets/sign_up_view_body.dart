@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: unchecked_use_of_nullable_value, non_constant_identifier_names
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 onSaved: (value) {
                   name = value!;
                 },
-                hintText: S.of(context).on_signup_name,
+                hintText: S.of(context)!.onSignupName,
                 textInputType: TextInputType.name,
               ),
               const SizedBox(height: 16),
@@ -52,7 +52,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 onSaved: (value) {
                   email = value!;
                 },
-                hintText: S.of(context).on_signup_email,
+                hintText: S.of(context)!.onSignupEmail,
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
@@ -69,7 +69,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
               const SizedBox(height: 30),
               CustomButtom(
-                text: S.of(context).on_signup_create_NewAccount,
+                text: S.of(context)!.onSignupCreateNewAccount,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
@@ -85,7 +85,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     } else {
                       showErrorBar(
                         context,
-                        S.of(context).on_signup_TermsandConditions_error_bar,
+                        S.of(context)!.onSignupTermsandConditionsErrorBar,
                       );
                     }
                     // Perform signup logic here

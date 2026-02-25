@@ -1,5 +1,7 @@
 // ignore_for_file: unused_import
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
@@ -21,7 +23,7 @@ class SignUpView extends StatelessWidget {
       child: Scaffold(
         appBar: Custom_app_bar(
           context,
-          title: S.of(context).on_signup_Signup,
+          title: S.of(context)!.onSignupSignup,
           onPressed: () {
             Navigator.pop(context);
           },

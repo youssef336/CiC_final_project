@@ -27,7 +27,7 @@ class ShippingAddressModel {
       email: entity.email,
     );
   }
-  toJson() {
+  Map<String, String?> toJson() {
     return {
       'address': address,
       'floor': floor,

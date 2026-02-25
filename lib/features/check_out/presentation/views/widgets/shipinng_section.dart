@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
@@ -32,8 +34,8 @@ class _ShipinngSectionState extends State<ShipinngSection>
             });
           },
           isSelected: selectedIndex == 0,
-          title: S.of(context).CheckOutView_Shipinng_title1,
-          subTitle: S.of(context).CheckOutView_Shipinng_Subtitle1,
+          title: S.of(context)!.checkOutViewShipingTitle1,
+          subTitle: S.of(context)!.checkOutViewShipingSubtitle1,
           price: Text.rich(
             TextSpan(
               children: [
@@ -50,7 +52,7 @@ class _ShipinngSectionState extends State<ShipinngSection>
                   ),
                 ),
                 TextSpan(
-                  text: S.of(context).CheckOutView_Shipinng_price,
+                  text: S.of(context)!.checkOutViewShipingPrice,
                   style: AppTextStyles.bodysmallBold.copyWith(
                     color: KprimaryColorLight,
                   ),
@@ -68,8 +70,8 @@ class _ShipinngSectionState extends State<ShipinngSection>
             });
           },
           isSelected: selectedIndex == 1,
-          title: S.of(context).CheckOutView_Shipinng_title2,
-          subTitle: S.of(context).CheckOutView_Shipinng_Subtitle2,
+          title: S.of(context)!.checkOutViewShipingTitle2,
+          subTitle: S.of(context)!.checkOutViewShipingSubtitle2,
           price: Text.rich(
             TextSpan(
               children: [
@@ -84,7 +86,7 @@ class _ShipinngSectionState extends State<ShipinngSection>
                   ),
                 ),
                 TextSpan(
-                  text: S.of(context).CheckOutView_Shipinng_price,
+                  text: S.of(context)!.checkOutViewShipingPrice,
                   style: AppTextStyles.bodysmallBold.copyWith(
                     color: KprimaryColorLight,
                   ),

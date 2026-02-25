@@ -26,13 +26,12 @@ class OrderModel {
     shippingAddress: ShippingAddressModel.fromEntity(
       orderEntity.shipingAddressEntity,
     ),
-    orderProducts:
-        orderEntity.cartEntites.cartItems
-            .map((e) => OrderProductModel.fromEntity(entity: e))
-            .toList(),
+    orderProducts: orderEntity.cartEntites.cartItems
+        .map((e) => OrderProductModel.fromEntity(entity: e))
+        .toList(),
     paymentMethod: orderEntity.payWithCash! ? 'Cash' : 'PayPal',
   );
-  toJson() => {
+  Map<String, dynamic> toJson() => {
     'orderId': orderId,
     'uID': uID,
     'totalPrice': totalPrice,

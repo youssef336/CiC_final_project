@@ -6,7 +6,6 @@ import '../../../../../core/entities/demo_products.dart';
 import '../../manager/cubits/cart/cart_cubit.dart';
 
 import 'custom_home_appbar.dart';
-import 'feature_home_list.dart';
 import 'home_best_seller_header.dart';
 import 'product_grid_view_bloc_builder.dart';
 
@@ -56,20 +55,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   icon: const Icon(Icons.shopping_bag_outlined),
                   label: const Text('Load Demo Data'),
                 ),
-                const SizedBox(height: 12),
-                TextField(
-                  onChanged: (query) {
-                    // Handle search
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                const FeatureHomeList(),
+
                 const SizedBox(height: 12),
                 const HomeBestSellerHeader(),
                 const SizedBox(height: 8),

@@ -1,5 +1,4 @@
 import 'package:mysterybag/core/entities/product_entity.dart';
-import 'package:mysterybag/core/entities/review_entity.dart';
 
 /// Demo products for testing checkout functionality
 /// Note: Using null imageUrl to avoid network requests - will display placeholder/default image

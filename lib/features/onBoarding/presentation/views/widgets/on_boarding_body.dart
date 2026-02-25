@@ -2,6 +2,8 @@
 
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mysterybag/constant.dart';
@@ -71,7 +73,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   context,
                 ).pushReplacementNamed(SigninView.routeName);
               },
-              text: S.of(context).on_boarding_buttom_text,
+              text: S.of(context)!.onBoardingButtomText,
             ),
           ),
         ),

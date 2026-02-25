@@ -1,5 +1,7 @@
 // ignore_for_file: camel_case_types
 
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/cubits/avatar/avatar_cubit.dart';
@@ -7,6 +9,7 @@ import 'package:mysterybag/core/helper_functions/get_user.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/utils/assets.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/custom_app_bar_points.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 import '../../../../../constant.dart';
@@ -45,16 +48,22 @@ class CustomHomeAppBar_body extends StatelessWidget {
         },
       ),
       title: Text(
-        S.of(context).Home_view_welcome_appbar,
+        S.of(context)!.homeViewWelcomeAppbar,
 
         style: AppTextStyles.cairoRegular.copyWith(
           color: const Color(0xFF949D9E),
         ),
       ),
       subtitle: Text(getUser().name, style: AppTextStyles.cairoBold),
-      trailing: Visibility(
-        visible: showNotification,
-        child: const NotificationWidget(),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const CustomappBarPoints(),
+          Visibility(
+            visible: showNotification,
+            child: const NotificationWidget(),
+          ),
+        ],
       ),
     );
   }

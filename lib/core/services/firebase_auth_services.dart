@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mysterybag/core/errors/exception.dart';
-import 'package:mysterybag/generated/l10n.dart';
 
 class FirebaseAuthServices {
   Future deleteUser() async {
@@ -25,26 +24,26 @@ class FirebaseAuthServices {
       );
       if (e.code == 'weak-password') {
         throw CustomException(
-          message: S.current.Custom_Exception_weak_password,
+          message: 'The password provided is too weak.',
         );
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(
-          message: S.current.Custom_Exception_email_already_in_use,
+          message: 'The email address is already in use by another account.',
         );
       } else if (e.code == 'network-request-failed') {
         throw CustomException(
-          message: S.current.Custom_Exception_network_request_failed,
+          message: 'Network request failed, please check your internet connection.',
         );
       } else if (e.code == 'invalid-email') {
         throw CustomException(
-          message: S.current.Custom_Exception_invalid_email,
+          message: 'The email address is not valid.',
         );
       } else {
-        throw CustomException(message: S.current.Custom_Exception_unknown);
+        throw CustomException(message: 'An unknown error occurred please try again later.');
       }
     } catch (e) {
       log("Error in FirebaseAuthServices.createUserWithEmailAndPassword: $e");
-      throw CustomException(message: S.current.Custom_Exception_unknown);
+      throw CustomException(message: 'An unknown error occurred please try again later.');
     }
   }
 
@@ -64,26 +63,23 @@ class FirebaseAuthServices {
       );
       if (e.code == 'user-not-found') {
         throw CustomException(
-          message:
-              S.current.Custom_Exception_there_is_problem_in_email_or_password,
+          message: 'There is a problem in email or password',
         );
       } else if (e.code == 'wrong-password') {
         throw CustomException(
-          message:
-              S.current.Custom_Exception_there_is_problem_in_email_or_password,
+          message: 'There is a problem in email or password',
         );
       } else if (e.code == 'network-request-failed') {
         throw CustomException(
-          message: S.current.Custom_Exception_network_request_failed,
+          message: 'Network request failed, please check your internet connection.',
         );
       } else if (e.code == 'invalid-email') {
         throw CustomException(
-          message: S.current.Custom_Exception_invalid_email,
+          message: 'The email address is not valid.',
         );
       } else {
         throw CustomException(
-          message:
-              S.current.Custom_Exception_there_is_problem_in_email_or_password,
+          message: 'There is a problem in email or password',
         );
       }
     }

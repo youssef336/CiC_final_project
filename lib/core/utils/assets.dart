@@ -2,60 +2,53 @@
 
 // ignore_for_file: unused_field, camel_case_types, non_constant_identifier_names, library_private_types_in_public_api
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-        
+
 class Assets extends StatelessWidget {
   final AssetsData assets;
   final Widget child;
 
-  const Assets({
-    super.key,
-    required this.assets,
-    required this.child,
-  });
+  const Assets({super.key, required this.assets, required this.child});
 
   static AssetsData of(BuildContext context) {
-    final widget = context.dependOnInheritedWidgetOfExactType<_InheritedAssets>();
+    final widget = context
+        .dependOnInheritedWidgetOfExactType<_InheritedAssets>();
     return widget?.assets ?? AssetsData.light();
   }
 
   @override
   Widget build(BuildContext context) {
-    return _InheritedAssets(
-      assets: assets,
-      child: child,
-    );
+    return _InheritedAssets(assets: assets, child: child);
   }
 }
 
 class _InheritedAssets extends InheritedWidget {
   final AssetsData assets;
 
-  const _InheritedAssets({
-    required this.assets,
-    required super.child,
-  });
+  const _InheritedAssets({required this.assets, required super.child});
 
   @override
-  bool updateShouldNotify(covariant _InheritedAssets oldWidget) => assets != oldWidget.assets;
+  bool updateShouldNotify(covariant _InheritedAssets oldWidget) =>
+      assets != oldWidget.assets;
 }
 
 class AssetsData {
   static AssetsData? _light;
   static AssetsData? _dark;
 
-  factory AssetsData.light() => _light ??= AssetsData._(brightness: Brightness.light);
-  factory AssetsData.dark() => _dark ??= AssetsData._(brightness: Brightness.dark);
-  factory AssetsData.brightness(Brightness brightness) => brightness == Brightness.light ? AssetsData.light() : AssetsData.dark();
+  factory AssetsData.light() =>
+      _light ??= AssetsData._(brightness: Brightness.light);
+  factory AssetsData.dark() =>
+      _dark ??= AssetsData._(brightness: Brightness.dark);
+  factory AssetsData.brightness(Brightness brightness) =>
+      brightness == Brightness.light ? AssetsData.light() : AssetsData.dark();
 
   final Brightness _brightness;
 
-  AssetsData._({
-    required Brightness brightness,
-  })  : _brightness = brightness,
-        fonts = _assets_fonts_dart._(brightness: brightness),
-        images = _assets_images_dart._(brightness: brightness);
+  AssetsData._({required Brightness brightness})
+    : _brightness = brightness,
+      fonts = _assets_fonts_dart._(brightness: brightness),
+      images = _assets_images_dart._(brightness: brightness);
 
   final _assets_fonts_dart fonts;
   final _assets_images_dart images;
@@ -64,9 +57,8 @@ class AssetsData {
 class _assets_fonts_dart {
   final Brightness _brightness;
 
-  _assets_fonts_dart._({
-    required Brightness brightness,
-  })  : _brightness = brightness;
+  _assets_fonts_dart._({required Brightness brightness})
+    : _brightness = brightness;
 
   final Cairo_Bold_ttf = 'assets/fonts/Cairo-Bold.ttf';
   final Cairo_Medium_ttf = 'assets/fonts/Cairo-Medium.ttf';
@@ -77,11 +69,10 @@ class _assets_fonts_dart {
 class _assets_images_dart {
   final Brightness _brightness;
 
-  _assets_images_dart._({
-    required Brightness brightness,
-  })  : _brightness = brightness,
-        bold = _assets_images_bold_dart._(brightness: brightness),
-        outline = _assets_images_outline_dart._(brightness: brightness);
+  _assets_images_dart._({required Brightness brightness})
+    : _brightness = brightness,
+      bold = _assets_images_bold_dart._(brightness: brightness),
+      outline = _assets_images_outline_dart._(brightness: brightness);
 
   final _assets_images_bold_dart bold;
   final _assets_images_outline_dart outline;
@@ -102,9 +93,8 @@ class _assets_images_dart {
 class _assets_images_bold_dart {
   final Brightness _brightness;
 
-  _assets_images_bold_dart._({
-    required Brightness brightness,
-  })  : _brightness = brightness;
+  _assets_images_bold_dart._({required Brightness brightness})
+    : _brightness = brightness;
 
   final home_svg = 'assets/images/bold/home.svg';
   final products_svg = 'assets/images/bold/products.svg';
@@ -115,9 +105,8 @@ class _assets_images_bold_dart {
 class _assets_images_outline_dart {
   final Brightness _brightness;
 
-  _assets_images_outline_dart._({
-    required Brightness brightness,
-  })  : _brightness = brightness;
+  _assets_images_outline_dart._({required Brightness brightness})
+    : _brightness = brightness;
 
   final home_svg = 'assets/images/outline/home.svg';
   final products_svg = 'assets/images/outline/products.svg';

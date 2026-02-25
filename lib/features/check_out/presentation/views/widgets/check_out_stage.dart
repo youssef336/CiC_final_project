@@ -1,3 +1,5 @@
+// ignore_for_file: unchecked_use_of_nullable_value
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/step_item.dart';
 
@@ -34,10 +36,8 @@ class CheckOutStage extends StatelessWidget {
   }
 }
 
-List<String> getSteps(context) {
-  return [
-    S.of(context).CheckOutView_title,
-    S.of(context).CheckOutView_address,
-    S.of(context).CheckOutView_payment,
-  ];
-}
+List<String> getSteps(context) => [
+  S.of(context)!.checkOutViewTitle,
+  S.of(context)!.checkOutViewAddress,
+  S.of(context)!.checkOutViewPayment,
+];
