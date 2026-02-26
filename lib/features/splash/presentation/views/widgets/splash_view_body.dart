@@ -78,15 +78,21 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FadeTransition(
-        opacity: _fadeAnimation,
-        child: ScaleTransition(
-          scale: _scaleAnimation,
-          child: Image.asset(
-            AssetsData.light().images.app_icon_jpg,
-            width: 300,
-            height: 300,
+    return Container(
+      color: Theme.of(context).scaffoldBackgroundColor, // background color
+      child: Center(
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: ScaleTransition(
+            scale: Tween<double>(begin: 0.9, end: 1.0).animate(
+              CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+            ),
+            child: Image.asset(
+              "assets/icon/icon.png",
+              width: 180,
+              height: 180,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),

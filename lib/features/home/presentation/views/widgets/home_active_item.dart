@@ -41,6 +41,7 @@ class ActiveItem extends StatelessWidget {
                 color: KprimaryColorDark /* Green1-500 */,
               ),
             ),
+            const SizedBox(width: 4),
           ],
         ),
       ),

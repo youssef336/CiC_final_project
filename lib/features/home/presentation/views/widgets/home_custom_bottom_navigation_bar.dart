@@ -18,16 +18,16 @@ class _HomeCustomBottomNavigationBarState
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 70,
-      decoration: const ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
+      decoration: ShapeDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
         shadows: [
-          BoxShadow(
+          const BoxShadow(
             color: Color(0x19000000),
             blurRadius: 25,
             offset: Offset(0, -2),

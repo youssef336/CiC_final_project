@@ -59,6 +59,7 @@ class CustomHomeAppBar_body extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const CustomappBarPoints(),
+          const SizedBox(width: 8),
           Visibility(
             visible: showNotification,
             child: const NotificationWidget(),
