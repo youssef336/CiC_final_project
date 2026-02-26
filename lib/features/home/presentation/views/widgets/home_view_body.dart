@@ -74,10 +74,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 const HomeBestSellerHeader(),
                 const SizedBox(height: 8),
               ],
-            ),
+            ),   
           ),
-          const ProductGridViewBlocBuilder(),
+              SliverToBoxAdapter(
+          child: ProductGridViewBlocBuilder(),
+            ),
         ],
+            
       ),
     );
   }
