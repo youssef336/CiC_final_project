@@ -5,7 +5,6 @@ import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/core/widgets/available_bags_list.dart';
 import 'package:mysterybag/core/widgets/resturant_card.dart';
 
-
 class ProductGridViewBlocBuilder extends StatelessWidget {
   ProductGridViewBlocBuilder({super.key});
 

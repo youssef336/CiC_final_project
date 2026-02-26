@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mysterybag/core/utils/assets.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/firebase_auth_services.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
