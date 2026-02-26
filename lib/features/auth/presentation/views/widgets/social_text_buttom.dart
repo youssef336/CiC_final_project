@@ -19,7 +19,7 @@ class SocialTextButtom extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
             side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),

@@ -96,7 +96,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 },
               ),
               const SizedBox(height: 16),
-              !kIsWeb
+              defaultTargetPlatform == TargetPlatform.iOS
                   ? Column(
                       children: [
                         SocialTextButtom(

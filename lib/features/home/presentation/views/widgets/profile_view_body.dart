@@ -1,6 +1,8 @@
 // ignore_for_file: unchecked_use_of_nullable_value
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/core/cubits/theme/theme_cubit.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
 import 'package:mysterybag/core/widgets/build_app_bar.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_item.dart';
@@ -59,7 +61,28 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     );
                   },
                 ),
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
+                BlocBuilder<ThemeCubit, ThemeMode>(
+                  builder: (context, themeState) {
+                    return ProfileViewItem(
+                      headText:
+                          'Theme (${context.read<ThemeCubit>().getThemeDisplayName()})',
+                      icon: context.read<ThemeCubit>().getThemeIcon(),
+                      onPressed: () {
+                        context.read<ThemeCubit>().toggleTheme();
+                      },
+                    );
+                  },
+                ),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
                 ProfileViewItem(
                   headText: S.of(context)!.profileViewProfileImage,
                   icon: Icons.person_outline_outlined,
@@ -70,7 +93,11 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     );
                   },
                 ),
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
                 ProfileViewItem(
                   headText: S.of(context)!.profileViewFavourites,
                   icon: Icons.favorite_outline_outlined,
@@ -78,7 +105,11 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     // Navigator.pushNamed(context, ProfileViewFavPage.routeName);
                   },
                 ),
-                Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
                 ProfileViewItem(
                   headText: S.of(context)!.profileViewLogout,
                   icon: Icons.logout_outlined,
