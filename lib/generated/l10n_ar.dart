@@ -12,18 +12,18 @@ class SAr extends S {
   String get onBoardingSkip => 'تخطى';
 
   @override
-  String get onBoardingTitle => ' مرحبًا بك في ';
+  String get onBoardingTitle => ' أنقذ الطعام. وفّر المال.';
 
   @override
   String get onBoardingSubtitle =>
-      'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.';
+      'اكتشف وجبات فائضة من المطاعم بأسعار مخفضة، وتأكد من جودتها باستخدام تقنية الذكاء الاصطناعي لفحص الطزاجة والسلامة.';
 
   @override
-  String get onBoardingTitle2 => ' ابحث وتسوق';
+  String get onBoardingTitle2 => 'طعام ذكي بلا هدر';
 
   @override
   String get onBoardingSubtitle2 =>
-      'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية';
+      'تسوّق أكياس المفاجآت من المطاعم القريبة بأسعار مميزة، مع ميزة التحقق الذكي من جودة المنتجات عبر الكاميرا.';
 
   @override
   String get onBoardingButtomText => 'ابدأ الان';
