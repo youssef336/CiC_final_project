@@ -82,7 +82,7 @@ class MysteryBag extends StatelessWidget {
 
               onGenerateRoute: onGenerateRoute,
               // initialRoute: SplashView.routeName,
-              initialRoute: OnBoarding.routeName,
+              initialRoute: '/bagDetails',
               debugShowCheckedModeBanner: false,
             );
           },
