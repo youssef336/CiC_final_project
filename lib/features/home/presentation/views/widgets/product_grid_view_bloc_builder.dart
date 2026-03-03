@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/models/bag_item_model.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/core/widgets/available_bags_list.dart';
