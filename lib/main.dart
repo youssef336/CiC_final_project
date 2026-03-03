@@ -10,6 +10,7 @@ import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
+import 'package:mysterybag/features/onBoarding/presentation/views/on_boarding.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
@@ -80,12 +81,15 @@ class MysteryBag extends StatelessWidget {
                   : Locale(locale.isEmpty ? 'ar' : locale),
 
               onGenerateRoute: onGenerateRoute,
-              initialRoute: SplashView.routeName,
+              // initialRoute: SplashView.routeName,
+              initialRoute: '/bagDetails',
               debugShowCheckedModeBanner: false,
             );
           },
         );
       },
     );
+
+    
   }
 }

@@ -88,6 +88,9 @@ class _assets_images_dart {
   final location_svg = 'assets/images/location.svg';
   final notification_svg = 'assets/images/notification.svg';
   final trash_svg = 'assets/images/trash.svg';
+  final onboardingImage_png = 'assets/images/onboardingImage.png';
+  final onboarding_image1_jpg = 'assets/images/onboarding_image1.jpg';
+  final onboarding_image2_webp = 'assets/images/onboarding_image2.webp';
 }
 
 class _assets_images_bold_dart {

@@ -11,13 +11,14 @@ class OnBoardingPageView extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
+    final assets = AssetsData.light();
     return PageView(
       controller: pageController,
       children: [
         PageViewItem(
           isVisible: true,
-          image: AssetsData.light().images.app_icon_jpg,
-          backgroundimage: AssetsData.light().images.app_icon_jpg,
+          image: assets.images.onboardingImage_png,
+
           subtitle: S.of(context)!.onBoardingSubtitle,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -31,9 +32,7 @@ class OnBoardingPageView extends StatelessWidget {
         ),
         PageViewItem(
           isVisible: false,
-
-          image: AssetsData.light().images.app_icon_jpg,
-          backgroundimage: AssetsData.light().images.app_icon_jpg,
+          image: assets.images.onboarding_image1_jpg,
           subtitle: S.of(context)!.onBoardingSubtitle2,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
