@@ -9,7 +9,7 @@ AppBar Custom_app_bar(
   void Function()? onPressed,
 }) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
     leading: IconButton(
       icon: const Icon(Icons.arrow_back_ios_new_rounded),
       onPressed: onPressed,

@@ -2,6 +2,7 @@
 // ignore_for_file: file_names, duplicate_ignore
 
 import 'package:flutter/material.dart';
+import 'package:mysterybag/constant.dart';
 
 class ProductViewHeader extends StatelessWidget {
   const ProductViewHeader({super.key, required this.productLength});
@@ -9,26 +10,34 @@ class ProductViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       children: [
         Text(
           "$productLength results",
           textAlign: TextAlign.right,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF0C0D0D),
+            color: isDark ? KdarkModeTextColor : KlightModeTextColor,
           ),
         ),
         const Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.grey[200],
-            border: Border.all(color: Colors.grey),
+            color: isDark ? KdarkModeCardColor : Colors.grey[200],
+            border: Border.all(
+              color: isDark ? KdarkModeTextSecondary : Colors.grey,
+            ),
             borderRadius: BorderRadius.circular(4),
           ),
-          child: const Icon(Icons.tune, size: 20),
+          child: Icon(
+            Icons.tune,
+            size: 20,
+            color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+          ),
         ),
       ],
     );

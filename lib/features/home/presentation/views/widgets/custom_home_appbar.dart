@@ -49,9 +49,8 @@ class CustomHomeAppBar_body extends StatelessWidget {
       ),
       title: Text(
         S.of(context)!.homeViewWelcomeAppbar,
-
         style: AppTextStyles.cairoRegular.copyWith(
-          color: const Color(0xFF949D9E),
+          color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.grey,
         ),
       ),
       subtitle: Text(getUser().name, style: AppTextStyles.cairoBold),

@@ -36,7 +36,7 @@
 
 
     "homeViewWelcomeAppbar": "صباح الخير !..",
-    "homeViewAppbarPoint": "نيقات",
+   
 
 
     "buttonNavigationBarEntityHome": "الرئيسية",
@@ -82,9 +82,21 @@
     "profileViewLanguageValueItem": "اللغة العربية",
     "profileViewLanguageValueItem2": "اللغة الانجليزية",
     "profileViewProfileImage": "صورة الملف الشخصي",
+      "profileViewTheme": "المظهر",
     "profileViewFavourites": "المفضلة",
     "profileViewLogout": "تسجيل الخروج",
     "profileViewLogoutText": "هل تريد تسجيل الخروج ؟",
     "profileViewLogoutText2": "تسجيل الخروج",
-    "profileViewLogoutText3": "الغاء"
+    "profileViewLogoutText3": "الغاء",
+    "profileViewPoints": "نقاط",
+
+
+    "pointsPageYourPoints": "نقاطك",
+    "pointsPagePts": "نقطة",
+    "pointsPageRewardsTitle": "المكافآت والخصومات",
+    "pointsPageDiscount": "خصم",
+    "pointsPagePointsRequired": "نقطة مطلوبة",
+    "pointsPageUnlocked": "مفعل",
+    "pointsPageProgress": "التقدم",
+    "pointsPagePointsToGo": "نقطة متبقية!"
 }

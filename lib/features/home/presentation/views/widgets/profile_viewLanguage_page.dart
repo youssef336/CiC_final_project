@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/core/widgets/custom_divider.dart';
 import 'package:mysterybag/generated/l10n.dart';
@@ -60,15 +61,46 @@ class Language_container extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        children: [
-          TextButton(
-            onPressed: onPressed,
-            child: Text(text, style: AppTextStyles.cairoBold19),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Container(
+        decoration: BoxDecoration(
+          color: isDark ? KdarkModeCardColor : KlightModeCardColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isDark ? KdarkModeTextSecondary.withOpacity(0.2) : KlightModeTextSecondary.withOpacity(0.15),
+            width: 1,
           ),
-        ],
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      text,
+                      style: AppTextStyles.cairoBold19.copyWith(
+                        color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+                      ),
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: isDark ? KdarkModeTextSecondary : KlightModeTextSecondary,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

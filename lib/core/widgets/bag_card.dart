@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
 
 class BagCard extends StatelessWidget {
   final String title;
@@ -8,29 +10,36 @@ class BagCard extends StatelessWidget {
   final double rating;
 
   final bagItemModel;
-    const BagCard({
-      super.key,
-      required this.title,
-      required this.price,
-      required this.oldPrice,
-      required this.bagsLeft,
-      required this.rating,
-      required this.bagItemModel
-    });
+  const BagCard({
+    super.key,
+    required this.title,
+    required this.price,
+    required this.oldPrice,
+    required this.bagsLeft,
+    required this.rating,
+    required this.bagItemModel,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: 260,
-      margin: const EdgeInsets.only(left: 16, bottom: 16),
+      margin: const EdgeInsets.only(left: 6, top: 3, right: 6, bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
+          // Shadow in all directions
           BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 10,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.black.withOpacity(0.3)
+                : Colors.grey.shade300.withOpacity(0.5),
+            blurRadius: 2,
+            spreadRadius: 2,
+            offset: const Offset(0, 0),
           ),
         ],
       ),
@@ -42,25 +51,33 @@ class BagCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
+                    color: isDark ? KdarkModeTextColor : KlightModeTextColor,
                   ),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade50,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? KaccentColor.withOpacity(0.2)
+                      : KaccentColor.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.star,
-                        size: 14, color: Color.fromARGB(255, 255, 153, 0)),
+                    const Icon(Icons.star, size: 14, color: KaccentColor),
                     const SizedBox(width: 4),
-                    Text(rating.toString()),
+                    Text(
+                      rating.toString(),
+                      style: TextStyle(
+                        color: isDark
+                            ? KdarkModeTextColor
+                            : KlightModeTextColor,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -71,9 +88,11 @@ class BagCard extends StatelessWidget {
 
           Text(
             "$oldPrice EGP",
-            style: const TextStyle(
+            style: TextStyle(
               decoration: TextDecoration.lineThrough,
-              color: Colors.grey,
+              color: isDark
+                  ? KdarkModeTextSecondary
+                  : Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
             ),
           ),
 
@@ -90,8 +109,8 @@ class BagCard extends StatelessWidget {
 
           Text(
             "$bagsLeft Bags left",
-            style: const TextStyle(
-              color: Colors.orange,
+            style: TextStyle(
+              color: isDark ? KdarkModeTextSecondary : KaccentColor,
             ),
           ),
 
@@ -100,18 +119,25 @@ class BagCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(BagDetailsView.routeName);
+              },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
+                backgroundColor: KaccentColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text("Reserve",
-                style: TextStyle(color: Colors.white),
+              child: Text(
+                "Reserve",
+                style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.white,
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

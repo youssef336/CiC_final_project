@@ -39,12 +39,26 @@ class ProductsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          const SliverAppBar(title: Text('Products'), pinned: true),
+          SliverAppBar(
+            pinned: true,
+            backgroundColor: isDark ? KdarkModeBgColor : KlightModeBgColor,
+            surfaceTintColor: Colors.transparent,
+            elevation: 0,
+            title: Text(
+              'Products',
+              style: TextStyle(
+                color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           SliverToBoxAdapter(
             child: Column(
               children: [

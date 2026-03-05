@@ -23,11 +23,13 @@ class CustomChekBox extends StatelessWidget {
         height: 24,
         duration: const Duration(milliseconds: 120),
         decoration: ShapeDecoration(
-          color: isChecked ? KprimaryColor : Colors.white,
+          color: isChecked ? KprimaryColor : Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 1.50,
-              color: isChecked ? Colors.transparent : const Color(0xFFDCDEDE),
+              color: isChecked
+                  ? Colors.transparent
+                  : Theme.of(context).dividerColor,
             ),
             borderRadius: BorderRadius.circular(8),
           ),

@@ -7,6 +7,7 @@ import 'package:mysterybag/core/utils/text_styles.dart';
 import 'package:mysterybag/core/widgets/build_app_bar.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_item.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_logout.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_points_page.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 import '../../../../../../constant.dart';
@@ -70,7 +71,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   builder: (context, themeState) {
                     return ProfileViewItem(
                       headText:
-                          'Theme (${context.read<ThemeCubit>().getThemeDisplayName()})',
+                          '${S.of(context)!.profileViewTheme} (${context.read<ThemeCubit>().getThemeDisplayName()})',
                       icon: context.read<ThemeCubit>().getThemeIcon(),
                       onPressed: () {
                         context.read<ThemeCubit>().toggleTheme();
@@ -103,6 +104,21 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   icon: Icons.favorite_outline_outlined,
                   onPressed: () {
                     // Navigator.pushNamed(context, ProfileViewFavPage.routeName);
+                  },
+                ),
+                Divider(
+                  height: 1,
+                  thickness: 1,
+                  color: Theme.of(context).dividerColor,
+                ),
+                ProfileViewItem(
+                  headText: S.of(context)!.profileViewPoints,
+                  icon: Icons.point_of_sale,
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      ProfileViewPointsPage.routeName,
+                    );
                   },
                 ),
                 Divider(

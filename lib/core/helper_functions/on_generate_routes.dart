@@ -6,16 +6,15 @@ import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/features/home/presentation/views/main_view.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_viewLanguage_page.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_avtar_page.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_points_page.dart';
 import 'package:mysterybag/features/onBoarding/presentation/views/on_boarding.dart';
-import 'package:mysterybag/features/onBoarding/presentation/views/widgets/bag_details_view.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case '/bagDetails':
-  return MaterialPageRoute(
-    builder: (_) => const BagDetailsView(),
-  );
+      return MaterialPageRoute(builder: (_) => const BagDetailsView());
     case MainView.routeName:
       return MaterialPageRoute(builder: (_) => const MainView());
 
@@ -43,6 +42,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           // notificationEntity: notification,
         ),
       );
+    case BagDetailsView.routeName:
+      return MaterialPageRoute(builder: (_) => const BagDetailsView());
+    case ProfileViewPointsPage.routeName:
+      return MaterialPageRoute(builder: (_) => const ProfileViewPointsPage());
+
     default:
       return MaterialPageRoute(
         builder: (_) =>

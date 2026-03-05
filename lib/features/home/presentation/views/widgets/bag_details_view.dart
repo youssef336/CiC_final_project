@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../../../../constant.dart';
 
 class BagDetailsView extends StatelessWidget {
   const BagDetailsView({super.key});
-
+  static const routeName = '/bag-details';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +23,17 @@ class BagDetailsView extends StatelessWidget {
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+              decoration: BoxDecoration(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? KdarkModeCardColor
+                    : KlightModeCardColor,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
               ),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
@@ -40,10 +43,13 @@ class BagDetailsView extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? KdarkModeTextColor
+                                    : KlightModeTextColor,
                               ),
                             ),
-                            SizedBox(width: 5),
-                            Icon(Icons.star, color: Colors.amber),
+                            const SizedBox(width: 5),
+                            const Icon(Icons.star, color: KaccentColor),
                           ],
                         ),
                         Text(
@@ -51,6 +57,9 @@ class BagDetailsView extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? KdarkModeTextColor
+                                : KlightModeTextColor,
                           ),
                         ),
                       ],
@@ -58,41 +67,61 @@ class BagDetailsView extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    const Text("السعر", style: TextStyle(color: Colors.grey)),
+                    Text(
+                      "السعر",
+                      style: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? KdarkModeTextSecondary
+                            : KlightModeTextSecondary,
+                      ),
+                    ),
 
                     const SizedBox(height: 10),
 
-                    const Text(
+                    Text(
                       "50 ج.م",
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? KdarkModeTextColor
+                            : KlightModeTextColor,
                       ),
                     ),
 
-                    const Text(
+                    Text(
                       "100 ج.م",
                       style: TextStyle(
                         decoration: TextDecoration.lineThrough,
-                        color: Colors.grey,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? KdarkModeTextSecondary
+                            : KlightModeTextSecondary,
                       ),
                     ),
 
                     const SizedBox(height: 30),
 
-                    const Text(
+                    Text(
                       "ماذا في الشنطة؟",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? KdarkModeTextColor
+                            : KlightModeTextColor,
                       ),
                     ),
 
                     const SizedBox(height: 10),
 
-                    const Text(
+                    Text(
                       "ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.",
-                      style: TextStyle(height: 1.5, color: Colors.grey),
+                      style: TextStyle(
+                        height: 1.5,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? KdarkModeTextSecondary
+                            : KlightModeTextSecondary,
+                      ),
                     ),
 
                     const SizedBox(height: 40),
@@ -102,15 +131,20 @@ class BagDetailsView extends StatelessWidget {
                       height: 55,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
+                          backgroundColor: KprimaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
                         ),
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           "احجز للاستلام",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? KprimaryColorLight
+                                : Colors.white,
+                          ),
                         ),
                       ),
                     ),

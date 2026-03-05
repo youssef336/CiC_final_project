@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/constant.dart';
 
 class StatusBadgesWidget extends StatelessWidget {
   final bool isAvailable;
@@ -18,7 +19,7 @@ class StatusBadgesWidget extends StatelessWidget {
           _buildBadge(
             icon: Icons.check_circle,
             text: "Available",
-            color: const Color(0xff2DBE60),
+            color: KaccentColor,
           ),
 
         const SizedBox(width: 10),
@@ -27,7 +28,7 @@ class StatusBadgesWidget extends StatelessWidget {
           _buildBadge(
             icon: Icons.access_time,
             text: "Now",
-            color: const Color(0xffFF8C32),
+            color: KprimaryColor,
           ),
       ],
     );

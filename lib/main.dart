@@ -10,6 +10,7 @@ import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
+import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -44,26 +45,104 @@ class MysteryBag extends StatelessWidget {
           builder: (context, themeState) {
             String locale = Prefs.getString(Klocale);
             return MaterialApp(
-              darkTheme: ThemeData.dark().copyWith(
-                scaffoldBackgroundColor: const Color(0xff121212),
+              // ========== Dark Theme ==========
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                scaffoldBackgroundColor: KdarkModeBgColor,
                 primaryColor: KprimaryColor,
                 colorScheme: const ColorScheme.dark(
-                  primary: Color(0xff242329),
-                  secondary: Color(0xffC9C1A6),
-                  surface: Color(0xff1e1e1e),
+                  brightness: Brightness.dark,
+                  primary: KprimaryColor,
+                  onPrimary: KlightModeCardColor,
+                  secondary: KprimaryColorLight,
+                  onSecondary: KprimaryColorDark,
+                  surface: KdarkModeCardColor,
+                  onSurface: KdarkModeTextColor,
+                  error: KprimaryColorDark,
+                  onError: KsecondaryColor,
+                ).copyWith(
+                  surfaceContainer: KdarkModeCardColor,
+                ),
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: KprimaryColor,
+                  foregroundColor: KsecondaryColor,
+                  elevation: 0,
+                ),
+                cardColor: KdarkModeCardColor,
+                dividerColor: KprimaryColorLight.withOpacity(0.2),
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                  backgroundColor: KprimaryColor,
+                  selectedItemColor: KprimaryColorLight,
+                  unselectedItemColor: KdarkModeTextSecondary,
+                ),
+                floatingActionButtonTheme: const FloatingActionButtonThemeData(
+                  backgroundColor: KprimaryColorLight,
+                  foregroundColor: KprimaryColorDark,
+                ),
+                inputDecorationTheme: InputDecorationTheme(
+                  filled: true,
+                  fillColor: KdarkModeCardColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: KprimaryColorLight.withOpacity(0.3)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: KprimaryColorLight, width: 2),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  hintStyle: const TextStyle(color: KdarkModeTextSecondary),
                 ),
               ),
-              theme: ThemeData.light().copyWith(
-                scaffoldBackgroundColor: Colors.white,
-                primaryColor: KprimaryColor,
+              // ========== Light Theme ==========
+              theme: ThemeData(
+                brightness: Brightness.light,
+                scaffoldBackgroundColor: KlightModeBgColor,
+                primaryColor: KprimaryColorLight,
                 colorScheme: const ColorScheme.light(
-                  primary: Color(0xff242329),
-                  secondary: Color(0xffC9C1A6),
-                  surface: Colors.white,
+                  brightness: Brightness.light,
+                  primary: KprimaryColorLight,
+                  onPrimary: KprimaryColorDark,
+                  secondary: KprimaryColor,
+                  onSecondary: KsecondaryColor,
+                  surface: KlightModeCardColor,
+                  onSurface: KlightModeTextColor,
+                  error: KprimaryColorDark,
+                  onError: KsecondaryColor,
+                ).copyWith(
+                  surfaceContainer: KlightModeCardColor,
+                ),
+                appBarTheme: const AppBarTheme(
+                  backgroundColor: KprimaryColorLight,
+                  foregroundColor: KprimaryColorDark,
+                  elevation: 0,
+                ),
+                cardColor: KlightModeCardColor,
+                dividerColor: KdisabledColor.withOpacity(0.2),
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                  backgroundColor: KlightModeCardColor,
+                  selectedItemColor: KprimaryColor,
+                  unselectedItemColor: KlightModeTextSecondary,
+                ),
+                floatingActionButtonTheme: const FloatingActionButtonThemeData(
+                  backgroundColor: KprimaryColor,
+                  foregroundColor: KlightModeCardColor,
+                ),
+                inputDecorationTheme: InputDecorationTheme(
+                  filled: true,
+                  fillColor: KlightModeCardColor,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: KdisabledColor.withOpacity(0.3)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: KprimaryColor, width: 2),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  hintStyle: const TextStyle(color: KlightModeTextSecondary),
                 ),
               ),
               themeMode: themeState,
-              title: 'Flutter Demo',
+              title: 'Mystery Bag',
 
               localizationsDelegates: const [
                 S.delegate, // Generated by Flutter Intl / gen-l10n
@@ -79,8 +158,8 @@ class MysteryBag extends StatelessWidget {
                   : Locale(locale.isEmpty ? 'ar' : locale),
 
               onGenerateRoute: onGenerateRoute,
-              // initialRoute: SplashView.routeName,
-              initialRoute: '/bagDetails',
+              initialRoute: SplashView.routeName,
+              // initialRoute: '/bagDetails',
               debugShowCheckedModeBanner: false,
             );
           },

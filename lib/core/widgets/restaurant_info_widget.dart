@@ -19,8 +19,8 @@ class RestaurantInfoWidget extends StatelessWidget {
       children: [
         Text(
           name,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
