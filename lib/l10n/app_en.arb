@@ -37,7 +37,7 @@
 
 
     "homeViewWelcomeAppbar": "Good Morning !..",
-    "homeViewAppbarPoint": "points",
+  
 
 
     "buttonNavigationBarEntityHome": "Home",
@@ -83,9 +83,21 @@
     "profileViewLanguageValueItem": "Arabic Language",
     "profileViewLanguageValueItem2": "English Language",
     "profileViewProfileImage": "Profile Image",
+      "profileViewTheme": "Theme",
     "profileViewFavourites": "Favourites",
     "profileViewLogout": "Logout",
     "profileViewLogoutText": "Are you sure you want to logout?",
     "profileViewLogoutText2": "Logout",
-    "profileViewLogoutText3": "Cancel"
+    "profileViewLogoutText3": "Cancel",
+    "profileViewPoints": "Points",
+
+
+    "pointsPageYourPoints": "Your Points",
+    "pointsPagePts": "pts",
+    "pointsPageRewardsTitle": "Rewards & Discounts",
+    "pointsPageDiscount": "Discount",
+    "pointsPagePointsRequired": "points required",
+    "pointsPageUnlocked": "UNLOCKED",
+    "pointsPageProgress": "Progress",
+    "pointsPagePointsToGo": "points to go!"
 }

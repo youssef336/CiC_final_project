@@ -33,6 +33,18 @@ class Prefs {
     return _preferences.getString(key) ?? "";
   }
 
+  static Future<void> setInt(String key, int value) async {
+    await _preferences.setInt(key, value);
+  }
+
+  static int getInt(String key) {
+    return _preferences.getInt(key) ?? 0;
+  }
+
+  bool getBoolNotifier(String key) {
+    return _preferences.getBool(key) ?? false;
+  }
+}
   // static Future<void> setInt(String key, int value) async {
   //   await _preferences.setInt(key, value);
 
@@ -50,9 +62,7 @@ class Prefs {
   //   notificationNotifier2.value = value;
   // }
 
-  static bool getBoolNotifier(String key) {
-    return _preferences.getBool(key) ?? false;
-  }
-}
+
+
 
 // Make sure Knotification is defined

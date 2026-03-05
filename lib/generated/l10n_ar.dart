@@ -103,9 +103,6 @@ class SAr extends S {
   String get homeViewWelcomeAppbar => 'صباح الخير !..';
 
   @override
-  String get homeViewAppbarPoint => 'نيقات';
-
-  @override
   String get buttonNavigationBarEntityHome => 'الرئيسية';
 
   @override
@@ -205,6 +202,9 @@ class SAr extends S {
   String get profileViewProfileImage => 'صورة الملف الشخصي';
 
   @override
+  String get profileViewTheme => 'المظهر';
+
+  @override
   String get profileViewFavourites => 'المفضلة';
 
   @override
@@ -218,4 +218,31 @@ class SAr extends S {
 
   @override
   String get profileViewLogoutText3 => 'الغاء';
+
+  @override
+  String get profileViewPoints => 'نقاط';
+
+  @override
+  String get pointsPageYourPoints => 'نقاطك';
+
+  @override
+  String get pointsPagePts => 'نقطة';
+
+  @override
+  String get pointsPageRewardsTitle => 'المكافآت والخصومات';
+
+  @override
+  String get pointsPageDiscount => 'خصم';
+
+  @override
+  String get pointsPagePointsRequired => 'نقطة مطلوبة';
+
+  @override
+  String get pointsPageUnlocked => 'مفعل';
+
+  @override
+  String get pointsPageProgress => 'التقدم';
+
+  @override
+  String get pointsPagePointsToGo => 'نقطة متبقية!';
 }

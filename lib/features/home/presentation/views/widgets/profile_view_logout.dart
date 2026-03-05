@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mysterybag/core/services/firebase_auth_services.dart';
+import 'package:mysterybag/constant.dart';
 
 import '../../../../../generated/l10n.dart';
 
@@ -27,17 +28,39 @@ class ProfileViewLogout {
   }
 
   static Widget _buildLogoutDialog(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return AlertDialog(
-      title: Text(S.of(context)!.profileViewLogout),
-      content: Text(S.of(context)!.profileViewLogoutText),
+      backgroundColor: isDark ? KdarkModeCardColor : KlightModeCardColor,
+      title: Text(
+        S.of(context)!.profileViewLogout,
+        style: TextStyle(
+          color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+        ),
+      ),
+      content: Text(
+        S.of(context)!.profileViewLogoutText,
+        style: TextStyle(
+          color: isDark ? KdarkModeTextSecondary : KlightModeTextSecondary,
+        ),
+      ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
-          child: Text(S.of(context)!.profileViewLogoutText3),
+          child: Text(
+            S.of(context)!.profileViewLogoutText3,
+            style: TextStyle(color: isDark ? KaccentColor : KprimaryColor),
+          ),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, true),
-          child: Text(S.of(context)!.profileViewLogoutText2),
+          child: Text(
+            S.of(context)!.profileViewLogoutText2,
+            style: TextStyle(
+              color: isDark ? KprimaryColorLight : KsecondaryColor,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ],
     );

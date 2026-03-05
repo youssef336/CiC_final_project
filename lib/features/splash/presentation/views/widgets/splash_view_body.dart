@@ -18,7 +18,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   bool isBorderingViewSeen = Prefs.getBool(KisBoardingViewSeen);
   late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
   late Animation<double> _fadeAnimation;
 
   @override
@@ -29,12 +28,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
       vsync: this,
       duration: const Duration(seconds: 4),
     );
-
-    // Scale from 0.8x to 1.1x (growing animation)
-    _scaleAnimation = Tween<double>(
-      begin: 0.8,
-      end: 1.9,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     // Fade from transparent to fully visible
     _fadeAnimation = Tween<double>(

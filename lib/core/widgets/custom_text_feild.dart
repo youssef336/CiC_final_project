@@ -33,15 +33,15 @@ class CustomTextFormFeild extends StatelessWidget {
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: AppTextStyles.bodysmallBold.copyWith(
-          color: const Color(0xFF949D9E),
+          color: Theme.of(context).hintColor,
         ),
 
         filled: true,
-        fillColor: const Color(0xFFF9FAFA),
+        fillColor: Theme.of(context).inputDecorationTheme.fillColor,
 
-        border: bulidBoarder(),
-        enabledBorder: bulidBoarder(),
-        focusedBorder: bulidBoarder(),
+        border: bulidBoarder(context),
+        enabledBorder: bulidBoarder(context),
+        focusedBorder: bulidBoarder(context),
       ),
 
       onChanged: (value) {
@@ -50,10 +50,10 @@ class CustomTextFormFeild extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder bulidBoarder() {
+  OutlineInputBorder bulidBoarder(BuildContext context) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Color(0xFFE6E9E9), width: 1.0),
+      borderSide: BorderSide(color: Theme.of(context).dividerColor, width: 1.0),
     );
   }
 }
@@ -89,15 +89,15 @@ class CustomTextFormFeildforCopon extends StatelessWidget {
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: AppTextStyles.bodysmallBold.copyWith(
-          color: const Color(0xFF949D9E),
+          color: Theme.of(context).hintColor,
         ),
 
         filled: true,
-        fillColor: const Color(0xFFF9FAFA),
+        fillColor: Theme.of(context).inputDecorationTheme.fillColor,
 
-        border: bulidBoarder(),
-        enabledBorder: bulidBoarder(),
-        focusedBorder: bulidBoarder(),
+        border: bulidBoarder(context),
+        enabledBorder: bulidBoarder(context),
+        focusedBorder: bulidBoarder(context),
       ),
 
       onChanged: (value) {
@@ -106,10 +106,10 @@ class CustomTextFormFeildforCopon extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder bulidBoarder() {
+  OutlineInputBorder bulidBoarder(BuildContext context) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
-      borderSide: const BorderSide(color: Color(0xFFE6E9E9), width: 1.0),
+      borderSide: BorderSide(color: Theme.of(context).dividerColor, width: 1.0),
     );
   }
 }

@@ -14,7 +14,7 @@ class RestaurantLogoWidget extends StatelessWidget {
       width: 65,
       height: 65,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(

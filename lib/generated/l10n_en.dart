@@ -103,9 +103,6 @@ class SEn extends S {
   String get homeViewWelcomeAppbar => 'Good Morning !..';
 
   @override
-  String get homeViewAppbarPoint => 'points';
-
-  @override
   String get buttonNavigationBarEntityHome => 'Home';
 
   @override
@@ -205,6 +202,9 @@ class SEn extends S {
   String get profileViewProfileImage => 'Profile Image';
 
   @override
+  String get profileViewTheme => 'Theme';
+
+  @override
   String get profileViewFavourites => 'Favourites';
 
   @override
@@ -218,4 +218,31 @@ class SEn extends S {
 
   @override
   String get profileViewLogoutText3 => 'Cancel';
+
+  @override
+  String get profileViewPoints => 'Points';
+
+  @override
+  String get pointsPageYourPoints => 'Your Points';
+
+  @override
+  String get pointsPagePts => 'pts';
+
+  @override
+  String get pointsPageRewardsTitle => 'Rewards & Discounts';
+
+  @override
+  String get pointsPageDiscount => 'Discount';
+
+  @override
+  String get pointsPagePointsRequired => 'points required';
+
+  @override
+  String get pointsPageUnlocked => 'UNLOCKED';
+
+  @override
+  String get pointsPageProgress => 'Progress';
+
+  @override
+  String get pointsPagePointsToGo => 'points to go!';
 }

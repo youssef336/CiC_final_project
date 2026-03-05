@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/utils/assets.dart';
 
@@ -20,9 +21,11 @@ class NotificationWidget extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(10),
-                decoration: const ShapeDecoration(
-                  color: Color(0xFFEEF8ED),
-                  shape: OvalBorder(),
+                decoration: ShapeDecoration(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? KaccentColor.withOpacity(0.2)
+                      : KaccentColor.withOpacity(0.12),
+                  shape: const OvalBorder(),
                 ),
                 child: SvgPicture.asset(
                   AssetsData.light().images.notification_svg,

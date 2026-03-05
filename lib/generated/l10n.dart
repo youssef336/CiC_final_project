@@ -277,12 +277,6 @@ abstract class S {
   /// **'Good Morning !..'**
   String get homeViewWelcomeAppbar;
 
-  /// No description provided for @homeViewAppbarPoint.
-  ///
-  /// In en, this message translates to:
-  /// **'points'**
-  String get homeViewAppbarPoint;
-
   /// No description provided for @buttonNavigationBarEntityHome.
   ///
   /// In en, this message translates to:
@@ -481,6 +475,12 @@ abstract class S {
   /// **'Profile Image'**
   String get profileViewProfileImage;
 
+  /// No description provided for @profileViewTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get profileViewTheme;
+
   /// No description provided for @profileViewFavourites.
   ///
   /// In en, this message translates to:
@@ -510,6 +510,60 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get profileViewLogoutText3;
+
+  /// No description provided for @profileViewPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get profileViewPoints;
+
+  /// No description provided for @pointsPageYourPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Points'**
+  String get pointsPageYourPoints;
+
+  /// No description provided for @pointsPagePts.
+  ///
+  /// In en, this message translates to:
+  /// **'pts'**
+  String get pointsPagePts;
+
+  /// No description provided for @pointsPageRewardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards & Discounts'**
+  String get pointsPageRewardsTitle;
+
+  /// No description provided for @pointsPageDiscount.
+  ///
+  /// In en, this message translates to:
+  /// **'Discount'**
+  String get pointsPageDiscount;
+
+  /// No description provided for @pointsPagePointsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'points required'**
+  String get pointsPagePointsRequired;
+
+  /// No description provided for @pointsPageUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'UNLOCKED'**
+  String get pointsPageUnlocked;
+
+  /// No description provided for @pointsPageProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get pointsPageProgress;
+
+  /// No description provided for @pointsPagePointsToGo.
+  ///
+  /// In en, this message translates to:
+  /// **'points to go!'**
+  String get pointsPagePointsToGo;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {
