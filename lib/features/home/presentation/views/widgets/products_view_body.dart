@@ -8,39 +8,37 @@ import '../../../../../constant.dart';
 import 'product_grid_view_bloc_builder.dart';
 
 class ProductsViewBody extends StatelessWidget {
- ProductsViewBody({super.key});
-
-  final restaurant = RestaurantEntity(
-  name: "Madbina - Zamalek",
-  foodImage: "assets/images/food.png",
-  logoImage: "assets/images/resturant.png",
-  branches: "1 branch",
-  distance: "2.7 kilometers",
-  isAvailable: true,
-  isOpenNow: true,
-);
-
-
-  final List<BagItemModel> bags = [
-  BagItemModel(
-    title: "Aroussa Sandwich Bag",
-    price: 50,
-    oldPrice: 100,
-    bagsLeft: 5,
-    rating: 5.0,
-  ),
-  BagItemModel(
-    title: "Masrawy Bag",
-    price: 60,
-    oldPrice: 120,
-    bagsLeft: 3,
-    rating: 4.5,
-  ),
-];
+  const ProductsViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final restaurant = RestaurantEntity(
+      name: S.of(context)!.restaurantNameMadbinaZamalek,
+      foodImage: 'assets/images/food.png',
+      logoImage: 'assets/images/resturant.png',
+      branches: S.of(context)!.restaurantBranchesCount('1'),
+      distance: S.of(context)!.restaurantDistanceKilometers('2.7'),
+      isAvailable: true,
+      isOpenNow: true,
+    );
+
+    final List<BagItemModel> bags = [
+      BagItemModel(
+        title: S.of(context)!.bagTitleAroussaSandwich,
+        price: 50,
+        oldPrice: 100,
+        bagsLeft: 5,
+        rating: 5.0,
+      ),
+      BagItemModel(
+        title: S.of(context)!.bagTitleMasrawy,
+        price: 60,
+        oldPrice: 120,
+        bagsLeft: 3,
+        rating: 4.5,
+      ),
+    ];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
@@ -53,7 +51,7 @@ class ProductsViewBody extends StatelessWidget {
             surfaceTintColor: Colors.transparent,
             elevation: 0,
             title: Text(
-              'Products',
+              S.of(context)!.productsViewTitle,
               style: TextStyle(
                 color: isDark ? KdarkModeTextColor : KlightModeTextColor,
                 fontWeight: FontWeight.w700,
@@ -75,17 +73,16 @@ class ProductsViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-              RestaurantCard(restaurant: restaurant),
-              const SizedBox(height: 20),
-              AvailableBagsList(
-                title: "Available bags",
-                bags: bags,
-              ),
-              ProductGridViewBlocBuilder(),
+                RestaurantCard(restaurant: restaurant),
+                const SizedBox(height: 20),
+                AvailableBagsList(
+                  title: S.of(context)!.availableBagsTitle,
+                  bags: bags,
+                ),
+                ProductGridViewBlocBuilder(),
               ],
             ),
           ),
-           
         ],
       ),
     );

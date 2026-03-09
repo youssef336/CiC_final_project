@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 // ignore_for_file: unchecked_use_of_nullable_value
 
 import 'package:flutter/material.dart';
+import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/widgets/custom_text_feild.dart'
     show CustomTextFormFeild, CustomTextFormFeildforCopon;
 import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
@@ -102,7 +104,7 @@ class MyWidget extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
   void _applyCouponCode(BuildContext context, OrderEntity order, String code) {
-    // order.applyCouponCode(code);
+    order.applyCouponCode(code);
     final discount = order.calulateShipingDiscount();
 
     if (discount > 0) {
@@ -115,6 +117,9 @@ class MyWidget extends StatelessWidget {
           backgroundColor: Colors.green,
         ),
       );
+
+      // Reset points after successful coupon application
+      Prefs.setInt(Kpoints, 0);
 
       // Clear the text field
       _controller.clear();

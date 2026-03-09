@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class ProductViewHeader extends StatelessWidget {
   const ProductViewHeader({super.key, required this.productLength});
@@ -15,7 +16,7 @@ class ProductViewHeader extends StatelessWidget {
     return Row(
       children: [
         Text(
-          "$productLength results",
+          S.of(context)!.productViewResults(productLength.toString()),
           textAlign: TextAlign.right,
           style: TextStyle(
             fontSize: 16,

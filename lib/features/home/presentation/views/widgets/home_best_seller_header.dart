@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class HomeBestSellerHeader extends StatelessWidget {
   const HomeBestSellerHeader({super.key});
@@ -11,7 +12,7 @@ class HomeBestSellerHeader extends StatelessWidget {
     return Row(
       children: [
         Text(
-          'Best Sellers',
+          S.of(context)!.homeBestSellersTitle,
           textAlign: TextAlign.right,
           style: TextStyle(
             fontSize: 16,
@@ -25,7 +26,7 @@ class HomeBestSellerHeader extends StatelessWidget {
             // Navigate to best selling view
           },
           child: Text(
-            'View All',
+            S.of(context)!.homeBestSellersViewAll,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: isDark ? KdarkModeTextSecondary : KlightModeTextSecondary,

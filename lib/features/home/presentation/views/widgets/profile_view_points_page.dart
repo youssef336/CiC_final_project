@@ -141,7 +141,7 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
                   IntrinsicWidth(
                     stepWidth: 20,
                     child: CustomButtom(
-                      text: "add",
+                      text: S.of(context)!.pointsPageAdd,
                       onPressed: () {
                         _addPoints(50);
                       },
@@ -150,7 +150,7 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
                   IntrinsicWidth(
                     stepWidth: 20,
                     child: CustomButtom(
-                      text: "delete",
+                      text: S.of(context)!.pointsPageDelete,
                       onPressed: () {
                         _addPoints(
                           -Prefs.getInt(Kpoints) > -50

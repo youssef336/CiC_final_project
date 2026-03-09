@@ -277,6 +277,36 @@ abstract class S {
   /// **'Good Morning !..'**
   String get homeViewWelcomeAppbar;
 
+  /// No description provided for @homeBestSellersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Sellers'**
+  String get homeBestSellersTitle;
+
+  /// No description provided for @homeBestSellersViewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get homeBestSellersViewAll;
+
+  /// No description provided for @homeFeaturedItemTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Item'**
+  String get homeFeaturedItemTitle;
+
+  /// No description provided for @homeFeaturedItemSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Offer'**
+  String get homeFeaturedItemSubtitle;
+
+  /// No description provided for @homeFeaturedItemShopNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop Now'**
+  String get homeFeaturedItemShopNow;
+
   /// No description provided for @buttonNavigationBarEntityHome.
   ///
   /// In en, this message translates to:
@@ -565,6 +595,18 @@ abstract class S {
   /// **'points to go!'**
   String get pointsPagePointsToGo;
 
+  /// No description provided for @pointsPageAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get pointsPageAdd;
+
+  /// No description provided for @pointsPageDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get pointsPageDelete;
+
   /// No description provided for @productGridViewPlaceholder.
   ///
   /// In en, this message translates to:
@@ -684,6 +726,168 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Google Sign-In failed'**
   String get googleSignInFailedError;
+
+  /// No description provided for @availableBagsSwipeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe →'**
+  String get availableBagsSwipeHint;
+
+  /// No description provided for @bagCurrencySuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get bagCurrencySuffix;
+
+  /// No description provided for @bagCardReserve.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserve'**
+  String get bagCardReserve;
+
+  /// Number of mystery bags still available
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Bags left'**
+  String bagCardBagsLeft(String count);
+
+  /// No description provided for @bagDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mystery Bag Arousa'**
+  String get bagDetailsTitle;
+
+  /// No description provided for @bagDetailsPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get bagDetailsPriceLabel;
+
+  /// No description provided for @bagDetailsCurrentPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'50 EGP'**
+  String get bagDetailsCurrentPrice;
+
+  /// No description provided for @bagDetailsOldPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'100 EGP'**
+  String get bagDetailsOldPrice;
+
+  /// No description provided for @bagDetailsWhatInsideTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is in the bag?'**
+  String get bagDetailsWhatInsideTitle;
+
+  /// No description provided for @bagDetailsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'One Arousa sandwich made with pita bread, served with crispy fries and a refreshing drink.'**
+  String get bagDetailsDescription;
+
+  /// No description provided for @bagDetailsReservePickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserve for pickup'**
+  String get bagDetailsReservePickup;
+
+  /// No description provided for @productsViewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get productsViewTitle;
+
+  /// No description provided for @availableBagsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Available bags'**
+  String get availableBagsTitle;
+
+  /// No description provided for @restaurantNameMadbinaZamalek.
+  ///
+  /// In en, this message translates to:
+  /// **'Madbina - Zamalek'**
+  String get restaurantNameMadbinaZamalek;
+
+  /// Restaurant branch count label
+  ///
+  /// In en, this message translates to:
+  /// **'{count} branch'**
+  String restaurantBranchesCount(String count);
+
+  /// Distance to restaurant in kilometers
+  ///
+  /// In en, this message translates to:
+  /// **'{distance} kilometers'**
+  String restaurantDistanceKilometers(String distance);
+
+  /// No description provided for @bagTitleAroussaSandwich.
+  ///
+  /// In en, this message translates to:
+  /// **'Aroussa Sandwich Bag'**
+  String get bagTitleAroussaSandwich;
+
+  /// No description provided for @bagTitleMasrawy.
+  ///
+  /// In en, this message translates to:
+  /// **'Masrawy Bag'**
+  String get bagTitleMasrawy;
+
+  /// No description provided for @statusBadgeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get statusBadgeAvailable;
+
+  /// No description provided for @statusBadgeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get statusBadgeNow;
+
+  /// Number of results displayed in product header
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results'**
+  String productViewResults(String count);
+
+  /// No description provided for @couponPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Coupon'**
+  String get couponPageTitle;
+
+  /// No description provided for @couponCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Coupon Code'**
+  String get couponCodeLabel;
+
+  /// No description provided for @couponPageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this code to redeem your points'**
+  String get couponPageDescription;
+
+  /// No description provided for @couponCopyButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Code'**
+  String get couponCopyButton;
+
+  /// No description provided for @couponCopiedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon code copied!'**
+  String get couponCopiedMessage;
+
+  /// No description provided for @couponUniqueText.
+  ///
+  /// In en, this message translates to:
+  /// **'This code is unique to your account'**
+  String get couponUniqueText;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

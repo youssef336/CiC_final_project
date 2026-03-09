@@ -58,6 +58,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const BagDetailsView());
     case ProfileViewPointsPage.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileViewPointsPage());
+    // ProfileViewPointsCupon now uses direct navigation with required discount parameter
+    // case ProfileViewPointsCupon.routeName:
+    //   return MaterialPageRoute(builder: (_) => const ProfileViewPointsCupon());
 
     default:
       return MaterialPageRoute(builder: (_) => const _ErrorPage());
