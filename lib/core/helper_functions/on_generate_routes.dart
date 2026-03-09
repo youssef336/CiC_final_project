@@ -13,14 +13,12 @@ import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 class _ErrorPage extends StatelessWidget {
-  const _ErrorPage({super.key});
+  const _ErrorPage();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(S.of(context)!.errorPageNotFound),
-      ),
+      body: Center(child: Text(S.of(context)!.errorPageNotFound)),
     );
   }
 }
@@ -62,8 +60,6 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const ProfileViewPointsPage());
 
     default:
-      return MaterialPageRoute(
-        builder: (_) => const _ErrorPage(),
-      );
+      return MaterialPageRoute(builder: (_) => const _ErrorPage());
   }
 }
