@@ -10,6 +10,20 @@ import 'package:mysterybag/features/home/presentation/views/widgets/profile_view
 import 'package:mysterybag/features/onBoarding/presentation/views/on_boarding.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
+import 'package:mysterybag/generated/l10n.dart';
+
+class _ErrorPage extends StatelessWidget {
+  const _ErrorPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(S.of(context)!.errorPageNotFound),
+      ),
+    );
+  }
+}
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -49,8 +63,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     default:
       return MaterialPageRoute(
-        builder: (_) =>
-            const Scaffold(body: Center(child: Text('404 Not Found'))),
+        builder: (_) => const _ErrorPage(),
       );
   }
 }

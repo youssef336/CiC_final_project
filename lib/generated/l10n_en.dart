@@ -245,4 +245,71 @@ class SEn extends S {
 
   @override
   String get pointsPagePointsToGo => 'points to go!';
+
+  @override
+  String get productGridViewPlaceholder => 'Product';
+
+  @override
+  String get searchProductsHint => 'Search products';
+
+  @override
+  String get loadDemoDataButton => 'Load Demo Data';
+
+  @override
+  String get demoDataLoadedMessage =>
+      'Demo data loaded! Go to Cart to test checkout.';
+
+  @override
+  String get homeViewTitle => 'Home';
+
+  @override
+  String get logoutErrorMessage => 'Error occurred during logout';
+
+  @override
+  String couponDiscountApplied(String discount) {
+    return 'Discount applied: $discount EGP';
+  }
+
+  @override
+  String get invalidCouponError => 'Invalid or expired coupon code';
+
+  @override
+  String get couponCodeHint => 'Coupon code';
+
+  @override
+  String get errorPageNotFound => '404 Not Found';
+
+  @override
+  String get paymentSuccessMessage => 'Payment successful';
+
+  @override
+  String get paymentErrorMessage => 'Payment error';
+
+  @override
+  String get weakPasswordError => 'The password provided is too weak.';
+
+  @override
+  String get emailAlreadyInUseError =>
+      'The email address is already in use by another account.';
+
+  @override
+  String get networkRequestFailedError =>
+      'Network request failed, please check your internet connection.';
+
+  @override
+  String get invalidEmailError => 'The email address is not valid.';
+
+  @override
+  String get unknownErrorMessage =>
+      'An unknown error occurred please try again later.';
+
+  @override
+  String get emailPasswordProblemError =>
+      'There is a problem in email or password';
+
+  @override
+  String get signInCancelledError => 'Sign-in cancelled by user';
+
+  @override
+  String get googleSignInFailedError => 'Google Sign-In failed';
 }

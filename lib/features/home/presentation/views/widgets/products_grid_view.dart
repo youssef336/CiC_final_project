@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class ProductsGridView extends StatelessWidget {
   const ProductsGridView({super.key, required this.products});
@@ -16,8 +17,8 @@ class ProductsGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Container(
           color: Colors.grey[300],
-          child: const Center(
-            child: Text('Product'),
+          child: Center(
+            child: Text(S.of(context)!.productGridViewPlaceholder),
           ),
         );
       },

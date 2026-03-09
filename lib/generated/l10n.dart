@@ -564,6 +564,126 @@ abstract class S {
   /// In en, this message translates to:
   /// **'points to go!'**
   String get pointsPagePointsToGo;
+
+  /// No description provided for @productGridViewPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get productGridViewPlaceholder;
+
+  /// No description provided for @searchProductsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search products'**
+  String get searchProductsHint;
+
+  /// No description provided for @loadDemoDataButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Load Demo Data'**
+  String get loadDemoDataButton;
+
+  /// No description provided for @demoDataLoadedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo data loaded! Go to Cart to test checkout.'**
+  String get demoDataLoadedMessage;
+
+  /// No description provided for @homeViewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get homeViewTitle;
+
+  /// No description provided for @logoutErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Error occurred during logout'**
+  String get logoutErrorMessage;
+
+  /// Message shown when coupon discount is successfully applied
+  ///
+  /// In en, this message translates to:
+  /// **'Discount applied: {discount} EGP'**
+  String couponDiscountApplied(String discount);
+
+  /// No description provided for @invalidCouponError.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid or expired coupon code'**
+  String get invalidCouponError;
+
+  /// No description provided for @couponCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon code'**
+  String get couponCodeHint;
+
+  /// No description provided for @errorPageNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'404 Not Found'**
+  String get errorPageNotFound;
+
+  /// No description provided for @paymentSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful'**
+  String get paymentSuccessMessage;
+
+  /// No description provided for @paymentErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment error'**
+  String get paymentErrorMessage;
+
+  /// No description provided for @weakPasswordError.
+  ///
+  /// In en, this message translates to:
+  /// **'The password provided is too weak.'**
+  String get weakPasswordError;
+
+  /// No description provided for @emailAlreadyInUseError.
+  ///
+  /// In en, this message translates to:
+  /// **'The email address is already in use by another account.'**
+  String get emailAlreadyInUseError;
+
+  /// No description provided for @networkRequestFailedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network request failed, please check your internet connection.'**
+  String get networkRequestFailedError;
+
+  /// No description provided for @invalidEmailError.
+  ///
+  /// In en, this message translates to:
+  /// **'The email address is not valid.'**
+  String get invalidEmailError;
+
+  /// No description provided for @unknownErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'An unknown error occurred please try again later.'**
+  String get unknownErrorMessage;
+
+  /// No description provided for @emailPasswordProblemError.
+  ///
+  /// In en, this message translates to:
+  /// **'There is a problem in email or password'**
+  String get emailPasswordProblemError;
+
+  /// No description provided for @signInCancelledError.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in cancelled by user'**
+  String get signInCancelledError;
+
+  /// No description provided for @googleSignInFailedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Sign-In failed'**
+  String get googleSignInFailedError;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

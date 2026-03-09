@@ -109,7 +109,7 @@ class MyWidget extends StatelessWidget {
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Discount applied: $discount EGP"),
+          content: Text(S.of(context)!.couponDiscountApplied(discount.toString() as String)),
           backgroundColor: Colors.green,
         ),
       );
@@ -122,8 +122,8 @@ class MyWidget extends StatelessWidget {
     } else {
       // Show error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Invalid or expired coupon code"),
+        SnackBar(
+          content: Text(S.of(context)!.invalidCouponError),
           backgroundColor: Colors.red,
         ),
       );
@@ -148,7 +148,7 @@ class MyWidget extends StatelessWidget {
             controller: _controller,
             textInputType: TextInputType.text,
             textInputAction: TextInputAction.done,
-            hintText: "Coupon code",
+            hintText: S.of(context)!.couponCodeHint,
 
             suffixIcon: IconButton(
               icon: const Icon(
