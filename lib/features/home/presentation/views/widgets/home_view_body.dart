@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 import '../../../../../constant.dart';
 import '../../../../../core/entities/demo_products.dart';
@@ -44,16 +45,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       cartCubit.addProductToCart(product);
                     }
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
+                      SnackBar(
                         content: Text(
-                          'Demo data loaded! Go to Cart to test checkout.',
+                          S.of(context)!.demoDataLoadedMessage,
                         ),
                         duration: Duration(seconds: 2),
                       ),
                     );
                   },
                   icon: const Icon(Icons.shopping_bag_outlined),
-                  label: const Text('Load Demo Data'),
+                  label: Text(S.of(context)!.loadDemoDataButton),
                 ),
 
                 const SizedBox(height: 12),

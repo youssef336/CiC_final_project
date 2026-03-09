@@ -12,7 +12,7 @@ class SAr extends S {
   String get onBoardingSkip => 'تخطى';
 
   @override
-  String get onBoardingTitle => ' أنقذ الطعام. وفّر المال.';
+  String get onBoardingTitle => 'أنقذ الطعام. وفّر المال.';
 
   @override
   String get onBoardingSubtitle =>
@@ -26,7 +26,7 @@ class SAr extends S {
       'تسوّق أكياس المفاجآت من المطاعم القريبة بأسعار مميزة، مع ميزة التحقق الذكي من جودة المنتجات عبر الكاميرا.';
 
   @override
-  String get onBoardingButtomText => 'ابدأ الان';
+  String get onBoardingButtomText => 'ابدأ الآن';
 
   @override
   String get onLoginLogin => 'تسجيل الدخول';
@@ -47,7 +47,7 @@ class SAr extends S {
   String get onLoginCreateAccountText => 'لا تمتلك حسابًا؟';
 
   @override
-  String get onLoginLoginOrDivider => 'او';
+  String get onLoginLoginOrDivider => 'أو';
 
   @override
   String get onLoginLoginWithGoogle => 'تسجيل الدخول باستخدام جوجل';
@@ -56,10 +56,10 @@ class SAr extends S {
   String get onLoginLoginWithFacebook => 'تسجيل الدخول باستخدام فيسبوك';
 
   @override
-  String get onLoginLoginWithApple => 'تسجيل الدخول باستخدام ابل';
+  String get onLoginLoginWithApple => 'تسجيل الدخول باستخدام أبل';
 
   @override
-  String get onSignupSignup => '  حساب جديد';
+  String get onSignupSignup => 'حساب جديد';
 
   @override
   String get onSignupName => 'الاسم';
@@ -71,17 +71,16 @@ class SAr extends S {
   String get onSignupPassword => 'كلمة المرور';
 
   @override
-  String get onSignupTermsandConditions =>
-      ' من خلال إنشاء حساب ، فإنك توافق على ';
+  String get onSignupTermsandConditions => 'من خلال إنشاء حساب، فإنك توافق على';
 
   @override
   String get onSignupTermsandConditionsText => 'الشروط والأحكام';
 
   @override
-  String get onSignupTermsandConditionsText2 => 'الخاصة';
+  String get onSignupTermsandConditionsText2 => 'و';
 
   @override
-  String get onSignupTermsandConditionsText3 => 'بنا';
+  String get onSignupTermsandConditionsText3 => 'سياسة الخصوصية';
 
   @override
   String get onSignupTermsandConditionsErrorBar =>
@@ -100,7 +99,7 @@ class SAr extends S {
   String get onSignupTextFeils => 'يرجى ملء جميع الحقول';
 
   @override
-  String get homeViewWelcomeAppbar => 'صباح الخير !..';
+  String get homeViewWelcomeAppbar => 'صباح الخير!';
 
   @override
   String get buttonNavigationBarEntityHome => 'الرئيسية';
@@ -118,13 +117,13 @@ class SAr extends S {
   String get cartViewHeader => 'عربة التسوق';
 
   @override
-  String get checkOutViewTitle => 'الشحن';
+  String get checkOutViewTitle => 'الدفع';
 
   @override
   String get checkOutViewAddress => 'العنوان';
 
   @override
-  String get checkOutViewPayment => 'الدفع';
+  String get checkOutViewPayment => 'طريقة الدفع';
 
   @override
   String get checkOutViewShipingTitle1 => 'الدفع عند الاستلام';
@@ -133,10 +132,10 @@ class SAr extends S {
   String get checkOutViewShipingSubtitle1 => 'التسليم من المكان';
 
   @override
-  String get checkOutViewShipingTitle2 => 'الدفع اونلاين';
+  String get checkOutViewShipingTitle2 => 'الدفع أون لاين';
 
   @override
-  String get checkOutViewShipingPrice => ' جنيه ';
+  String get checkOutViewShipingPrice => 'جنيه';
 
   @override
   String get checkOutViewShipingError => 'يرجى تحديد طريقة الدفع';
@@ -151,31 +150,31 @@ class SAr extends S {
   String get checkOutViewNext => 'التالي';
 
   @override
-  String get orderSummaryWidgetTitle => 'ملخص الطلب :';
+  String get orderSummaryWidgetTitle => 'ملخص الطلب:';
 
   @override
-  String get orderSummaryWidgetSubtotal => 'المجموع الفرعي :';
+  String get orderSummaryWidgetSubtotal => 'المجموع الفرعي:';
 
   @override
-  String get orderSummaryWidgetShipping => 'التوصيل :';
+  String get orderSummaryWidgetShipping => 'التوصيل:';
 
   @override
-  String get orderSummaryWidgetTotal => 'الكلي';
+  String get orderSummaryWidgetTotal => 'الإجمالي';
 
   @override
   String get orderCubitBlocConsumer => 'تم تسجيل الطلب بنجاح';
 
   @override
-  String get addressSummaryWidgetTitle => 'عنوان التوصيل :';
+  String get addressSummaryWidgetTitle => 'عنوان التوصيل:';
 
   @override
   String get addressSummaryWidgetChange => 'تعديل';
 
   @override
-  String get addressInputSectionName => 'الاسم كامل';
+  String get addressInputSectionName => 'الاسم الكامل';
 
   @override
-  String get addressInputSectionEmail => 'البريد الالكتروني';
+  String get addressInputSectionEmail => 'البريد الإلكتروني';
 
   @override
   String get addressInputSectionPhone => 'رقم الهاتف';
@@ -187,7 +186,7 @@ class SAr extends S {
   String get addressInputSectionCity => 'المدينة';
 
   @override
-  String get addressInputSectionFloor => 'رقم الطابق , رقم الشقه ..';
+  String get addressInputSectionFloor => 'رقم الطابق، رقم الشقة';
 
   @override
   String get profileViewLanguage => 'اللغة';
@@ -196,7 +195,7 @@ class SAr extends S {
   String get profileViewLanguageValueItem => 'اللغة العربية';
 
   @override
-  String get profileViewLanguageValueItem2 => 'اللغة الانجليزية';
+  String get profileViewLanguageValueItem2 => 'اللغة الإنجليزية';
 
   @override
   String get profileViewProfileImage => 'صورة الملف الشخصي';
@@ -211,16 +210,16 @@ class SAr extends S {
   String get profileViewLogout => 'تسجيل الخروج';
 
   @override
-  String get profileViewLogoutText => 'هل تريد تسجيل الخروج ؟';
+  String get profileViewLogoutText => 'هل تريد تسجيل الخروج؟';
 
   @override
   String get profileViewLogoutText2 => 'تسجيل الخروج';
 
   @override
-  String get profileViewLogoutText3 => 'الغاء';
+  String get profileViewLogoutText3 => 'إلغاء';
 
   @override
-  String get profileViewPoints => 'نقاط';
+  String get profileViewPoints => 'النقاط';
 
   @override
   String get pointsPageYourPoints => 'نقاطك';
@@ -238,11 +237,77 @@ class SAr extends S {
   String get pointsPagePointsRequired => 'نقطة مطلوبة';
 
   @override
-  String get pointsPageUnlocked => 'مفعل';
+  String get pointsPageUnlocked => 'مفعّل';
 
   @override
   String get pointsPageProgress => 'التقدم';
 
   @override
   String get pointsPagePointsToGo => 'نقطة متبقية!';
+
+  @override
+  String get productGridViewPlaceholder => 'منتج';
+
+  @override
+  String get searchProductsHint => 'البحث عن المنتجات';
+
+  @override
+  String get loadDemoDataButton => 'تحميل بيانات توضيحية';
+
+  @override
+  String get demoDataLoadedMessage =>
+      'تم تحميل البيانات التوضيحية! اذهب إلى عربة التسوق لاختبار الدفع.';
+
+  @override
+  String get homeViewTitle => 'الرئيسية';
+
+  @override
+  String get logoutErrorMessage => 'حدث خطأ أثناء تسجيل الخروج';
+
+  @override
+  String couponDiscountApplied(String discount) {
+    return 'تم تطبيق الخصم: $discount جنيه';
+  }
+
+  @override
+  String get invalidCouponError => 'رمز قسيمة غير صحيح أو منتهي الصلاحية';
+
+  @override
+  String get couponCodeHint => 'رمز القسيمة';
+
+  @override
+  String get errorPageNotFound => '404 غير موجود';
+
+  @override
+  String get paymentSuccessMessage => 'تم الدفع بنجاح';
+
+  @override
+  String get paymentErrorMessage => 'حدث خطأ في الدفع';
+
+  @override
+  String get weakPasswordError => 'كلمة المرور المقدمة ضعيفة جداً.';
+
+  @override
+  String get emailAlreadyInUseError => 'عنوان البريد الإلكتروني مستخدم بالفعل.';
+
+  @override
+  String get networkRequestFailedError =>
+      'فشل طلب الشبكة، يرجى التحقق من اتصالك بالإنترنت.';
+
+  @override
+  String get invalidEmailError => 'عنوان البريد الإلكتروني غير صحيح.';
+
+  @override
+  String get unknownErrorMessage =>
+      'حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقاً.';
+
+  @override
+  String get emailPasswordProblemError =>
+      'هناك مشكلة في البريد الإلكتروني أو كلمة المرور';
+
+  @override
+  String get signInCancelledError => 'تم إلغاء تسجيل الدخول من قبل المستخدم';
+
+  @override
+  String get googleSignInFailedError => 'فشل تسجيل الدخول عبر جوجل';
 }

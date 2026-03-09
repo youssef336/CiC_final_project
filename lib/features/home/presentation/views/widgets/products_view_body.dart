@@ -3,6 +3,7 @@ import 'package:mysterybag/core/models/bag_item_model.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/core/widgets/available_bags_list.dart';
 import 'package:mysterybag/core/widgets/resturant_card.dart';
+import 'package:mysterybag/generated/l10n.dart';
 import '../../../../../constant.dart';
 import 'product_grid_view_bloc_builder.dart';
 
@@ -67,7 +68,7 @@ class ProductsViewBody extends StatelessWidget {
                     // Handle search
                   },
                   decoration: InputDecoration(
-                    hintText: 'Search products',
+                    hintText: S.of(context)!.searchProductsHint,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

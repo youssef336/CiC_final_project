@@ -173,12 +173,12 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           onSuccess: (Map params) async {
             print("onSuccess: $params");
             Navigator.pop(context);
-            showErrorBar(context, "تم الدفع بنجاح");
+            showErrorBar(context, S.of(context)!.paymentSuccessMessage);
             addOrder.addOrder(order: orderEntity);
           },
           onError: (error) {
             print("onError: $error");
-            showErrorBar(context, "حدث خطأ في الدفع");
+            showErrorBar(context, S.of(context)!.paymentErrorMessage);
             Navigator.pop(context);
           },
           onCancel: () {

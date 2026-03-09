@@ -96,7 +96,7 @@ class ProfileViewLogout {
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Error occurred during logout')),
+          SnackBar(content: Text(S.of(context)!.logoutErrorMessage)),
         );
       }
       return false;
