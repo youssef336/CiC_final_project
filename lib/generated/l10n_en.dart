@@ -103,6 +103,21 @@ class SEn extends S {
   String get homeViewWelcomeAppbar => 'Good Morning !..';
 
   @override
+  String get homeBestSellersTitle => 'Best Sellers';
+
+  @override
+  String get homeBestSellersViewAll => 'View All';
+
+  @override
+  String get homeFeaturedItemTitle => 'Featured Item';
+
+  @override
+  String get homeFeaturedItemSubtitle => 'Special Offer';
+
+  @override
+  String get homeFeaturedItemShopNow => 'Shop Now';
+
+  @override
   String get buttonNavigationBarEntityHome => 'Home';
 
   @override
@@ -247,6 +262,12 @@ class SEn extends S {
   String get pointsPagePointsToGo => 'points to go!';
 
   @override
+  String get pointsPageAdd => 'Add';
+
+  @override
+  String get pointsPageDelete => 'Delete';
+
+  @override
   String get productGridViewPlaceholder => 'Product';
 
   @override
@@ -312,4 +333,94 @@ class SEn extends S {
 
   @override
   String get googleSignInFailedError => 'Google Sign-In failed';
+
+  @override
+  String get availableBagsSwipeHint => 'Swipe →';
+
+  @override
+  String get bagCurrencySuffix => 'EGP';
+
+  @override
+  String get bagCardReserve => 'Reserve';
+
+  @override
+  String bagCardBagsLeft(String count) {
+    return '$count Bags left';
+  }
+
+  @override
+  String get bagDetailsTitle => 'Mystery Bag Arousa';
+
+  @override
+  String get bagDetailsPriceLabel => 'Price';
+
+  @override
+  String get bagDetailsCurrentPrice => '50 EGP';
+
+  @override
+  String get bagDetailsOldPrice => '100 EGP';
+
+  @override
+  String get bagDetailsWhatInsideTitle => 'What is in the bag?';
+
+  @override
+  String get bagDetailsDescription =>
+      'One Arousa sandwich made with pita bread, served with crispy fries and a refreshing drink.';
+
+  @override
+  String get bagDetailsReservePickup => 'Reserve for pickup';
+
+  @override
+  String get productsViewTitle => 'Products';
+
+  @override
+  String get availableBagsTitle => 'Available bags';
+
+  @override
+  String get restaurantNameMadbinaZamalek => 'Madbina - Zamalek';
+
+  @override
+  String restaurantBranchesCount(String count) {
+    return '$count branch';
+  }
+
+  @override
+  String restaurantDistanceKilometers(String distance) {
+    return '$distance kilometers';
+  }
+
+  @override
+  String get bagTitleAroussaSandwich => 'Aroussa Sandwich Bag';
+
+  @override
+  String get bagTitleMasrawy => 'Masrawy Bag';
+
+  @override
+  String get statusBadgeAvailable => 'Available';
+
+  @override
+  String get statusBadgeNow => 'Now';
+
+  @override
+  String productViewResults(String count) {
+    return '$count results';
+  }
+
+  @override
+  String get couponPageTitle => 'Your Coupon';
+
+  @override
+  String get couponCodeLabel => 'Your Coupon Code';
+
+  @override
+  String get couponPageDescription => 'Use this code to redeem your points';
+
+  @override
+  String get couponCopyButton => 'Copy Code';
+
+  @override
+  String get couponCopiedMessage => 'Coupon code copied!';
+
+  @override
+  String get couponUniqueText => 'This code is unique to your account';
 }

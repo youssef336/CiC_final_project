@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/generated/l10n.dart';
 import '../../../../../constant.dart';
 
 class BagDetailsView extends StatelessWidget {
@@ -27,7 +28,9 @@ class BagDetailsView extends StatelessWidget {
                 color: Theme.of(context).brightness == Brightness.dark
                     ? KdarkModeCardColor
                     : KlightModeCardColor,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(30),
+                ),
               ),
               child: SingleChildScrollView(
                 child: Column(
@@ -43,7 +46,9 @@ class BagDetailsView extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
-                                color: Theme.of(context).brightness == Brightness.dark
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
                                     ? KdarkModeTextColor
                                     : KlightModeTextColor,
                               ),
@@ -53,11 +58,12 @@ class BagDetailsView extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          "مستري باج عروسة",
+                          S.of(context)!.bagDetailsTitle,
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).brightness == Brightness.dark
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
                                 ? KdarkModeTextColor
                                 : KlightModeTextColor,
                           ),
@@ -68,7 +74,7 @@ class BagDetailsView extends StatelessWidget {
                     const SizedBox(height: 20),
 
                     Text(
-                      "السعر",
+                      S.of(context)!.bagDetailsPriceLabel,
                       style: TextStyle(
                         color: Theme.of(context).brightness == Brightness.dark
                             ? KdarkModeTextSecondary
@@ -79,7 +85,7 @@ class BagDetailsView extends StatelessWidget {
                     const SizedBox(height: 10),
 
                     Text(
-                      "50 ج.م",
+                      S.of(context)!.bagDetailsCurrentPrice,
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -90,7 +96,7 @@ class BagDetailsView extends StatelessWidget {
                     ),
 
                     Text(
-                      "100 ج.م",
+                      S.of(context)!.bagDetailsOldPrice,
                       style: TextStyle(
                         decoration: TextDecoration.lineThrough,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -102,7 +108,7 @@ class BagDetailsView extends StatelessWidget {
                     const SizedBox(height: 30),
 
                     Text(
-                      "ماذا في الشنطة؟",
+                      S.of(context)!.bagDetailsWhatInsideTitle,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -115,7 +121,7 @@ class BagDetailsView extends StatelessWidget {
                     const SizedBox(height: 10),
 
                     Text(
-                      "ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.",
+                      S.of(context)!.bagDetailsDescription,
                       style: TextStyle(
                         height: 1.5,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -138,10 +144,11 @@ class BagDetailsView extends StatelessWidget {
                         ),
                         onPressed: () {},
                         child: Text(
-                          "احجز للاستلام",
+                          S.of(context)!.bagDetailsReservePickup,
                           style: TextStyle(
                             fontSize: 18,
-                            color: Theme.of(context).brightness == Brightness.dark
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
                                 ? KprimaryColorLight
                                 : Colors.white,
                           ),

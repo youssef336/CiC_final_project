@@ -46,10 +46,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     }
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                          S.of(context)!.demoDataLoadedMessage,
-                        ),
-                        duration: Duration(seconds: 2),
+                        content: Text(S.of(context)!.demoDataLoadedMessage),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                   },
@@ -61,13 +59,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 const HomeBestSellerHeader(),
                 const SizedBox(height: 8),
               ],
-            ),   
-          ),
-              SliverToBoxAdapter(
-          child: ProductGridViewBlocBuilder(),
             ),
+          ),
+          SliverToBoxAdapter(child: ProductGridViewBlocBuilder()),
         ],
-            
       ),
     );
   }

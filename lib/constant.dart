@@ -7,7 +7,9 @@ const KTopPadding = 16.0;
 
 // ========== Primary Colors ==========
 const KprimaryColor = Color(0xFF242328); // Dark Brown (Primary Brand Color)
-const KprimaryColorLight = Color(0xFFECE6D0); // Light Beige (Secondary Brand Color)
+const KprimaryColorLight = Color(
+  0xFFECE6D0,
+); // Light Beige (Secondary Brand Color)
 const KprimaryColorDark = Color(0xFF1A1820); // Very Dark Brown
 const KsecondaryColor = Color(0xFFECE6D0); // Light Beige (Accent)
 const KaccentColor = Color(0xFFC19A6B); // Golden Brown (Premium Accent)
@@ -28,6 +30,9 @@ const KdisabledColor = Color(0xFFC9BDA8); // Muted Color
 const KdividerColor = Color(0xFFE8E2D0); // Light Divider
 
 const KisBoardingViewSeen = 'isBoardingViewSeen';
+
+const KCupon = 'cupon';
+const KCuponDiscount = 'cuponDiscount';
 
 const KUserData = 'userData';
 const Kpoints = 'points';

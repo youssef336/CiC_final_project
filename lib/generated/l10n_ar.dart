@@ -102,6 +102,21 @@ class SAr extends S {
   String get homeViewWelcomeAppbar => 'صباح الخير!';
 
   @override
+  String get homeBestSellersTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get homeBestSellersViewAll => 'عرض الكل';
+
+  @override
+  String get homeFeaturedItemTitle => 'عنصر مميز';
+
+  @override
+  String get homeFeaturedItemSubtitle => 'عرض خاص';
+
+  @override
+  String get homeFeaturedItemShopNow => 'تسوق الآن';
+
+  @override
   String get buttonNavigationBarEntityHome => 'الرئيسية';
 
   @override
@@ -246,6 +261,12 @@ class SAr extends S {
   String get pointsPagePointsToGo => 'نقطة متبقية!';
 
   @override
+  String get pointsPageAdd => 'إضافة';
+
+  @override
+  String get pointsPageDelete => 'حذف';
+
+  @override
   String get productGridViewPlaceholder => 'منتج';
 
   @override
@@ -310,4 +331,94 @@ class SAr extends S {
 
   @override
   String get googleSignInFailedError => 'فشل تسجيل الدخول عبر جوجل';
+
+  @override
+  String get availableBagsSwipeHint => 'اسحب ←';
+
+  @override
+  String get bagCurrencySuffix => 'ج.م';
+
+  @override
+  String get bagCardReserve => 'احجز';
+
+  @override
+  String bagCardBagsLeft(String count) {
+    return 'متبقي $count شنطة';
+  }
+
+  @override
+  String get bagDetailsTitle => 'مستري باج عروسة';
+
+  @override
+  String get bagDetailsPriceLabel => 'السعر';
+
+  @override
+  String get bagDetailsCurrentPrice => '50 ج.م';
+
+  @override
+  String get bagDetailsOldPrice => '100 ج.م';
+
+  @override
+  String get bagDetailsWhatInsideTitle => 'ماذا في الشنطة؟';
+
+  @override
+  String get bagDetailsDescription =>
+      'ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.';
+
+  @override
+  String get bagDetailsReservePickup => 'احجز للاستلام';
+
+  @override
+  String get productsViewTitle => 'المنتجات';
+
+  @override
+  String get availableBagsTitle => 'الشنط المتاحة';
+
+  @override
+  String get restaurantNameMadbinaZamalek => 'مطبنة - الزمالك';
+
+  @override
+  String restaurantBranchesCount(String count) {
+    return '$count فرع';
+  }
+
+  @override
+  String restaurantDistanceKilometers(String distance) {
+    return '$distance كيلومتر';
+  }
+
+  @override
+  String get bagTitleAroussaSandwich => 'شنطة سندوتش عروسة';
+
+  @override
+  String get bagTitleMasrawy => 'شنطة مصراوي';
+
+  @override
+  String get statusBadgeAvailable => 'متاح';
+
+  @override
+  String get statusBadgeNow => 'الآن';
+
+  @override
+  String productViewResults(String count) {
+    return '$count نتيجة';
+  }
+
+  @override
+  String get couponPageTitle => 'كوبون الخصم';
+
+  @override
+  String get couponCodeLabel => 'كود الكوبون الخاص بك';
+
+  @override
+  String get couponPageDescription => 'استخدم هذا الكود لاستبدال نقاطك';
+
+  @override
+  String get couponCopyButton => 'نسخ الكود';
+
+  @override
+  String get couponCopiedMessage => 'تم نسخ كود الكوبون!';
+
+  @override
+  String get couponUniqueText => 'هذا الكود خاص بحسابك';
 }
