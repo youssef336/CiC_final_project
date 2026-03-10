@@ -61,7 +61,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          SliverToBoxAdapter(child: ProductGridViewBlocBuilder()),
+          const SliverToBoxAdapter(child: ProductGridViewBlocBuilder()),
         ],
       ),
     );

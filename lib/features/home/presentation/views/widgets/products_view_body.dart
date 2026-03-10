@@ -79,7 +79,7 @@ class ProductsViewBody extends StatelessWidget {
                   title: S.of(context)!.availableBagsTitle,
                   bags: bags,
                 ),
-                ProductGridViewBlocBuilder(),
+                const ProductGridViewBlocBuilder(),
               ],
             ),
           ),
