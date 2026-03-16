@@ -170,5 +170,29 @@
   "couponPageDescription": "استخدم هذا الكود لاستبدال نقاطك",
   "couponCopyButton": "نسخ الكود",
   "couponCopiedMessage": "تم نسخ كود الكوبون!",
-  "couponUniqueText": "هذا الكود خاص بحسابك"
+  "couponUniqueText": "هذا الكود خاص بحسابك",
+  "bagelMysteryBagPickupOnlyBadge": "🛍️  للاستلام فقط",
+  "bagelMysteryBagStoreName": "جيز بايجلز آند كوفي - الشيخ زايد",
+  "bagelMysteryBagTitle": "شنطة بايجل مفاجأة",
+  "bagelMysteryBagAvailableCount": "متاح {count}",
+  "@bagelMysteryBagAvailableCount": {
+    "description": "نص عدد المتاح في شنطة البايجل",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagelMysteryBagDescription": "قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.",
+  "bagelMysteryBagPickupTimeLabel": "وقت الاستلام",
+  "bagelMysteryBagPickupTimeValue": "4:00 م - 11:00 م",
+  "bagelMysteryBagLocationLabel": "الموقع",
+  "bagelMysteryBagLocationValue": "ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142",
+  "bagelMysteryBagContactLabel": "التواصل",
+  "bagelMysteryBagIngredientsAndAllergens": "المكونات والمواد المسببة للحساسية",
+  "bagelMysteryBagAllergenNotice": "المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.",
+  "bagelMysteryBagCustomerReviews": "آراء العملاء",
+  "bagelMysteryBagComingSoon": "قريباً",
+  "bagelMysteryBagReviewsComingSoon": "ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.",
+  "bagelMysteryBagReservedState": "✓  تم الحجز! نراك وقت الاستلام"
 }

@@ -192,6 +192,30 @@
   "couponPageDescription": "Use this code to redeem your points",
   "couponCopyButton": "Copy Code",
   "couponCopiedMessage": "Coupon code copied!",
-  "couponUniqueText": "This code is unique to your account"
+  "couponUniqueText": "This code is unique to your account",
+  "bagelMysteryBagPickupOnlyBadge": "🛍️  Pickup Only",
+  "bagelMysteryBagStoreName": "G's Bagels & Coffee - Sheikh Zayed",
+  "bagelMysteryBagTitle": "Bagel Mystery Bag",
+  "bagelMysteryBagAvailableCount": "{count} available",
+  "@bagelMysteryBagAvailableCount": {
+    "description": "Availability label for the bagel mystery bag",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagelMysteryBagDescription": "Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.",
+  "bagelMysteryBagPickupTimeLabel": "Pickup Time",
+  "bagelMysteryBagPickupTimeValue": "4:00 PM - 11:00 PM",
+  "bagelMysteryBagLocationLabel": "Location",
+  "bagelMysteryBagLocationValue": "The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142",
+  "bagelMysteryBagContactLabel": "Contact",
+  "bagelMysteryBagIngredientsAndAllergens": "Ingredients & Allergens",
+  "bagelMysteryBagAllergenNotice": "The shop did not specify allergens. Please contact them to make sure.",
+  "bagelMysteryBagCustomerReviews": "Customer Reviews",
+  "bagelMysteryBagComingSoon": "Coming Soon",
+  "bagelMysteryBagReviewsComingSoon": "Customer reviews will be available soon to help you make informed decisions.",
+  "bagelMysteryBagReservedState": "✓  Reserved! See you at pickup"
 }
 
