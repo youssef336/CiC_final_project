@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -123,7 +124,9 @@ class BagCard extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(BagDetailsView.routeName);
+                Navigator.of(
+                  context,
+                ).pushNamed(BagelMysteryBagScreen.routeName);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: KaccentColor,

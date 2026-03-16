@@ -423,4 +423,59 @@ class SEn extends S {
 
   @override
   String get couponUniqueText => 'This code is unique to your account';
+
+  @override
+  String get bagelMysteryBagPickupOnlyBadge => '🛍️  Pickup Only';
+
+  @override
+  String get bagelMysteryBagStoreName => 'G\'s Bagels & Coffee - Sheikh Zayed';
+
+  @override
+  String get bagelMysteryBagTitle => 'Bagel Mystery Bag';
+
+  @override
+  String bagelMysteryBagAvailableCount(String count) {
+    return '$count available';
+  }
+
+  @override
+  String get bagelMysteryBagDescription =>
+      'Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.';
+
+  @override
+  String get bagelMysteryBagPickupTimeLabel => 'Pickup Time';
+
+  @override
+  String get bagelMysteryBagPickupTimeValue => '4:00 PM - 11:00 PM';
+
+  @override
+  String get bagelMysteryBagLocationLabel => 'Location';
+
+  @override
+  String get bagelMysteryBagLocationValue =>
+      'The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142';
+
+  @override
+  String get bagelMysteryBagContactLabel => 'Contact';
+
+  @override
+  String get bagelMysteryBagIngredientsAndAllergens =>
+      'Ingredients & Allergens';
+
+  @override
+  String get bagelMysteryBagAllergenNotice =>
+      'The shop did not specify allergens. Please contact them to make sure.';
+
+  @override
+  String get bagelMysteryBagCustomerReviews => 'Customer Reviews';
+
+  @override
+  String get bagelMysteryBagComingSoon => 'Coming Soon';
+
+  @override
+  String get bagelMysteryBagReviewsComingSoon =>
+      'Customer reviews will be available soon to help you make informed decisions.';
+
+  @override
+  String get bagelMysteryBagReservedState => '✓  Reserved! See you at pickup';
 }

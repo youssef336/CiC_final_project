@@ -421,4 +421,59 @@ class SAr extends S {
 
   @override
   String get couponUniqueText => 'هذا الكود خاص بحسابك';
+
+  @override
+  String get bagelMysteryBagPickupOnlyBadge => '🛍️  للاستلام فقط';
+
+  @override
+  String get bagelMysteryBagStoreName => 'جيز بايجلز آند كوفي - الشيخ زايد';
+
+  @override
+  String get bagelMysteryBagTitle => 'شنطة بايجل مفاجأة';
+
+  @override
+  String bagelMysteryBagAvailableCount(String count) {
+    return 'متاح $count';
+  }
+
+  @override
+  String get bagelMysteryBagDescription =>
+      'قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.';
+
+  @override
+  String get bagelMysteryBagPickupTimeLabel => 'وقت الاستلام';
+
+  @override
+  String get bagelMysteryBagPickupTimeValue => '4:00 م - 11:00 م';
+
+  @override
+  String get bagelMysteryBagLocationLabel => 'الموقع';
+
+  @override
+  String get bagelMysteryBagLocationValue =>
+      'ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142';
+
+  @override
+  String get bagelMysteryBagContactLabel => 'التواصل';
+
+  @override
+  String get bagelMysteryBagIngredientsAndAllergens =>
+      'المكونات والمواد المسببة للحساسية';
+
+  @override
+  String get bagelMysteryBagAllergenNotice =>
+      'المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.';
+
+  @override
+  String get bagelMysteryBagCustomerReviews => 'آراء العملاء';
+
+  @override
+  String get bagelMysteryBagComingSoon => 'قريباً';
+
+  @override
+  String get bagelMysteryBagReviewsComingSoon =>
+      'ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.';
+
+  @override
+  String get bagelMysteryBagReservedState => '✓  تم الحجز! نراك وقت الاستلام';
 }

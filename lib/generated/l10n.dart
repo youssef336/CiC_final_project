@@ -888,6 +888,102 @@ abstract class S {
   /// In en, this message translates to:
   /// **'This code is unique to your account'**
   String get couponUniqueText;
+
+  /// No description provided for @bagelMysteryBagPickupOnlyBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'🛍️  Pickup Only'**
+  String get bagelMysteryBagPickupOnlyBadge;
+
+  /// No description provided for @bagelMysteryBagStoreName.
+  ///
+  /// In en, this message translates to:
+  /// **'G\'s Bagels & Coffee - Sheikh Zayed'**
+  String get bagelMysteryBagStoreName;
+
+  /// No description provided for @bagelMysteryBagTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bagel Mystery Bag'**
+  String get bagelMysteryBagTitle;
+
+  /// Availability label for the bagel mystery bag
+  ///
+  /// In en, this message translates to:
+  /// **'{count} available'**
+  String bagelMysteryBagAvailableCount(String count);
+
+  /// No description provided for @bagelMysteryBagDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.'**
+  String get bagelMysteryBagDescription;
+
+  /// No description provided for @bagelMysteryBagPickupTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup Time'**
+  String get bagelMysteryBagPickupTimeLabel;
+
+  /// No description provided for @bagelMysteryBagPickupTimeValue.
+  ///
+  /// In en, this message translates to:
+  /// **'4:00 PM - 11:00 PM'**
+  String get bagelMysteryBagPickupTimeValue;
+
+  /// No description provided for @bagelMysteryBagLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get bagelMysteryBagLocationLabel;
+
+  /// No description provided for @bagelMysteryBagLocationValue.
+  ///
+  /// In en, this message translates to:
+  /// **'The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142'**
+  String get bagelMysteryBagLocationValue;
+
+  /// No description provided for @bagelMysteryBagContactLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get bagelMysteryBagContactLabel;
+
+  /// No description provided for @bagelMysteryBagIngredientsAndAllergens.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients & Allergens'**
+  String get bagelMysteryBagIngredientsAndAllergens;
+
+  /// No description provided for @bagelMysteryBagAllergenNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'The shop did not specify allergens. Please contact them to make sure.'**
+  String get bagelMysteryBagAllergenNotice;
+
+  /// No description provided for @bagelMysteryBagCustomerReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Reviews'**
+  String get bagelMysteryBagCustomerReviews;
+
+  /// No description provided for @bagelMysteryBagComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon'**
+  String get bagelMysteryBagComingSoon;
+
+  /// No description provided for @bagelMysteryBagReviewsComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer reviews will be available soon to help you make informed decisions.'**
+  String get bagelMysteryBagReviewsComingSoon;
+
+  /// No description provided for @bagelMysteryBagReservedState.
+  ///
+  /// In en, this message translates to:
+  /// **'✓  Reserved! See you at pickup'**
+  String get bagelMysteryBagReservedState;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {
