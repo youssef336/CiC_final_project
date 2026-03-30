@@ -32,13 +32,9 @@ android {
         release {
             // TODO: configure your real signing for release builds
             signingConfig = signingConfigs.getByName("debug")
-            // You can also enable minify/proguard here if needed
-            // minifyEnabled true
-            // shrinkResources true
-            // proguardFiles(
-            //     getDefaultProguardFile("proguard-android-optimize.txt"),
-            //     "proguard-rules.pro"
-            // )
+            // Keep release build stable for TensorFlow Lite by avoiding R8 shrinking.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
