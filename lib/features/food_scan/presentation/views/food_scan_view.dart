@@ -33,7 +33,8 @@ class _FoodScanViewState extends State<FoodScanView> {
   bool _spoilageBusy = false;
 
   static const double _minConfidenceToShowLabel = 0.35;
-  static const String _proxyBaseUrl = 'https://mystreybox-gemini-proxy.sinshi.workers.dev'; 
+  static const String _proxyBaseUrl =
+      'https://mystreybox-gemini-proxy.sinshi.workers.dev';
 
   String? _sanitizeLabel(String? raw) {
     if (raw == null) return null;
@@ -43,7 +44,8 @@ class _FoodScanViewState extends State<FoodScanView> {
     final lower = label.toLowerCase();
     if (lower == '__background__') return null;
     if (lower.startsWith('/g/') || lower.startsWith('/m/')) return null;
-    if (lower.startsWith('http://') || lower.startsWith('https://')) return null;
+    if (lower.startsWith('http://') || lower.startsWith('https://'))
+      return null;
 
     final cleaned = label.replaceAll('"', '').trim();
     if (cleaned.isEmpty) return null;
@@ -94,7 +96,10 @@ class _FoodScanViewState extends State<FoodScanView> {
         debugPrint('[PROXY] Status: ${resp.statusCode}');
         debugPrint('[PROXY] Body: $body');
         if (resp.statusCode < 200 || resp.statusCode >= 300) {
-          throw HttpException('proxy_error_${resp.statusCode}: $body', uri: uri);
+          throw HttpException(
+            'proxy_error_${resp.statusCode}: $body',
+            uri: uri,
+          );
         }
 
         final json = jsonDecode(body);
@@ -168,8 +173,9 @@ class _FoodScanViewState extends State<FoodScanView> {
       final best = await _classifier.classifyJpeg(bytes);
       final conf = best?.confidence;
       final label = _sanitizeLabel(best?.label);
-      final displayLabel =
-          (conf != null && conf >= _minConfidenceToShowLabel) ? label : null;
+      final displayLabel = (conf != null && conf >= _minConfidenceToShowLabel)
+          ? label
+          : null;
 
       if (!mounted) return;
       setState(() {
@@ -192,9 +198,7 @@ class _FoodScanViewState extends State<FoodScanView> {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Food Scan'),
-      ),
+      appBar: AppBar(title: const Text('Food Scan')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -293,13 +297,11 @@ class _FoodScanViewState extends State<FoodScanView> {
                               const SizedBox(height: 12),
                               Text(
                                 'نصايح لنتيجة أدق:',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall
+                                style: Theme.of(context).textTheme.titleSmall
                                     ?.copyWith(fontWeight: FontWeight.w800),
                               ),
                               const SizedBox(height: 8),
-                              Row(
+                              const Row(
                                 children: [
                                   Expanded(
                                     child: _TipChip(
@@ -307,7 +309,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                       text: 'إضاءة كويسة',
                                     ),
                                   ),
-                                  const SizedBox(width: 8),
+                                  SizedBox(width: 8),
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.crop_free,
@@ -317,7 +319,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                 ],
                               ),
                               const SizedBox(height: 8),
-                              Row(
+                              const Row(
                                 children: [
                                   Expanded(
                                     child: _TipChip(
@@ -325,7 +327,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                       text: 'خلفية بسيطة',
                                     ),
                                   ),
-                                  const SizedBox(width: 8),
+                                  SizedBox(width: 8),
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.no_flash_outlined,
@@ -337,13 +339,11 @@ class _FoodScanViewState extends State<FoodScanView> {
                               const SizedBox(height: 10),
                               Text(
                                 'بعد ما تختار صورة هتقدر تعمل:',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
+                                style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(color: scheme.onSurfaceVariant),
                               ),
                               const SizedBox(height: 8),
-                              Wrap(
+                              const Wrap(
                                 spacing: 8,
                                 runSpacing: 8,
                                 children: [
@@ -399,7 +399,9 @@ class _FoodScanViewState extends State<FoodScanView> {
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
                                     'Confidence: ${(_confidence! * 100).toStringAsFixed(1)}%',
-                                    style: Theme.of(context).textTheme.bodySmall,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall,
                                   ),
                                 ),
                               const SizedBox(height: 12),
@@ -408,7 +410,8 @@ class _FoodScanViewState extends State<FoodScanView> {
                                 child: FilledButton.icon(
                                   onPressed: () {
                                     final food = _detectedFood;
-                                    if (food == null || food.trim().isEmpty) return;
+                                    if (food == null || food.trim().isEmpty)
+                                      return;
                                     final prompt =
                                         'حلّل "$food".\n\n'
                                         'اكتب الرد بالعربي وبشكل مُفصّل ومنظّم في 4 أقسام (من غير مقدمات طويلة):\n'
@@ -434,7 +437,9 @@ class _FoodScanViewState extends State<FoodScanView> {
                               SizedBox(
                                 width: double.infinity,
                                 child: FilledButton.icon(
-                                  onPressed: _spoilageBusy ? null : _checkSpoilage,
+                                  onPressed: _spoilageBusy
+                                      ? null
+                                      : _checkSpoilage,
                                   icon: const Icon(Icons.fact_check_outlined),
                                   label: Text(
                                     _spoilageBusy
@@ -450,7 +455,9 @@ class _FoodScanViewState extends State<FoodScanView> {
                                     padding: const EdgeInsets.all(12),
                                     child: Text(
                                       _spoilageResult!,
-                                      style: Theme.of(context).textTheme.bodyMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodyMedium,
                                     ),
                                   ),
                                 ),
@@ -505,10 +512,9 @@ class _TipChip extends StatelessWidget {
               text,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall
-                  ?.copyWith(color: scheme.onSurfaceVariant),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: scheme.onSurfaceVariant),
             ),
           ),
         ],
@@ -540,10 +546,9 @@ class _FeatureChip extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             text,
-            style: Theme.of(context)
-                .textTheme
-                .labelMedium
-                ?.copyWith(color: scheme.onSurfaceVariant),
+            style: Theme.of(
+              context,
+            ).textTheme.labelMedium?.copyWith(color: scheme.onSurfaceVariant),
           ),
         ],
       ),

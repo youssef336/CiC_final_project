@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
-import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 class BagCard extends StatelessWidget {
