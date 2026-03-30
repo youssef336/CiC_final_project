@@ -24,6 +24,11 @@ List<ButtonNavigationBarEntity> getButtonNavigationBarItems(
       name: S.of(context)!.buttonNavigationBarEntityHome,
     ),
     ButtonNavigationBarEntity(
+      activeImagePath: 'assets/images/bold/scan.svg',
+      inactiveImagePath: 'assets/images/outline/scan.svg',
+      name: 'Scan',
+    ),
+    ButtonNavigationBarEntity(
       activeImagePath: AssetsData.light().images.bold.products_svg,
       inactiveImagePath: AssetsData.light().images.outline.products_svg,
       name: S.of(context)!.buttonNavigationBarEntityProducts,

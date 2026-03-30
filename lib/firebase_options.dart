@@ -41,49 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDN769DzqBMfmeWPEe9HU6yfnQA1qzWrJI',
-    appId: '1:219424244128:web:2f785e7703f6d12075a4c5',
-    messagingSenderId: '219424244128',
-    projectId: 'final-project-28230',
-    authDomain: 'final-project-28230.firebaseapp.com',
-    storageBucket: 'final-project-28230.firebasestorage.app',
-    measurementId: 'G-CM09MD9CQX',
+    apiKey: 'AIzaSyDQf-dnLE5HaVXQ0xOVV2HnxXcBoSOdLH0',
+    appId: '1:1046370397960:web:2d8a67c75ccdd6952986bd',
+    messagingSenderId: '1046370397960',
+    projectId: 'complemystreybox',
+    authDomain: 'complemystreybox.firebaseapp.com',
+    storageBucket: 'complemystreybox.firebasestorage.app',
+    measurementId: 'G-Y8DBRGRFMF',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDHkC1p4hqpKszCj2LVUsk6At_z3DxxMP0',
-    appId: '1:219424244128:android:7f617a1da3b9879675a4c5',
-    messagingSenderId: '219424244128',
-    projectId: 'final-project-28230',
-    storageBucket: 'final-project-28230.firebasestorage.app',
+    apiKey: 'AIzaSyCDJWKv5TCl84vdISL3MAA5jfKAyjqw6vQ',
+    appId: '1:1046370397960:android:187252597dc2aad32986bd',
+    messagingSenderId: '1046370397960',
+    projectId: 'complemystreybox',
+    storageBucket: 'complemystreybox.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDOZYAMbZ1dcVWvLnJes2Xad1CnQKkZV38',
-    appId: '1:219424244128:ios:a0482f7719592dd675a4c5',
-    messagingSenderId: '219424244128',
-    projectId: 'final-project-28230',
-    storageBucket: 'final-project-28230.firebasestorage.app',
+    apiKey: 'AIzaSyCnDTl4QuGP9JuxAFtzVK5YCiMpRV4LPIo',
+    appId: '1:1046370397960:ios:7ed6ead6e32e0f892986bd',
+    messagingSenderId: '1046370397960',
+    projectId: 'complemystreybox',
+    storageBucket: 'complemystreybox.firebasestorage.app',
     iosBundleId: 'com.example.mysterybag',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDOZYAMbZ1dcVWvLnJes2Xad1CnQKkZV38',
-    appId: '1:219424244128:ios:a0482f7719592dd675a4c5',
-    messagingSenderId: '219424244128',
-    projectId: 'final-project-28230',
-    storageBucket: 'final-project-28230.firebasestorage.app',
+    apiKey: 'AIzaSyCnDTl4QuGP9JuxAFtzVK5YCiMpRV4LPIo',
+    appId: '1:1046370397960:ios:7ed6ead6e32e0f892986bd',
+    messagingSenderId: '1046370397960',
+    projectId: 'complemystreybox',
+    storageBucket: 'complemystreybox.firebasestorage.app',
     iosBundleId: 'com.example.mysterybag',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDN769DzqBMfmeWPEe9HU6yfnQA1qzWrJI',
-    appId: '1:219424244128:web:87a9c85a4d46878f75a4c5',
-    messagingSenderId: '219424244128',
-    projectId: 'final-project-28230',
-    authDomain: 'final-project-28230.firebaseapp.com',
-    storageBucket: 'final-project-28230.firebasestorage.app',
-    measurementId: 'G-5H4TGRX8P6',
+    apiKey: 'AIzaSyDQf-dnLE5HaVXQ0xOVV2HnxXcBoSOdLH0',
+    appId: '1:1046370397960:web:725f2c0adb5529082986bd',
+    messagingSenderId: '1046370397960',
+    projectId: 'complemystreybox',
+    authDomain: 'complemystreybox.firebaseapp.com',
+    storageBucket: 'complemystreybox.firebasestorage.app',
+    measurementId: 'G-J6X1X27KEV',
   );
 
 }

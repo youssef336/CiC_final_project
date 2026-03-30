@@ -6,10 +6,19 @@ class InActiveItem extends StatelessWidget {
   final String imagePath;
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final unselected = Theme.of(context).bottomNavigationBarTheme.unselectedItemColor ??
+        scheme.onSurfaceVariant;
+
     return Container(
       height: 32,
       color: Colors.transparent,
-      child: Center(child: SvgPicture.asset(imagePath)),
+      child: Center(
+        child: SvgPicture.asset(
+          imagePath,
+          colorFilter: ColorFilter.mode(unselected, BlendMode.srcIn),
+        ),
+      ),
     );
   }
 }

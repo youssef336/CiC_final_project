@@ -4,6 +4,7 @@ import '../cart_view.dart';
 import '../products_view.dart';
 import '../profile_view.dart';
 import 'home_view.dart';
+import '../../../../food_scan/presentation/views/food_scan_view.dart';
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({super.key, required this.currentViewIndex});
@@ -17,6 +18,7 @@ class MainViewBody extends StatelessWidget {
         index: currentViewIndex,
         children: [
           const HomeView(),
+          const FoodScanView(),
           const ProductsView(),
           const CartView(),
           const ProfileView(),
