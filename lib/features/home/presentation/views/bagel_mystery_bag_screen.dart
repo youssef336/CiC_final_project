@@ -60,6 +60,8 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(height: 24),
+
                       _buildStoreHeader(),
                       const SizedBox(height: 24),
                       _buildPriceBox(),
@@ -137,9 +139,9 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
           ..._buildBagelDecorations(),
 
           // Back button
-          Positioned(
+          PositionedDirectional(
             top: MediaQuery.of(context).padding.top + 12,
-            left: 16,
+            start: 16,
             child: GestureDetector(
               onTap: () => Navigator.of(context).pop(),
               child: Container(
@@ -155,19 +157,23 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                     ),
                   ],
                 ),
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 20,
-                  color: _isDark(context) ? KdarkModeTextColor : KprimaryColor,
+                child: IconTheme(
+                  data: IconThemeData(
+                    size: 20,
+                    color: _isDark(context)
+                        ? KdarkModeTextColor
+                        : KprimaryColor,
+                  ),
+                  child: const BackButtonIcon(),
                 ),
               ),
             ),
           ),
 
           // Badges
-          Positioned(
+          PositionedDirectional(
             top: MediaQuery.of(context).padding.top + 12,
-            right: 16,
+            end: 16,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -272,6 +278,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         // Logo
         Container(

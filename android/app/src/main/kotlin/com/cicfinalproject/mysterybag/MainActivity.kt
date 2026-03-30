@@ -1,4 +1,4 @@
-package com.example.mysterybag
+package com.cicfinalproject.mysterybag
 
 import io.flutter.embedding.android.FlutterActivity
 

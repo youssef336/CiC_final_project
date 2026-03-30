@@ -478,4 +478,89 @@ class SEn extends S {
 
   @override
   String get bagelMysteryBagReservedState => '✓  Reserved! See you at pickup';
+
+  @override
+  String get aiChatClearButton => 'Clear Chat';
+
+  @override
+  String get aiChatClearDialogTitle => 'Clear all chat?';
+
+  @override
+  String get aiChatClearDialogMessage =>
+      'This will permanently remove all chat messages for this account.';
+
+  @override
+  String get aiChatActionCancel => 'Cancel';
+
+  @override
+  String get aiChatActionClear => 'Clear';
+
+  @override
+  String get aiChatClearSuccess => 'All chat messages were cleared.';
+
+  @override
+  String get aiChatClearFailed => 'Could not clear chat. Please try again.';
+
+  @override
+  String get aiChatTitle => 'Food Assistant';
+
+  @override
+  String get aiChatInputHint => 'Ask about food...';
+
+  @override
+  String get foodScanTitle => 'Food Scan';
+
+  @override
+  String get foodScanCameraButton => 'Camera';
+
+  @override
+  String get foodScanGalleryButton => 'Gallery';
+
+  @override
+  String get foodScanHeroTitle => 'Take a food photo to analyze';
+
+  @override
+  String get foodScanHeroSubtitle => 'Camera or Gallery';
+
+  @override
+  String get foodScanTipsTitle => 'Tips for better results:';
+
+  @override
+  String get foodScanTipGoodLighting => 'Good lighting';
+
+  @override
+  String get foodScanTipMoveCloser => 'Move closer';
+
+  @override
+  String get foodScanTipSimpleBackground => 'Simple background';
+
+  @override
+  String get foodScanTipNoBlur => 'No blur';
+
+  @override
+  String get foodScanAfterPickHint => 'After selecting an image you can:';
+
+  @override
+  String get foodScanFeatureNutrition => 'Nutrition & Health';
+
+  @override
+  String get foodScanFeatureFreshness => 'Freshness Check';
+
+  @override
+  String get foodScanDetectedLabel => 'Detected';
+
+  @override
+  String foodScanConfidenceLabel(String value) {
+    return 'Confidence: $value';
+  }
+
+  @override
+  String get foodScanCheckingFreshness => 'Checking freshness…';
+
+  @override
+  String get foodScanFreshnessSpoilageCheck => 'Freshness / Spoilage Check';
+
+  @override
+  String get foodScanLowConfidenceMessage =>
+      'Result is not confident enough. Try another photo with better lighting.';
 }

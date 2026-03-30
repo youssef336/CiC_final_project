@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 import '../../../ai_chat/presentation/views/ai_chat_view.dart';
 import '../../data/ml/tflite_food_classifier.dart';
@@ -196,9 +197,13 @@ class _FoodScanViewState extends State<FoodScanView> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final locale = S.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Food Scan')),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(locale.foodScanTitle),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -226,7 +231,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                           ? null
                           : () => _pickAndScan(ImageSource.camera),
                       icon: const Icon(Icons.photo_camera_outlined),
-                      label: const Text('Camera'),
+                      label: Text(locale.foodScanCameraButton),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -236,7 +241,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                           ? null
                           : () => _pickAndScan(ImageSource.gallery),
                       icon: const Icon(Icons.photo_library_outlined),
-                      label: const Text('Gallery'),
+                      label: Text(locale.foodScanGalleryButton),
                     ),
                   ),
                 ],
@@ -272,7 +277,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      'صوّر الأكل علشان نحلّله',
+                                      locale.foodScanHeroTitle,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium
@@ -283,7 +288,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                     ),
                                     const SizedBox(height: 6),
                                     Text(
-                                      'Camera أو Gallery',
+                                      locale.foodScanHeroSubtitle,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium
@@ -296,64 +301,64 @@ class _FoodScanViewState extends State<FoodScanView> {
                               ),
                               const SizedBox(height: 12),
                               Text(
-                                'نصايح لنتيجة أدق:',
+                                locale.foodScanTipsTitle,
                                 style: Theme.of(context).textTheme.titleSmall
                                     ?.copyWith(fontWeight: FontWeight.w800),
                               ),
                               const SizedBox(height: 8),
-                              const Row(
+                              Row(
                                 children: [
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.wb_sunny_outlined,
-                                      text: 'إضاءة كويسة',
+                                      text: locale.foodScanTipGoodLighting,
                                     ),
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.crop_free,
-                                      text: 'قرب من الأكل',
+                                      text: locale.foodScanTipMoveCloser,
                                     ),
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 8),
-                              const Row(
+                              Row(
                                 children: [
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.wallpaper_outlined,
-                                      text: 'خلفية بسيطة',
+                                      text: locale.foodScanTipSimpleBackground,
                                     ),
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   Expanded(
                                     child: _TipChip(
                                       icon: Icons.no_flash_outlined,
-                                      text: 'بدون Blur',
+                                      text: locale.foodScanTipNoBlur,
                                     ),
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                'بعد ما تختار صورة هتقدر تعمل:',
+                                locale.foodScanAfterPickHint,
                                 style: Theme.of(context).textTheme.bodyMedium
                                     ?.copyWith(color: scheme.onSurfaceVariant),
                               ),
                               const SizedBox(height: 8),
-                              const Wrap(
+                              Wrap(
                                 spacing: 8,
                                 runSpacing: 8,
                                 children: [
                                   _FeatureChip(
                                     icon: Icons.restaurant_menu,
-                                    text: 'Nutrition & Health',
+                                    text: locale.foodScanFeatureNutrition,
                                   ),
                                   _FeatureChip(
                                     icon: Icons.fact_check_outlined,
-                                    text: 'Freshness Check',
+                                    text: locale.foodScanFeatureFreshness,
                                   ),
                                 ],
                               ),
@@ -385,9 +390,11 @@ class _FoodScanViewState extends State<FoodScanView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'Detected',
-                                style: TextStyle(fontWeight: FontWeight.w800),
+                              Text(
+                                locale.foodScanDetectedLabel,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                ),
                               ),
                               const SizedBox(height: 6),
                               Text(
@@ -398,7 +405,9 @@ class _FoodScanViewState extends State<FoodScanView> {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                    'Confidence: ${(_confidence! * 100).toStringAsFixed(1)}%',
+                                    locale.foodScanConfidenceLabel(
+                                      '${(_confidence! * 100).toStringAsFixed(1)}%',
+                                    ),
                                     style: Theme.of(
                                       context,
                                     ).textTheme.bodySmall,
@@ -430,7 +439,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                                     );
                                   },
                                   icon: const Icon(Icons.restaurant_menu),
-                                  label: const Text('Nutrition & Health'),
+                                  label: Text(locale.foodScanFeatureNutrition),
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -443,8 +452,8 @@ class _FoodScanViewState extends State<FoodScanView> {
                                   icon: const Icon(Icons.fact_check_outlined),
                                   label: Text(
                                     _spoilageBusy
-                                        ? 'Checking freshness…'
-                                        : 'Freshness / Spoilage Check',
+                                        ? locale.foodScanCheckingFreshness
+                                        : locale.foodScanFreshnessSpoilageCheck,
                                   ),
                                 ),
                               ),
@@ -471,7 +480,7 @@ class _FoodScanViewState extends State<FoodScanView> {
                         child: Padding(
                           padding: const EdgeInsets.all(12),
                           child: Text(
-                            'Result is not confident enough. Try another photo with better lighting.',
+                            locale.foodScanLowConfidenceMessage,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),

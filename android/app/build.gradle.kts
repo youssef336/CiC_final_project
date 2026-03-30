@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mysterybag"
+    namespace = "com.cicfinalproject.mysterybag"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.mysterybag"
+        applicationId = "com.cicfinalproject.mysterybag"
         minSdk = flutter.minSdkVersion   // ensure this is >= 21 if you use most Firebase SDKs
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

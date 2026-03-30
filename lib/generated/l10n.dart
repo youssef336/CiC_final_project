@@ -984,6 +984,168 @@ abstract class S {
   /// In en, this message translates to:
   /// **'✓  Reserved! See you at pickup'**
   String get bagelMysteryBagReservedState;
+
+  /// No description provided for @aiChatClearButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Chat'**
+  String get aiChatClearButton;
+
+  /// No description provided for @aiChatClearDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all chat?'**
+  String get aiChatClearDialogTitle;
+
+  /// No description provided for @aiChatClearDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently remove all chat messages for this account.'**
+  String get aiChatClearDialogMessage;
+
+  /// No description provided for @aiChatActionCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get aiChatActionCancel;
+
+  /// No description provided for @aiChatActionClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get aiChatActionClear;
+
+  /// No description provided for @aiChatClearSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'All chat messages were cleared.'**
+  String get aiChatClearSuccess;
+
+  /// No description provided for @aiChatClearFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not clear chat. Please try again.'**
+  String get aiChatClearFailed;
+
+  /// No description provided for @aiChatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Assistant'**
+  String get aiChatTitle;
+
+  /// No description provided for @aiChatInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about food...'**
+  String get aiChatInputHint;
+
+  /// No description provided for @foodScanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Scan'**
+  String get foodScanTitle;
+
+  /// No description provided for @foodScanCameraButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get foodScanCameraButton;
+
+  /// No description provided for @foodScanGalleryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get foodScanGalleryButton;
+
+  /// No description provided for @foodScanHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a food photo to analyze'**
+  String get foodScanHeroTitle;
+
+  /// No description provided for @foodScanHeroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera or Gallery'**
+  String get foodScanHeroSubtitle;
+
+  /// No description provided for @foodScanTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips for better results:'**
+  String get foodScanTipsTitle;
+
+  /// No description provided for @foodScanTipGoodLighting.
+  ///
+  /// In en, this message translates to:
+  /// **'Good lighting'**
+  String get foodScanTipGoodLighting;
+
+  /// No description provided for @foodScanTipMoveCloser.
+  ///
+  /// In en, this message translates to:
+  /// **'Move closer'**
+  String get foodScanTipMoveCloser;
+
+  /// No description provided for @foodScanTipSimpleBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple background'**
+  String get foodScanTipSimpleBackground;
+
+  /// No description provided for @foodScanTipNoBlur.
+  ///
+  /// In en, this message translates to:
+  /// **'No blur'**
+  String get foodScanTipNoBlur;
+
+  /// No description provided for @foodScanAfterPickHint.
+  ///
+  /// In en, this message translates to:
+  /// **'After selecting an image you can:'**
+  String get foodScanAfterPickHint;
+
+  /// No description provided for @foodScanFeatureNutrition.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrition & Health'**
+  String get foodScanFeatureNutrition;
+
+  /// No description provided for @foodScanFeatureFreshness.
+  ///
+  /// In en, this message translates to:
+  /// **'Freshness Check'**
+  String get foodScanFeatureFreshness;
+
+  /// No description provided for @foodScanDetectedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected'**
+  String get foodScanDetectedLabel;
+
+  /// Confidence percentage for food detection
+  ///
+  /// In en, this message translates to:
+  /// **'Confidence: {value}'**
+  String foodScanConfidenceLabel(String value);
+
+  /// No description provided for @foodScanCheckingFreshness.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking freshness…'**
+  String get foodScanCheckingFreshness;
+
+  /// No description provided for @foodScanFreshnessSpoilageCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Freshness / Spoilage Check'**
+  String get foodScanFreshnessSpoilageCheck;
+
+  /// No description provided for @foodScanLowConfidenceMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Result is not confident enough. Try another photo with better lighting.'**
+  String get foodScanLowConfidenceMessage;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

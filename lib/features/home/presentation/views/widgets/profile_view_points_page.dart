@@ -55,7 +55,75 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
         builder: (context, points, _) {
           return Column(
             children: [
-              const SizedBox(height: 40),
+              SizedBox(height: MediaQuery.of(context).padding.top + 8),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: KhorzontalPadding,
+                ),
+                child: SizedBox(
+                  height: 40,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(999),
+                            onTap: () => Navigator.of(context).maybePop(),
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? KdarkModeCardColor
+                                    : Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(
+                                      isDark ? 0.22 : 0.08,
+                                    ),
+                                    blurRadius: 8,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: IconTheme(
+                                  data: IconThemeData(
+                                    size: 20,
+                                    color: isDark
+                                        ? KdarkModeTextColor
+                                        : KlightModeTextColor,
+                                  ),
+                                  child: const BackButtonIcon(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 52),
+                        child: Text(
+                          S.of(context)!.profileViewPoints,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.cairoBold19.copyWith(
+                            color: isDark ? KdarkModeTextColor : KprimaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 8),
 
               // Points Display Card
               Padding(

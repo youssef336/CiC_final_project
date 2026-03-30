@@ -122,17 +122,43 @@ class FirebaseAuthServices {
   }
 
   Future<User> signInWithFacebook() async {
-    // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login(
+        permissions: const ['email', 'public_profile'],
+      );
 
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+      switch (loginResult.status) {
+        case LoginStatus.success:
+          final token = loginResult.accessToken?.tokenString;
+          if (token == null || token.isEmpty) {
+            throw CustomException(message: 'Facebook Sign-In failed');
+          }
 
-    // Once signed in, return the UserCredential
-    return (await FirebaseAuth.instance.signInWithCredential(
-      facebookAuthCredential,
-    )).user!;
+          final OAuthCredential facebookAuthCredential =
+              FacebookAuthProvider.credential(token);
+
+          return (await FirebaseAuth.instance.signInWithCredential(
+            facebookAuthCredential,
+          )).user!;
+        case LoginStatus.cancelled:
+          throw CustomException(message: 'Sign-in cancelled by user');
+        case LoginStatus.failed:
+          throw CustomException(
+            message: (loginResult.message ?? '').trim().isNotEmpty
+                ? loginResult.message!
+                : 'Facebook Sign-In failed',
+          );
+        case LoginStatus.operationInProgress:
+          throw CustomException(
+            message: 'Facebook sign-in is already in progress',
+          );
+      }
+    } on FirebaseAuthException catch (e) {
+      throw CustomException(message: e.message ?? 'Facebook Sign-In failed');
+    } catch (e) {
+      if (e is CustomException) rethrow;
+      throw CustomException(message: 'Facebook Sign-In failed');
+    }
   }
 
   bool isUserLoggedIn() {

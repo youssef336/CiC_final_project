@@ -476,4 +476,89 @@ class SAr extends S {
 
   @override
   String get bagelMysteryBagReservedState => '✓  تم الحجز! نراك وقت الاستلام';
+
+  @override
+  String get aiChatClearButton => 'مسح المحادثة';
+
+  @override
+  String get aiChatClearDialogTitle => 'مسح كل المحادثة؟';
+
+  @override
+  String get aiChatClearDialogMessage =>
+      'سيتم حذف جميع رسائل المحادثة لهذا الحساب نهائيًا.';
+
+  @override
+  String get aiChatActionCancel => 'إلغاء';
+
+  @override
+  String get aiChatActionClear => 'مسح';
+
+  @override
+  String get aiChatClearSuccess => 'تم مسح جميع رسائل المحادثة.';
+
+  @override
+  String get aiChatClearFailed => 'تعذر مسح المحادثة. حاول مرة أخرى.';
+
+  @override
+  String get aiChatTitle => 'مساعد الطعام';
+
+  @override
+  String get aiChatInputHint => 'اسأل عن الطعام...';
+
+  @override
+  String get foodScanTitle => 'فحص الطعام';
+
+  @override
+  String get foodScanCameraButton => 'الكاميرا';
+
+  @override
+  String get foodScanGalleryButton => 'المعرض';
+
+  @override
+  String get foodScanHeroTitle => 'صوّر الأكل علشان نحلّله';
+
+  @override
+  String get foodScanHeroSubtitle => 'الكاميرا أو المعرض';
+
+  @override
+  String get foodScanTipsTitle => 'نصايح لنتيجة أدق:';
+
+  @override
+  String get foodScanTipGoodLighting => 'إضاءة كويسة';
+
+  @override
+  String get foodScanTipMoveCloser => 'قرّب من الأكل';
+
+  @override
+  String get foodScanTipSimpleBackground => 'خلفية بسيطة';
+
+  @override
+  String get foodScanTipNoBlur => 'بدون تشويش';
+
+  @override
+  String get foodScanAfterPickHint => 'بعد ما تختار صورة هتقدر تعمل:';
+
+  @override
+  String get foodScanFeatureNutrition => 'التغذية والصحة';
+
+  @override
+  String get foodScanFeatureFreshness => 'فحص الطزاجة';
+
+  @override
+  String get foodScanDetectedLabel => 'المكتشف';
+
+  @override
+  String foodScanConfidenceLabel(String value) {
+    return 'الثقة: $value';
+  }
+
+  @override
+  String get foodScanCheckingFreshness => 'جارٍ فحص الطزاجة…';
+
+  @override
+  String get foodScanFreshnessSpoilageCheck => 'فحص الطزاجة / الفساد';
+
+  @override
+  String get foodScanLowConfidenceMessage =>
+      'النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.';
 }
