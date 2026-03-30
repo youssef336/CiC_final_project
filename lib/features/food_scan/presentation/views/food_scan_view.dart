@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -92,10 +93,17 @@ class _FoodScanViewState extends State<FoodScanView> {
           }),
         );
 
-        final resp = await req.close();
+        final resp = await req.close().timeout(
+          const Duration(seconds: 60),
+          onTimeout: () {
+            throw TimeoutException('توقيت انتظار - الخدمة استغرقت وقت طويل');
+          },
+        );
+
         final body = await resp.transform(utf8.decoder).join();
-        debugPrint('[PROXY] Status: ${resp.statusCode}');
-        debugPrint('[PROXY] Body: $body');
+        debugPrint('[VISION_PROXY] Status: ${resp.statusCode}');
+        debugPrint('[VISION_PROXY] Body: $body');
+
         if (resp.statusCode < 200 || resp.statusCode >= 300) {
           throw HttpException(
             'proxy_error_${resp.statusCode}: $body',
@@ -115,11 +123,48 @@ class _FoodScanViewState extends State<FoodScanView> {
       } finally {
         client.close(force: true);
       }
-    } catch (_) {
+    } on TimeoutException catch (e) {
+      debugPrint('[VISION ERROR] Timeout: $e');
       if (!mounted) return;
       setState(() {
         _spoilageResult =
-            'ميزة فحص التعفن تحتاج Proxy يدعم تحليل الصور. حاليًا الخدمة رجعت رد غير متوقع.\n\nجرّب تاني لاحقًا أو استخدم "Nutrition & Health".';
+            'انتهت مهلة الانتظار - الخدمة استغرقت وقت طويل. تحقق من الاتصال بالإنترنت وحاول تاني.';
+      });
+    } on HttpException catch (e) {
+      debugPrint('[VISION ERROR] HTTP: $e');
+      if (!mounted) return;
+      setState(() {
+        if (e.message.contains('429')) {
+          _spoilageResult =
+              'تم تجاوز حد الطلبات المسموح. استنى شوية وحاول تاني من فضلك.';
+        } else if (e.message.contains('500') || e.message.contains('502')) {
+          _spoilageResult = 'خدمة التحليل مش متاحة دلوقتي. حاول تاني لاحقًا.';
+        } else if (e.message.contains('404')) {
+          _spoilageResult = 'نقطة النهاية غير موجودة. تواصل مع الدعم.';
+        } else {
+          _spoilageResult =
+              'خطأ في الخدمة: ${e.message.replaceFirst('proxy_error_', '')}';
+        }
+      });
+    } on FormatException catch (e) {
+      debugPrint('[VISION ERROR] JSON Parse: $e');
+      if (!mounted) return;
+      setState(() {
+        _spoilageResult = 'الخدمة أرسلت رد غير صحيح. جرّب تاني من فضلك.';
+      });
+    } on SocketException catch (e) {
+      debugPrint('[VISION ERROR] Network: $e');
+      if (!mounted) return;
+      setState(() {
+        _spoilageResult =
+            'مشكلة في الاتصال بالإنترنت. تحقق من الاتصال وحاول تاني.';
+      });
+    } catch (e) {
+      debugPrint('[VISION ERROR] Unknown: $e');
+      if (!mounted) return;
+      setState(() {
+        _spoilageResult =
+            'حدث خطأ غير متوقع. جرّب تاني أو استخدم "Nutrition & Health".';
       });
     } finally {
       if (!mounted) return;
