@@ -10,6 +10,8 @@ import 'package:mysterybag/features/home/presentation/views/widgets/profile_view
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_view_points_page.dart';
 import 'package:mysterybag/features/onBoarding/presentation/views/on_boarding.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
+import 'package:mysterybag/features/ai_chat/presentation/views/ai_chat_view.dart';
+import 'package:mysterybag/features/food_scan/presentation/views/food_scan_view.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -26,6 +28,24 @@ class _ErrorPage extends StatelessWidget {
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case AiChatView.routeName:
+      final args = settings.arguments;
+      String? initialMessage;
+      String? initialDisplayMessage;
+      if (args is Map) {
+        final v = args['initialMessage'];
+        if (v is String) initialMessage = v;
+        final d = args['initialDisplayMessage'];
+        if (d is String) initialDisplayMessage = d;
+      }
+      return MaterialPageRoute(
+        builder: (_) => AiChatView(
+          initialMessage: initialMessage,
+          initialDisplayMessage: initialDisplayMessage,
+        ),
+      );
+    case FoodScanView.routeName:
+      return MaterialPageRoute(builder: (_) => const FoodScanView());
     case '/bagDetails':
       return MaterialPageRoute(builder: (_) => const BagDetailsView());
     case MainView.routeName:

@@ -18,7 +18,21 @@ import 'package:mysterybag/generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  try {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  } on FirebaseException catch (e) {
+    if (e.code == 'duplicate-app') {
+      // Already initialized, ignore
+    } else {
+      rethrow;
+    }
+  } catch (e) {
+    // Check if it's the duplicate app error string
+    final errorString = e.toString().toLowerCase();
+    if (!errorString.contains('duplicate-app')) {
+      rethrow;
+    }
+  }
   await Prefs.init();
   setupGetIt();
   runApp(
