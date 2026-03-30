@@ -11,7 +11,6 @@ import 'package:mysterybag/core/helper_functions/themes.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
-import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
@@ -19,7 +18,9 @@ import 'package:mysterybag/generated/l10n.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
   } on FirebaseException catch (e) {
     if (e.code == 'duplicate-app') {
       // Already initialized, ignore

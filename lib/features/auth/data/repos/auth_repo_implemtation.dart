@@ -125,6 +125,9 @@ class AuthRepoImplemtation extends AuthRepo {
         await addUserData(user: userEntity);
       }
       return right(userEntity);
+    } on CustomException catch (e) {
+      await DeleteUser(user);
+      return Left(ServerFailure(e.message));
     } catch (e) {
       await DeleteUser(user);
       log("Error in AuthRepoImplemtation.signInWithFacebook: $e");

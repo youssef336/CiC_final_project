@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mysterybag"
+    namespace = "com.cicfinalproject.mysterybag"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.mysterybag"
+        applicationId = "com.cicfinalproject.mysterybag"
         minSdk = flutter.minSdkVersion   // ensure this is >= 21 if you use most Firebase SDKs
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -32,13 +32,9 @@ android {
         release {
             // TODO: configure your real signing for release builds
             signingConfig = signingConfigs.getByName("debug")
-            // You can also enable minify/proguard here if needed
-            // minifyEnabled true
-            // shrinkResources true
-            // proguardFiles(
-            //     getDefaultProguardFile("proguard-android-optimize.txt"),
-            //     "proguard-rules.pro"
-            // )
+            // Keep release build stable for TensorFlow Lite by avoiding R8 shrinking.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }

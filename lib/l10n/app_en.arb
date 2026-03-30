@@ -216,6 +216,41 @@
   "bagelMysteryBagCustomerReviews": "Customer Reviews",
   "bagelMysteryBagComingSoon": "Coming Soon",
   "bagelMysteryBagReviewsComingSoon": "Customer reviews will be available soon to help you make informed decisions.",
-  "bagelMysteryBagReservedState": "✓  Reserved! See you at pickup"
+  "bagelMysteryBagReservedState": "✓  Reserved! See you at pickup",
+  "aiChatClearButton": "Clear Chat",
+  "aiChatClearDialogTitle": "Clear all chat?",
+  "aiChatClearDialogMessage": "This will permanently remove all chat messages for this account.",
+  "aiChatActionCancel": "Cancel",
+  "aiChatActionClear": "Clear",
+  "aiChatClearSuccess": "All chat messages were cleared.",
+  "aiChatClearFailed": "Could not clear chat. Please try again.",
+  "aiChatTitle": "Food Assistant",
+  "aiChatInputHint": "Ask about food...",
+  "foodScanTitle": "Food Scan",
+  "foodScanCameraButton": "Camera",
+  "foodScanGalleryButton": "Gallery",
+  "foodScanHeroTitle": "Take a food photo to analyze",
+  "foodScanHeroSubtitle": "Camera or Gallery",
+  "foodScanTipsTitle": "Tips for better results:",
+  "foodScanTipGoodLighting": "Good lighting",
+  "foodScanTipMoveCloser": "Move closer",
+  "foodScanTipSimpleBackground": "Simple background",
+  "foodScanTipNoBlur": "No blur",
+  "foodScanAfterPickHint": "After selecting an image you can:",
+  "foodScanFeatureNutrition": "Nutrition & Health",
+  "foodScanFeatureFreshness": "Freshness Check",
+  "foodScanDetectedLabel": "Detected",
+  "foodScanConfidenceLabel": "Confidence: {value}",
+  "@foodScanConfidenceLabel": {
+    "description": "Confidence percentage for food detection",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "foodScanCheckingFreshness": "Checking freshness…",
+  "foodScanFreshnessSpoilageCheck": "Freshness / Spoilage Check",
+  "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting."
 }
 

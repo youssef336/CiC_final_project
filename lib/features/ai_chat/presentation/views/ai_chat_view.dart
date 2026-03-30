@@ -5,11 +5,16 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 import '../../data/chatbot/food_bot_rules.dart';
 
 class AiChatView extends StatefulWidget {
-  const AiChatView({super.key, this.initialMessage, this.initialDisplayMessage});
+  const AiChatView({
+    super.key,
+    this.initialMessage,
+    this.initialDisplayMessage,
+  });
 
   static const String routeName = '/aiChat';
 
@@ -46,7 +51,10 @@ class _ChatMessage {
 }
 
 class _AiChatViewState extends State<AiChatView> {
-  static const String _proxyBaseUrl = 'https://mystreybox-gemini-proxy.sinshi.workers.dev';
+  static const String _proxyBaseUrl =
+      'https://mystreybox-gemini-proxy.sinshi.workers.dev';
+  static const String _welcomeMessage =
+      'أهلًا! أنا مساعد الأكل هنا. اسألني عن السعرات، خيارات صحية، واقتراحات وجبات.\n\nمثال: "سعرات الكنافة؟" أو "رشّحلي عشاء صحي" أو "هل البيتزا صحية؟"';
 
   final _controller = TextEditingController();
   final _scrollController = ScrollController();
@@ -58,12 +66,7 @@ class _AiChatViewState extends State<AiChatView> {
   bool _didAutoFollowUp = false;
 
   final List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text:
-          'أهلًا! أنا مساعد الأكل هنا. اسألني عن السعرات، خيارات صحية، واقتراحات وجبات.\n\nمثال: "سعرات الكنافة؟" أو "رشّحلي عشاء صحي" أو "هل البيتزا صحية؟"',
-      isUser: false,
-      ts: DateTime.now(),
-    ),
+    _ChatMessage(text: _welcomeMessage, isUser: false, ts: DateTime.now()),
   ];
 
   CollectionReference<Map<String, dynamic>>? _messagesRef() {
@@ -80,45 +83,44 @@ class _AiChatViewState extends State<AiChatView> {
     final ref = _messagesRef();
     if (ref == null) return;
 
-    _fireSub = ref.orderBy('createdAt', descending: false).snapshots().listen(
-      (snap) {
-        final loaded = <_ChatMessage>[];
-        for (final d in snap.docs) {
-          final data = d.data();
-          final text = (data['text'] ?? '').toString();
-          final isUser = (data['isUser'] ?? false) == true;
-          final createdAt = data['createdAt'];
-          final clientTs = data['clientTs'];
+    _fireSub = ref.orderBy('createdAt', descending: false).snapshots().listen((
+      snap,
+    ) {
+      final loaded = <_ChatMessage>[];
+      for (final d in snap.docs) {
+        final data = d.data();
+        final text = (data['text'] ?? '').toString();
+        final isUser = (data['isUser'] ?? false) == true;
+        final createdAt = data['createdAt'];
+        final clientTs = data['clientTs'];
 
-          DateTime ts = DateTime.now();
-          if (createdAt is Timestamp) {
-            ts = createdAt.toDate();
-          } else if (clientTs is Timestamp) {
-            ts = clientTs.toDate();
-          }
-
-          if (text.trim().isEmpty) continue;
-          loaded.add(_ChatMessage(id: d.id, text: text, isUser: isUser, ts: ts));
+        DateTime ts = DateTime.now();
+        if (createdAt is Timestamp) {
+          ts = createdAt.toDate();
+        } else if (clientTs is Timestamp) {
+          ts = clientTs.toDate();
         }
 
-        if (!mounted) return;
-        setState(() {
-          final greeting = _messages.isNotEmpty ? _messages.first : null;
-          _messages
-            ..clear()
-            ..add(
-              greeting ??
-                  _ChatMessage(
-                    text:
-                        'أهلًا! أنا مساعد الأكل هنا. اسألني عن السعرات، خيارات صحية، واقتراحات وجبات.\n\nمثال: "سعرات الكنافة؟" أو "رشّحلي عشاء صحي" أو "هل البيتزا صحية؟"',
-                    isUser: false,
-                    ts: DateTime.now(),
-                  ),
-            )
-            ..addAll(loaded);
-        });
-      },
-    );
+        if (text.trim().isEmpty) continue;
+        loaded.add(_ChatMessage(id: d.id, text: text, isUser: isUser, ts: ts));
+      }
+
+      if (!mounted) return;
+      setState(() {
+        final greeting = _messages.isNotEmpty ? _messages.first : null;
+        _messages
+          ..clear()
+          ..add(
+            greeting ??
+                _ChatMessage(
+                  text: _welcomeMessage,
+                  isUser: false,
+                  ts: DateTime.now(),
+                ),
+          )
+          ..addAll(loaded);
+      });
+    });
   }
 
   @override
@@ -149,16 +151,28 @@ class _AiChatViewState extends State<AiChatView> {
   Set<int> _presentSections(String text) {
     final t = text.toLowerCase();
     final out = <int>{};
-    if (t.contains('1)') || t.contains('1-') || t.contains('\n1.') || t.startsWith('1.')) {
+    if (t.contains('1)') ||
+        t.contains('1-') ||
+        t.contains('\n1.') ||
+        t.startsWith('1.')) {
       out.add(1);
     }
-    if (t.contains('2)') || t.contains('2-') || t.contains('\n2.') || t.startsWith('2.')) {
+    if (t.contains('2)') ||
+        t.contains('2-') ||
+        t.contains('\n2.') ||
+        t.startsWith('2.')) {
       out.add(2);
     }
-    if (t.contains('3)') || t.contains('3-') || t.contains('\n3.') || t.startsWith('3.')) {
+    if (t.contains('3)') ||
+        t.contains('3-') ||
+        t.contains('\n3.') ||
+        t.startsWith('3.')) {
       out.add(3);
     }
-    if (t.contains('4)') || t.contains('4-') || t.contains('\n4.') || t.startsWith('4.')) {
+    if (t.contains('4)') ||
+        t.contains('4-') ||
+        t.contains('\n4.') ||
+        t.startsWith('4.')) {
       out.add(4);
     }
     return out;
@@ -174,7 +188,12 @@ class _AiChatViewState extends State<AiChatView> {
 
     for (var attempt = 0; attempt < 2; attempt++) {
       final present = _presentSections(combined);
-      final missing = <int>[1, 2, 3, 4].where((s) => !present.contains(s)).toList();
+      final missing = <int>[
+        1,
+        2,
+        3,
+        4,
+      ].where((s) => !present.contains(s)).toList();
       final tooShort = combined.trim().length < 140;
       if (!tooShort && missing.isEmpty) break;
 
@@ -212,7 +231,12 @@ class _AiChatViewState extends State<AiChatView> {
     }
 
     final presentAfter = _presentSections(combined);
-    final missingAfter = <int>[1, 2, 3, 4].where((s) => !presentAfter.contains(s)).toList();
+    final missingAfter = <int>[
+      1,
+      2,
+      3,
+      4,
+    ].where((s) => !presentAfter.contains(s)).toList();
     if (combined.trim().length < 140 || missingAfter.isNotEmpty) {
       final sections = <int, String>{};
       for (final s in [1, 2, 3, 4]) {
@@ -282,10 +306,7 @@ class _AiChatViewState extends State<AiChatView> {
       final m = _messages[i];
       final text = (m.rawText ?? m.text).trim();
       if (text.isEmpty) continue;
-      items.add({
-        'role': m.isUser ? 'user' : 'model',
-        'text': text,
-      });
+      items.add({'role': m.isUser ? 'user' : 'model', 'text': text});
     }
 
     const maxMessages = 10;
@@ -310,7 +331,9 @@ class _AiChatViewState extends State<AiChatView> {
 
       if (!mounted) return;
       setState(() {
-        _messages.add(_ChatMessage(text: reply, isUser: false, ts: DateTime.now()));
+        _messages.add(
+          _ChatMessage(text: reply, isUser: false, ts: DateTime.now()),
+        );
         _isSending = false;
       });
 
@@ -362,11 +385,17 @@ class _AiChatViewState extends State<AiChatView> {
     const timeout = Duration(seconds: 45);
 
     try {
-      return await _sendToProxy(message: message, role: role, history: history)
-          .timeout(timeout);
+      return await _sendToProxy(
+        message: message,
+        role: role,
+        history: history,
+      ).timeout(timeout);
     } catch (_) {
-      return await _sendToProxy(message: message, role: role, history: history)
-          .timeout(timeout);
+      return await _sendToProxy(
+        message: message,
+        role: role,
+        history: history,
+      ).timeout(timeout);
     }
   }
 
@@ -383,11 +412,7 @@ class _AiChatViewState extends State<AiChatView> {
       final req = await client.postUrl(uri);
       req.headers.contentType = ContentType.json;
       req.write(
-        jsonEncode({
-          'message': message,
-          'role': role,
-          'history': history,
-        }),
+        jsonEncode({'message': message, 'role': role, 'history': history}),
       );
 
       final resp = await req.close();
@@ -549,15 +574,112 @@ class _AiChatViewState extends State<AiChatView> {
     });
   }
 
+  Future<void> _clearAllChat() async {
+    if (_isSending) return;
+    final locale = S.of(context)!;
+
+    final shouldClear =
+        await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            final scheme = Theme.of(context).colorScheme;
+            return AlertDialog(
+              icon: Icon(Icons.delete_sweep_rounded, color: scheme.error),
+              title: Text(locale.aiChatClearDialogTitle),
+              content: Text(locale.aiChatClearDialogMessage),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text(locale.aiChatActionCancel),
+                ),
+                FilledButton(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: scheme.error,
+                    foregroundColor: scheme.onError,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text(locale.aiChatActionClear),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
+
+    if (!shouldClear || !mounted) return;
+
+    setState(() {
+      _isSending = true;
+    });
+
+    try {
+      final ref = _messagesRef();
+      if (ref != null) {
+        final snap = await ref.get();
+        var batch = FirebaseFirestore.instance.batch();
+        var ops = 0;
+
+        for (final doc in snap.docs) {
+          batch.delete(doc.reference);
+          ops++;
+
+          if (ops == 400) {
+            await batch.commit();
+            batch = FirebaseFirestore.instance.batch();
+            ops = 0;
+          }
+        }
+
+        if (ops > 0) {
+          await batch.commit();
+        }
+      }
+
+      if (!mounted) return;
+      setState(() {
+        _messages
+          ..clear()
+          ..add(
+            _ChatMessage(
+              text: _welcomeMessage,
+              isUser: false,
+              ts: DateTime.now(),
+            ),
+          );
+        _lastUserMessageForRetry = null;
+        _didAutoFollowUp = false;
+        _isSending = false;
+      });
+
+      ScaffoldMessenger.of(context)
+        ..clearSnackBars()
+        ..showSnackBar(SnackBar(content: Text(locale.aiChatClearSuccess)));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _isSending = false;
+      });
+      ScaffoldMessenger.of(context)
+        ..clearSnackBars()
+        ..showSnackBar(SnackBar(content: Text(locale.aiChatClearFailed)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final locale = S.of(context)!;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Food Assistant'),
+        title: Text(locale.aiChatTitle),
         actions: [
+          IconButton(
+            tooltip: locale.aiChatClearButton,
+            onPressed: _isSending ? null : _clearAllChat,
+            icon: const Icon(Icons.delete_outline_rounded),
+          ),
           IconButton(
             tooltip: 'Close',
             onPressed: () => Navigator.of(context).maybePop(),
@@ -569,7 +691,9 @@ class _AiChatViewState extends State<AiChatView> {
         child: AnimatedPadding(
           duration: const Duration(milliseconds: 150),
           curve: Curves.easeOut,
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -584,8 +708,9 @@ class _AiChatViewState extends State<AiChatView> {
                       itemCount: _messages.length,
                       itemBuilder: (context, index) {
                         final msg = _messages[index];
-                        final align =
-                            msg.isUser ? Alignment.centerRight : Alignment.centerLeft;
+                        final align = msg.isUser
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft;
                         final bg = msg.isUser
                             ? scheme.primaryContainer
                             : scheme.surfaceContainerHighest;
@@ -618,21 +743,20 @@ class _AiChatViewState extends State<AiChatView> {
                               children: [
                                 Text(
                                   msg.text,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
-                                      ?.copyWith(
-                                        color: fg,
-                                        height: 1.25,
-                                      ),
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(color: fg, height: 1.25),
                                 ),
                                 const SizedBox(height: 6),
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
                                     time,
-                                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                          color: scheme.onSurfaceVariant.withOpacity(0.9),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall
+                                        ?.copyWith(
+                                          color: scheme.onSurfaceVariant
+                                              .withOpacity(0.9),
                                           fontWeight: FontWeight.w700,
                                         ),
                                   ),
@@ -677,7 +801,7 @@ class _AiChatViewState extends State<AiChatView> {
                         textInputAction: TextInputAction.send,
                         onSubmitted: (_) => _send(),
                         decoration: InputDecoration(
-                          hintText: 'Ask about food...',
+                          hintText: locale.aiChatInputHint,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),

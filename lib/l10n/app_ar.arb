@@ -194,5 +194,40 @@
   "bagelMysteryBagCustomerReviews": "آراء العملاء",
   "bagelMysteryBagComingSoon": "قريباً",
   "bagelMysteryBagReviewsComingSoon": "ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.",
-  "bagelMysteryBagReservedState": "✓  تم الحجز! نراك وقت الاستلام"
+  "bagelMysteryBagReservedState": "✓  تم الحجز! نراك وقت الاستلام",
+  "aiChatClearButton": "مسح المحادثة",
+  "aiChatClearDialogTitle": "مسح كل المحادثة؟",
+  "aiChatClearDialogMessage": "سيتم حذف جميع رسائل المحادثة لهذا الحساب نهائيًا.",
+  "aiChatActionCancel": "إلغاء",
+  "aiChatActionClear": "مسح",
+  "aiChatClearSuccess": "تم مسح جميع رسائل المحادثة.",
+  "aiChatClearFailed": "تعذر مسح المحادثة. حاول مرة أخرى.",
+  "aiChatTitle": "مساعد الطعام",
+  "aiChatInputHint": "اسأل عن الطعام...",
+  "foodScanTitle": "فحص الطعام",
+  "foodScanCameraButton": "الكاميرا",
+  "foodScanGalleryButton": "المعرض",
+  "foodScanHeroTitle": "صوّر الأكل علشان نحلّله",
+  "foodScanHeroSubtitle": "الكاميرا أو المعرض",
+  "foodScanTipsTitle": "نصايح لنتيجة أدق:",
+  "foodScanTipGoodLighting": "إضاءة كويسة",
+  "foodScanTipMoveCloser": "قرّب من الأكل",
+  "foodScanTipSimpleBackground": "خلفية بسيطة",
+  "foodScanTipNoBlur": "بدون تشويش",
+  "foodScanAfterPickHint": "بعد ما تختار صورة هتقدر تعمل:",
+  "foodScanFeatureNutrition": "التغذية والصحة",
+  "foodScanFeatureFreshness": "فحص الطزاجة",
+  "foodScanDetectedLabel": "المكتشف",
+  "foodScanConfidenceLabel": "الثقة: {value}",
+  "@foodScanConfidenceLabel": {
+    "description": "نسبة الثقة في نتيجة التعرف",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "foodScanCheckingFreshness": "جارٍ فحص الطزاجة…",
+  "foodScanFreshnessSpoilageCheck": "فحص الطزاجة / الفساد",
+  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل."
 }
