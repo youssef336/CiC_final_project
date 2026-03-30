@@ -36,6 +36,11 @@
 
 
     "homeViewWelcomeAppbar": "Good Morning !..",
+    "homeBestSellersTitle": "Best Sellers",
+    "homeBestSellersViewAll": "View All",
+    "homeFeaturedItemTitle": "Featured Item",
+    "homeFeaturedItemSubtitle": "Special Offer",
+    "homeFeaturedItemShopNow": "Shop Now",
   
 
 
@@ -99,6 +104,8 @@
     "pointsPageUnlocked": "UNLOCKED",
     "pointsPageProgress": "Progress",
     "pointsPagePointsToGo": "points to go!",
+    "pointsPageAdd": "Add",
+    "pointsPageDelete": "Delete",
     "productGridViewPlaceholder": "Product",
     "searchProductsHint": "Search products",
     "loadDemoDataButton": "Load Demo Data",
@@ -126,6 +133,89 @@
     "unknownErrorMessage": "An unknown error occurred please try again later.",
     "emailPasswordProblemError": "There is a problem in email or password",
     "signInCancelledError": "Sign-in cancelled by user",
-  "googleSignInFailedError": "Google Sign-In failed"
+    "googleSignInFailedError": "Google Sign-In failed",
+    "availableBagsSwipeHint": "Swipe →",
+    "bagCurrencySuffix": "EGP",
+    "bagCardReserve": "Reserve",
+    "bagCardBagsLeft": "{count} Bags left",
+  "@bagCardBagsLeft": {
+    "description": "Number of mystery bags still available",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+    "bagDetailsTitle": "Mystery Bag Arousa",
+    "bagDetailsPriceLabel": "Price",
+    "bagDetailsCurrentPrice": "50 EGP",
+    "bagDetailsOldPrice": "100 EGP",
+    "bagDetailsWhatInsideTitle": "What is in the bag?",
+    "bagDetailsDescription": "One Arousa sandwich made with pita bread, served with crispy fries and a refreshing drink.",
+    "bagDetailsReservePickup": "Reserve for pickup",
+    "productsViewTitle": "Products",
+    "availableBagsTitle": "Available bags",
+    "restaurantNameMadbinaZamalek": "Madbina - Zamalek",
+    "restaurantBranchesCount": "{count} branch",
+  "@restaurantBranchesCount": {
+    "description": "Restaurant branch count label",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+    "restaurantDistanceKilometers": "{distance} kilometers",
+  "@restaurantDistanceKilometers": {
+    "description": "Distance to restaurant in kilometers",
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+    "bagTitleAroussaSandwich": "Aroussa Sandwich Bag",
+    "bagTitleMasrawy": "Masrawy Bag",
+    "statusBadgeAvailable": "Available",
+    "statusBadgeNow": "Now",
+    "productViewResults": "{count} results",
+  "@productViewResults": {
+    "description": "Number of results displayed in product header",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "couponPageTitle": "Your Coupon",
+  "couponCodeLabel": "Your Coupon Code",
+  "couponPageDescription": "Use this code to redeem your points",
+  "couponCopyButton": "Copy Code",
+  "couponCopiedMessage": "Coupon code copied!",
+  "couponUniqueText": "This code is unique to your account",
+  "bagelMysteryBagPickupOnlyBadge": "🛍️  Pickup Only",
+  "bagelMysteryBagStoreName": "G's Bagels & Coffee - Sheikh Zayed",
+  "bagelMysteryBagTitle": "Bagel Mystery Bag",
+  "bagelMysteryBagAvailableCount": "{count} available",
+  "@bagelMysteryBagAvailableCount": {
+    "description": "Availability label for the bagel mystery bag",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagelMysteryBagDescription": "Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.",
+  "bagelMysteryBagPickupTimeLabel": "Pickup Time",
+  "bagelMysteryBagPickupTimeValue": "4:00 PM - 11:00 PM",
+  "bagelMysteryBagLocationLabel": "Location",
+  "bagelMysteryBagLocationValue": "The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142",
+  "bagelMysteryBagContactLabel": "Contact",
+  "bagelMysteryBagIngredientsAndAllergens": "Ingredients & Allergens",
+  "bagelMysteryBagAllergenNotice": "The shop did not specify allergens. Please contact them to make sure.",
+  "bagelMysteryBagCustomerReviews": "Customer Reviews",
+  "bagelMysteryBagComingSoon": "Coming Soon",
+  "bagelMysteryBagReviewsComingSoon": "Customer reviews will be available soon to help you make informed decisions.",
+  "bagelMysteryBagReservedState": "✓  Reserved! See you at pickup"
 }
 

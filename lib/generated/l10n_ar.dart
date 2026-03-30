@@ -102,6 +102,21 @@ class SAr extends S {
   String get homeViewWelcomeAppbar => 'صباح الخير!';
 
   @override
+  String get homeBestSellersTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get homeBestSellersViewAll => 'عرض الكل';
+
+  @override
+  String get homeFeaturedItemTitle => 'عنصر مميز';
+
+  @override
+  String get homeFeaturedItemSubtitle => 'عرض خاص';
+
+  @override
+  String get homeFeaturedItemShopNow => 'تسوق الآن';
+
+  @override
   String get buttonNavigationBarEntityHome => 'الرئيسية';
 
   @override
@@ -246,6 +261,12 @@ class SAr extends S {
   String get pointsPagePointsToGo => 'نقطة متبقية!';
 
   @override
+  String get pointsPageAdd => 'إضافة';
+
+  @override
+  String get pointsPageDelete => 'حذف';
+
+  @override
   String get productGridViewPlaceholder => 'منتج';
 
   @override
@@ -310,4 +331,149 @@ class SAr extends S {
 
   @override
   String get googleSignInFailedError => 'فشل تسجيل الدخول عبر جوجل';
+
+  @override
+  String get availableBagsSwipeHint => 'اسحب ←';
+
+  @override
+  String get bagCurrencySuffix => 'ج.م';
+
+  @override
+  String get bagCardReserve => 'احجز';
+
+  @override
+  String bagCardBagsLeft(String count) {
+    return 'متبقي $count شنطة';
+  }
+
+  @override
+  String get bagDetailsTitle => 'مستري باج عروسة';
+
+  @override
+  String get bagDetailsPriceLabel => 'السعر';
+
+  @override
+  String get bagDetailsCurrentPrice => '50 ج.م';
+
+  @override
+  String get bagDetailsOldPrice => '100 ج.م';
+
+  @override
+  String get bagDetailsWhatInsideTitle => 'ماذا في الشنطة؟';
+
+  @override
+  String get bagDetailsDescription =>
+      'ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.';
+
+  @override
+  String get bagDetailsReservePickup => 'احجز للاستلام';
+
+  @override
+  String get productsViewTitle => 'المنتجات';
+
+  @override
+  String get availableBagsTitle => 'الشنط المتاحة';
+
+  @override
+  String get restaurantNameMadbinaZamalek => 'مطبنة - الزمالك';
+
+  @override
+  String restaurantBranchesCount(String count) {
+    return '$count فرع';
+  }
+
+  @override
+  String restaurantDistanceKilometers(String distance) {
+    return '$distance كيلومتر';
+  }
+
+  @override
+  String get bagTitleAroussaSandwich => 'شنطة سندوتش عروسة';
+
+  @override
+  String get bagTitleMasrawy => 'شنطة مصراوي';
+
+  @override
+  String get statusBadgeAvailable => 'متاح';
+
+  @override
+  String get statusBadgeNow => 'الآن';
+
+  @override
+  String productViewResults(String count) {
+    return '$count نتيجة';
+  }
+
+  @override
+  String get couponPageTitle => 'كوبون الخصم';
+
+  @override
+  String get couponCodeLabel => 'كود الكوبون الخاص بك';
+
+  @override
+  String get couponPageDescription => 'استخدم هذا الكود لاستبدال نقاطك';
+
+  @override
+  String get couponCopyButton => 'نسخ الكود';
+
+  @override
+  String get couponCopiedMessage => 'تم نسخ كود الكوبون!';
+
+  @override
+  String get couponUniqueText => 'هذا الكود خاص بحسابك';
+
+  @override
+  String get bagelMysteryBagPickupOnlyBadge => '🛍️  للاستلام فقط';
+
+  @override
+  String get bagelMysteryBagStoreName => 'جيز بايجلز آند كوفي - الشيخ زايد';
+
+  @override
+  String get bagelMysteryBagTitle => 'شنطة بايجل مفاجأة';
+
+  @override
+  String bagelMysteryBagAvailableCount(String count) {
+    return 'متاح $count';
+  }
+
+  @override
+  String get bagelMysteryBagDescription =>
+      'قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.';
+
+  @override
+  String get bagelMysteryBagPickupTimeLabel => 'وقت الاستلام';
+
+  @override
+  String get bagelMysteryBagPickupTimeValue => '4:00 م - 11:00 م';
+
+  @override
+  String get bagelMysteryBagLocationLabel => 'الموقع';
+
+  @override
+  String get bagelMysteryBagLocationValue =>
+      'ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142';
+
+  @override
+  String get bagelMysteryBagContactLabel => 'التواصل';
+
+  @override
+  String get bagelMysteryBagIngredientsAndAllergens =>
+      'المكونات والمواد المسببة للحساسية';
+
+  @override
+  String get bagelMysteryBagAllergenNotice =>
+      'المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.';
+
+  @override
+  String get bagelMysteryBagCustomerReviews => 'آراء العملاء';
+
+  @override
+  String get bagelMysteryBagComingSoon => 'قريباً';
+
+  @override
+  String get bagelMysteryBagReviewsComingSoon =>
+      'ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.';
+
+  @override
+  String get bagelMysteryBagReservedState => '✓  تم الحجز! نراك وقت الاستلام';
 }

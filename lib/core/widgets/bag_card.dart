@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class BagCard extends StatelessWidget {
   final String title;
@@ -87,17 +89,19 @@ class BagCard extends StatelessWidget {
           const SizedBox(height: 10),
 
           Text(
-            "$oldPrice EGP",
+            '$oldPrice ${S.of(context)!.bagCurrencySuffix}',
             style: TextStyle(
               decoration: TextDecoration.lineThrough,
               color: isDark
                   ? KdarkModeTextSecondary
-                  : Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                  : Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.color?.withOpacity(0.6),
             ),
           ),
 
           Text(
-            "$price EGP",
+            '$price ${S.of(context)!.bagCurrencySuffix}',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -108,7 +112,7 @@ class BagCard extends StatelessWidget {
           const Spacer(),
 
           Text(
-            "$bagsLeft Bags left",
+            S.of(context)!.bagCardBagsLeft(bagsLeft.toString()),
             style: TextStyle(
               color: isDark ? KdarkModeTextSecondary : KaccentColor,
             ),
@@ -120,7 +124,9 @@ class BagCard extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(BagDetailsView.routeName);
+                Navigator.of(
+                  context,
+                ).pushNamed(BagelMysteryBagScreen.routeName);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: KaccentColor,
@@ -129,7 +135,7 @@ class BagCard extends StatelessWidget {
                 ),
               ),
               child: Text(
-                "Reserve",
+                S.of(context)!.bagCardReserve,
                 style: TextStyle(
                   color: Theme.of(context).brightness == Brightness.dark
                       ? Colors.black

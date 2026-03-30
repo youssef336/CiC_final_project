@@ -1,3 +1,5 @@
+import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/features/check_out/domains/entities/shiping_address_entity.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 
@@ -17,33 +19,22 @@ class OrderEntity {
     required this.uID,
   });
 
-  // void applyCouponCode(String code) {
-  //   // Reset discount at the start
-  //   List<String> coponCode = [];
-  //   for (final notification in notificationEntity!) {
-  //     coponCode.add(notification.code);
-  //   }
+  void applyCouponCode(String code) {
+    // Reset discount at the start
+    appliedDiscount = 0;
 
-  // appliedDiscount = 0;
+    // Get the stored coupon code and discount from SharedPreferences
+    final storedCoupon = Prefs.getString(KCupon);
+    final storedDiscount = Prefs.getInt(KCuponDiscount);
 
-  // If no notifications or empty list, nothing to apply
-  // if (notificationEntity == null || notificationEntity!.isEmpty) return;
-
-  // Check each notification for a matching code
-
-  //   for (var copon in coponCode) {
-  //     if (copon == code) {
-  //       // Apply the discount
-  //       appliedDiscount =
-  //           calculateTotalPriceforCopon() *
-  //           (notificationEntity![coponCode.indexOf(copon)].discount / 100);
-  //       break;
-  //     } else {
-  //       // If no matching code, reset discount
-  //       appliedDiscount = 0;
-  //     }
-  //   }
-  // }
+    // Validate the entered code against the stored coupon
+    if (storedCoupon.isNotEmpty &&
+        storedDiscount > 0 &&
+        code.toUpperCase() == storedCoupon.toUpperCase()) {
+      // Apply the discount percentage to the total price
+      appliedDiscount = calculateTotalPriceforCopon() * (storedDiscount / 100);
+    }
+  }
 
   double calculateShipingCost() {
     return (payWithCash ?? false) ? 40 : 0;

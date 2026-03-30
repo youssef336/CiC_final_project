@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/models/bag_item_model.dart';
+import 'package:mysterybag/generated/l10n.dart';
 import 'bag_card.dart';
 
 class AvailableBagsList extends StatelessWidget {
   final String title;
   final List<BagItemModel> bags;
 
-  const AvailableBagsList({
-    super.key,
-    required this.title,
-    required this.bags,
-  });
+  const AvailableBagsList({super.key, required this.title, required this.bags});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,10 +30,11 @@ class AvailableBagsList extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
-                "Swipe →",
+              Text(
+                S.of(context)!.availableBagsSwipeHint,
                 style: TextStyle(
-                  color:KprimaryColor,
+                  color: isDark ? KaccentColor : KprimaryColor,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
@@ -57,7 +57,8 @@ class AvailableBagsList extends StatelessWidget {
                 price: bag.price,
                 oldPrice: bag.oldPrice,
                 bagsLeft: bag.bagsLeft,
-                rating: bag.rating, bagItemModel: null,
+                rating: bag.rating,
+                bagItemModel: null,
               );
             },
           ),
@@ -66,4 +67,3 @@ class AvailableBagsList extends StatelessWidget {
     );
   }
 }
-

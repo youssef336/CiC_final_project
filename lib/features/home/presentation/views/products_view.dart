@@ -6,6 +6,6 @@ class ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ProductsViewBody();
+    return const ProductsViewBody();
   }
 }

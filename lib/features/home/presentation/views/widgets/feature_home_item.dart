@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/generated/l10n.dart';
 import 'feature_home_item_buttom.dart';
 
 class FeatureHomeItem extends StatelessWidget {
@@ -24,14 +25,14 @@ class FeatureHomeItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 16),
-                      const Text(
-                        'Featured Item',
-                        style: TextStyle(color: Colors.white),
+                      Text(
+                        S.of(context)!.homeFeaturedItemTitle,
+                        style: const TextStyle(color: Colors.white),
                       ),
                       const Spacer(),
-                      const Text(
-                        'Special Offer',
-                        style: TextStyle(
+                      Text(
+                        S.of(context)!.homeFeaturedItemSubtitle,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 19,

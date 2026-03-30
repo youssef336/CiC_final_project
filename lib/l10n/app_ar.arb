@@ -29,6 +29,11 @@
   "onSignupCreateNewAccountText2": "تسجيل الدخول",
   "onSignupTextFeils": "يرجى ملء جميع الحقول",
   "homeViewWelcomeAppbar": "صباح الخير!",
+  "homeBestSellersTitle": "الأكثر مبيعًا",
+  "homeBestSellersViewAll": "عرض الكل",
+  "homeFeaturedItemTitle": "عنصر مميز",
+  "homeFeaturedItemSubtitle": "عرض خاص",
+  "homeFeaturedItemShopNow": "تسوق الآن",
   "buttonNavigationBarEntityHome": "الرئيسية",
   "buttonNavigationBarEntityProducts": "المنتجات",
   "buttonNavigationBarEntityCart": "عربة التسوق",
@@ -77,6 +82,8 @@
   "pointsPageUnlocked": "مفعّل",
   "pointsPageProgress": "التقدم",
   "pointsPagePointsToGo": "نقطة متبقية!",
+  "pointsPageAdd": "إضافة",
+  "pointsPageDelete": "حذف",
   "productGridViewPlaceholder": "منتج",
   "searchProductsHint": "البحث عن المنتجات",
   "loadDemoDataButton": "تحميل بيانات توضيحية",
@@ -104,5 +111,88 @@
   "unknownErrorMessage": "حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقاً.",
   "emailPasswordProblemError": "هناك مشكلة في البريد الإلكتروني أو كلمة المرور",
   "signInCancelledError": "تم إلغاء تسجيل الدخول من قبل المستخدم",
-  "googleSignInFailedError": "فشل تسجيل الدخول عبر جوجل"
+  "googleSignInFailedError": "فشل تسجيل الدخول عبر جوجل",
+  "availableBagsSwipeHint": "اسحب ←",
+  "bagCurrencySuffix": "ج.م",
+  "bagCardReserve": "احجز",
+  "bagCardBagsLeft": "متبقي {count} شنطة",
+  "@bagCardBagsLeft": {
+    "description": "عدد الشنط المتبقية",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagDetailsTitle": "مستري باج عروسة",
+  "bagDetailsPriceLabel": "السعر",
+  "bagDetailsCurrentPrice": "50 ج.م",
+  "bagDetailsOldPrice": "100 ج.م",
+  "bagDetailsWhatInsideTitle": "ماذا في الشنطة؟",
+  "bagDetailsDescription": "ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.",
+  "bagDetailsReservePickup": "احجز للاستلام",
+  "productsViewTitle": "المنتجات",
+  "availableBagsTitle": "الشنط المتاحة",
+  "restaurantNameMadbinaZamalek": "مطبنة - الزمالك",
+  "restaurantBranchesCount": "{count} فرع",
+  "@restaurantBranchesCount": {
+    "description": "نص عدد الفروع",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "restaurantDistanceKilometers": "{distance} كيلومتر",
+  "@restaurantDistanceKilometers": {
+    "description": "المسافة إلى المطعم بالكيلومتر",
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "bagTitleAroussaSandwich": "شنطة سندوتش عروسة",
+  "bagTitleMasrawy": "شنطة مصراوي",
+  "statusBadgeAvailable": "متاح",
+  "statusBadgeNow": "الآن",
+  "productViewResults": "{count} نتيجة",
+  "@productViewResults": {
+    "description": "عدد نتائج المنتجات",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "couponPageTitle": "كوبون الخصم",
+  "couponCodeLabel": "كود الكوبون الخاص بك",
+  "couponPageDescription": "استخدم هذا الكود لاستبدال نقاطك",
+  "couponCopyButton": "نسخ الكود",
+  "couponCopiedMessage": "تم نسخ كود الكوبون!",
+  "couponUniqueText": "هذا الكود خاص بحسابك",
+  "bagelMysteryBagPickupOnlyBadge": "🛍️  للاستلام فقط",
+  "bagelMysteryBagStoreName": "جيز بايجلز آند كوفي - الشيخ زايد",
+  "bagelMysteryBagTitle": "شنطة بايجل مفاجأة",
+  "bagelMysteryBagAvailableCount": "متاح {count}",
+  "@bagelMysteryBagAvailableCount": {
+    "description": "نص عدد المتاح في شنطة البايجل",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagelMysteryBagDescription": "قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.",
+  "bagelMysteryBagPickupTimeLabel": "وقت الاستلام",
+  "bagelMysteryBagPickupTimeValue": "4:00 م - 11:00 م",
+  "bagelMysteryBagLocationLabel": "الموقع",
+  "bagelMysteryBagLocationValue": "ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142",
+  "bagelMysteryBagContactLabel": "التواصل",
+  "bagelMysteryBagIngredientsAndAllergens": "المكونات والمواد المسببة للحساسية",
+  "bagelMysteryBagAllergenNotice": "المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.",
+  "bagelMysteryBagCustomerReviews": "آراء العملاء",
+  "bagelMysteryBagComingSoon": "قريباً",
+  "bagelMysteryBagReviewsComingSoon": "ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.",
+  "bagelMysteryBagReservedState": "✓  تم الحجز! نراك وقت الاستلام"
 }
