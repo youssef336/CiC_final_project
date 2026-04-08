@@ -11,7 +11,8 @@ import '../../../../../generated/l10n.dart';
 import 'shipinng_item.dart';
 
 class ShipinngSection extends StatefulWidget {
-  const ShipinngSection({super.key});
+  const ShipinngSection({super.key, required this.onSelectionChanged});
+  final VoidCallback onSelectionChanged;
 
   @override
   State<ShipinngSection> createState() => _ShipinngSectionState();
@@ -32,6 +33,7 @@ class _ShipinngSectionState extends State<ShipinngSection>
               selectedIndex = 0;
               context.read<OrderEntity>().payWithCash = true;
             });
+            widget.onSelectionChanged();
           },
           isSelected: selectedIndex == 0,
           title: S.of(context)!.checkOutViewShipingTitle1,
@@ -68,6 +70,7 @@ class _ShipinngSectionState extends State<ShipinngSection>
               selectedIndex = 1;
               context.read<OrderEntity>().payWithCash = false;
             });
+            widget.onSelectionChanged();
           },
           isSelected: selectedIndex == 1,
           title: S.of(context)!.checkOutViewShipingTitle2,

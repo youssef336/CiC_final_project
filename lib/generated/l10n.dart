@@ -397,11 +397,107 @@ abstract class S {
   /// **'Pay with PayPal'**
   String get checkOutViewPayWithPayPal;
 
+  /// No description provided for @checkOutViewPayWithVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Visa'**
+  String get checkOutViewPayWithVisa;
+
+  /// No description provided for @checkOutViewPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get checkOutViewPlaceOrder;
+
   /// No description provided for @checkOutViewNext.
   ///
   /// In en, this message translates to:
   /// **'Next'**
   String get checkOutViewNext;
+
+  /// No description provided for @checkOutViewPaymentMethodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get checkOutViewPaymentMethodTitle;
+
+  /// No description provided for @checkOutViewSavedCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved card'**
+  String get checkOutViewSavedCardTitle;
+
+  /// No description provided for @checkOutViewUseSavedCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Use saved card'**
+  String get checkOutViewUseSavedCard;
+
+  /// No description provided for @checkOutViewDeleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete card'**
+  String get checkOutViewDeleteCard;
+
+  /// No description provided for @checkOutViewCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Card holder name'**
+  String get checkOutViewCardHolderName;
+
+  /// No description provided for @checkOutViewEnterCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the card holder name'**
+  String get checkOutViewEnterCardHolderName;
+
+  /// No description provided for @checkOutViewCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get checkOutViewCardNumber;
+
+  /// No description provided for @checkOutViewCardNumberOrSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number or saved card'**
+  String get checkOutViewCardNumberOrSaved;
+
+  /// No description provided for @checkOutViewInvalidCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid card number'**
+  String get checkOutViewInvalidCardNumber;
+
+  /// No description provided for @checkOutViewInvalidExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid expiry date'**
+  String get checkOutViewInvalidExpiryDate;
+
+  /// No description provided for @checkOutViewInvalidCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid CVV'**
+  String get checkOutViewInvalidCvv;
+
+  /// No description provided for @checkOutViewOnlySaveLast4.
+  ///
+  /// In en, this message translates to:
+  /// **'Only card holder, last 4 digits, and expiry date will be saved.'**
+  String get checkOutViewOnlySaveLast4;
+
+  /// No description provided for @checkOutViewVisaValidationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter valid Visa card details'**
+  String get checkOutViewVisaValidationError;
+
+  /// No description provided for @checkOutViewVisaSavedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Card details saved successfully'**
+  String get checkOutViewVisaSavedSuccess;
 
   /// No description provided for @orderSummaryWidgetTitle.
   ///

@@ -163,7 +163,57 @@ class SEn extends S {
   String get checkOutViewPayWithPayPal => 'Pay with PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'Pay with Visa';
+
+  @override
+  String get checkOutViewPlaceOrder => 'Place Order';
+
+  @override
   String get checkOutViewNext => 'Next';
+
+  @override
+  String get checkOutViewPaymentMethodTitle => 'Payment Method';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'Saved card';
+
+  @override
+  String get checkOutViewUseSavedCard => 'Use saved card';
+
+  @override
+  String get checkOutViewDeleteCard => 'Delete card';
+
+  @override
+  String get checkOutViewCardHolderName => 'Card holder name';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'Enter the card holder name';
+
+  @override
+  String get checkOutViewCardNumber => 'Card number';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'Card number or saved card';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'Invalid card number';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'Invalid expiry date';
+
+  @override
+  String get checkOutViewInvalidCvv => 'Invalid CVV';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'Only card holder, last 4 digits, and expiry date will be saved.';
+
+  @override
+  String get checkOutViewVisaValidationError =>
+      'Please enter valid Visa card details';
+
+  @override
+  String get checkOutViewVisaSavedSuccess => 'Card details saved successfully';
 
   @override
   String get orderSummaryWidgetTitle => 'Order Summary :';

@@ -162,7 +162,57 @@ class SAr extends S {
   String get checkOutViewPayWithPayPal => 'الدفع باستخدام PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'الدفع بالفيزا';
+
+  @override
+  String get checkOutViewPlaceOrder => 'تأكيد الطلب';
+
+  @override
   String get checkOutViewNext => 'التالي';
+
+  @override
+  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewDeleteCard => 'حذف البطاقة';
+
+  @override
+  String get checkOutViewCardHolderName => 'اسم صاحب البطاقة';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'ادخلي اسم صاحب البطاقة';
+
+  @override
+  String get checkOutViewCardNumber => 'رقم البطاقة';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'رقم البطاقة أو البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'رقم البطاقة غير صحيح';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'تاريخ غير صحيح';
+
+  @override
+  String get checkOutViewInvalidCvv => 'CVV غير صحيح';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'سيتم حفظ اسم البطاقة وآخر 4 أرقام وتاريخ الانتهاء فقط.';
+
+  @override
+  String get checkOutViewVisaValidationError =>
+      'من فضلك أدخلي بيانات فيزا صحيحة';
+
+  @override
+  String get checkOutViewVisaSavedSuccess => 'تم حفظ بيانات البطاقة بنجاح';
 
   @override
   String get orderSummaryWidgetTitle => 'ملخص الطلب:';

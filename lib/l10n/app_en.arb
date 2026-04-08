@@ -63,7 +63,23 @@
     "checkOutViewShipingError": "Please Select Payment Method",
     "checkOutViewShipingSubtitle2": "Select Payment Method",
     "checkOutViewPayWithPayPal": "Pay with PayPal",
+    "checkOutViewPayWithVisa": "Pay with Visa",
+    "checkOutViewPlaceOrder": "Place Order",
     "checkOutViewNext": "Next",
+    "checkOutViewPaymentMethodTitle": "Payment Method",
+    "checkOutViewSavedCardTitle": "Saved card",
+    "checkOutViewUseSavedCard": "Use saved card",
+    "checkOutViewDeleteCard": "Delete card",
+    "checkOutViewCardHolderName": "Card holder name",
+    "checkOutViewEnterCardHolderName": "Enter the card holder name",
+    "checkOutViewCardNumber": "Card number",
+    "checkOutViewCardNumberOrSaved": "Card number or saved card",
+    "checkOutViewInvalidCardNumber": "Invalid card number",
+    "checkOutViewInvalidExpiryDate": "Invalid expiry date",
+    "checkOutViewInvalidCvv": "Invalid CVV",
+    "checkOutViewOnlySaveLast4": "Only card holder, last 4 digits, and expiry date will be saved.",
+    "checkOutViewVisaValidationError": "Please enter valid Visa card details",
+    "checkOutViewVisaSavedSuccess": "Card details saved successfully",
 
 
     "orderSummaryWidgetTitle": "Order Summary :",
@@ -253,4 +269,3 @@
   "foodScanFreshnessSpoilageCheck": "Freshness / Spoilage Check",
   "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting."
 }
-

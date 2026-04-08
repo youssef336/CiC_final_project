@@ -29,7 +29,11 @@ class OrderModel {
     orderProducts: orderEntity.cartEntites.cartItems
         .map((e) => OrderProductModel.fromEntity(entity: e))
         .toList(),
-    paymentMethod: orderEntity.payWithCash! ? 'Cash' : 'PayPal',
+    paymentMethod: orderEntity.payWithCash == true
+        ? 'Cash'
+        : orderEntity.onlinePaymentMethod == 'visa'
+            ? 'Visa'
+            : 'PayPal',
   );
   Map<String, dynamic> toJson() => {
     'orderId': orderId,

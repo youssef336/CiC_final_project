@@ -7,6 +7,10 @@ class OrderEntity {
   final String uID;
   final CartEntites cartEntites;
   bool? payWithCash;
+  String onlinePaymentMethod;
+  String? cardHolderName;
+  String? cardNumber;
+  String? expiryDate;
 
   // final List<NotificationEntity>? notificationEntity;
   ShipingAddressEntity shipingAddressEntity = ShipingAddressEntity();
@@ -17,6 +21,10 @@ class OrderEntity {
     required this.cartEntites,
     this.payWithCash,
     required this.uID,
+    this.onlinePaymentMethod = 'paypal',
+    this.cardHolderName,
+    this.cardNumber,
+    this.expiryDate,
   });
 
   void applyCouponCode(String code) {
