@@ -12,6 +12,7 @@ import 'package:mysterybag/core/services/database_servies.dart';
 import 'package:mysterybag/core/services/firebase_auth_services.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/utils/back_end_endpoints.dart';
+import 'package:mysterybag/core/utils/hash_helper.dart';
 import 'package:mysterybag/features/auth/data/models/user_model.dart';
 import 'package:mysterybag/features/auth/domains/entities/user_entity.dart';
 import 'package:mysterybag/features/auth/domains/repos/auth_repo.dart';
@@ -35,7 +36,12 @@ class AuthRepoImplemtation extends AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity = UserEntity(id: user.uid, name: name, email: email);
+      var userEntity = UserEntity(
+        id: user.uid,
+        name: name,
+        email: email,
+        passwordHash: HashHelper.passwordHash(password),
+      );
       await addUserData(user: userEntity);
 
       return right(userEntity);

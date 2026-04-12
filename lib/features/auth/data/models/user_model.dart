@@ -3,7 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mysterybag/features/auth/domains/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
-  UserModel({required super.id, required super.name, required super.email});
+  UserModel({
+    required super.id,
+    required super.name,
+    required super.email,
+    super.passwordHash,
+  });
 
   factory UserModel.fromFireabaseUser(User user) {
     return UserModel(
@@ -17,6 +22,7 @@ class UserModel extends UserEntity {
       id: json['id'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
+      passwordHash: json['passwordHash'] as String?,
     );
   }
 
@@ -25,10 +31,16 @@ class UserModel extends UserEntity {
       id: userEntity.id,
       name: userEntity.name,
       email: userEntity.email,
+      passwordHash: userEntity.passwordHash,
     );
   }
 
-  Map<String, String> toMap() {
-    return {'id': id, 'name': name, 'email': email};
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      if (passwordHash != null) 'passwordHash': passwordHash,
+    };
   }
 }
