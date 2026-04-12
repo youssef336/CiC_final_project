@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mysterybag/core/errors/exception.dart';
+import 'package:mysterybag/core/utils/hash_helper.dart';
 
 class FirebaseAuthServices {
   Future deleteUser() async {
@@ -15,8 +16,12 @@ class FirebaseAuthServices {
     required String password,
   }) async {
     try {
+      final hashedPassword = HashHelper.passwordHash(password);
       final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+          .createUserWithEmailAndPassword(
+            email: email,
+            password: hashedPassword,
+          );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log(
@@ -53,11 +58,21 @@ class FirebaseAuthServices {
     required String password,
   }) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return credential.user!;
+      final hashedPassword = HashHelper.passwordHash(password);
+
+      try {
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: hashedPassword);
+        return credential.user!;
+      } on FirebaseAuthException catch (e) {
+        if (e.code != 'user-not-found' && e.code != 'wrong-password') {
+          rethrow;
+        }
+
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+        return credential.user!;
+      }
     } on FirebaseAuthException catch (e) {
       log(
         "Error in FirebaseAuthServices.signInWithEmailAndPassword: $e code: ${e.code} message: ${e.message} ",
