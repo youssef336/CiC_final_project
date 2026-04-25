@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/core/utils/text_styles.dart';
+import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
+import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
+import 'package:mysterybag/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
@@ -27,11 +31,25 @@ class PaymentSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final order = context.watch<OrderEntity>();
+    final visaSelected =
+        context.read<OrderEntity>().paymentMethod ==
+        CheckoutPaymentMethod.visa;
     return SingleChildScrollView(
       child: Column(
         children: [
           const SizedBox(height: 24),
+          if (visaSelected)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Text(
+                S.of(context)!.paymentSectionVisaHint,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.cairoRegular.copyWith(
+                  color: Theme.of(context).hintColor,
+                  fontSize: 13,
+                ),
+              ),
+            ),
           const OrderSummaryWidget(),
           if (order.payWithCash != true) ...[
             const SizedBox(height: 16),

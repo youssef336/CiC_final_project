@@ -48,26 +48,32 @@ class ShipinngItem extends StatelessWidget {
                   ? const ActiveShipinngItemDot()
                   : const InActiveShipinngItemDot(),
               const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: AppTextStyles.cairoRegular.copyWith(
-                      height: 1.70,
-                      fontWeight: FontWeight.w600,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.cairoRegular.copyWith(
+                        height: 1.70,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    subTitle,
-                    textAlign: TextAlign.right,
-                    style: AppTextStyles.cairoRegular.copyWith(
-                      height: 1.60,
-                      color: Colors.black.withOpacity(0.5),
+                    const SizedBox(height: 6),
+                    Text(
+                      subTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.right,
+                      style: AppTextStyles.cairoRegular.copyWith(
+                        height: 1.60,
+                        color: Colors.black.withOpacity(0.5),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Spacer(),
               Center(child: price),

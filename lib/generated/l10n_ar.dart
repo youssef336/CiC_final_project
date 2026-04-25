@@ -171,48 +171,53 @@ class SAr extends S {
   String get checkOutViewNext => 'التالي';
 
   @override
-  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
+  String get checkOutViewShipingTitle3 => 'الدفع ببطاقة فيزا';
 
   @override
-  String get checkOutViewSavedCardTitle => 'البطاقة المحفوظة';
+  String get checkOutViewShipingSubtitle3 =>
+      'يتم حفظ البطاقة على هذا الجهاز فقط';
 
   @override
-  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
+  String get checkOutViewConfirmPaymentVisa => 'تأكيد الدفع';
 
   @override
-  String get checkOutViewDeleteCard => 'حذف البطاقة';
+  String get checkOutViewConfirmOrderCash => 'تأكيد الطلب';
 
   @override
-  String get checkOutViewCardHolderName => 'اسم صاحب البطاقة';
+  String get checkOutViewVisaMissing => 'احفظ بيانات فيزا قبل الدفع.';
 
   @override
-  String get checkOutViewEnterCardHolderName => 'ادخلي اسم صاحب البطاقة';
+  String get visaDetailsTitle => 'بيانات فيزا';
 
   @override
-  String get checkOutViewCardNumber => 'رقم البطاقة';
+  String get visaDetailsCardNumber => 'رقم البطاقة';
 
   @override
-  String get checkOutViewCardNumberOrSaved => 'رقم البطاقة أو البطاقة المحفوظة';
+  String get visaDetailsCardHolder => 'الاسم على البطاقة';
 
   @override
-  String get checkOutViewInvalidCardNumber => 'رقم البطاقة غير صحيح';
+  String get visaDetailsExpiry => 'انتهاء الصلاحية (شهر/سنة)';
 
   @override
-  String get checkOutViewInvalidExpiryDate => 'تاريخ غير صحيح';
+  String get visaDetailsCvv => 'رمز الأمان';
 
   @override
-  String get checkOutViewInvalidCvv => 'CVV غير صحيح';
+  String get visaDetailsSave => 'حفظ ومتابعة';
 
   @override
-  String get checkOutViewOnlySaveLast4 =>
-      'سيتم حفظ اسم البطاقة وآخر 4 أرقام وتاريخ الانتهاء فقط.';
+  String get visaDetailsDelete => 'حذف';
 
   @override
-  String get checkOutViewVisaValidationError =>
-      'من فضلك أدخلي بيانات فيزا صحيحة';
+  String get visaDetailsSavedLabel => 'بطاقة محفوظة';
 
   @override
-  String get checkOutViewVisaSavedSuccess => 'تم حفظ بيانات البطاقة بنجاح';
+  String visaDetailsEndsWith(String last4) {
+    return 'تنتهي بـ $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'سيتم التأكيد ببطاقة فيزا المحفوظة (وليس PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'ملخص الطلب:';

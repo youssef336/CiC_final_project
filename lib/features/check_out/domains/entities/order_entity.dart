@@ -1,16 +1,13 @@
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
+import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
 import 'package:mysterybag/features/check_out/domains/entities/shiping_address_entity.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 
 class OrderEntity {
   final String uID;
   final CartEntites cartEntites;
-  bool? payWithCash;
-  String onlinePaymentMethod;
-  String? cardHolderName;
-  String? cardNumber;
-  String? expiryDate;
+  CheckoutPaymentMethod? paymentMethod;
 
   // final List<NotificationEntity>? notificationEntity;
   ShipingAddressEntity shipingAddressEntity = ShipingAddressEntity();
@@ -19,7 +16,7 @@ class OrderEntity {
   OrderEntity({
     // required this.notificationEntity,
     required this.cartEntites,
-    this.payWithCash,
+    this.paymentMethod,
     required this.uID,
     this.onlinePaymentMethod = 'paypal',
     this.cardHolderName,
@@ -45,7 +42,7 @@ class OrderEntity {
   }
 
   double calculateShipingCost() {
-    return (payWithCash ?? false) ? 40 : 0;
+    return paymentMethod == CheckoutPaymentMethod.cashOnDelivery ? 40 : 0;
   }
 
   double calulateShipingDiscount() {

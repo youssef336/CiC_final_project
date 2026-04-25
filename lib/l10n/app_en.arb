@@ -66,22 +66,30 @@
     "checkOutViewPayWithVisa": "Pay with Visa",
     "checkOutViewPlaceOrder": "Place Order",
     "checkOutViewNext": "Next",
-    "checkOutViewPaymentMethodTitle": "Payment Method",
-    "checkOutViewSavedCardTitle": "Saved card",
-    "checkOutViewUseSavedCard": "Use saved card",
-    "checkOutViewDeleteCard": "Delete card",
-    "checkOutViewCardHolderName": "Card holder name",
-    "checkOutViewEnterCardHolderName": "Enter the card holder name",
-    "checkOutViewCardNumber": "Card number",
-    "checkOutViewCardNumberOrSaved": "Card number or saved card",
-    "checkOutViewInvalidCardNumber": "Invalid card number",
-    "checkOutViewInvalidExpiryDate": "Invalid expiry date",
-    "checkOutViewInvalidCvv": "Invalid CVV",
-    "checkOutViewOnlySaveLast4": "Only card holder, last 4 digits, and expiry date will be saved.",
-    "checkOutViewVisaValidationError": "Please enter valid Visa card details",
-    "checkOutViewVisaSavedSuccess": "Card details saved successfully",
+    "checkOutViewShipingTitle3": "Pay with Visa",
+    "checkOutViewShipingSubtitle3": "Card saved on this device only",
+    "checkOutViewConfirmPaymentVisa": "Confirm payment",
+    "checkOutViewConfirmOrderCash": "Place order",
+    "checkOutViewVisaMissing": "Save your Visa card before paying.",
+    "visaDetailsTitle": "Visa details",
+    "visaDetailsCardNumber": "Card number",
+    "visaDetailsCardHolder": "Name on card",
+    "visaDetailsExpiry": "Expiry (MM/YY)",
+    "visaDetailsCvv": "CVV",
+    "visaDetailsSave": "Save and continue",
+    "visaDetailsDelete": "Delete",
+    "visaDetailsSavedLabel": "Saved card",
+    "visaDetailsEndsWith": "Ends with {last4}",
+    "@visaDetailsEndsWith": {
+        "placeholders": {
+            "last4": {
+                "type": "String"
+            }
+        }
+    },
 
 
+    "paymentSectionVisaHint": "You will confirm with your saved Visa card (not PayPal).",
     "orderSummaryWidgetTitle": "Order Summary :",
     "orderSummaryWidgetSubtotal": "Subtotal :",
     "orderSummaryWidgetShipping": "Shipping :",

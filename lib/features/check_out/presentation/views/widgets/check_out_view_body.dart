@@ -9,9 +9,12 @@ import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/helper_functions/build_error_bar.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/widgets/custom_buttom.dart';
+import 'package:mysterybag/core/services/visa_card_prefs_services.dart';
 import 'package:mysterybag/features/check_out/domains/entities/PaypalPaymentEntity/PaypalPaymentEntity.dart'
     show PaypalPaymentEntity;
+import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
 import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
+import 'package:mysterybag/features/check_out/presentation/views/widgets/visa_details_view.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/check_out_stage.dart';
 import 'package:provider/provider.dart';
 
@@ -95,8 +98,8 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                   curve: Curves.fastOutSlowIn,
                 );
               } else if (index == 1) {
-                var orderEntity = context.read<OrderEntity>().payWithCash;
-                if (orderEntity != null) {
+                final method = context.read<OrderEntity>().paymentMethod;
+                if (method != null) {
                   pageController.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 600),
@@ -153,8 +156,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 _handleAddressSectionValidation();
               } else {
                 _processPayment();
-                // var orderEntity = context.read<OrderEntity>();
-                // context.read<OrderCubit>().addOrder(order: orderEntity);
               }
             },
           ),
@@ -165,6 +166,34 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   void _handleShipinngSectionValidation(BuildContext context) {
+    final order = context.read<OrderEntity>();
+    if (order.paymentMethod == null) {
+      showErrorBar(context, S.of(context)!.checkOutViewShipingError);
+      return;
+    }
+    if (order.paymentMethod == CheckoutPaymentMethod.visa) {
+      if (VisaCardPrefsServices.hasSavedCard()) {
+        pageController.animateToPage(
+          1,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.fastOutSlowIn,
+        );
+        return;
+      }
+      Navigator.of(context)
+          .push<bool>(
+            MaterialPageRoute(builder: (_) => const VisaDetailsView()),
+          )
+          .then((saved) {
+            if (!mounted || saved != true) return;
+            pageController.animateToPage(
+              1,
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.fastOutSlowIn,
+            );
+          });
+      return;
+    }
     pageController.animateToPage(
       1,
       duration: const Duration(milliseconds: 600),
@@ -173,20 +202,19 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   String getNextButtonText(int currentPageindex) {
-    final orderEntity = context.read<OrderEntity>();
+    final method = context.read<OrderEntity>().paymentMethod;
     switch (currentPageindex) {
       case 0:
-        return S.of(context)!.checkOutViewNext;
       case 1:
         return S.of(context)!.checkOutViewNext;
       case 2:
-        if (orderEntity.payWithCash == true) {
-          return S.of(context)!.checkOutViewPlaceOrder;
+        if (method == CheckoutPaymentMethod.paypal) {
+          return S.of(context)!.checkOutViewPayWithPayPal;
         }
-        if (orderEntity.onlinePaymentMethod == 'visa') {
-          return S.of(context)!.checkOutViewPayWithVisa;
+        if (method == CheckoutPaymentMethod.visa) {
+          return S.of(context)!.checkOutViewConfirmPaymentVisa;
         }
-        return S.of(context)!.checkOutViewPayWithPayPal;
+        return S.of(context)!.checkOutViewConfirmOrderCash;
       default:
         return S.of(context)!.checkOutViewNext;
     }
@@ -207,110 +235,54 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   void _processPayment() {
-    var orderEntity = context.read<OrderEntity>();
-    var addOrder = context.read<OrderCubit>();
+    final orderEntity = context.read<OrderEntity>();
+    final addOrder = context.read<OrderCubit>();
+    final method = orderEntity.paymentMethod;
 
-    if (orderEntity.payWithCash == true) {
+    if (method == CheckoutPaymentMethod.cashOnDelivery) {
       addOrder.addOrder(order: orderEntity);
       return;
     }
 
-    if (orderEntity.onlinePaymentMethod == 'visa') {
-      if (!_visaFormKey.currentState!.validate()) {
-        showErrorBar(
-          context,
-          S.of(context)!.checkOutViewVisaValidationError,
-        );
+    if (method == CheckoutPaymentMethod.visa) {
+      if (!VisaCardPrefsServices.hasSavedCard()) {
+        showErrorBar(context, S.of(context)!.checkOutViewVisaMissing);
         return;
       }
-      _saveVisaCardLocally(orderEntity);
-      showErrorBar(
-        context,
-        S.of(context)!.checkOutViewVisaSavedSuccess,
-      );
       addOrder.addOrder(order: orderEntity);
       return;
     }
 
-    PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
-      orderEntity,
-    );
+    if (method == CheckoutPaymentMethod.paypal) {
+      final paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
+        orderEntity,
+      );
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => PaypalCheckoutView(
-          sandboxMode: true,
-          clientId: KPaypalClientId,
-          secretKey: KPaypalSecrtKey,
-          transactions: [paypalPaymentEntity.toJson()],
-          note: "Contact us for any questions on your order.",
-          onSuccess: (Map params) async {
-            print("onSuccess: $params");
-            Navigator.pop(context);
-            showErrorBar(context, S.of(context)!.paymentSuccessMessage);
-            addOrder.addOrder(order: orderEntity);
-          },
-          onError: (error) {
-            print("onError: $error");
-            showErrorBar(context, S.of(context)!.paymentErrorMessage);
-            Navigator.pop(context);
-          },
-          onCancel: () {
-            print('cancelled:');
-          },
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => PaypalCheckoutView(
+            sandboxMode: true,
+            clientId: KPaypalClientId,
+            secretKey: KPaypalSecrtKey,
+            transactions: [paypalPaymentEntity.toJson()],
+            note: "Contact us for any questions on your order.",
+            onSuccess: (Map params) async {
+              print("onSuccess: $params");
+              Navigator.pop(context);
+              showErrorBar(context, S.of(context)!.paymentSuccessMessage);
+              addOrder.addOrder(order: orderEntity);
+            },
+            onError: (error) {
+              print("onError: $error");
+              showErrorBar(context, S.of(context)!.paymentErrorMessage);
+              Navigator.pop(context);
+            },
+            onCancel: () {
+              print('cancelled:');
+            },
+          ),
         ),
-      ),
-    );
-  }
-
-  void _loadSavedCardData() {
-    _cardHolderController.text = Prefs.getString(KSavedCardHolderName);
-    final savedLast4 = Prefs.getString(KSavedCardLast4);
-    _cardNumberController.text = savedLast4.isEmpty
-        ? ''
-        : '**** **** **** $savedLast4';
-    _expiryDateController.text = Prefs.getString(KSavedCardExpiryDate);
-  }
-
-  void _saveVisaCardLocally(OrderEntity orderEntity) {
-    orderEntity.cardHolderName = _cardHolderController.text.trim();
-    final digits = _cardNumberController.text
-        .replaceAll(' ', '')
-        .replaceAll('*', '');
-    final savedLast4 = digits.isNotEmpty
-        ? digits.substring(digits.length - 4)
-        : Prefs.getString(KSavedCardLast4);
-    orderEntity.cardNumber = savedLast4;
-    orderEntity.expiryDate = _expiryDateController.text.trim();
-
-    Prefs.setString(KSavedCardHolderName, orderEntity.cardHolderName!);
-    Prefs.setString(KSavedCardLast4, orderEntity.cardNumber!);
-    Prefs.setString(KSavedCardExpiryDate, orderEntity.expiryDate!);
-  }
-
-  void _loadSavedAddressData() {
-    _addressNameController.text = Prefs.getString(KSavedAddressName);
-    _addressEmailController.text = Prefs.getString(KSavedAddressEmail);
-    _addressLineController.text = Prefs.getString(KSavedAddressLine);
-    _addressCityController.text = Prefs.getString(KSavedAddressCity);
-    _addressFloorController.text = Prefs.getString(KSavedAddressFloor);
-    _addressPhoneController.text = Prefs.getString(KSavedAddressPhone);
-
-    final orderEntity = context.read<OrderEntity>();
-    orderEntity.shipingAddressEntity.name = _addressNameController.text;
-    orderEntity.shipingAddressEntity.email = _addressEmailController.text;
-    orderEntity.shipingAddressEntity.address = _addressLineController.text;
-    orderEntity.shipingAddressEntity.city = _addressCityController.text;
-    orderEntity.shipingAddressEntity.floor = _addressFloorController.text;
-    orderEntity.shipingAddressEntity.phone = _addressPhoneController.text;
-  }
-
-  void _saveAddressLocally() {
-    Prefs.setString(KSavedAddressName, _addressNameController.text.trim());
-    Prefs.setString(KSavedAddressEmail, _addressEmailController.text.trim());
-    Prefs.setString(KSavedAddressLine, _addressLineController.text.trim());
-    Prefs.setString(KSavedAddressCity, _addressCityController.text.trim());
-    Prefs.setString(KSavedAddressFloor, _addressFloorController.text.trim());
-    Prefs.setString(KSavedAddressPhone, _addressPhoneController.text.trim());
+      );
+    }
   }
 }

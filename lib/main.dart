@@ -111,9 +111,8 @@ class MysteryBag extends StatelessWidget {
                       ? const Locale('ar')
                       : Locale(locale.isEmpty ? 'ar' : locale),
               onGenerateRoute: onGenerateRoute,
-
-              // 🚀 أهم سطر هنا
-              home: CheckOutView(cartItems: fakeCart),
+              initialRoute: SplashView.routeName,
+              debugShowCheckedModeBanner: false,
             );
           },
         );

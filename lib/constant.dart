@@ -35,6 +35,7 @@ const KCupon = 'cupon';
 const KCuponDiscount = 'cuponDiscount';
 
 const KUserData = 'userData';
+const KVisaCardLocal = 'visaCardLocal';
 const Kpoints = 'points';
 const Klocale = 'locale';
 const Kavatar = 'avatar';

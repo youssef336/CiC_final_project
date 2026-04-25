@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/core/entities/demo_products.dart';
 import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
 import 'package:mysterybag/features/auth/presentation/views/sign_up_view.dart';
 import 'package:mysterybag/features/check_out/presentation/views/check_out_view.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
+import 'package:mysterybag/features/home/domain/entities/cart_item_entity.dart';
 import 'package:mysterybag/features/home/presentation/views/main_view.dart';
 import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart'; // ✅ added
 import 'package:mysterybag/features/home/presentation/views/widgets/profile_viewLanguage_page.dart';
@@ -64,8 +66,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileViewAvtarPage.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileViewAvtarPage());
     case CheckOutView.routeName:
-      final args = settings.arguments as Map<String, dynamic>;
-      final cartItems = args['cartItems'] as CartEntites;
+      final args = settings.arguments;
+      final CartEntites cartItems;
+      if (args is Map<String, dynamic> && args['cartItems'] is CartEntites) {
+        cartItems = args['cartItems'] as CartEntites;
+      } else {
+        cartItems = CartEntites([
+          CartItemEntity(productEntity: demoProducts.first, count: 1),
+        ]);
+      }
       return MaterialPageRoute(
         builder: (_) => CheckOutView(
           cartItems: cartItems,

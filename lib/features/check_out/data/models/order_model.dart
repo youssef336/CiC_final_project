@@ -1,5 +1,6 @@
 import 'package:uuid/uuid.dart';
 
+import '../../domains/entities/checkout_payment_method.dart';
 import '../../domains/entities/order_entity.dart';
 import 'order_product_model.dart';
 import 'shipping_address_model.dart';
@@ -29,11 +30,11 @@ class OrderModel {
     orderProducts: orderEntity.cartEntites.cartItems
         .map((e) => OrderProductModel.fromEntity(entity: e))
         .toList(),
-    paymentMethod: orderEntity.payWithCash == true
-        ? 'Cash'
-        : orderEntity.onlinePaymentMethod == 'visa'
-            ? 'Visa'
-            : 'PayPal',
+    paymentMethod: switch (orderEntity.paymentMethod!) {
+      CheckoutPaymentMethod.cashOnDelivery => 'Cash',
+      CheckoutPaymentMethod.paypal => 'PayPal',
+      CheckoutPaymentMethod.visa => 'Visa',
+    },
   );
   Map<String, dynamic> toJson() => {
     'orderId': orderId,

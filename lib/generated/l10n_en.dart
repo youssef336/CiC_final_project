@@ -172,48 +172,52 @@ class SEn extends S {
   String get checkOutViewNext => 'Next';
 
   @override
-  String get checkOutViewPaymentMethodTitle => 'Payment Method';
+  String get checkOutViewShipingTitle3 => 'Pay with Visa';
 
   @override
-  String get checkOutViewSavedCardTitle => 'Saved card';
+  String get checkOutViewShipingSubtitle3 => 'Card saved on this device only';
 
   @override
-  String get checkOutViewUseSavedCard => 'Use saved card';
+  String get checkOutViewConfirmPaymentVisa => 'Confirm payment';
 
   @override
-  String get checkOutViewDeleteCard => 'Delete card';
+  String get checkOutViewConfirmOrderCash => 'Place order';
 
   @override
-  String get checkOutViewCardHolderName => 'Card holder name';
+  String get checkOutViewVisaMissing => 'Save your Visa card before paying.';
 
   @override
-  String get checkOutViewEnterCardHolderName => 'Enter the card holder name';
+  String get visaDetailsTitle => 'Visa details';
 
   @override
-  String get checkOutViewCardNumber => 'Card number';
+  String get visaDetailsCardNumber => 'Card number';
 
   @override
-  String get checkOutViewCardNumberOrSaved => 'Card number or saved card';
+  String get visaDetailsCardHolder => 'Name on card';
 
   @override
-  String get checkOutViewInvalidCardNumber => 'Invalid card number';
+  String get visaDetailsExpiry => 'Expiry (MM/YY)';
 
   @override
-  String get checkOutViewInvalidExpiryDate => 'Invalid expiry date';
+  String get visaDetailsCvv => 'CVV';
 
   @override
-  String get checkOutViewInvalidCvv => 'Invalid CVV';
+  String get visaDetailsSave => 'Save and continue';
 
   @override
-  String get checkOutViewOnlySaveLast4 =>
-      'Only card holder, last 4 digits, and expiry date will be saved.';
+  String get visaDetailsDelete => 'Delete';
 
   @override
-  String get checkOutViewVisaValidationError =>
-      'Please enter valid Visa card details';
+  String get visaDetailsSavedLabel => 'Saved card';
 
   @override
-  String get checkOutViewVisaSavedSuccess => 'Card details saved successfully';
+  String visaDetailsEndsWith(String last4) {
+    return 'Ends with $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'You will confirm with your saved Visa card (not PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'Order Summary :';
