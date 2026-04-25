@@ -9,11 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mysterybag/main.dart';
+import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MysteryBag());
+    await tester.pumpWidget(MysteryBag(fakeCart: CartEntites([])));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -8,6 +8,10 @@ class OrderEntity {
   final String uID;
   final CartEntites cartEntites;
   CheckoutPaymentMethod? paymentMethod;
+  String onlinePaymentMethod;
+  String? cardHolderName;
+  String? cardNumber;
+  String? expiryDate;
 
   // final List<NotificationEntity>? notificationEntity;
   ShipingAddressEntity shipingAddressEntity = ShipingAddressEntity();

@@ -617,4 +617,41 @@ class SEn extends S {
   @override
   String get foodScanLowConfidenceMessage =>
       'Result is not confident enough. Try another photo with better lighting.';
+
+  @override
+  String get checkOutViewPaymentMethodTitle => 'Payment Method';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'Saved Card';
+
+  @override
+  String get checkOutViewUseSavedCard => 'Use Saved Card';
+
+  @override
+  String get checkOutViewDeleteCard => 'Delete';
+
+  @override
+  String get checkOutViewCardHolderName => 'Card Holder Name';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'Please enter card holder name';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'Card Number (or use saved)';
+
+  @override
+  String get checkOutViewCardNumber => 'Card Number';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'Invalid card number';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'Invalid expiry date (MM/YY)';
+
+  @override
+  String get checkOutViewInvalidCvv => 'Invalid CVV';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'We only save the last 4 digits of your card for your security.';
 }

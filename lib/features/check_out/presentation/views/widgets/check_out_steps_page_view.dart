@@ -73,12 +73,6 @@ class CheckOutStepsPageView extends StatelessWidget {
       ),
       PaymentSection(
         pageController: pageController,
-        visaFormKey: visaFormKey,
-        cardHolderController: cardHolderController,
-        cardNumberController: cardNumberController,
-        expiryDateController: expiryDateController,
-        cvvController: cvvController,
-        onPaymentMethodChanged: onPaymentMethodChanged,
       ),
     ];
   }

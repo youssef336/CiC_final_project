@@ -1248,6 +1248,78 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Result is not confident enough. Try another photo with better lighting.'**
   String get foodScanLowConfidenceMessage;
+
+  /// No description provided for @checkOutViewPaymentMethodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get checkOutViewPaymentMethodTitle;
+
+  /// No description provided for @checkOutViewSavedCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Card'**
+  String get checkOutViewSavedCardTitle;
+
+  /// No description provided for @checkOutViewUseSavedCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Saved Card'**
+  String get checkOutViewUseSavedCard;
+
+  /// No description provided for @checkOutViewDeleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get checkOutViewDeleteCard;
+
+  /// No description provided for @checkOutViewCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Holder Name'**
+  String get checkOutViewCardHolderName;
+
+  /// No description provided for @checkOutViewEnterCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter card holder name'**
+  String get checkOutViewEnterCardHolderName;
+
+  /// No description provided for @checkOutViewCardNumberOrSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Number (or use saved)'**
+  String get checkOutViewCardNumberOrSaved;
+
+  /// No description provided for @checkOutViewCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Number'**
+  String get checkOutViewCardNumber;
+
+  /// No description provided for @checkOutViewInvalidCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid card number'**
+  String get checkOutViewInvalidCardNumber;
+
+  /// No description provided for @checkOutViewInvalidExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid expiry date (MM/YY)'**
+  String get checkOutViewInvalidExpiryDate;
+
+  /// No description provided for @checkOutViewInvalidCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid CVV'**
+  String get checkOutViewInvalidCvv;
+
+  /// No description provided for @checkOutViewOnlySaveLast4.
+  ///
+  /// In en, this message translates to:
+  /// **'We only save the last 4 digits of your card for your security.'**
+  String get checkOutViewOnlySaveLast4;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

@@ -49,7 +49,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   @override
   void initState() {
-    pageController = PageController(initialPage: 2);
+    pageController = PageController(initialPage: 0);
     _loadSavedCardData();
     _loadSavedAddressData();
 
@@ -58,7 +58,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         currentPageindex = pageController.page!.toInt();
       });
     });
-    currentPageindex = 2;
+    currentPageindex = 0;
     super.initState();
   }
 
@@ -249,7 +249,30 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         showErrorBar(context, S.of(context)!.checkOutViewVisaMissing);
         return;
       }
-      addOrder.addOrder(order: orderEntity);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(S.of(context)!.checkOutViewConfirmPaymentVisa),
+            content: const Text('هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(S.of(context)!.profileViewLogoutText3), // "إلغاء" Cancel
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  addOrder.addOrder(order: orderEntity);
+                },
+                child: Text(S.of(context)!.checkOutViewConfirmPaymentVisa), // "تأكيد الدفع" Confirm
+              ),
+            ],
+          );
+        },
+      );
       return;
     }
 
@@ -284,5 +307,32 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         ),
       );
     }
+  }
+
+  void _loadSavedCardData() {
+    final card = VisaCardPrefsServices.loadCard();
+    if (card != null) {
+      _cardHolderController.text = card.cardHolderName;
+      _cardNumberController.text = card.cardNumberDigits;
+      _expiryDateController.text = card.expiry;
+    }
+  }
+
+  void _loadSavedAddressData() {
+    _addressNameController.text = Prefs.getString(KSavedAddressName);
+    _addressEmailController.text = Prefs.getString(KSavedAddressEmail);
+    _addressLineController.text = Prefs.getString(KSavedAddressLine);
+    _addressCityController.text = Prefs.getString(KSavedAddressCity);
+    _addressFloorController.text = Prefs.getString(KSavedAddressFloor);
+    _addressPhoneController.text = Prefs.getString(KSavedAddressPhone);
+  }
+
+  void _saveAddressLocally() {
+    Prefs.setString(KSavedAddressName, _addressNameController.text);
+    Prefs.setString(KSavedAddressEmail, _addressEmailController.text);
+    Prefs.setString(KSavedAddressLine, _addressLineController.text);
+    Prefs.setString(KSavedAddressCity, _addressCityController.text);
+    Prefs.setString(KSavedAddressFloor, _addressFloorController.text);
+    Prefs.setString(KSavedAddressPhone, _addressPhoneController.text);
   }
 }

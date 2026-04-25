@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/payment_item.dart';
+import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
 
 class OnlinePaymentMethodSection extends StatefulWidget {
   const OnlinePaymentMethodSection({
@@ -35,7 +36,8 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
   @override
   Widget build(BuildContext context) {
     final order = context.read<OrderEntity>();
-    final isCashOnDelivery = order.payWithCash == true;
+    final isCashOnDelivery =
+        order.paymentMethod == CheckoutPaymentMethod.cashOnDelivery;
     final savedCardLast4 = Prefs.getString(KSavedCardLast4);
     final hasSavedCard = savedCardLast4.isNotEmpty;
 
