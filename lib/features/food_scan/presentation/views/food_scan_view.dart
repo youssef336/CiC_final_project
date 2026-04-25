@@ -46,8 +46,9 @@ class _FoodScanViewState extends State<FoodScanView> {
     final lower = label.toLowerCase();
     if (lower == '__background__') return null;
     if (lower.startsWith('/g/') || lower.startsWith('/m/')) return null;
-    if (lower.startsWith('http://') || lower.startsWith('https://'))
+    if (lower.startsWith('http://') || lower.startsWith('https://')) {
       return null;
+    }
 
     final cleaned = label.replaceAll('"', '').trim();
     if (cleaned.isEmpty) return null;
@@ -167,10 +168,11 @@ class _FoodScanViewState extends State<FoodScanView> {
             'حدث خطأ غير متوقع. جرّب تاني أو استخدم "Nutrition & Health".';
       });
     } finally {
-      if (!mounted) return;
-      setState(() {
-        _spoilageBusy = false;
-      });
+      if (mounted) {
+        setState(() {
+          _spoilageBusy = false;
+        });
+      }
     }
   }
 
@@ -232,10 +234,11 @@ class _FoodScanViewState extends State<FoodScanView> {
     } catch (_) {
       if (!mounted) return;
     } finally {
-      if (!mounted) return;
-      setState(() {
-        _busy = false;
-      });
+      if (mounted) {
+        setState(() {
+          _busy = false;
+        });
+      }
     }
   }
 
@@ -464,8 +467,9 @@ class _FoodScanViewState extends State<FoodScanView> {
                                 child: FilledButton.icon(
                                   onPressed: () {
                                     final food = _detectedFood;
-                                    if (food == null || food.trim().isEmpty)
+                                    if (food == null || food.trim().isEmpty) {
                                       return;
+                                    }
                                     final prompt =
                                         'حلّل "$food".\n\n'
                                         'اكتب الرد بالعربي وبشكل مُفصّل ومنظّم في 4 أقسام (من غير مقدمات طويلة):\n'

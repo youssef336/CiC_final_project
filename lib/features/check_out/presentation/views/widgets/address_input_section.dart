@@ -19,11 +19,23 @@ class AddressInputSection extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.autoValidateMode,
+    required this.nameController,
+    required this.emailController,
+    required this.addressController,
+    required this.cityController,
+    required this.floorController,
+    required this.phoneController,
   });
 
   final GlobalKey<FormState> formKey;
   String? code;
   final ValueListenable<AutovalidateMode> autoValidateMode;
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController addressController;
+  final TextEditingController cityController;
+  final TextEditingController floorController;
+  final TextEditingController phoneController;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +49,7 @@ class AddressInputSection extends StatelessWidget {
             children: [
               const SizedBox(height: 24),
               CustomTextFormFeild(
+                controller: nameController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.name =
                       value!;
@@ -46,6 +59,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormFeild(
+                controller: emailController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.email =
                       value!;
@@ -55,6 +69,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormFeild(
+                controller: addressController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.address =
                       value!;
@@ -64,6 +79,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormFeild(
+                controller: cityController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.city =
                       value!;
@@ -73,6 +89,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormFeild(
+                controller: floorController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.floor =
                       value!;
@@ -82,6 +99,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               CustomTextFormFeild(
+                controller: phoneController,
                 onSaved: (value) {
                   context.read<OrderEntity>().shipingAddressEntity.phone =
                       value!;

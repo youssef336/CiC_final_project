@@ -9,7 +9,8 @@ plugins {
 android {
     namespace = "com.cicfinalproject.mysterybag"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // Match Flutter's default; install this exact version if missing (SDK Manager > NDK side by side).
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

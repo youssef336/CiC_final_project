@@ -163,7 +163,61 @@ class SEn extends S {
   String get checkOutViewPayWithPayPal => 'Pay with PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'Pay with Visa';
+
+  @override
+  String get checkOutViewPlaceOrder => 'Place Order';
+
+  @override
   String get checkOutViewNext => 'Next';
+
+  @override
+  String get checkOutViewShipingTitle3 => 'Pay with Visa';
+
+  @override
+  String get checkOutViewShipingSubtitle3 => 'Card saved on this device only';
+
+  @override
+  String get checkOutViewConfirmPaymentVisa => 'Confirm payment';
+
+  @override
+  String get checkOutViewConfirmOrderCash => 'Place order';
+
+  @override
+  String get checkOutViewVisaMissing => 'Save your Visa card before paying.';
+
+  @override
+  String get visaDetailsTitle => 'Visa details';
+
+  @override
+  String get visaDetailsCardNumber => 'Card number';
+
+  @override
+  String get visaDetailsCardHolder => 'Name on card';
+
+  @override
+  String get visaDetailsExpiry => 'Expiry (MM/YY)';
+
+  @override
+  String get visaDetailsCvv => 'CVV';
+
+  @override
+  String get visaDetailsSave => 'Save and continue';
+
+  @override
+  String get visaDetailsDelete => 'Delete';
+
+  @override
+  String get visaDetailsSavedLabel => 'Saved card';
+
+  @override
+  String visaDetailsEndsWith(String last4) {
+    return 'Ends with $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'You will confirm with your saved Visa card (not PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'Order Summary :';
