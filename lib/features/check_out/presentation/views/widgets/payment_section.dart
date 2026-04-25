@@ -5,7 +5,6 @@ import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart
 import 'package:mysterybag/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
 import 'address_summary_widget.dart';
 import 'online_payment_method_section.dart';
 import 'order_summary_widget.dart';
@@ -31,9 +30,8 @@ class PaymentSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final visaSelected =
-        context.read<OrderEntity>().paymentMethod ==
-        CheckoutPaymentMethod.visa;
+    final order = context.read<OrderEntity>();
+    final visaSelected = order.paymentMethod == CheckoutPaymentMethod.visa;
     return SingleChildScrollView(
       child: Column(
         children: [
