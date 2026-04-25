@@ -11,11 +11,14 @@ import 'package:mysterybag/core/helper_functions/themes.dart';
 import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
+
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_item_entity.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 
+import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -67,6 +70,7 @@ Future<void> main() async {
         providers: [
           BlocProvider(create: (_) => LocaleCubit()),
           BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => CartCubit()),
         ],
         child: MysteryBag(fakeCart: fakeCart),
       ),

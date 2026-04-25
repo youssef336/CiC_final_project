@@ -9,9 +9,9 @@ class OrderEntity {
   final CartEntites cartEntites;
   CheckoutPaymentMethod? paymentMethod;
   String onlinePaymentMethod;
-  String cardHolderName;
-  String cardNumber;
-  String expiryDate;
+  String? cardHolderName;
+  String? cardNumber;
+  String? expiryDate;
 
   // final List<NotificationEntity>? notificationEntity;
   ShipingAddressEntity shipingAddressEntity = ShipingAddressEntity();

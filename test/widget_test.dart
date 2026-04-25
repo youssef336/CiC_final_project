@@ -14,10 +14,12 @@ import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/core/cubits/theme/theme_cubit.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/main.dart';
+import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 
 void main() {
-  testWidgets('MysteryBag builds', (WidgetTester tester) async {
-    SharedPreferences.setMockInitialValues({});
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(MysteryBag(fakeCart: CartEntites([])));
 
     await tester.pumpWidget(
       MultiBlocProvider(

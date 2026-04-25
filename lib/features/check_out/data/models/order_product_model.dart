@@ -20,7 +20,7 @@ class OrderProductModel {
     return OrderProductModel(
       nameEn: entity.productEntity.nameEn,
       nameAr: entity.productEntity.nameAr,
-      imageUrl: entity.productEntity.imageUrl!,
+      imageUrl: entity.productEntity.imageUrl ?? '',
       code: entity.productEntity.code,
       price: entity.productEntity.price.toDouble(),
       quantity: entity.count,

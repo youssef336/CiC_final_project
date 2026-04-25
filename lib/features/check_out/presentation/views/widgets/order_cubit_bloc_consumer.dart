@@ -7,6 +7,9 @@ import 'package:mysterybag/features/check_out/presentation/manager/cubits/order_
 
 import '../../../../../core/helper_functions/build_error_bar.dart';
 import '../../../../../generated/l10n.dart';
+import 'package:provider/provider.dart';
+import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
+import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
 
 class OrderCubitBlocConsumer extends StatelessWidget {
   const OrderCubitBlocConsumer({super.key, required this.child});
@@ -16,8 +19,16 @@ class OrderCubitBlocConsumer extends StatelessWidget {
     return BlocConsumer<OrderCubit, OrderState>(
       listener: (context, state) {
         if (state is OrderSuccess) {
-          showErrorBar(context, S.of(context)!.orderCubitBlocConsumer);
-          Navigator.pop(context);
+          final method = context.read<OrderEntity>().paymentMethod;
+          final msg = (method == CheckoutPaymentMethod.cashOnDelivery)
+              ? S.of(context)!.orderCubitBlocConsumer // "تم تسجيل الطلب بنجاح"
+              : S.of(context)!.paymentSuccessMessage; // "تم الدفع بنجاح"
+          showErrorBar(context, msg);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/home', // MainView.routeName
+            (route) => false,
+          );
         }
         if (state is Orderfailure) {
           showErrorBar(context, state.message);
