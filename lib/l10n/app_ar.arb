@@ -49,7 +49,31 @@
   "checkOutViewShipingError": "يرجى تحديد طريقة الدفع",
   "checkOutViewShipingSubtitle2": "تحديد طريقة الدفع",
   "checkOutViewPayWithPayPal": "الدفع باستخدام PayPal",
+  "checkOutViewPayWithVisa": "الدفع بالفيزا",
+  "checkOutViewPlaceOrder": "تأكيد الطلب",
   "checkOutViewNext": "التالي",
+  "checkOutViewShipingTitle3": "الدفع ببطاقة فيزا",
+  "checkOutViewShipingSubtitle3": "يتم حفظ البطاقة على هذا الجهاز فقط",
+  "checkOutViewConfirmPaymentVisa": "تأكيد الدفع",
+  "checkOutViewConfirmOrderCash": "تأكيد الطلب",
+  "checkOutViewVisaMissing": "احفظ بيانات فيزا قبل الدفع.",
+  "visaDetailsTitle": "بيانات فيزا",
+  "visaDetailsCardNumber": "رقم البطاقة",
+  "visaDetailsCardHolder": "الاسم على البطاقة",
+  "visaDetailsExpiry": "انتهاء الصلاحية (شهر/سنة)",
+  "visaDetailsCvv": "رمز الأمان",
+  "visaDetailsSave": "حفظ ومتابعة",
+  "visaDetailsDelete": "حذف",
+  "visaDetailsSavedLabel": "بطاقة محفوظة",
+  "visaDetailsEndsWith": "تنتهي بـ {last4}",
+  "@visaDetailsEndsWith": {
+    "placeholders": {
+      "last4": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSectionVisaHint": "سيتم التأكيد ببطاقة فيزا المحفوظة (وليس PayPal).",
   "orderSummaryWidgetTitle": "ملخص الطلب:",
   "orderSummaryWidgetSubtotal": "المجموع الفرعي:",
   "orderSummaryWidgetShipping": "التوصيل:",

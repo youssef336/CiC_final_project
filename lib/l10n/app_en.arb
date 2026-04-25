@@ -63,9 +63,33 @@
     "checkOutViewShipingError": "Please Select Payment Method",
     "checkOutViewShipingSubtitle2": "Select Payment Method",
     "checkOutViewPayWithPayPal": "Pay with PayPal",
+    "checkOutViewPayWithVisa": "Pay with Visa",
+    "checkOutViewPlaceOrder": "Place Order",
     "checkOutViewNext": "Next",
+    "checkOutViewShipingTitle3": "Pay with Visa",
+    "checkOutViewShipingSubtitle3": "Card saved on this device only",
+    "checkOutViewConfirmPaymentVisa": "Confirm payment",
+    "checkOutViewConfirmOrderCash": "Place order",
+    "checkOutViewVisaMissing": "Save your Visa card before paying.",
+    "visaDetailsTitle": "Visa details",
+    "visaDetailsCardNumber": "Card number",
+    "visaDetailsCardHolder": "Name on card",
+    "visaDetailsExpiry": "Expiry (MM/YY)",
+    "visaDetailsCvv": "CVV",
+    "visaDetailsSave": "Save and continue",
+    "visaDetailsDelete": "Delete",
+    "visaDetailsSavedLabel": "Saved card",
+    "visaDetailsEndsWith": "Ends with {last4}",
+    "@visaDetailsEndsWith": {
+        "placeholders": {
+            "last4": {
+                "type": "String"
+            }
+        }
+    },
 
 
+    "paymentSectionVisaHint": "You will confirm with your saved Visa card (not PayPal).",
     "orderSummaryWidgetTitle": "Order Summary :",
     "orderSummaryWidgetSubtotal": "Subtotal :",
     "orderSummaryWidgetShipping": "Shipping :",
@@ -253,4 +277,3 @@
   "foodScanFreshnessSpoilageCheck": "Freshness / Spoilage Check",
   "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting."
 }
-

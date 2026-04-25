@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:mysterybag/core/utils/text_styles.dart';
 import 'package:mysterybag/generated/l10n.dart';
@@ -11,17 +12,28 @@ class CustomTextFormFeild extends StatelessWidget {
     this.suffixIcon,
     this.onSaved,
     this.obscureText = false,
+    this.controller,
+    this.textInputAction,
+    this.inputFormatters,
+    this.onChanged,
   });
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
   final bool obscureText;
+  final TextEditingController? controller;
+  final TextInputAction? textInputAction;
+  final List<TextInputFormatter>? inputFormatters;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       onSaved: onSaved,
+      textInputAction: textInputAction,
+      inputFormatters: inputFormatters,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return S.of(context)!.onSignupTextFeils;
@@ -44,9 +56,7 @@ class CustomTextFormFeild extends StatelessWidget {
         focusedBorder: bulidBoarder(context),
       ),
 
-      onChanged: (value) {
-        // Handle text input changes here
-      },
+      onChanged: onChanged,
     );
   }
 

@@ -162,7 +162,62 @@ class SAr extends S {
   String get checkOutViewPayWithPayPal => 'الدفع باستخدام PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'الدفع بالفيزا';
+
+  @override
+  String get checkOutViewPlaceOrder => 'تأكيد الطلب';
+
+  @override
   String get checkOutViewNext => 'التالي';
+
+  @override
+  String get checkOutViewShipingTitle3 => 'الدفع ببطاقة فيزا';
+
+  @override
+  String get checkOutViewShipingSubtitle3 =>
+      'يتم حفظ البطاقة على هذا الجهاز فقط';
+
+  @override
+  String get checkOutViewConfirmPaymentVisa => 'تأكيد الدفع';
+
+  @override
+  String get checkOutViewConfirmOrderCash => 'تأكيد الطلب';
+
+  @override
+  String get checkOutViewVisaMissing => 'احفظ بيانات فيزا قبل الدفع.';
+
+  @override
+  String get visaDetailsTitle => 'بيانات فيزا';
+
+  @override
+  String get visaDetailsCardNumber => 'رقم البطاقة';
+
+  @override
+  String get visaDetailsCardHolder => 'الاسم على البطاقة';
+
+  @override
+  String get visaDetailsExpiry => 'انتهاء الصلاحية (شهر/سنة)';
+
+  @override
+  String get visaDetailsCvv => 'رمز الأمان';
+
+  @override
+  String get visaDetailsSave => 'حفظ ومتابعة';
+
+  @override
+  String get visaDetailsDelete => 'حذف';
+
+  @override
+  String get visaDetailsSavedLabel => 'بطاقة محفوظة';
+
+  @override
+  String visaDetailsEndsWith(String last4) {
+    return 'تنتهي بـ $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'سيتم التأكيد ببطاقة فيزا المحفوظة (وليس PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'ملخص الطلب:';

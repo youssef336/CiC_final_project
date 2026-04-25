@@ -397,11 +397,113 @@ abstract class S {
   /// **'Pay with PayPal'**
   String get checkOutViewPayWithPayPal;
 
+  /// No description provided for @checkOutViewPayWithVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Visa'**
+  String get checkOutViewPayWithVisa;
+
+  /// No description provided for @checkOutViewPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get checkOutViewPlaceOrder;
+
   /// No description provided for @checkOutViewNext.
   ///
   /// In en, this message translates to:
   /// **'Next'**
   String get checkOutViewNext;
+
+  /// No description provided for @checkOutViewShipingTitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Visa'**
+  String get checkOutViewShipingTitle3;
+
+  /// No description provided for @checkOutViewShipingSubtitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'Card saved on this device only'**
+  String get checkOutViewShipingSubtitle3;
+
+  /// No description provided for @checkOutViewConfirmPaymentVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm payment'**
+  String get checkOutViewConfirmPaymentVisa;
+
+  /// No description provided for @checkOutViewConfirmOrderCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Place order'**
+  String get checkOutViewConfirmOrderCash;
+
+  /// No description provided for @checkOutViewVisaMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Save your Visa card before paying.'**
+  String get checkOutViewVisaMissing;
+
+  /// No description provided for @visaDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa details'**
+  String get visaDetailsTitle;
+
+  /// No description provided for @visaDetailsCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get visaDetailsCardNumber;
+
+  /// No description provided for @visaDetailsCardHolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Name on card'**
+  String get visaDetailsCardHolder;
+
+  /// No description provided for @visaDetailsExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry (MM/YY)'**
+  String get visaDetailsExpiry;
+
+  /// No description provided for @visaDetailsCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV'**
+  String get visaDetailsCvv;
+
+  /// No description provided for @visaDetailsSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save and continue'**
+  String get visaDetailsSave;
+
+  /// No description provided for @visaDetailsDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get visaDetailsDelete;
+
+  /// No description provided for @visaDetailsSavedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved card'**
+  String get visaDetailsSavedLabel;
+
+  /// No description provided for @visaDetailsEndsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends with {last4}'**
+  String visaDetailsEndsWith(String last4);
+
+  /// No description provided for @paymentSectionVisaHint.
+  ///
+  /// In en, this message translates to:
+  /// **'You will confirm with your saved Visa card (not PayPal).'**
+  String get paymentSectionVisaHint;
 
   /// No description provided for @orderSummaryWidgetTitle.
   ///

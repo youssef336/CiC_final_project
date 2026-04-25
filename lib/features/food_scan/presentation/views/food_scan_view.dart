@@ -168,10 +168,11 @@ class _FoodScanViewState extends State<FoodScanView> {
             'حدث خطأ غير متوقع. جرّب تاني أو استخدم "Nutrition & Health".';
       });
     } finally {
-      if (!mounted) return;
-      setState(() {
-        _spoilageBusy = false;
-      });
+      if (mounted) {
+        setState(() {
+          _spoilageBusy = false;
+        });
+      }
     }
   }
 
@@ -233,10 +234,11 @@ class _FoodScanViewState extends State<FoodScanView> {
     } catch (_) {
       if (!mounted) return;
     } finally {
-      if (!mounted) return;
-      setState(() {
-        _busy = false;
-      });
+      if (mounted) {
+        setState(() {
+          _busy = false;
+        });
+      }
     }
   }
 
