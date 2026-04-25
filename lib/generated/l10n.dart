@@ -391,6 +391,78 @@ abstract class S {
   /// **'Select Payment Method'**
   String get checkOutViewShipingSubtitle2;
 
+  /// No description provided for @checkOutViewPaymentMethodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment method'**
+  String get checkOutViewPaymentMethodTitle;
+
+  /// No description provided for @checkOutViewSavedCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved card'**
+  String get checkOutViewSavedCardTitle;
+
+  /// No description provided for @checkOutViewUseSavedCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Use saved card'**
+  String get checkOutViewUseSavedCard;
+
+  /// No description provided for @checkOutViewDeleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete card'**
+  String get checkOutViewDeleteCard;
+
+  /// No description provided for @checkOutViewCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardholder name'**
+  String get checkOutViewCardHolderName;
+
+  /// No description provided for @checkOutViewEnterCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter cardholder name'**
+  String get checkOutViewEnterCardHolderName;
+
+  /// No description provided for @checkOutViewCardNumberOrSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number or saved card'**
+  String get checkOutViewCardNumberOrSaved;
+
+  /// No description provided for @checkOutViewCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get checkOutViewCardNumber;
+
+  /// No description provided for @checkOutViewInvalidCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid card number'**
+  String get checkOutViewInvalidCardNumber;
+
+  /// No description provided for @checkOutViewInvalidExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid expiry date'**
+  String get checkOutViewInvalidExpiryDate;
+
+  /// No description provided for @checkOutViewInvalidCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid CVV'**
+  String get checkOutViewInvalidCvv;
+
+  /// No description provided for @checkOutViewOnlySaveLast4.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the last 4 digits are stored on this device.'**
+  String get checkOutViewOnlySaveLast4;
+
   /// No description provided for @checkOutViewPayWithPayPal.
   ///
   /// In en, this message translates to:

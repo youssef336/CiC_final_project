@@ -8,6 +8,10 @@ class OrderEntity {
   final String uID;
   final CartEntites cartEntites;
   CheckoutPaymentMethod? paymentMethod;
+  String onlinePaymentMethod;
+  String cardHolderName;
+  String cardNumber;
+  String expiryDate;
 
   // final List<NotificationEntity>? notificationEntity;
   ShipingAddressEntity shipingAddressEntity = ShipingAddressEntity();
@@ -19,10 +23,12 @@ class OrderEntity {
     this.paymentMethod,
     required this.uID,
     this.onlinePaymentMethod = 'paypal',
-    this.cardHolderName,
-    this.cardNumber,
-    this.expiryDate,
+    this.cardHolderName = '',
+    this.cardNumber = '',
+    this.expiryDate = '',
   });
+
+  bool get payWithCash => paymentMethod == CheckoutPaymentMethod.cashOnDelivery;
 
   void applyCouponCode(String code) {
     // Reset discount at the start

@@ -234,6 +234,51 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     );
   }
 
+  void _loadSavedCardData() {
+    final savedCard = VisaCardPrefsServices.loadCard();
+    if (savedCard == null) return;
+
+    _cardHolderController.text = savedCard.cardHolderName;
+    _cardNumberController.text = '**** **** **** ${savedCard.last4}';
+    _expiryDateController.text = savedCard.expiry;
+  }
+
+  void _loadSavedAddressData() {
+    _addressNameController.text = Prefs.getString(KSavedAddressName);
+    _addressEmailController.text = Prefs.getString(KSavedAddressEmail);
+    _addressLineController.text = Prefs.getString(KSavedAddressLine);
+    _addressCityController.text = Prefs.getString(KSavedAddressCity);
+    _addressFloorController.text = Prefs.getString(KSavedAddressFloor);
+    _addressPhoneController.text = Prefs.getString(KSavedAddressPhone);
+  }
+
+  Future<void> _saveAddressLocally() async {
+    await Prefs.setString(
+      KSavedAddressName,
+      _addressNameController.text.trim(),
+    );
+    await Prefs.setString(
+      KSavedAddressEmail,
+      _addressEmailController.text.trim(),
+    );
+    await Prefs.setString(
+      KSavedAddressLine,
+      _addressLineController.text.trim(),
+    );
+    await Prefs.setString(
+      KSavedAddressCity,
+      _addressCityController.text.trim(),
+    );
+    await Prefs.setString(
+      KSavedAddressFloor,
+      _addressFloorController.text.trim(),
+    );
+    await Prefs.setString(
+      KSavedAddressPhone,
+      _addressPhoneController.text.trim(),
+    );
+  }
+
   void _processPayment() {
     final orderEntity = context.read<OrderEntity>();
     final addOrder = context.read<OrderCubit>();
@@ -254,9 +299,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
 
     if (method == CheckoutPaymentMethod.paypal) {
-      final paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
-        orderEntity,
-      );
+      final paypalPaymentEntity = PaypalPaymentEntity.fromEntity(orderEntity);
 
       Navigator.of(context).push(
         MaterialPageRoute(

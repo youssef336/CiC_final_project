@@ -159,6 +159,43 @@ class SAr extends S {
   String get checkOutViewShipingSubtitle2 => 'تحديد طريقة الدفع';
 
   @override
+  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewDeleteCard => 'حذف البطاقة';
+
+  @override
+  String get checkOutViewCardHolderName => 'اسم حامل البطاقة';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'أدخل اسم حامل البطاقة';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'رقم البطاقة أو البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewCardNumber => 'رقم البطاقة';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'أدخل رقم بطاقة صالح';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'أدخل تاريخ انتهاء صالح';
+
+  @override
+  String get checkOutViewInvalidCvv => 'أدخل CVV صالح';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'يتم حفظ آخر 4 أرقام فقط على هذا الجهاز.';
+
+  @override
   String get checkOutViewPayWithPayPal => 'الدفع باستخدام PayPal';
 
   @override

@@ -11,11 +11,10 @@ import 'package:mysterybag/core/helper_functions/themes.dart';
 import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
-
-import 'package:mysterybag/features/check_out/presentation/views/check_out_view.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_item_entity.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
@@ -108,11 +107,10 @@ class MysteryBag extends StatelessWidget {
               locale: localeState is LocaleChangedtoEnglish
                   ? const Locale('en')
                   : localeState is LocaleChangedtoArabic
-                      ? const Locale('ar')
-                      : Locale(locale.isEmpty ? 'ar' : locale),
+                  ? const Locale('ar')
+                  : Locale(locale.isEmpty ? 'ar' : locale),
               onGenerateRoute: onGenerateRoute,
               initialRoute: SplashView.routeName,
-              debugShowCheckedModeBanner: false,
             );
           },
         );
