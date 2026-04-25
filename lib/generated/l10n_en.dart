@@ -160,6 +160,43 @@ class SEn extends S {
   String get checkOutViewShipingSubtitle2 => 'Select Payment Method';
 
   @override
+  String get checkOutViewPaymentMethodTitle => 'Payment method';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'Saved card';
+
+  @override
+  String get checkOutViewUseSavedCard => 'Use saved card';
+
+  @override
+  String get checkOutViewDeleteCard => 'Delete card';
+
+  @override
+  String get checkOutViewCardHolderName => 'Cardholder name';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'Enter cardholder name';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'Card number or saved card';
+
+  @override
+  String get checkOutViewCardNumber => 'Card number';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'Enter a valid card number';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'Enter a valid expiry date';
+
+  @override
+  String get checkOutViewInvalidCvv => 'Enter a valid CVV';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'Only the last 4 digits are stored on this device.';
+
+  @override
   String get checkOutViewPayWithPayPal => 'Pay with PayPal';
 
   @override

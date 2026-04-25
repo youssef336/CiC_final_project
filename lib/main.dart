@@ -16,6 +16,7 @@ import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_c
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_item_entity.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
