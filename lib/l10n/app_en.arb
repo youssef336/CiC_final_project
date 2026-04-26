@@ -81,6 +81,7 @@
     "checkOutViewShipingTitle3": "Pay with Visa",
     "checkOutViewShipingSubtitle3": "Card saved on this device only",
     "checkOutViewConfirmPaymentVisa": "Confirm payment",
+    "checkOutViewConfirmPaymentVisaMessage": "Are you sure you want to pay with Visa?",
     "checkOutViewConfirmOrderCash": "Place order",
     "checkOutViewVisaMissing": "Save your Visa card before paying.",
     "visaDetailsTitle": "Visa details",
@@ -106,7 +107,8 @@
     "orderSummaryWidgetSubtotal": "Subtotal :",
     "orderSummaryWidgetShipping": "Shipping :",
     "orderSummaryWidgetTotal": "Total",
-    "orderCubitBlocConsumer": "Order Placed Successfully",
+    "orderCashSuccessMessage": "Cash on delivery order placed successfully",
+    "orderVisaSuccessMessage": "Visa payment completed successfully",
 
 
     "addressSummaryWidgetTitle": "Delivery Address :",

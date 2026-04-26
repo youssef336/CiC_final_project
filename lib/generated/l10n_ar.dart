@@ -218,6 +218,10 @@ class SAr extends S {
   String get checkOutViewConfirmPaymentVisa => 'تأكيد الدفع';
 
   @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟';
+
+  @override
   String get checkOutViewConfirmOrderCash => 'تأكيد الطلب';
 
   @override
@@ -269,7 +273,10 @@ class SAr extends S {
   String get orderSummaryWidgetTotal => 'الإجمالي';
 
   @override
-  String get orderCubitBlocConsumer => 'تم تسجيل الطلب بنجاح';
+  String get orderCashSuccessMessage => 'تم تسجيل طلب الدفع عند الاستلام بنجاح';
+
+  @override
+  String get orderVisaSuccessMessage => 'تم إتمام الدفع بالفيزا بنجاح';
 
   @override
   String get addressSummaryWidgetTitle => 'عنوان التوصيل:';

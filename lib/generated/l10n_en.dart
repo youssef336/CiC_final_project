@@ -218,6 +218,10 @@ class SEn extends S {
   String get checkOutViewConfirmPaymentVisa => 'Confirm payment';
 
   @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'Are you sure you want to pay with Visa?';
+
+  @override
   String get checkOutViewConfirmOrderCash => 'Place order';
 
   @override
@@ -269,7 +273,11 @@ class SEn extends S {
   String get orderSummaryWidgetTotal => 'Total';
 
   @override
-  String get orderCubitBlocConsumer => 'Order Placed Successfully';
+  String get orderCashSuccessMessage =>
+      'Cash on delivery order placed successfully';
+
+  @override
+  String get orderVisaSuccessMessage => 'Visa payment completed successfully';
 
   @override
   String get addressSummaryWidgetTitle => 'Delivery Address :';

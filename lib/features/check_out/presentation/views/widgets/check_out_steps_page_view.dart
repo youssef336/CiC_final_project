@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/address_input_section.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/payment_section.dart';
@@ -41,7 +40,7 @@ class CheckOutStepsPageView extends StatelessWidget {
   final TextEditingController addressFloorController;
   final TextEditingController addressPhoneController;
 
-  final ValueListenable<AutovalidateMode> autoValidateMode;
+  final AutovalidateMode autoValidateMode;
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +70,7 @@ class CheckOutStepsPageView extends StatelessWidget {
         floorController: addressFloorController,
         phoneController: addressPhoneController,
       ),
-      PaymentSection(
-        pageController: pageController,
-      ),
+      PaymentSection(pageController: pageController),
     ];
   }
 }

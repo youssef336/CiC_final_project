@@ -505,6 +505,12 @@ abstract class S {
   /// **'Confirm payment'**
   String get checkOutViewConfirmPaymentVisa;
 
+  /// No description provided for @checkOutViewConfirmPaymentVisaMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to pay with Visa?'**
+  String get checkOutViewConfirmPaymentVisaMessage;
+
   /// No description provided for @checkOutViewConfirmOrderCash.
   ///
   /// In en, this message translates to:
@@ -601,11 +607,17 @@ abstract class S {
   /// **'Total'**
   String get orderSummaryWidgetTotal;
 
-  /// No description provided for @orderCubitBlocConsumer.
+  /// No description provided for @orderCashSuccessMessage.
   ///
   /// In en, this message translates to:
-  /// **'Order Placed Successfully'**
-  String get orderCubitBlocConsumer;
+  /// **'Cash on delivery order placed successfully'**
+  String get orderCashSuccessMessage;
+
+  /// No description provided for @orderVisaSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa payment completed successfully'**
+  String get orderVisaSuccessMessage;
 
   /// No description provided for @addressSummaryWidgetTitle.
   ///

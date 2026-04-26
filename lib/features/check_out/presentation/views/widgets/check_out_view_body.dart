@@ -32,9 +32,6 @@ class CheckOutViewBody extends StatefulWidget {
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   late PageController pageController;
-  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(
-    AutovalidateMode.disabled,
-  );
   final GlobalKey<FormState> _visaFormKey = GlobalKey<FormState>();
   final TextEditingController _cardHolderController = TextEditingController();
   final TextEditingController _cardNumberController = TextEditingController();
@@ -53,11 +50,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     _loadSavedCardData();
     _loadSavedAddressData();
 
-    pageController.addListener(() {
-      setState(() {
-        currentPageindex = pageController.page!.toInt();
-      });
-    });
+    pageController.addListener(_handlePageChanged);
     currentPageindex = 0;
     super.initState();
   }
@@ -65,7 +58,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   void dispose() {
     pageController.dispose();
-    valueNotifier.dispose();
     _cardHolderController.dispose();
     _cardNumberController.dispose();
     _expiryDateController.dispose();
@@ -81,6 +73,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   int currentPageindex = 0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _addressAutoValidate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +114,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
           Expanded(
             child: CheckOutStepsPageView(
-              autoValidateMode: valueNotifier,
+              autoValidateMode: _addressAutoValidate
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
               formKey: _formKey,
               pageController: pageController,
               visaFormKey: _visaFormKey,
@@ -220,13 +215,33 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 
-  void _handleAddressSectionValidation() {
-    if (!_formKey.currentState!.validate()) {
-      valueNotifier.value = AutovalidateMode.always;
+  void _handlePageChanged() {
+    final page = pageController.page;
+    if (page == null) return;
+
+    final newPageIndex = page.round();
+    if (newPageIndex == currentPageindex || !mounted) return;
+
+    setState(() {
+      currentPageindex = newPageIndex;
+    });
+  }
+
+  Future<void> _handleAddressSectionValidation() async {
+    final formState = _formKey.currentState;
+    if (formState == null) return;
+
+    if (!formState.validate()) {
+      if (!_addressAutoValidate && mounted) {
+        setState(() {
+          _addressAutoValidate = true;
+        });
+      }
       return;
     }
-    _formKey.currentState!.save();
-    _saveAddressLocally();
+
+    formState.save();
+    await _saveAddressLocally();
     pageController.animateToPage(
       2,
       duration: const Duration(milliseconds: 600),
@@ -299,7 +314,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         builder: (context) {
           return AlertDialog(
             title: Text(S.of(context)!.checkOutViewConfirmPaymentVisa),
-            content: const Text('هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟'),
+            content: Text(S.of(context)!.checkOutViewConfirmPaymentVisaMessage),
             actions: [
               TextButton(
                 onPressed: () {

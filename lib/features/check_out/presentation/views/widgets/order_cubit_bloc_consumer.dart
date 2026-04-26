@@ -20,9 +20,15 @@ class OrderCubitBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is OrderSuccess) {
           final method = context.read<OrderEntity>().paymentMethod;
-          final msg = (method == CheckoutPaymentMethod.cashOnDelivery)
-              ? S.of(context)!.orderCubitBlocConsumer // "تم تسجيل الطلب بنجاح"
-              : S.of(context)!.paymentSuccessMessage; // "تم الدفع بنجاح"
+          final msg = switch (method) {
+            CheckoutPaymentMethod.cashOnDelivery =>
+              S.of(context)!.orderCashSuccessMessage,
+            CheckoutPaymentMethod.visa =>
+              S.of(context)!.orderVisaSuccessMessage,
+            CheckoutPaymentMethod.paypal =>
+              S.of(context)!.paymentSuccessMessage,
+            null => S.of(context)!.orderCashSuccessMessage,
+          };
           showErrorBar(context, msg);
           Navigator.pushNamedAndRemoveUntil(
             context,
