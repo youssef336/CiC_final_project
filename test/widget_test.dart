@@ -8,13 +8,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/core/cubits/theme/theme_cubit.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 import 'package:mysterybag/main.dart';
-import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -265,17 +265,5 @@
   },
   "foodScanCheckingFreshness": "جارٍ فحص الطزاجة…",
   "foodScanFreshnessSpoilageCheck": "فحص الطزاجة / الفساد",
-  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.",
-  "checkOutViewPaymentMethodTitle": "طريقة الدفع",
-  "checkOutViewSavedCardTitle": "بطاقة محفوظة",
-  "checkOutViewUseSavedCard": "استخدام البطاقة المحفوظة",
-  "checkOutViewDeleteCard": "حذف",
-  "checkOutViewCardHolderName": "الاسم على البطاقة",
-  "checkOutViewEnterCardHolderName": "الرجاء إدخال الاسم على البطاقة",
-  "checkOutViewCardNumberOrSaved": "رقم البطاقة (أو استخدم المحفوظة)",
-  "checkOutViewCardNumber": "رقم البطاقة",
-  "checkOutViewInvalidCardNumber": "رقم البطاقة غير صحيح",
-  "checkOutViewInvalidExpiryDate": "تاريخ الانتهاء غير صحيح (شهر/سنة)",
-  "checkOutViewInvalidCvv": "رمز الأمان غير صحيح",
-  "checkOutViewOnlySaveLast4": "نحفظ فقط آخر 4 أرقام من بطاقتك لأمانك."
+  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل."
 }

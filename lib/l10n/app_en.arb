@@ -287,17 +287,5 @@
   },
   "foodScanCheckingFreshness": "Checking freshness…",
   "foodScanFreshnessSpoilageCheck": "Freshness / Spoilage Check",
-  "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting.",
-  "checkOutViewPaymentMethodTitle": "Payment Method",
-  "checkOutViewSavedCardTitle": "Saved Card",
-  "checkOutViewUseSavedCard": "Use Saved Card",
-  "checkOutViewDeleteCard": "Delete",
-  "checkOutViewCardHolderName": "Card Holder Name",
-  "checkOutViewEnterCardHolderName": "Please enter card holder name",
-  "checkOutViewCardNumberOrSaved": "Card Number (or use saved)",
-  "checkOutViewCardNumber": "Card Number",
-  "checkOutViewInvalidCardNumber": "Invalid card number",
-  "checkOutViewInvalidExpiryDate": "Invalid expiry date (MM/YY)",
-  "checkOutViewInvalidCvv": "Invalid CVV",
-  "checkOutViewOnlySaveLast4": "We only save the last 4 digits of your card for your security."
+  "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting."
 }

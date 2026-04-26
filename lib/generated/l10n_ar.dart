@@ -653,44 +653,4 @@ class SAr extends S {
   @override
   String get foodScanLowConfidenceMessage =>
       'النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.';
-
-  @override
-  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
-
-  @override
-  String get checkOutViewSavedCardTitle => 'بطاقة محفوظة';
-
-  @override
-  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
-
-  @override
-  String get checkOutViewDeleteCard => 'حذف';
-
-  @override
-  String get checkOutViewCardHolderName => 'الاسم على البطاقة';
-
-  @override
-  String get checkOutViewEnterCardHolderName =>
-      'الرجاء إدخال الاسم على البطاقة';
-
-  @override
-  String get checkOutViewCardNumberOrSaved =>
-      'رقم البطاقة (أو استخدم المحفوظة)';
-
-  @override
-  String get checkOutViewCardNumber => 'رقم البطاقة';
-
-  @override
-  String get checkOutViewInvalidCardNumber => 'رقم البطاقة غير صحيح';
-
-  @override
-  String get checkOutViewInvalidExpiryDate =>
-      'تاريخ الانتهاء غير صحيح (شهر/سنة)';
-
-  @override
-  String get checkOutViewInvalidCvv => 'رمز الأمان غير صحيح';
-
-  @override
-  String get checkOutViewOnlySaveLast4 =>
-      'نحفظ فقط آخر 4 أرقام من بطاقتك لأمانك.';
 }
