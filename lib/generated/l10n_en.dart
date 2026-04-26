@@ -662,4 +662,46 @@ class SEn extends S {
   @override
   String get foodScanLowConfidenceMessage =>
       'Result is not confident enough. Try another photo with better lighting.';
+
+  @override
+  String get reviewComposerTitle => 'Share your experience';
+
+  @override
+  String get reviewComposerSubtitle =>
+      'Tell others what the food tasted like and how the pickup went.';
+
+  @override
+  String get reviewComposerEditTitle => 'Edit Review';
+
+  @override
+  String get reviewComposerEditSubtitle => 'Update your review';
+
+  @override
+  String get reviewComposerRatingLabel => 'Your rating';
+
+  @override
+  String get reviewComposerCommentLabel => 'Your comment';
+
+  @override
+  String get reviewComposerCommentHint => 'Tell others what you thought...';
+
+  @override
+  String get reviewComposerSubmitButton => 'Submit review';
+
+  @override
+  String get reviewComposerUpdateButton => 'Update';
+
+  @override
+  String get reviewComposerSelectRatingError => 'Please choose a star rating.';
+
+  @override
+  String get reviewComposerCommentRequiredError =>
+      'Please write a comment before submitting.';
+
+  @override
+  String get reviewComposerSuccessMessage => 'Your review was submitted.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'Could not submit your review. Please try again.';
 }

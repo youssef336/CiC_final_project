@@ -289,5 +289,18 @@
   },
   "foodScanCheckingFreshness": "Checking freshness…",
   "foodScanFreshnessSpoilageCheck": "Freshness / Spoilage Check",
-  "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting."
+  "foodScanLowConfidenceMessage": "Result is not confident enough. Try another photo with better lighting.",
+  "reviewComposerTitle": "Share your experience",
+  "reviewComposerSubtitle": "Tell others what the food tasted like and how the pickup went.",
+  "reviewComposerEditTitle": "Edit Review",
+  "reviewComposerEditSubtitle": "Update your review",
+  "reviewComposerRatingLabel": "Your rating",
+  "reviewComposerCommentLabel": "Your comment",
+  "reviewComposerCommentHint": "Tell others what you thought...",
+  "reviewComposerSubmitButton": "Submit review",
+  "reviewComposerUpdateButton": "Update",
+  "reviewComposerSelectRatingError": "Please choose a star rating.",
+  "reviewComposerCommentRequiredError": "Please write a comment before submitting.",
+  "reviewComposerSuccessMessage": "Your review was submitted.",
+  "reviewComposerFailureMessage": "Could not submit your review. Please try again."
 }

@@ -1332,6 +1332,84 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Result is not confident enough. Try another photo with better lighting.'**
   String get foodScanLowConfidenceMessage;
+
+  /// No description provided for @reviewComposerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your experience'**
+  String get reviewComposerTitle;
+
+  /// No description provided for @reviewComposerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others what the food tasted like and how the pickup went.'**
+  String get reviewComposerSubtitle;
+
+  /// No description provided for @reviewComposerEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Review'**
+  String get reviewComposerEditTitle;
+
+  /// No description provided for @reviewComposerEditSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your review'**
+  String get reviewComposerEditSubtitle;
+
+  /// No description provided for @reviewComposerRatingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get reviewComposerRatingLabel;
+
+  /// No description provided for @reviewComposerCommentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your comment'**
+  String get reviewComposerCommentLabel;
+
+  /// No description provided for @reviewComposerCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others what you thought...'**
+  String get reviewComposerCommentHint;
+
+  /// No description provided for @reviewComposerSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit review'**
+  String get reviewComposerSubmitButton;
+
+  /// No description provided for @reviewComposerUpdateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get reviewComposerUpdateButton;
+
+  /// No description provided for @reviewComposerSelectRatingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a star rating.'**
+  String get reviewComposerSelectRatingError;
+
+  /// No description provided for @reviewComposerCommentRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write a comment before submitting.'**
+  String get reviewComposerCommentRequiredError;
+
+  /// No description provided for @reviewComposerSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your review was submitted.'**
+  String get reviewComposerSuccessMessage;
+
+  /// No description provided for @reviewComposerFailureMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not submit your review. Please try again.'**
+  String get reviewComposerFailureMessage;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

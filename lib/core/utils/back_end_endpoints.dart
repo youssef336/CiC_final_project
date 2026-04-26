@@ -5,4 +5,5 @@ class BackEndEndpoints {
   static const String getUserData = 'users';
   static const String checkifUserDataExists = 'users';
   static const String addOrder = 'orders'; // + userId
+  static const String productReviews = 'reviews';
 }

@@ -660,4 +660,46 @@ class SAr extends S {
   @override
   String get foodScanLowConfidenceMessage =>
       'النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.';
+
+  @override
+  String get reviewComposerTitle => 'شارك تجربتك';
+
+  @override
+  String get reviewComposerSubtitle =>
+      'أخبر الآخرين عن طعم الطعام وكيف كانت عملية الاستلام.';
+
+  @override
+  String get reviewComposerEditTitle => 'تعديل التقييم';
+
+  @override
+  String get reviewComposerEditSubtitle => 'تحديث تقييمك';
+
+  @override
+  String get reviewComposerRatingLabel => 'تقييمك';
+
+  @override
+  String get reviewComposerCommentLabel => 'تعليقك';
+
+  @override
+  String get reviewComposerCommentHint => 'أخبر الآخرين بما فكرت به...';
+
+  @override
+  String get reviewComposerSubmitButton => 'إرسال التقييم';
+
+  @override
+  String get reviewComposerUpdateButton => 'تحديث';
+
+  @override
+  String get reviewComposerSelectRatingError => 'الرجاء اختيار تقييم بالنجوم.';
+
+  @override
+  String get reviewComposerCommentRequiredError =>
+      'الرجاء كتابة تعليق قبل الإرسال.';
+
+  @override
+  String get reviewComposerSuccessMessage => 'تم إرسال تقييمك.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'لم يتمكن من إرسال تقييمك. حاول مرة أخرى.';
 }

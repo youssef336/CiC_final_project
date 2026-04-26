@@ -267,5 +267,18 @@
   },
   "foodScanCheckingFreshness": "جارٍ فحص الطزاجة…",
   "foodScanFreshnessSpoilageCheck": "فحص الطزاجة / الفساد",
-  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل."
+  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.",
+  "reviewComposerTitle": "شارك تجربتك",
+  "reviewComposerSubtitle": "أخبر الآخرين عن طعم الطعام وكيف كانت عملية الاستلام.",
+  "reviewComposerEditTitle": "تعديل التقييم",
+  "reviewComposerEditSubtitle": "تحديث تقييمك",
+  "reviewComposerRatingLabel": "تقييمك",
+  "reviewComposerCommentLabel": "تعليقك",
+  "reviewComposerCommentHint": "أخبر الآخرين بما فكرت به...",
+  "reviewComposerSubmitButton": "إرسال التقييم",
+  "reviewComposerUpdateButton": "تحديث",
+  "reviewComposerSelectRatingError": "الرجاء اختيار تقييم بالنجوم.",
+  "reviewComposerCommentRequiredError": "الرجاء كتابة تعليق قبل الإرسال.",
+  "reviewComposerSuccessMessage": "تم إرسال تقييمك.",
+  "reviewComposerFailureMessage": "لم يتمكن من إرسال تقييمك. حاول مرة أخرى."
 }

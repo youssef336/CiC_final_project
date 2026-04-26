@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/entities/demo_products.dart';
+import 'package:mysterybag/core/models/product_model.dart';
 import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
 import 'package:mysterybag/features/auth/presentation/views/sign_up_view.dart';
 import 'package:mysterybag/features/check_out/presentation/views/check_out_view.dart';
@@ -76,16 +77,36 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         ]);
       }
       return MaterialPageRoute(
-        builder: (_) => CheckOutView(
-          cartItems: cartItems,
-        ),
+        builder: (_) => CheckOutView(cartItems: cartItems),
       );
     case BagDetailsView.routeName:
       return MaterialPageRoute(builder: (_) => const BagDetailsView());
     case ProfileViewPointsPage.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileViewPointsPage());
-    case BagelMysteryBagScreen.routeName: // ✅ added
-      return MaterialPageRoute(builder: (_) => const BagelMysteryBagScreen());
+    case BagelMysteryBagScreen.routeName:
+      final product = settings.arguments as ProductModel?;
+      return MaterialPageRoute(
+        builder: (_) => BagelMysteryBagScreen(
+          product:
+              product ??
+              ProductModel(
+                documentId: 'default',
+                nameEn: 'Mystery Bag',
+                nameAr: 'حقيبة مفاجأة',
+                code: 'default',
+                description: 'A delicious mystery bag',
+                price: 0,
+                isfeatured: false,
+                sellingCount: 0,
+                experationMonths: 1,
+                isOrganic: false,
+                numbersOfCalories: 0,
+                avgRating: 0,
+                unitAmount: 1,
+                reviews: [],
+              ),
+        ),
+      );
 
     default:
       return MaterialPageRoute(builder: (_) => const _ErrorPage());

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/entities/review_entity.dart';
+import 'package:mysterybag/core/models/product_model.dart';
+import 'package:mysterybag/core/services/get_it_service.dart';
+import 'package:mysterybag/features/home/domains/repos/product_reviews_repo.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/review_composer_bottom_sheet.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 class BagelMysteryBagScreen extends StatefulWidget {
   static const String routeName = '/bagelMysteryBag';
 
-  const BagelMysteryBagScreen({super.key});
+  const BagelMysteryBagScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   State<BagelMysteryBagScreen> createState() => _BagelMysteryBagScreenState();
@@ -13,6 +20,13 @@ class BagelMysteryBagScreen extends StatefulWidget {
 
 class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   bool _reserved = false;
+  late final ProductReviewsRepo _reviewsRepo;
+
+  @override
+  void initState() {
+    super.initState();
+    _reviewsRepo = getIt<ProductReviewsRepo>();
+  }
 
   bool _isDark(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark;
@@ -38,6 +52,12 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _backgroundColor(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _showReviewComposer,
+        backgroundColor: KprimaryColor,
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.rate_review),
+      ),
       body: Stack(
         children: [
           // Scrollable content
@@ -605,6 +625,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Widget _buildCustomerReviews() {
     final locale = S.of(context)!;
+    final productId = widget.product.documentId;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -628,28 +649,117 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
           ],
         ),
         const SizedBox(height: 14),
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: _backgroundColor(context),
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: KdividerColor),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 36,
-                height: 36,
+        StreamBuilder<List<ReviewEntity>>(
+          stream: _reviewsRepo.watchProductReviews(productId: productId),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Container(
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: KdividerColor, width: 2),
+                  color: _backgroundColor(context),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: KdividerColor),
                 ),
-                child: Icon(
-                  Icons.access_time,
-                  color: _secondaryTextColor(context),
-                  size: 18,
+                child: const Center(child: CircularProgressIndicator()),
+              );
+            }
+
+            if (snapshot.hasError) {
+              return Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: _backgroundColor(context),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: KdividerColor),
                 ),
+                child: Center(
+                  child: Text(
+                    'Error loading reviews',
+                    style: TextStyle(color: _secondaryTextColor(context)),
+                  ),
+                ),
+              );
+            }
+
+            final reviews = snapshot.data ?? [];
+
+            if (reviews.isEmpty) {
+              return Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: _backgroundColor(context),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: KdividerColor),
+                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.rate_review_outlined,
+                        color: _secondaryTextColor(context),
+                        size: 48,
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'No reviews yet',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: _primaryTextColor(context),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Be the first to share your experience!',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: _secondaryTextColor(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
+
+            return Column(
+              children: [
+                ...reviews.map((review) => _buildReviewCard(review)).toList(),
+                const SizedBox(height: 12),
+              ],
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildReviewCard(ReviewEntity review) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: _backgroundColor(context),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: KdividerColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundImage: review.image.isNotEmpty
+                    ? NetworkImage(review.image)
+                    : null,
+                child: review.image.isEmpty
+                    ? Icon(
+                        Icons.person,
+                        color: _secondaryTextColor(context),
+                        size: 20,
+                      )
+                    : null,
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -657,29 +767,65 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      locale.bagelMysteryBagComingSoon,
+                      review.name,
                       style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                         color: _primaryTextColor(context),
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      locale.bagelMysteryBagReviewsComingSoon,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: _secondaryTextColor(context),
-                        height: 1.5,
-                      ),
+                    const SizedBox(height: 2),
+                    Row(
+                      children: [
+                        ...List.generate(5, (index) {
+                          return Icon(
+                            index < review.rating
+                                ? Icons.star
+                                : Icons.star_border,
+                            color: KaccentColor,
+                            size: 14,
+                          );
+                        }),
+                        const SizedBox(width: 8),
+                        Text(
+                          review.date,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: _secondaryTextColor(context),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ],
           ),
-        ),
-      ],
+          if (review.review.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text(
+              review.review,
+              style: TextStyle(
+                fontSize: 14,
+                color: _primaryTextColor(context),
+                height: 1.4,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  void _showReviewComposer() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => ReviewComposerBottomSheet(
+        productId: widget.product.documentId,
+        reviewsRepo: _reviewsRepo,
+      ),
     );
   }
 
