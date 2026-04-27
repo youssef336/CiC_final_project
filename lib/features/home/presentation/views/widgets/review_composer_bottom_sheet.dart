@@ -128,11 +128,23 @@ class _ReviewComposerBottomSheetState extends State<ReviewComposerBottomSheet> {
             children: [
               Center(
                 child: Container(
-                  width: 44,
-                  height: 4,
+                  width: 64,
+                  height: 6,
                   decoration: BoxDecoration(
-                    color: KdividerColor,
+                    gradient: LinearGradient(
+                      colors: [
+                        KaccentColor.withOpacity(0.7),
+                        KprimaryColorLight.withOpacity(0.7),
+                      ],
+                    ),
                     borderRadius: BorderRadius.circular(999),
+                    boxShadow: [
+                      BoxShadow(
+                        color: KaccentColor.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -219,34 +231,57 @@ class _ReviewComposerBottomSheetState extends State<ReviewComposerBottomSheet> {
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _isSubmitting ? null : _submitReview,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: KprimaryColor,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: _isSubmitting
+                          ? [
+                              KprimaryColor.withOpacity(0.6),
+                              KaccentColor.withOpacity(0.55),
+                            ]
+                          : [KaccentColor, KprimaryColor],
                     ),
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: KprimaryColor.withOpacity(0.16),
+                        blurRadius: 18,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
                   ),
-                  child: _isSubmitting
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.2,
-                            valueColor: AlwaysStoppedAnimation(Colors.white),
+                  child: ElevatedButton(
+                    onPressed: _isSubmitting ? null : _submitReview,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      foregroundColor: Colors.white,
+                      disabledBackgroundColor: Colors.transparent,
+                      disabledForegroundColor: Colors.white.withOpacity(0.75),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                    child: _isSubmitting
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.2,
+                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                            ),
+                          )
+                        : Text(
+                            widget.existingReview == null
+                                ? locale.reviewComposerSubmitButton
+                                : locale.reviewComposerUpdateButton,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                            ),
                           ),
-                        )
-                      : Text(
-                          widget.existingReview == null
-                              ? locale.reviewComposerSubmitButton
-                              : locale.reviewComposerUpdateButton,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
+                  ),
                 ),
               ),
             ],

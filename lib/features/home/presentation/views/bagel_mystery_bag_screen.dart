@@ -1,9 +1,12 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
 import 'package:mysterybag/core/models/product_model.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/features/home/domains/repos/product_reviews_repo.dart';
+import 'package:mysterybag/features/home/presentation/views/widgets/bagel_customer_reviews_section.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/review_composer_bottom_sheet.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -52,12 +55,6 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _backgroundColor(context),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _showReviewComposer,
-        backgroundColor: KprimaryColor,
-        foregroundColor: Colors.white,
-        child: const Icon(Icons.rate_review),
-      ),
       body: Stack(
         children: [
           // Scrollable content
@@ -116,7 +113,11 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                       _buildAllergens(),
                       _buildDivider(),
                       const SizedBox(height: 8),
-                      _buildCustomerReviews(),
+                      BagelCustomerReviewsSection(
+                        productId: widget.product.documentId,
+                        reviewsRepo: _reviewsRepo,
+                        onWriteReviewPressed: _showReviewComposer,
+                      ),
                     ],
                   ),
                 ),
@@ -724,7 +725,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
             return Column(
               children: [
-                ...reviews.map((review) => _buildReviewCard(review)).toList(),
+                ...reviews.map((review) => _buildReviewCard(review)),
                 const SizedBox(height: 12),
               ],
             );

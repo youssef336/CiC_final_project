@@ -7,7 +7,6 @@ import 'package:mysterybag/features/check_out/presentation/manager/cubits/order_
 
 import '../../../../../core/helper_functions/build_error_bar.dart';
 import '../../../../../generated/l10n.dart';
-import 'package:provider/provider.dart';
 import 'package:mysterybag/features/check_out/domains/entities/order_entity.dart';
 import 'package:mysterybag/features/check_out/domains/entities/checkout_payment_method.dart';
 

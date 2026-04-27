@@ -345,26 +345,29 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (BuildContext context) => PaypalCheckoutView(
-            sandboxMode: true,
-            clientId: KPaypalClientId,
-            secretKey: KPaypalSecrtKey,
-            transactions: [paypalPaymentEntity.toJson()],
-            note: "Contact us for any questions on your order.",
-            onSuccess: (Map params) async {
-              print("onSuccess: $params");
-              Navigator.pop(context);
-              showErrorBar(context, S.of(context)!.paymentSuccessMessage);
-              addOrder.addOrder(order: orderEntity);
-            },
-            onError: (error) {
-              print("onError: $error");
-              showErrorBar(context, S.of(context)!.paymentErrorMessage);
-              Navigator.pop(context);
-            },
-            onCancel: () {
-              print('cancelled:');
-            },
+          builder: (BuildContext context) => Theme(
+            data: ThemeData.light(),
+            child: PaypalCheckoutView(
+              sandboxMode: true,
+              clientId: KPaypalClientId,
+              secretKey: KPaypalSecrtKey,
+              transactions: [paypalPaymentEntity.toJson()],
+              note: "Contact us for any questions on your order.",
+              onSuccess: (Map params) async {
+                print("onSuccess: $params");
+                Navigator.pop(context);
+                showErrorBar(context, S.of(context)!.paymentSuccessMessage);
+                addOrder.addOrder(order: orderEntity);
+              },
+              onError: (error) {
+                print("onError: $error");
+                showErrorBar(context, S.of(context)!.paymentErrorMessage);
+                Navigator.pop(context);
+              },
+              onCancel: () {
+                print('cancelled:');
+              },
+            ),
           ),
         ),
       );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/utils/text_styles.dart';
 
 class InactiveStepItem extends StatelessWidget {
@@ -7,22 +8,33 @@ class InactiveStepItem extends StatelessWidget {
   final String index;
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final numberTextColor = isDark ? KdarkModeTextColor : KprimaryColor;
+    final labelTextColor = isDark
+        ? KdarkModeTextSecondary
+        : const Color(0xFFAAAAAA);
+    final circleColor = isDark ? KdarkModeCardColor : const Color(0xFFF2F3F3);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
           radius: 10,
-          backgroundColor: const Color(0xFFF2F3F3),
+          backgroundColor: circleColor,
           child: Text(
             index,
-            style: AppTextStyles.bodySmallSemibold.copyWith(height: 1.70),
+            style: AppTextStyles.bodySmallSemibold.copyWith(
+              height: 1.70,
+              color: numberTextColor,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
         const SizedBox(width: 4),
         Text(
           text,
           style: AppTextStyles.bodySmallSemibold.copyWith(
-            color: const Color(0xFFAAAAAA),
+            color: labelTextColor,
             height: 1.70,
           ),
         ),
