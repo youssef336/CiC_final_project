@@ -302,5 +302,15 @@
   "reviewComposerSelectRatingError": "Please choose a star rating.",
   "reviewComposerCommentRequiredError": "Please write a comment before submitting.",
   "reviewComposerSuccessMessage": "Your review was submitted.",
-  "reviewComposerFailureMessage": "Could not submit your review. Please try again."
+  "reviewComposerFailureMessage": "Could not submit your review. Please try again.",
+  "reviewComposerEditButton": "Edit",
+  "reviewComposerDeleteButton": "Delete",
+  "reviewComposerDeleteConfirmTitle": "Delete Review?",
+  "reviewComposerDeleteConfirmMessage": "Are you sure you want to delete your review?",
+  "reviewComposerDeleteConfirmCancel": "Cancel",
+  "reviewComposerDeleteConfirmDelete": "Delete",
+  "reviewComposerDeleteError": "Error deleting review",
+  "reviewComposerDeleteSuccess": "Review deleted successfully",
+  "reviewComposerNoReviewsTitle": "No reviews yet",
+  "reviewComposerNoReviewsSubtitle": "Be the first to share your experience!"
 }

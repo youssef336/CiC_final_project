@@ -280,5 +280,15 @@
   "reviewComposerSelectRatingError": "الرجاء اختيار تقييم بالنجوم.",
   "reviewComposerCommentRequiredError": "الرجاء كتابة تعليق قبل الإرسال.",
   "reviewComposerSuccessMessage": "تم إرسال تقييمك.",
-  "reviewComposerFailureMessage": "لم يتمكن من إرسال تقييمك. حاول مرة أخرى."
+  "reviewComposerFailureMessage": "لم يتمكن من إرسال تقييمك. حاول مرة أخرى.",
+  "reviewComposerEditButton": "تعديل",
+  "reviewComposerDeleteButton": "حذف",
+  "reviewComposerDeleteConfirmTitle": "حذف التقييم؟",
+  "reviewComposerDeleteConfirmMessage": "هل أنت متأكد أنك تريد حذف تقييمك؟",
+  "reviewComposerDeleteConfirmCancel": "إلغاء",
+  "reviewComposerDeleteConfirmDelete": "حذف",
+  "reviewComposerDeleteError": "خطأ في حذف التقييم",
+  "reviewComposerDeleteSuccess": "تم حذف التقييم بنجاح",
+  "reviewComposerNoReviewsTitle": "لا توجد تقييمات حتى الآن",
+  "reviewComposerNoReviewsSubtitle": "كن أول من يشارك تجربتك!"
 }

@@ -702,4 +702,35 @@ class SAr extends S {
   @override
   String get reviewComposerFailureMessage =>
       'لم يتمكن من إرسال تقييمك. حاول مرة أخرى.';
+
+  @override
+  String get reviewComposerEditButton => 'تعديل';
+
+  @override
+  String get reviewComposerDeleteButton => 'حذف';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'حذف التقييم؟';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'هل أنت متأكد أنك تريد حذف تقييمك؟';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'إلغاء';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'حذف';
+
+  @override
+  String get reviewComposerDeleteError => 'خطأ في حذف التقييم';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'تم حذف التقييم بنجاح';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'لا توجد تقييمات حتى الآن';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle => 'كن أول من يشارك تجربتك!';
 }

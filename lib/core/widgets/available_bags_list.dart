@@ -44,24 +44,31 @@ class AvailableBagsList extends StatelessWidget {
         const SizedBox(height: 16),
 
         /// Horizontal List
-        SizedBox(
-          height: 250,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: bags.length,
-            itemBuilder: (context, index) {
-              final bag = bags[index];
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final cardWidth = (constraints.maxWidth * 0.72).clamp(220.0, 280.0);
 
-              return BagCard(
-                title: bag.title,
-                price: bag.price,
-                oldPrice: bag.oldPrice,
-                bagsLeft: bag.bagsLeft,
-                rating: bag.rating,
-                bagItemModel: null,
-              );
-            },
-          ),
+            return SizedBox(
+              height: 250,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: bags.length,
+                itemBuilder: (context, index) {
+                  final bag = bags[index];
+
+                  return BagCard(
+                    width: cardWidth,
+                    title: bag.title,
+                    price: bag.price,
+                    oldPrice: bag.oldPrice,
+                    bagsLeft: bag.bagsLeft,
+                    rating: bag.rating,
+                    bagItemModel: null,
+                  );
+                },
+              ),
+            );
+          },
         ),
       ],
     );

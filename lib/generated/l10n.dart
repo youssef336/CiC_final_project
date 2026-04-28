@@ -1410,6 +1410,66 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Could not submit your review. Please try again.'**
   String get reviewComposerFailureMessage;
+
+  /// No description provided for @reviewComposerEditButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get reviewComposerEditButton;
+
+  /// No description provided for @reviewComposerDeleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewComposerDeleteButton;
+
+  /// No description provided for @reviewComposerDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Review?'**
+  String get reviewComposerDeleteConfirmTitle;
+
+  /// No description provided for @reviewComposerDeleteConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your review?'**
+  String get reviewComposerDeleteConfirmMessage;
+
+  /// No description provided for @reviewComposerDeleteConfirmCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get reviewComposerDeleteConfirmCancel;
+
+  /// No description provided for @reviewComposerDeleteConfirmDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewComposerDeleteConfirmDelete;
+
+  /// No description provided for @reviewComposerDeleteError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting review'**
+  String get reviewComposerDeleteError;
+
+  /// No description provided for @reviewComposerDeleteSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Review deleted successfully'**
+  String get reviewComposerDeleteSuccess;
+
+  /// No description provided for @reviewComposerNoReviewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get reviewComposerNoReviewsTitle;
+
+  /// No description provided for @reviewComposerNoReviewsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Be the first to share your experience!'**
+  String get reviewComposerNoReviewsSubtitle;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

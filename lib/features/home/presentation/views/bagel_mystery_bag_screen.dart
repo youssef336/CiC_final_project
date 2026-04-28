@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
@@ -117,6 +118,10 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                         productId: widget.product.documentId,
                         reviewsRepo: _reviewsRepo,
                         onWriteReviewPressed: _showReviewComposer,
+                        currentUserId:
+                            FirebaseAuth.instance.currentUser?.uid ?? '',
+                        onEditReview: _editReview,
+                        onDeleteReview: _deleteReview,
                       ),
                     ],
                   ),
@@ -830,6 +835,53 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
     );
   }
 
+  void _editReview(ReviewEntity review) {
+    // Add current user ID to the review for editing
+    final reviewWithUserId = review.copyWith(
+      userId: FirebaseAuth.instance.currentUser?.uid,
+    );
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => ReviewComposerBottomSheet(
+        productId: widget.product.documentId,
+        reviewsRepo: _reviewsRepo,
+        existingReview: reviewWithUserId,
+      ),
+    );
+  }
+
+  void _deleteReview(String reviewId) async {
+    final locale = S.of(context)!;
+    final result = await _reviewsRepo.deleteProductReview(
+      productId: widget.product.documentId,
+      reviewId: reviewId,
+    );
+
+    result.fold(
+      (failure) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                '${locale.reviewComposerDeleteError}: ${failure.message}',
+              ),
+            ),
+          );
+        }
+      },
+      (_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(locale.reviewComposerDeleteSuccess)),
+          );
+        }
+      },
+    );
+  }
+
   Widget _buildDivider() {
     return const Divider(height: 1, color: KdividerColor);
   }
@@ -855,23 +907,11 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 18),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: _reserved
-                  ? [KaccentColor, KprimaryColor]
-                  : [KprimaryColor, KprimaryColorDark],
-            ),
-            borderRadius: BorderRadius.circular(18),
-            boxShadow: [
-              BoxShadow(
-                color: (_reserved ? KaccentColor : KprimaryColor).withOpacity(
-                  0.35,
-                ),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-              ),
-            ],
+            color: _reserved ? KaccentColor : KprimaryColor,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: KdividerColor, width: 1),
           ),
           child: Center(
             child: Text(
@@ -880,8 +920,8 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                   : locale.bagDetailsReservePickup,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 17,
-                fontWeight: FontWeight.w800,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
                 letterSpacing: 0.3,
               ),
             ),

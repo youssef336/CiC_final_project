@@ -7,6 +7,7 @@ class ReviewModel {
   final num rating;
   final String review;
   final String date;
+  final String? userId;
 
   ReviewModel({
     required this.id,
@@ -15,6 +16,7 @@ class ReviewModel {
     required this.rating,
     required this.review,
     required this.date,
+    this.userId,
   });
 
   factory ReviewModel.fromEntity(ReviewEntity reviewEntity) => ReviewModel(
@@ -24,6 +26,7 @@ class ReviewModel {
     rating: reviewEntity.rating,
     review: reviewEntity.review,
     date: reviewEntity.date,
+    userId: reviewEntity.userId,
   );
 
   ReviewEntity toEntity() => ReviewEntity(
@@ -33,6 +36,7 @@ class ReviewModel {
     rating: rating,
     review: review,
     date: date,
+    userId: userId,
   );
 
   factory ReviewModel.fromJson(Map<String, dynamic> json, {String? id}) =>
@@ -43,14 +47,16 @@ class ReviewModel {
         rating: json['rating'],
         review: json['review'],
         date: json['date'],
+        userId: json['userId'],
       );
 
-  Map<String, Object> toJson() => {
+  Map<String, Object?> toJson() => {
     'id': id,
     'name': name,
     'image': image,
     'rating': rating,
     'review': review,
     'date': date,
+    'userId': userId,
   };
 }

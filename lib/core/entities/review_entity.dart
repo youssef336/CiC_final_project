@@ -5,6 +5,7 @@ class ReviewEntity {
   final num rating;
   final String review;
   final String date;
+  final String? userId;
 
   ReviewEntity({
     required this.id,
@@ -13,6 +14,7 @@ class ReviewEntity {
     required this.rating,
     required this.review,
     required this.date,
+    this.userId,
   });
 
   ReviewEntity copyWith({
@@ -22,6 +24,7 @@ class ReviewEntity {
     num? rating,
     String? review,
     String? date,
+    String? userId,
   }) {
     return ReviewEntity(
       id: id ?? this.id,
@@ -30,6 +33,7 @@ class ReviewEntity {
       rating: rating ?? this.rating,
       review: review ?? this.review,
       date: date ?? this.date,
+      userId: userId ?? this.userId,
     );
   }
 }

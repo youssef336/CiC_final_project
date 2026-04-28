@@ -77,6 +77,7 @@ class _ReviewComposerBottomSheetState extends State<ReviewComposerBottomSheet> {
       rating: _rating,
       review: comment,
       date: DateTime.now().toIso8601String(),
+      userId: currentUser?.uid,
     );
 
     final result = widget.existingReview == null

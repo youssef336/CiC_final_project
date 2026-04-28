@@ -704,4 +704,36 @@ class SEn extends S {
   @override
   String get reviewComposerFailureMessage =>
       'Could not submit your review. Please try again.';
+
+  @override
+  String get reviewComposerEditButton => 'Edit';
+
+  @override
+  String get reviewComposerDeleteButton => 'Delete';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'Delete Review?';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'Are you sure you want to delete your review?';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'Cancel';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'Delete';
+
+  @override
+  String get reviewComposerDeleteError => 'Error deleting review';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'Review deleted successfully';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'No reviews yet';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle =>
+      'Be the first to share your experience!';
 }
