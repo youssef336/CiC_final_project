@@ -50,3 +50,4 @@ const KSavedAddressLine = 'saved_address_line';
 const KSavedAddressCity = 'saved_address_city';
 const KSavedAddressFloor = 'saved_address_floor';
 const KSavedAddressPhone = 'saved_address_phone';
+const KOrderConfirmationPoints = 10;

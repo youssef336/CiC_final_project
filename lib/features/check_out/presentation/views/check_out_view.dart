@@ -9,6 +9,7 @@ import 'package:mysterybag/features/check_out/presentation/manager/cubits/order_
 import 'package:mysterybag/features/check_out/presentation/views/widgets/check_out_view_body.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/order_cubit_bloc_consumer.dart';
 import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class CheckOutView extends StatelessWidget {
   const CheckOutView({super.key, required this.cartItems});
@@ -21,10 +22,7 @@ class CheckOutView extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<OrderEntity>(
-          create: (_) => OrderEntity(
-            cartEntites: cartItems,
-            uID: 'debug-user',
-          ),
+          create: (_) => OrderEntity(cartEntites: cartItems, uID: 'debug-user'),
         ),
         BlocProvider<OrderCubit>(
           create: (_) => OrderCubit(getIt<OrdersRepo>()),
@@ -33,7 +31,7 @@ class CheckOutView extends StatelessWidget {
       child: OrderCubitBlocConsumer(
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Checkout'),
+            title: Text(S.of(context)!.checkOutViewTitle),
             centerTitle: true,
           ),
           body: const CheckOutViewBody(),

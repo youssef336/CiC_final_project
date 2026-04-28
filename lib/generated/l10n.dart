@@ -505,6 +505,12 @@ abstract class S {
   /// **'Confirm payment'**
   String get checkOutViewConfirmPaymentVisa;
 
+  /// No description provided for @checkOutViewConfirmPaymentVisaMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to pay with Visa?'**
+  String get checkOutViewConfirmPaymentVisaMessage;
+
   /// No description provided for @checkOutViewConfirmOrderCash.
   ///
   /// In en, this message translates to:
@@ -601,11 +607,17 @@ abstract class S {
   /// **'Total'**
   String get orderSummaryWidgetTotal;
 
-  /// No description provided for @orderCubitBlocConsumer.
+  /// No description provided for @orderCashSuccessMessage.
   ///
   /// In en, this message translates to:
-  /// **'Order Placed Successfully'**
-  String get orderCubitBlocConsumer;
+  /// **'Cash on delivery order placed successfully'**
+  String get orderCashSuccessMessage;
+
+  /// No description provided for @orderVisaSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa payment completed successfully'**
+  String get orderVisaSuccessMessage;
 
   /// No description provided for @addressSummaryWidgetTitle.
   ///
@@ -1321,77 +1333,143 @@ abstract class S {
   /// **'Result is not confident enough. Try another photo with better lighting.'**
   String get foodScanLowConfidenceMessage;
 
-  /// No description provided for @checkOutViewPaymentMethodTitle.
+  /// No description provided for @reviewComposerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Payment Method'**
-  String get checkOutViewPaymentMethodTitle;
+  /// **'Share your experience'**
+  String get reviewComposerTitle;
 
-  /// No description provided for @checkOutViewSavedCardTitle.
+  /// No description provided for @reviewComposerSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Saved Card'**
-  String get checkOutViewSavedCardTitle;
+  /// **'Tell others what the food tasted like and how the pickup went.'**
+  String get reviewComposerSubtitle;
 
-  /// No description provided for @checkOutViewUseSavedCard.
+  /// No description provided for @reviewComposerEditTitle.
   ///
   /// In en, this message translates to:
-  /// **'Use Saved Card'**
-  String get checkOutViewUseSavedCard;
+  /// **'Edit Review'**
+  String get reviewComposerEditTitle;
 
-  /// No description provided for @checkOutViewDeleteCard.
+  /// No description provided for @reviewComposerEditSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your review'**
+  String get reviewComposerEditSubtitle;
+
+  /// No description provided for @reviewComposerRatingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get reviewComposerRatingLabel;
+
+  /// No description provided for @reviewComposerCommentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your comment'**
+  String get reviewComposerCommentLabel;
+
+  /// No description provided for @reviewComposerCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others what you thought...'**
+  String get reviewComposerCommentHint;
+
+  /// No description provided for @reviewComposerSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit review'**
+  String get reviewComposerSubmitButton;
+
+  /// No description provided for @reviewComposerUpdateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get reviewComposerUpdateButton;
+
+  /// No description provided for @reviewComposerSelectRatingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a star rating.'**
+  String get reviewComposerSelectRatingError;
+
+  /// No description provided for @reviewComposerCommentRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write a comment before submitting.'**
+  String get reviewComposerCommentRequiredError;
+
+  /// No description provided for @reviewComposerSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your review was submitted.'**
+  String get reviewComposerSuccessMessage;
+
+  /// No description provided for @reviewComposerFailureMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not submit your review. Please try again.'**
+  String get reviewComposerFailureMessage;
+
+  /// No description provided for @reviewComposerEditButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get reviewComposerEditButton;
+
+  /// No description provided for @reviewComposerDeleteButton.
   ///
   /// In en, this message translates to:
   /// **'Delete'**
-  String get checkOutViewDeleteCard;
+  String get reviewComposerDeleteButton;
 
-  /// No description provided for @checkOutViewCardHolderName.
+  /// No description provided for @reviewComposerDeleteConfirmTitle.
   ///
   /// In en, this message translates to:
-  /// **'Card Holder Name'**
-  String get checkOutViewCardHolderName;
+  /// **'Delete Review?'**
+  String get reviewComposerDeleteConfirmTitle;
 
-  /// No description provided for @checkOutViewEnterCardHolderName.
+  /// No description provided for @reviewComposerDeleteConfirmMessage.
   ///
   /// In en, this message translates to:
-  /// **'Please enter card holder name'**
-  String get checkOutViewEnterCardHolderName;
+  /// **'Are you sure you want to delete your review?'**
+  String get reviewComposerDeleteConfirmMessage;
 
-  /// No description provided for @checkOutViewCardNumberOrSaved.
+  /// No description provided for @reviewComposerDeleteConfirmCancel.
   ///
   /// In en, this message translates to:
-  /// **'Card Number (or use saved)'**
-  String get checkOutViewCardNumberOrSaved;
+  /// **'Cancel'**
+  String get reviewComposerDeleteConfirmCancel;
 
-  /// No description provided for @checkOutViewCardNumber.
+  /// No description provided for @reviewComposerDeleteConfirmDelete.
   ///
   /// In en, this message translates to:
-  /// **'Card Number'**
-  String get checkOutViewCardNumber;
+  /// **'Delete'**
+  String get reviewComposerDeleteConfirmDelete;
 
-  /// No description provided for @checkOutViewInvalidCardNumber.
+  /// No description provided for @reviewComposerDeleteError.
   ///
   /// In en, this message translates to:
-  /// **'Invalid card number'**
-  String get checkOutViewInvalidCardNumber;
+  /// **'Error deleting review'**
+  String get reviewComposerDeleteError;
 
-  /// No description provided for @checkOutViewInvalidExpiryDate.
+  /// No description provided for @reviewComposerDeleteSuccess.
   ///
   /// In en, this message translates to:
-  /// **'Invalid expiry date (MM/YY)'**
-  String get checkOutViewInvalidExpiryDate;
+  /// **'Review deleted successfully'**
+  String get reviewComposerDeleteSuccess;
 
-  /// No description provided for @checkOutViewInvalidCvv.
+  /// No description provided for @reviewComposerNoReviewsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Invalid CVV'**
-  String get checkOutViewInvalidCvv;
+  /// **'No reviews yet'**
+  String get reviewComposerNoReviewsTitle;
 
-  /// No description provided for @checkOutViewOnlySaveLast4.
+  /// No description provided for @reviewComposerNoReviewsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'We only save the last 4 digits of your card for your security.'**
-  String get checkOutViewOnlySaveLast4;
+  /// **'Be the first to share your experience!'**
+  String get reviewComposerNoReviewsSubtitle;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

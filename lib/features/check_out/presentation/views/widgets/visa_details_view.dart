@@ -110,14 +110,17 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
   Widget build(BuildContext context) {
     final s = S.of(context)!;
     final scheme = Theme.of(context);
-    final cardWidth = (MediaQuery.sizeOf(context).width - 32).clamp(260.0, 420.0);
+    final cardWidth = (MediaQuery.sizeOf(context).width - 32).clamp(
+      260.0,
+      420.0,
+    );
 
     final fieldFill = scheme.inputDecorationTheme.fillColor;
 
     final inputConfiguration = InputConfiguration(
       cardNumberDecoration: InputDecoration(
         labelText: s.visaDetailsCardNumber,
-        hintText: 'XXXX XXXX XXXX XXXX',
+        hintText: s.visaDetailsCardNumber,
         filled: true,
         fillColor: fieldFill,
         border: _outlineBorder(context),
@@ -126,7 +129,7 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
       ),
       expiryDateDecoration: InputDecoration(
         labelText: s.visaDetailsExpiry,
-        hintText: 'MM/YY',
+        hintText: s.visaDetailsExpiry,
         filled: true,
         fillColor: fieldFill,
         border: _outlineBorder(context),
@@ -135,7 +138,7 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
       ),
       cvvCodeDecoration: InputDecoration(
         labelText: s.visaDetailsCvv,
-        hintText: '•••',
+        hintText: s.visaDetailsCvv,
         filled: true,
         fillColor: fieldFill,
         border: _outlineBorder(context),
@@ -150,10 +153,18 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
         enabledBorder: _outlineBorder(context),
         focusedBorder: _outlineBorder(context),
       ),
-      cardNumberTextStyle: AppTextStyles.cairoRegular.copyWith(color: scheme.colorScheme.onSurface),
-      expiryDateTextStyle: AppTextStyles.cairoRegular.copyWith(color: scheme.colorScheme.onSurface),
-      cvvCodeTextStyle: AppTextStyles.cairoRegular.copyWith(color: scheme.colorScheme.onSurface),
-      cardHolderTextStyle: AppTextStyles.cairoRegular.copyWith(color: scheme.colorScheme.onSurface),
+      cardNumberTextStyle: AppTextStyles.cairoRegular.copyWith(
+        color: scheme.colorScheme.onSurface,
+      ),
+      expiryDateTextStyle: AppTextStyles.cairoRegular.copyWith(
+        color: scheme.colorScheme.onSurface,
+      ),
+      cvvCodeTextStyle: AppTextStyles.cairoRegular.copyWith(
+        color: scheme.colorScheme.onSurface,
+      ),
+      cardHolderTextStyle: AppTextStyles.cairoRegular.copyWith(
+        color: scheme.colorScheme.onSurface,
+      ),
     );
 
     return Scaffold(
@@ -171,7 +182,10 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
               const SizedBox(height: 12),
               if (_savedCardRow != null && VisaCardPrefsServices.hasSavedCard())
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                   margin: const EdgeInsets.only(bottom: 12),
                   decoration: ShapeDecoration(
                     color: const Color(0x33D9D9D9),
@@ -229,9 +243,9 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
                     height: 1.15,
                     fontFamily: 'monospace',
                   ),
-                  labelCardHolder: 'CARD HOLDER',
-                  labelValidThru: 'VALID\nTHRU',
-                  labelExpiredDate: 'MM/YY',
+                  labelCardHolder: s.visaDetailsCardHolder,
+                  labelValidThru: s.visaDetailsExpiry,
+                  labelExpiredDate: s.visaDetailsExpiry,
                   isHolderNameVisible: true,
                   chipColor: const Color(0xFFC8C8C8),
                   obscureCardNumber: false,
@@ -284,10 +298,7 @@ class _VisaDetailsViewState extends State<VisaDetailsView> {
                 },
               ),
               const SizedBox(height: 24),
-              CustomButtom(
-                text: s.visaDetailsSave,
-                onPressed: _onSave,
-              ),
+              CustomButtom(text: s.visaDetailsSave, onPressed: _onSave),
               const SizedBox(height: 16),
             ],
           ),

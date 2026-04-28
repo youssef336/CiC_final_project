@@ -32,9 +32,6 @@ class CheckOutViewBody extends StatefulWidget {
 
 class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   late PageController pageController;
-  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(
-    AutovalidateMode.disabled,
-  );
   final GlobalKey<FormState> _visaFormKey = GlobalKey<FormState>();
   final TextEditingController _cardHolderController = TextEditingController();
   final TextEditingController _cardNumberController = TextEditingController();
@@ -53,11 +50,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     _loadSavedCardData();
     _loadSavedAddressData();
 
-    pageController.addListener(() {
-      setState(() {
-        currentPageindex = pageController.page!.toInt();
-      });
-    });
+    pageController.addListener(_handlePageChanged);
     currentPageindex = 0;
     super.initState();
   }
@@ -65,7 +58,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   @override
   void dispose() {
     pageController.dispose();
-    valueNotifier.dispose();
     _cardHolderController.dispose();
     _cardNumberController.dispose();
     _expiryDateController.dispose();
@@ -81,6 +73,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   int currentPageindex = 0;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _addressAutoValidate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +114,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
           Expanded(
             child: CheckOutStepsPageView(
-              autoValidateMode: valueNotifier,
+              autoValidateMode: _addressAutoValidate
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
               formKey: _formKey,
               pageController: pageController,
               visaFormKey: _visaFormKey,
@@ -220,13 +215,33 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     }
   }
 
-  void _handleAddressSectionValidation() {
-    if (!_formKey.currentState!.validate()) {
-      valueNotifier.value = AutovalidateMode.always;
+  void _handlePageChanged() {
+    final page = pageController.page;
+    if (page == null) return;
+
+    final newPageIndex = page.round();
+    if (newPageIndex == currentPageindex || !mounted) return;
+
+    setState(() {
+      currentPageindex = newPageIndex;
+    });
+  }
+
+  Future<void> _handleAddressSectionValidation() async {
+    final formState = _formKey.currentState;
+    if (formState == null) return;
+
+    if (!formState.validate()) {
+      if (!_addressAutoValidate && mounted) {
+        setState(() {
+          _addressAutoValidate = true;
+        });
+      }
       return;
     }
-    _formKey.currentState!.save();
-    _saveAddressLocally();
+
+    formState.save();
+    await _saveAddressLocally();
     pageController.animateToPage(
       2,
       duration: const Duration(milliseconds: 600),
@@ -299,20 +314,24 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         builder: (context) {
           return AlertDialog(
             title: Text(S.of(context)!.checkOutViewConfirmPaymentVisa),
-            content: const Text('هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟'),
+            content: Text(S.of(context)!.checkOutViewConfirmPaymentVisaMessage),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(S.of(context)!.profileViewLogoutText3), // "إلغاء" Cancel
+                child: Text(
+                  S.of(context)!.profileViewLogoutText3,
+                ), // "إلغاء" Cancel
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                   addOrder.addOrder(order: orderEntity);
                 },
-                child: Text(S.of(context)!.checkOutViewConfirmPaymentVisa), // "تأكيد الدفع" Confirm
+                child: Text(
+                  S.of(context)!.checkOutViewConfirmPaymentVisa,
+                ), // "تأكيد الدفع" Confirm
               ),
             ],
           );
@@ -326,56 +345,32 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (BuildContext context) => PaypalCheckoutView(
-            sandboxMode: true,
-            clientId: KPaypalClientId,
-            secretKey: KPaypalSecrtKey,
-            transactions: [paypalPaymentEntity.toJson()],
-            note: "Contact us for any questions on your order.",
-            onSuccess: (Map params) async {
-              print("onSuccess: $params");
-              Navigator.pop(context);
-              showErrorBar(context, S.of(context)!.paymentSuccessMessage);
-              addOrder.addOrder(order: orderEntity);
-            },
-            onError: (error) {
-              print("onError: $error");
-              showErrorBar(context, S.of(context)!.paymentErrorMessage);
-              Navigator.pop(context);
-            },
-            onCancel: () {
-              print('cancelled:');
-            },
+          builder: (BuildContext context) => Theme(
+            data: ThemeData.light(),
+            child: PaypalCheckoutView(
+              sandboxMode: true,
+              clientId: KPaypalClientId,
+              secretKey: KPaypalSecrtKey,
+              transactions: [paypalPaymentEntity.toJson()],
+              note: "Contact us for any questions on your order.",
+              onSuccess: (Map params) async {
+                print("onSuccess: $params");
+                Navigator.pop(context);
+                showErrorBar(context, S.of(context)!.paymentSuccessMessage);
+                addOrder.addOrder(order: orderEntity);
+              },
+              onError: (error) {
+                print("onError: $error");
+                showErrorBar(context, S.of(context)!.paymentErrorMessage);
+                Navigator.pop(context);
+              },
+              onCancel: () {
+                print('cancelled:');
+              },
+            ),
           ),
         ),
       );
     }
-  }
-
-  void _loadSavedCardData() {
-    final card = VisaCardPrefsServices.loadCard();
-    if (card != null) {
-      _cardHolderController.text = card.cardHolderName;
-      _cardNumberController.text = card.cardNumberDigits;
-      _expiryDateController.text = card.expiry;
-    }
-  }
-
-  void _loadSavedAddressData() {
-    _addressNameController.text = Prefs.getString(KSavedAddressName);
-    _addressEmailController.text = Prefs.getString(KSavedAddressEmail);
-    _addressLineController.text = Prefs.getString(KSavedAddressLine);
-    _addressCityController.text = Prefs.getString(KSavedAddressCity);
-    _addressFloorController.text = Prefs.getString(KSavedAddressFloor);
-    _addressPhoneController.text = Prefs.getString(KSavedAddressPhone);
-  }
-
-  void _saveAddressLocally() {
-    Prefs.setString(KSavedAddressName, _addressNameController.text);
-    Prefs.setString(KSavedAddressEmail, _addressEmailController.text);
-    Prefs.setString(KSavedAddressLine, _addressLineController.text);
-    Prefs.setString(KSavedAddressCity, _addressCityController.text);
-    Prefs.setString(KSavedAddressFloor, _addressFloorController.text);
-    Prefs.setString(KSavedAddressPhone, _addressPhoneController.text);
   }
 }

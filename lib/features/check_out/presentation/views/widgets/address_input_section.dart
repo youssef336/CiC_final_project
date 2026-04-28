@@ -1,9 +1,8 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:flutter/foundation.dart';
 // ignore_for_file: unchecked_use_of_nullable_value
 
 import 'package:flutter/material.dart';
+
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 import 'package:mysterybag/core/widgets/custom_text_feild.dart'
@@ -29,7 +28,7 @@ class AddressInputSection extends StatelessWidget {
 
   final GlobalKey<FormState> formKey;
   String? code;
-  final ValueListenable<AutovalidateMode> autoValidateMode;
+  final AutovalidateMode autoValidateMode;
   final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController addressController;
@@ -40,77 +39,69 @@ class AddressInputSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: ValueListenableBuilder<AutovalidateMode>(
-        valueListenable: autoValidateMode,
-        builder: (context, value, child) => Form(
-          key: formKey,
-          autovalidateMode: value,
-          child: Column(
-            children: [
-              const SizedBox(height: 24),
-              CustomTextFormFeild(
-                controller: nameController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.name =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionName,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormFeild(
-                controller: emailController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.email =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionEmail,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormFeild(
-                controller: addressController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.address =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionAddress,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormFeild(
-                controller: cityController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.city =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionCity,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormFeild(
-                controller: floorController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.floor =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionFloor,
-                textInputType: TextInputType.text,
-              ),
-              const SizedBox(height: 16),
-              CustomTextFormFeild(
-                controller: phoneController,
-                onSaved: (value) {
-                  context.read<OrderEntity>().shipingAddressEntity.phone =
-                      value!;
-                },
-                hintText: S.of(context)!.addressInputSectionPhone,
-                textInputType: TextInputType.phone,
-              ),
-              const SizedBox(height: 16),
-              MyWidget(),
-            ],
-          ),
+      child: Form(
+        key: formKey,
+        autovalidateMode: autoValidateMode,
+        child: Column(
+          children: [
+            const SizedBox(height: 24),
+            CustomTextFormFeild(
+              controller: nameController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.name = value!;
+              },
+              hintText: S.of(context)!.addressInputSectionName,
+              textInputType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormFeild(
+              controller: emailController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.email = value!;
+              },
+              hintText: S.of(context)!.addressInputSectionEmail,
+              textInputType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormFeild(
+              controller: addressController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.address =
+                    value!;
+              },
+              hintText: S.of(context)!.addressInputSectionAddress,
+              textInputType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormFeild(
+              controller: cityController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.city = value!;
+              },
+              hintText: S.of(context)!.addressInputSectionCity,
+              textInputType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormFeild(
+              controller: floorController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.floor = value!;
+              },
+              hintText: S.of(context)!.addressInputSectionFloor,
+              textInputType: TextInputType.text,
+            ),
+            const SizedBox(height: 16),
+            CustomTextFormFeild(
+              controller: phoneController,
+              onSaved: (value) {
+                context.read<OrderEntity>().shipingAddressEntity.phone = value!;
+              },
+              hintText: S.of(context)!.addressInputSectionPhone,
+              textInputType: TextInputType.phone,
+            ),
+            const SizedBox(height: 16),
+            MyWidget(),
+          ],
         ),
       ),
     );
@@ -129,7 +120,9 @@ class MyWidget extends StatelessWidget {
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(S.of(context)!.couponDiscountApplied(discount.toString())),
+          content: Text(
+            S.of(context)!.couponDiscountApplied(discount.toString()),
+          ),
           backgroundColor: Colors.green,
         ),
       );

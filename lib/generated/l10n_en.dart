@@ -218,6 +218,10 @@ class SEn extends S {
   String get checkOutViewConfirmPaymentVisa => 'Confirm payment';
 
   @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'Are you sure you want to pay with Visa?';
+
+  @override
   String get checkOutViewConfirmOrderCash => 'Place order';
 
   @override
@@ -269,7 +273,11 @@ class SEn extends S {
   String get orderSummaryWidgetTotal => 'Total';
 
   @override
-  String get orderCubitBlocConsumer => 'Order Placed Successfully';
+  String get orderCashSuccessMessage =>
+      'Cash on delivery order placed successfully';
+
+  @override
+  String get orderVisaSuccessMessage => 'Visa payment completed successfully';
 
   @override
   String get addressSummaryWidgetTitle => 'Delivery Address :';
@@ -656,39 +664,76 @@ class SEn extends S {
       'Result is not confident enough. Try another photo with better lighting.';
 
   @override
-  String get checkOutViewPaymentMethodTitle => 'Payment Method';
+  String get reviewComposerTitle => 'Share your experience';
 
   @override
-  String get checkOutViewSavedCardTitle => 'Saved Card';
+  String get reviewComposerSubtitle =>
+      'Tell others what the food tasted like and how the pickup went.';
 
   @override
-  String get checkOutViewUseSavedCard => 'Use Saved Card';
+  String get reviewComposerEditTitle => 'Edit Review';
 
   @override
-  String get checkOutViewDeleteCard => 'Delete';
+  String get reviewComposerEditSubtitle => 'Update your review';
 
   @override
-  String get checkOutViewCardHolderName => 'Card Holder Name';
+  String get reviewComposerRatingLabel => 'Your rating';
 
   @override
-  String get checkOutViewEnterCardHolderName => 'Please enter card holder name';
+  String get reviewComposerCommentLabel => 'Your comment';
 
   @override
-  String get checkOutViewCardNumberOrSaved => 'Card Number (or use saved)';
+  String get reviewComposerCommentHint => 'Tell others what you thought...';
 
   @override
-  String get checkOutViewCardNumber => 'Card Number';
+  String get reviewComposerSubmitButton => 'Submit review';
 
   @override
-  String get checkOutViewInvalidCardNumber => 'Invalid card number';
+  String get reviewComposerUpdateButton => 'Update';
 
   @override
-  String get checkOutViewInvalidExpiryDate => 'Invalid expiry date (MM/YY)';
+  String get reviewComposerSelectRatingError => 'Please choose a star rating.';
 
   @override
-  String get checkOutViewInvalidCvv => 'Invalid CVV';
+  String get reviewComposerCommentRequiredError =>
+      'Please write a comment before submitting.';
 
   @override
-  String get checkOutViewOnlySaveLast4 =>
-      'We only save the last 4 digits of your card for your security.';
+  String get reviewComposerSuccessMessage => 'Your review was submitted.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'Could not submit your review. Please try again.';
+
+  @override
+  String get reviewComposerEditButton => 'Edit';
+
+  @override
+  String get reviewComposerDeleteButton => 'Delete';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'Delete Review?';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'Are you sure you want to delete your review?';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'Cancel';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'Delete';
+
+  @override
+  String get reviewComposerDeleteError => 'Error deleting review';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'Review deleted successfully';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'No reviews yet';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle =>
+      'Be the first to share your experience!';
 }

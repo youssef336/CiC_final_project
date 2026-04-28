@@ -4,6 +4,7 @@ import 'package:mysterybag/core/helper_functions/get_avg_rating.dart';
 import 'review_model.dart';
 
 class ProductModel {
+  final String documentId;
   final String nameEn;
   final String nameAr;
   final String code;
@@ -20,7 +21,9 @@ class ProductModel {
   final num ratingCount = 0;
   final int unitAmount;
   final List<ReviewModel> reviews;
+
   ProductModel({
+    required this.documentId,
     required this.nameEn,
     required this.nameAr,
 
@@ -38,8 +41,12 @@ class ProductModel {
     this.imageurl,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
+  factory ProductModel.fromJson(
+    Map<String, dynamic> json, {
+    String? documentId,
+  }) {
     return ProductModel(
+      documentId: documentId ?? '',
       nameEn: json['nameEn'],
       nameAr: json['nameAr'],
       code: json['code'],

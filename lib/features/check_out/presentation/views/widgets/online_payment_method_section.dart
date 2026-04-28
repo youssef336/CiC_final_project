@@ -32,7 +32,8 @@ class OnlinePaymentMethodSection extends StatefulWidget {
       _OnlinePaymentMethodSectionState();
 }
 
-class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection> {
+class _OnlinePaymentMethodSectionState
+    extends State<OnlinePaymentMethodSection> {
   @override
   Widget build(BuildContext context) {
     final order = context.read<OrderEntity>();
@@ -47,9 +48,15 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SegmentedButton<String>(
-            segments: const [
-              ButtonSegment<String>(value: 'paypal', label: Text('PayPal')),
-              ButtonSegment<String>(value: 'visa', label: Text('Visa')),
+            segments: [
+              ButtonSegment<String>(
+                value: 'paypal',
+                label: Text(S.of(context)!.checkOutViewPayWithPayPal),
+              ),
+              ButtonSegment<String>(
+                value: 'visa',
+                label: Text(S.of(context)!.checkOutViewPayWithVisa),
+              ),
             ],
             selected: {order.onlinePaymentMethod},
             onSelectionChanged: isCashOnDelivery
@@ -92,9 +99,7 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
                                 '**** **** **** $savedCardLast4';
                             widget.onPaymentMethodChanged();
                           },
-                          child: Text(
-                            S.of(context)!.checkOutViewUseSavedCard,
-                          ),
+                          child: Text(S.of(context)!.checkOutViewUseSavedCard),
                         ),
                         TextButton(
                           onPressed: () {
@@ -108,9 +113,7 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
                             setState(() {});
                             widget.onPaymentMethodChanged();
                           },
-                          child: Text(
-                            S.of(context)!.checkOutViewDeleteCard,
-                          ),
+                          child: Text(S.of(context)!.checkOutViewDeleteCard),
                         ),
                       ],
                     ),
@@ -162,7 +165,7 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
                       Expanded(
                         child: _VisaTextField(
                           controller: widget.expiryDateController,
-                          hintText: 'MM/YY',
+                          hintText: S.of(context)!.visaDetailsExpiry,
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
@@ -172,9 +175,12 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
                           ],
                           validator: (value) {
                             final expiry = value?.trim() ?? '';
-                            if (!RegExp(r'^(0[1-9]|1[0-2])\/\d{2}$')
-                                .hasMatch(expiry)) {
-                              return S.of(context)!.checkOutViewInvalidExpiryDate;
+                            if (!RegExp(
+                              r'^(0[1-9]|1[0-2])\/\d{2}$',
+                            ).hasMatch(expiry)) {
+                              return S
+                                  .of(context)!
+                                  .checkOutViewInvalidExpiryDate;
                             }
                             return null;
                           },
@@ -184,7 +190,7 @@ class _OnlinePaymentMethodSectionState extends State<OnlinePaymentMethodSection>
                       Expanded(
                         child: _VisaTextField(
                           controller: widget.cvvController,
-                          hintText: 'CVV',
+                          hintText: S.of(context)!.visaDetailsCvv,
                           keyboardType: TextInputType.number,
                           obscureText: true,
                           inputFormatters: [
@@ -245,9 +251,7 @@ class _VisaTextField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       inputFormatters: inputFormatters,
-      decoration: InputDecoration(
-        hintText: hintText,
-      ),
+      decoration: InputDecoration(hintText: hintText),
     );
   }
 }

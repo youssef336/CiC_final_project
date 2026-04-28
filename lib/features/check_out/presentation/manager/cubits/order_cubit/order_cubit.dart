@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/repos/ordres_repo/orders_repo.dart';
+import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
 
 import '../../../../domains/entities/order_entity.dart';
 
@@ -13,9 +15,16 @@ class OrderCubit extends Cubit<OrderState> {
   Future<void> addOrder({required OrderEntity order}) async {
     emit(OrderLoading());
     final result = await ordersRepo.addOrder(order: order);
+    var orderConfirmed = false;
     result.fold(
       (failure) => emit(Orderfailure(message: failure.message)),
-      (r) => emit(OrderSuccess()),
+      (_) => orderConfirmed = true,
     );
+
+    if (orderConfirmed) {
+      final currentPoints = Prefs.getInt(Kpoints);
+      await Prefs.setInt(Kpoints, currentPoints + KOrderConfirmationPoints);
+      emit(OrderSuccess());
+    }
   }
 }

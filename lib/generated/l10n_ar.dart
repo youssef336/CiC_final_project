@@ -218,6 +218,10 @@ class SAr extends S {
   String get checkOutViewConfirmPaymentVisa => 'تأكيد الدفع';
 
   @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟';
+
+  @override
   String get checkOutViewConfirmOrderCash => 'تأكيد الطلب';
 
   @override
@@ -269,7 +273,10 @@ class SAr extends S {
   String get orderSummaryWidgetTotal => 'الإجمالي';
 
   @override
-  String get orderCubitBlocConsumer => 'تم تسجيل الطلب بنجاح';
+  String get orderCashSuccessMessage => 'تم تسجيل طلب الدفع عند الاستلام بنجاح';
+
+  @override
+  String get orderVisaSuccessMessage => 'تم إتمام الدفع بالفيزا بنجاح';
 
   @override
   String get addressSummaryWidgetTitle => 'عنوان التوصيل:';
@@ -655,42 +662,75 @@ class SAr extends S {
       'النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.';
 
   @override
-  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
+  String get reviewComposerTitle => 'شارك تجربتك';
 
   @override
-  String get checkOutViewSavedCardTitle => 'بطاقة محفوظة';
+  String get reviewComposerSubtitle =>
+      'أخبر الآخرين عن طعم الطعام وكيف كانت عملية الاستلام.';
 
   @override
-  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
+  String get reviewComposerEditTitle => 'تعديل التقييم';
 
   @override
-  String get checkOutViewDeleteCard => 'حذف';
+  String get reviewComposerEditSubtitle => 'تحديث تقييمك';
 
   @override
-  String get checkOutViewCardHolderName => 'الاسم على البطاقة';
+  String get reviewComposerRatingLabel => 'تقييمك';
 
   @override
-  String get checkOutViewEnterCardHolderName =>
-      'الرجاء إدخال الاسم على البطاقة';
+  String get reviewComposerCommentLabel => 'تعليقك';
 
   @override
-  String get checkOutViewCardNumberOrSaved =>
-      'رقم البطاقة (أو استخدم المحفوظة)';
+  String get reviewComposerCommentHint => 'أخبر الآخرين بما فكرت به...';
 
   @override
-  String get checkOutViewCardNumber => 'رقم البطاقة';
+  String get reviewComposerSubmitButton => 'إرسال التقييم';
 
   @override
-  String get checkOutViewInvalidCardNumber => 'رقم البطاقة غير صحيح';
+  String get reviewComposerUpdateButton => 'تحديث';
 
   @override
-  String get checkOutViewInvalidExpiryDate =>
-      'تاريخ الانتهاء غير صحيح (شهر/سنة)';
+  String get reviewComposerSelectRatingError => 'الرجاء اختيار تقييم بالنجوم.';
 
   @override
-  String get checkOutViewInvalidCvv => 'رمز الأمان غير صحيح';
+  String get reviewComposerCommentRequiredError =>
+      'الرجاء كتابة تعليق قبل الإرسال.';
 
   @override
-  String get checkOutViewOnlySaveLast4 =>
-      'نحفظ فقط آخر 4 أرقام من بطاقتك لأمانك.';
+  String get reviewComposerSuccessMessage => 'تم إرسال تقييمك.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'لم يتمكن من إرسال تقييمك. حاول مرة أخرى.';
+
+  @override
+  String get reviewComposerEditButton => 'تعديل';
+
+  @override
+  String get reviewComposerDeleteButton => 'حذف';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'حذف التقييم؟';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'هل أنت متأكد أنك تريد حذف تقييمك؟';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'إلغاء';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'حذف';
+
+  @override
+  String get reviewComposerDeleteError => 'خطأ في حذف التقييم';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'تم حذف التقييم بنجاح';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'لا توجد تقييمات حتى الآن';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle => 'كن أول من يشارك تجربتك!';
 }

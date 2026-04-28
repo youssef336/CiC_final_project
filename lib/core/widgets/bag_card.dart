@@ -9,10 +9,12 @@ class BagCard extends StatelessWidget {
   final double oldPrice;
   final int bagsLeft;
   final double rating;
+  final double width;
 
   final bagItemModel;
   const BagCard({
     super.key,
+    required this.width,
     required this.title,
     required this.price,
     required this.oldPrice,
@@ -26,7 +28,7 @@ class BagCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      width: 260,
+      width: width,
       margin: const EdgeInsets.only(left: 6, top: 3, right: 6, bottom: 10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
