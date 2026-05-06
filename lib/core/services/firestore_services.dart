@@ -158,9 +158,14 @@ class FirestoreServices implements DatabaseServies {
     Map<String, dynamic>? query,
   }) async {
     String? filterRestaurantId;
+    int? restaurantLimit;
     if (query != null && query['restaurantId'] != null) {
       filterRestaurantId = query['restaurantId'] as String;
       print('🔥 Filtering by restaurantId: $filterRestaurantId');
+    }
+    if (query != null && query['restaurantLimit'] != null) {
+      restaurantLimit = query['restaurantLimit'] as int;
+      print('🔥 Limiting to $restaurantLimit restaurants');
     }
 
     late final QuerySnapshot<Map<String, dynamic>> restaurantsSnapshot;
@@ -170,7 +175,12 @@ class FirestoreServices implements DatabaseServies {
           .where(FieldPath.documentId, isEqualTo: filterRestaurantId)
           .get();
     } else {
-      restaurantsSnapshot = await firestore.collection('resturants').get();
+      var restaurantQuery =
+          firestore.collection('resturants') as Query<Map<String, dynamic>>;
+      if (restaurantLimit != null) {
+        restaurantQuery = restaurantQuery.limit(restaurantLimit);
+      }
+      restaurantsSnapshot = await restaurantQuery.get();
     }
 
     print('🔥 Found ${restaurantsSnapshot.docs.length} restaurants');
@@ -245,8 +255,12 @@ class FirestoreServices implements DatabaseServies {
     Map<String, dynamic>? query,
   }) {
     String? filterRestaurantId;
+    int? restaurantLimit;
     if (query != null && query['restaurantId'] != null) {
       filterRestaurantId = query['restaurantId'] as String;
+    }
+    if (query != null && query['restaurantLimit'] != null) {
+      restaurantLimit = query['restaurantLimit'] as int;
     }
 
     Query<Map<String, dynamic>> restaurantsQuery = firestore.collection(
@@ -257,6 +271,8 @@ class FirestoreServices implements DatabaseServies {
         FieldPath.documentId,
         isEqualTo: filterRestaurantId,
       );
+    } else if (restaurantLimit != null) {
+      restaurantsQuery = restaurantsQuery.limit(restaurantLimit);
     }
 
     return restaurantsQuery.snapshots().map((restaurantsSnapshot) {

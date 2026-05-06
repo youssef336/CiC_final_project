@@ -89,6 +89,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             location: S.of(context)!.bagelMysteryBagLocationValue,
             isAvailable: true,
             isOpenNow: true,
+            restaurantImageUrl:
+                product.restaurantImageUrl?.trim().isNotEmpty == true
+                ? product.restaurantImageUrl!.trim()
+                : null,
           ),
         ),
       );
@@ -172,6 +176,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                   .bagelMysteryBagLocationValue,
                               isAvailable: true,
                               isOpenNow: true,
+                              restaurantImageUrl: null,
                             ),
                           ),
                           const SizedBox(height: 12),

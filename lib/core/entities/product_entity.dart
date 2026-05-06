@@ -21,6 +21,7 @@ class ProductEntity extends Equatable {
   final List<String> detectedItems;
   final String? userEmail;
   final String? restaurantId;
+  final String? restaurantImageUrl;
 
   final bool isFeatured;
   String? imageUrl;
@@ -53,6 +54,7 @@ class ProductEntity extends Equatable {
     this.detectedItems = const [],
     this.userEmail,
     this.restaurantId,
+    this.restaurantImageUrl,
     this.avgRating = 0,
     this.imageUrl,
   });

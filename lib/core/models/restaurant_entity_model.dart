@@ -7,6 +7,7 @@ class RestaurantEntity {
   final String? location;
   final bool isAvailable;
   final bool isOpenNow;
+  final String? restaurantImageUrl;
 
   RestaurantEntity({
     required this.name,
@@ -17,5 +18,6 @@ class RestaurantEntity {
     this.location,
     required this.isAvailable,
     required this.isOpenNow,
+    this.restaurantImageUrl,
   });
 }

@@ -23,9 +23,7 @@ class RestaurantCard extends StatelessWidget {
               height: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: restaurant.foodImage.startsWith('http')
-                      ? NetworkImage(restaurant.foodImage)
-                      : AssetImage(restaurant.foodImage),
+                  image: _getImageProvider(restaurant),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -81,5 +79,21 @@ class RestaurantCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  ImageProvider _getImageProvider(RestaurantEntity restaurant) {
+    // Prioritize restaurantImageUrl from Firebase
+    if (restaurant.restaurantImageUrl?.isNotEmpty == true) {
+      final url = restaurant.restaurantImageUrl!.trim();
+      if (url.startsWith('http')) {
+        return NetworkImage(url);
+      }
+    }
+
+    // Fall back to foodImage
+    if (restaurant.foodImage.startsWith('http')) {
+      return NetworkImage(restaurant.foodImage);
+    }
+    return AssetImage(restaurant.foodImage);
   }
 }

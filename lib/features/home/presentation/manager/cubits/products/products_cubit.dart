@@ -12,7 +12,11 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   ProductsCubit(this.productRepo) : super(ProductsInitial());
 
-  Future<void> loadProducts({int? limit, String? restaurantId}) async {
+  Future<void> loadProducts({
+    int? limit,
+    String? restaurantId,
+    int? restaurantLimit,
+  }) async {
     await _productsSubscription?.cancel();
     emit(ProductsLoading());
     try {
@@ -31,7 +35,10 @@ class ProductsCubit extends Cubit<ProductsState> {
       }
 
       _productsSubscription = productRepo
-          .watchProducts(restaurantId: restaurantId)
+          .watchProducts(
+            restaurantId: restaurantId,
+            restaurantLimit: restaurantLimit,
+          )
           .listen((result) {
             result.fold((failure) => emit(ProductsFailure(failure)), (
               products,

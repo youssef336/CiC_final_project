@@ -78,11 +78,15 @@ class ProductRepoImpl extends ProductRepo {
   @override
   Stream<Either<Failure, List<ProductEntity>>> watchProducts({
     String? restaurantId,
+    int? restaurantLimit,
   }) async* {
     final query = <String, dynamic>{};
 
     if (restaurantId != null && restaurantId.isNotEmpty) {
       query['restaurantId'] = restaurantId;
+    }
+    if (restaurantLimit != null) {
+      query['restaurantLimit'] = restaurantLimit;
     }
 
     await for (final data in databaseServies.watchData(

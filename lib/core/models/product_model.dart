@@ -18,6 +18,7 @@ class ProductModel {
   final List<String> detectedItems;
   final String? userEmail;
   final String? restaurantId;
+  final String? restaurantImageUrl;
 
   final bool isfeatured;
   final num sellingCount;
@@ -54,6 +55,7 @@ class ProductModel {
     this.pickupTime,
     this.userEmail,
     this.restaurantId,
+    this.restaurantImageUrl,
     this.imageurl,
   });
 
@@ -131,6 +133,9 @@ class ProductModel {
       restaurantId: safeString(json['restaurantId']).isNotEmpty
           ? safeString(json['restaurantId'])
           : null,
+      restaurantImageUrl: safeString(json['restaurantImageUrl']).isNotEmpty
+          ? safeString(json['restaurantImageUrl'])
+          : null,
       isOrganic: safeBool(json['isOrganic']),
       isfeatured: safeBool(json['isfeatured']) || safeBool(json['isFeatured']),
       imageurl: safeString(json['imageurl']).isNotEmpty
@@ -166,6 +171,7 @@ class ProductModel {
       detectedItems: detectedItems,
       userEmail: userEmail,
       restaurantId: restaurantId,
+      restaurantImageUrl: restaurantImageUrl,
       avgRating: avgRating,
       imageUrl: imageurl,
     );

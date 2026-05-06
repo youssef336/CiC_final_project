@@ -10,6 +10,7 @@ final List<RestaurantEntity> demoRestaurants = [
     distance: '2.7 kilometers',
     isAvailable: true,
     isOpenNow: true,
+    restaurantImageUrl: null,
   ),
   RestaurantEntity(
     name: 'Burger Palace',
@@ -19,6 +20,7 @@ final List<RestaurantEntity> demoRestaurants = [
     distance: '1.5 kilometers',
     isAvailable: true,
     isOpenNow: true,
+    restaurantImageUrl: null,
   ),
   RestaurantEntity(
     name: 'Pizza Corner',
@@ -28,5 +30,6 @@ final List<RestaurantEntity> demoRestaurants = [
     distance: '3.2 kilometers',
     isAvailable: true,
     isOpenNow: false,
+    restaurantImageUrl: null,
   ),
 ];
