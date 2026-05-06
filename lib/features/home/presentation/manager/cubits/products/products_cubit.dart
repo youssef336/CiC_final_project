@@ -8,14 +8,23 @@ class ProductsCubit extends Cubit<ProductsState> {
   final ProductRepo productRepo;
   ProductsCubit(this.productRepo) : super(ProductsInitial());
 
-  Future<void> loadProducts() async {
+  Future<void> loadProducts({int? limit, String? restaurantId}) async {
     emit(ProductsLoading());
     try {
-      final result = await productRepo.getProducts();
+      final result = limit != null
+          ? await productRepo.getProductsWithLimit(
+              limit,
+              restaurantId: restaurantId,
+            )
+          : await productRepo.getProducts(restaurantId: restaurantId);
       result.fold((failure) => emit(ProductsFailure(failure)), (products) {
+        print(
+          '📦 Products loaded: ${products.length} products (limit: $limit)',
+        );
         emit(ProductsSuccess(products));
       });
     } catch (e) {
+      print('❌ Error loading products: $e');
       emit(ProductsFailure(ServerFailure(e.toString())));
     }
   }

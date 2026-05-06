@@ -1,4 +1,5 @@
 import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 
 class BagItemModel {
   final String title;
@@ -7,6 +8,7 @@ class BagItemModel {
   final int bagsLeft;
   final double rating;
   final ProductEntity? product;
+  final RestaurantEntity? restaurant;
 
   BagItemModel({
     required this.title,
@@ -15,5 +17,6 @@ class BagItemModel {
     required this.bagsLeft,
     required this.rating,
     this.product,
+    this.restaurant,
   });
 }

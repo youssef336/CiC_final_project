@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/models/bag_item_model.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
-import 'package:mysterybag/core/repos/product_repo/product_repo.dart';
-import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/core/widgets/available_bags_list.dart';
 import 'package:mysterybag/core/widgets/resturant_card.dart';
 import '../../manager/cubits/products/products_cubit.dart';
@@ -20,24 +18,10 @@ class ProductsViewBody extends StatefulWidget {
 }
 
 class _ProductsViewBodyState extends State<ProductsViewBody> {
-  late final ProductsCubit _productsCubit;
-
-  @override
-  void initState() {
-    super.initState();
-    _productsCubit = ProductsCubit(getIt<ProductRepo>());
-    _productsCubit.loadProducts();
-  }
-
-  @override
-  void dispose() {
-    _productsCubit.close();
-    super.dispose();
-  }
-
   List<BagItemModel> _buildBags(
     BuildContext context,
     List<ProductEntity> products,
+    RestaurantEntity restaurant,
   ) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
@@ -55,6 +39,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
         bagsLeft: product.bagsLeft,
         rating: product.avgRating.toDouble(),
         product: product,
+        restaurant: restaurant,
       );
     }).toList();
   }
@@ -78,50 +63,79 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
     ];
   }
 
-  ProductEntity? _firstProduct(List<ProductEntity> products) {
-    if (products.isEmpty) {
-      return null;
+  List<_RestaurantProductsSection> _groupProductsByRestaurant(
+    List<ProductEntity> products,
+  ) {
+    final groupedProducts = <String, _RestaurantProductsSection>{};
+
+    for (final product in products) {
+      final restaurantKey = _restaurantKey(product);
+      final section = groupedProducts.putIfAbsent(
+        restaurantKey,
+        () => _RestaurantProductsSection(
+          restaurant: RestaurantEntity(
+            name: product.restaurantName?.trim().isNotEmpty == true
+                ? product.restaurantName!.trim()
+                : S.of(context)!.restaurantNameMadbinaZamalek,
+            foodImage: product.imageUrl?.trim().isNotEmpty == true
+                ? product.imageUrl!.trim()
+                : 'assets/images/food.png',
+            logoImage: 'assets/images/resturant.png',
+            branches: S.of(context)!.restaurantBranchesCount('1'),
+            distance: S.of(context)!.restaurantDistanceKilometers('2.7'),
+            location: S.of(context)!.bagelMysteryBagLocationValue,
+            isAvailable: true,
+            isOpenNow: true,
+          ),
+        ),
+      );
+      section.products.add(product);
     }
 
-    return products.first;
+    return groupedProducts.values.toList();
+  }
+
+  String _restaurantKey(ProductEntity product) {
+    final restaurantId = product.restaurantId?.trim();
+    if (restaurantId != null && restaurantId.isNotEmpty) {
+      return restaurantId;
+    }
+
+    final restaurantName = product.restaurantName?.trim();
+    if (restaurantName != null && restaurantName.isNotEmpty) {
+      return restaurantName.toLowerCase();
+    }
+
+    return product.documentId.isNotEmpty ? product.documentId : product.code;
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _productsCubit,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  BlocBuilder<ProductsCubit, ProductsState>(
-                    builder: (context, state) {
-                      final products = state is ProductsSuccess
-                          ? state.products
-                          : <ProductEntity>[];
-                      final product = _firstProduct(products);
-                      final bags = products.isNotEmpty
-                          ? _buildBags(context, products)
-                          : _defaultBags(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                BlocBuilder<ProductsCubit, ProductsState>(
+                  builder: (context, state) {
+                    final products = state is ProductsSuccess
+                        ? state.products
+                        : <ProductEntity>[];
+                    final restaurantSections = products.isNotEmpty
+                        ? _groupProductsByRestaurant(products)
+                        : <_RestaurantProductsSection>[];
 
-                      return Column(
-                        children: [
-                          const SizedBox(height: KTopPadding),
+                    return Column(
+                      children: [
+                        const SizedBox(height: KTopPadding),
+                        if (restaurantSections.isEmpty) ...[
                           RestaurantCard(
                             restaurant: RestaurantEntity(
-                              name:
-                                  product?.restaurantName?.trim().isNotEmpty ==
-                                      true
-                                  ? product!.restaurantName!.trim()
-                                  : S.of(context)!.restaurantNameMadbinaZamalek,
-                              foodImage:
-                                  product?.imageUrl?.trim().isNotEmpty == true
-                                  ? product!.imageUrl!.trim()
-                                  : 'assets/images/food.png',
+                              name: S.of(context)!.restaurantNameMadbinaZamalek,
+                              foodImage: 'assets/images/food.png',
                               logoImage: 'assets/images/resturant.png',
                               branches: S
                                   .of(context)!
@@ -129,6 +143,9 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                               distance: S
                                   .of(context)!
                                   .restaurantDistanceKilometers('2.7'),
+                              location: S
+                                  .of(context)!
+                                  .bagelMysteryBagLocationValue,
                               isAvailable: true,
                               isOpenNow: true,
                             ),
@@ -136,18 +153,50 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                           const SizedBox(height: 20),
                           AvailableBagsList(
                             title: S.of(context)!.availableBagsTitle,
-                            bags: bags,
+                            bags: _defaultBags(context),
                           ),
+                        ] else ...[
+                          for (final section in restaurantSections) ...[
+                            RestaurantCard(restaurant: section.restaurant),
+                            const SizedBox(height: 20),
+                            AvailableBagsList(
+                              title: S.of(context)!.availableBagsTitle,
+                              bags: _buildBags(
+                                context,
+                                section.products,
+                                section.restaurant,
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                          ],
                         ],
-                      );
-                    },
-                  ),
-                ],
-              ),
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+}
+
+class _RestaurantProductsSection {
+  _RestaurantProductsSection({required this.restaurant});
+
+  final RestaurantEntity restaurant;
+  final List<ProductEntity> products = <ProductEntity>[];
+
+  String get foodImage {
+    for (final product in products) {
+      final imageUrl = product.imageUrl?.trim();
+      if (imageUrl != null && imageUrl.isNotEmpty) {
+        return imageUrl;
+      }
+    }
+
+    return 'assets/images/food.png';
   }
 }

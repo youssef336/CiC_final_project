@@ -146,7 +146,10 @@ class BagCard extends StatelessWidget {
 
                 Navigator.of(context).pushNamed(
                   BagelMysteryBagScreen.routeName,
-                  arguments: product,
+                  arguments: {
+                    'product': product,
+                    'restaurant': bagItemModel?.restaurant,
+                  },
                 );
               },
               style: ElevatedButton.styleFrom(

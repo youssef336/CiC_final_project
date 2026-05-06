@@ -11,16 +11,24 @@ class ProductRepoImpl extends ProductRepo {
 
   ProductRepoImpl(this.databaseServies);
   @override
-  Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct() async {
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct({
+    String? restaurantId,
+  }) async {
     try {
+      final query = <String, dynamic>{
+        'limit': 6,
+        'orderBy': 'sellingCount',
+        'descending': true,
+      };
+
+      if (restaurantId != null && restaurantId.isNotEmpty) {
+        query['restaurantId'] = restaurantId;
+      }
+
       var data =
           await databaseServies.getData(
                 path: BackEndEndpoints.getProducts,
-                query: {
-                  'limit': 6,
-                  'orderBy': 'sellingCount',
-                  'descending': true,
-                },
+                query: query,
               )
               as List<Map<String, dynamic>>;
 
@@ -35,17 +43,30 @@ class ProductRepoImpl extends ProductRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProducts() async {
+  Future<Either<Failure, List<ProductEntity>>> getProducts({
+    String? restaurantId,
+  }) async {
     try {
+      final query = <String, dynamic>{};
+
+      if (restaurantId != null && restaurantId.isNotEmpty) {
+        query['restaurantId'] = restaurantId;
+      }
+
       var data =
-          await databaseServies.getData(path: BackEndEndpoints.getProducts)
+          await databaseServies.getData(
+                path: BackEndEndpoints.getProducts,
+                query: query.isEmpty ? null : query,
+              )
               as List<Map<String, dynamic>>;
+      print('🔍 getProducts - Raw data count: ${data.length}');
       List<ProductModel> products = data
           .map((e) => ProductModel.fromJson(e))
           .toList();
       List<ProductEntity> productsEntity = products
           .map((e) => e.toEntity())
           .toList();
+      print('✅ getProducts - Entities count: ${productsEntity.length}');
 
       return right(productsEntity);
     } catch (e, st) {
@@ -55,13 +76,59 @@ class ProductRepoImpl extends ProductRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>>
-  getBestSellingProductMoreLimit() async {
+  Future<Either<Failure, List<ProductEntity>>> getProductsWithLimit(
+    int limit, {
+    String? restaurantId,
+  }) async {
     try {
+      final query = <String, dynamic>{'limit': limit};
+
+      if (restaurantId != null && restaurantId.isNotEmpty) {
+        query['restaurantId'] = restaurantId;
+      }
+
       var data =
           await databaseServies.getData(
                 path: BackEndEndpoints.getProducts,
-                query: {'orderBy': 'sellingCount', 'descending': true},
+                query: query,
+              )
+              as List<Map<String, dynamic>>;
+      print('🔍 getProductsWithLimit($limit) - Raw data count: ${data.length}');
+      List<ProductModel> products = data
+          .map((e) => ProductModel.fromJson(e))
+          .toList();
+      List<ProductEntity> productsEntity = products
+          .map((e) => e.toEntity())
+          .toList();
+      print(
+        '✅ getProductsWithLimit($limit) - Entities count: ${productsEntity.length}',
+      );
+
+      return right(productsEntity);
+    } catch (e, st) {
+      print('Error in getProductsWithLimit: $e\n$st');
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProductMoreLimit({
+    String? restaurantId,
+  }) async {
+    try {
+      final query = <String, dynamic>{
+        'orderBy': 'sellingCount',
+        'descending': true,
+      };
+
+      if (restaurantId != null && restaurantId.isNotEmpty) {
+        query['restaurantId'] = restaurantId;
+      }
+
+      var data =
+          await databaseServies.getData(
+                path: BackEndEndpoints.getProducts,
+                query: query,
               )
               as List<Map<String, dynamic>>;
 
@@ -77,11 +144,12 @@ class ProductRepoImpl extends ProductRepo {
 
   @override
   Future<Either<Failure, List<ProductEntity>>> searchProducts(
-    String query,
-  ) async {
+    String query, {
+    String? restaurantId,
+  }) async {
     try {
       // First get all products
-      final result = await getProducts();
+      final result = await getProducts(restaurantId: restaurantId);
 
       return result.fold((failure) => left(failure), (products) {
         // Filter products where nameEn or nameAr contains the query (case insensitive)

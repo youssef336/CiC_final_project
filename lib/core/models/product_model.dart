@@ -13,6 +13,7 @@ class ProductModel {
   final num oldPrice;
   final int bagsLeft;
   final String? restaurantName;
+  final String? branchLocation;
   final String? pickupTime;
   final List<String> detectedItems;
   final String? userEmail;
@@ -49,6 +50,7 @@ class ProductModel {
     this.bagsLeft = 0,
     this.detectedItems = const [],
     this.restaurantName,
+    this.branchLocation,
     this.pickupTime,
     this.userEmail,
     this.restaurantId,
@@ -81,8 +83,9 @@ class ProductModel {
       if (reviewsRaw is List) {
         return reviewsRaw.map((e) {
           if (e is Map<String, dynamic>) return ReviewModel.fromJson(e);
-          if (e is Map)
+          if (e is Map) {
             return ReviewModel.fromJson(Map<String, dynamic>.from(e));
+          }
           return ReviewModel.fromJson({});
         }).toList();
       }

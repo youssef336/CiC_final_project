@@ -58,5 +58,5 @@ class ProductEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [code, nameAr, nameEn];
+  List<Object?> get props => [documentId, restaurantId, code, nameAr, nameEn];
 }

@@ -1,11 +1,16 @@
 // ignore_for_file: unused_element
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
 import 'package:mysterybag/features/home/domains/repos/product_reviews_repo.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bagel_customer_reviews_section.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/review_composer_bottom_sheet.dart';
@@ -14,9 +19,14 @@ import 'package:mysterybag/generated/l10n.dart';
 class BagelMysteryBagScreen extends StatefulWidget {
   static const String routeName = '/bagelMysteryBag';
 
-  const BagelMysteryBagScreen({super.key, required this.product});
+  const BagelMysteryBagScreen({
+    super.key,
+    required this.product,
+    this.restaurant,
+  });
 
   final ProductEntity product;
+  final RestaurantEntity? restaurant;
 
   @override
   State<BagelMysteryBagScreen> createState() => _BagelMysteryBagScreenState();
@@ -24,12 +34,106 @@ class BagelMysteryBagScreen extends StatefulWidget {
 
 class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   bool _reserved = false;
+  bool _isReserving = false;
   late final ProductReviewsRepo _reviewsRepo;
+  String? _fetchedBranchLocation;
+  bool _locationFetched = false;
+  late int _currentBagsLeft;
 
   @override
   void initState() {
     super.initState();
     _reviewsRepo = getIt<ProductReviewsRepo>();
+    _currentBagsLeft = widget.product.bagsLeft;
+    _fetchRestaurantLocation();
+  }
+
+  int _asInt(dynamic value) {
+    if (value is int) return value;
+    if (value is num) return value.toInt();
+    return int.tryParse(value?.toString() ?? '') ?? 0;
+  }
+
+  bool _matchesEmbeddedProduct(Map<String, dynamic> productData) {
+    final currentDocumentId = widget.product.documentId.trim();
+    final candidateIds = <String>{
+      productData['docId']?.toString().trim() ?? '',
+      productData['productId']?.toString().trim() ?? '',
+      productData['documentId']?.toString().trim() ?? '',
+      productData['id']?.toString().trim() ?? '',
+    }..removeWhere((value) => value.isEmpty);
+
+    if (currentDocumentId.isNotEmpty &&
+        candidateIds.contains(currentDocumentId)) {
+      return true;
+    }
+
+    final title = productData['title']?.toString().trim() ?? '';
+    if (title.isEmpty) {
+      return false;
+    }
+
+    return title == widget.product.nameEn.trim() ||
+        title == widget.product.nameAr.trim();
+  }
+
+  Future<void> _fetchRestaurantLocation() async {
+    if (_locationFetched) return;
+
+    final restaurantId = widget.product.restaurantId;
+    print('📍 DEBUG: restaurantId = $restaurantId');
+    if (restaurantId == null || restaurantId.isEmpty) {
+      print('📍 DEBUG: restaurantId is null or empty');
+      _locationFetched = true;
+      return;
+    }
+
+    try {
+      final firestore = FirebaseFirestore.instance;
+      final doc = await firestore
+          .collection('resturants')
+          .doc(restaurantId)
+          .get();
+
+      print('📍 DEBUG: doc.exists = ${doc.exists}');
+      print('📍 DEBUG: doc.data() = ${doc.data()}');
+
+      if (doc.exists) {
+        final branchLocation = doc.data()?['branchLocation'] as String?;
+        print('📍 DEBUG: branchLocation = "$branchLocation"');
+
+        final products = List<dynamic>.from(
+          doc.data()?['products'] as List? ?? [],
+        );
+        for (final productData in products) {
+          if (productData is Map<String, dynamic> &&
+              _matchesEmbeddedProduct(productData)) {
+            _currentBagsLeft = _asInt(productData['bagsLeft']);
+            print('📍 DEBUG: updated bagsLeft = $_currentBagsLeft');
+            break;
+          }
+        }
+
+        if (branchLocation != null && branchLocation.isNotEmpty) {
+          setState(() {
+            _fetchedBranchLocation = branchLocation;
+            _locationFetched = true;
+          });
+          print('📍 DEBUG: Successfully set location');
+          return;
+        } else {
+          print('📍 DEBUG: branchLocation is null or empty');
+        }
+      } else {
+        print('📍 DEBUG: Restaurant document does not exist');
+      }
+    } catch (e, st) {
+      print('📍 DEBUG: Error: $e\n$st');
+    }
+
+    setState(() {
+      _locationFetched = true;
+    });
   }
 
   bool _isDark(BuildContext context) {
@@ -90,6 +194,24 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   }
 
   String _locationValue(BuildContext context) {
+    // Prefer the live branchLocation fetched from Firestore.
+    print(
+      '📍 _locationValue: _fetchedBranchLocation = "$_fetchedBranchLocation"',
+    );
+    if (_fetchedBranchLocation != null && _fetchedBranchLocation!.isNotEmpty) {
+      print('📍 _locationValue: returning _fetchedBranchLocation');
+      return _fetchedBranchLocation!;
+    }
+
+    // Fall back to the restaurant object only if the fetch did not populate.
+    final restaurantLocation = widget.restaurant?.location?.trim();
+    print('📍 _locationValue: restaurantLocation = "$restaurantLocation"');
+    if (restaurantLocation != null && restaurantLocation.isNotEmpty) {
+      print('📍 _locationValue: returning restaurantLocation');
+      return restaurantLocation;
+    }
+
+    print('📍 _locationValue: returning fallback');
     return S.of(context)!.bagelMysteryBagLocationValue;
   }
 
@@ -108,7 +230,98 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   }
 
   String _bagsLeft() {
-    return widget.product.bagsLeft.toString();
+    return _currentBagsLeft.toString();
+  }
+
+  Future<void> _reserveProduct() async {
+    if (_isReserving || _reserved || _currentBagsLeft <= 0) {
+      return;
+    }
+
+    final restaurantId = widget.product.restaurantId;
+    if (restaurantId == null || restaurantId.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Restaurant data is missing.')),
+      );
+      return;
+    }
+
+    setState(() {
+      _isReserving = true;
+    });
+
+    try {
+      final firestore = FirebaseFirestore.instance;
+      final restaurantDoc = firestore
+          .collection('resturants')
+          .doc(restaurantId);
+
+      await firestore.runTransaction((transaction) async {
+        final snapshot = await transaction.get(restaurantDoc);
+        if (!snapshot.exists) {
+          throw StateError('Restaurant document not found');
+        }
+
+        final data = snapshot.data();
+        final products = List<dynamic>.from(data?['products'] as List? ?? []);
+        final productIndex = products.indexWhere((productData) {
+          if (productData is! Map) {
+            return false;
+          }
+
+          return _matchesEmbeddedProduct(
+            Map<String, dynamic>.from(productData),
+          );
+        });
+
+        if (productIndex == -1) {
+          throw StateError('Product not found inside restaurant document');
+        }
+
+        final productMap = Map<String, dynamic>.from(
+          products[productIndex] as Map,
+        );
+        final currentBagsLeft = _asInt(productMap['bagsLeft']);
+        if (currentBagsLeft <= 0) {
+          throw StateError('Sold out');
+        }
+
+        productMap['bagsLeft'] = currentBagsLeft - 1;
+        products[productIndex] = productMap;
+
+        transaction.update(restaurantDoc, {'products': products});
+      });
+
+      if (!mounted) {
+        return;
+      }
+
+      context.read<CartCubit>().addProductToCart(widget.product);
+      setState(() {
+        _currentBagsLeft = _currentBagsLeft > 0 ? _currentBagsLeft - 1 : 0;
+        _reserved = true;
+      });
+
+      await context.read<ProductsCubit>().loadProducts();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(S.of(context)!.bagelMysteryBagReservedState)),
+      );
+    } catch (e) {
+      if (!mounted) {
+        return;
+      }
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toString())));
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isReserving = false;
+        });
+      }
+    }
   }
 
   @override
@@ -905,6 +1118,19 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Widget _buildReserveButton() {
     final locale = S.of(context)!;
+    final isSoldOut = _currentBagsLeft <= 0;
+    final canReserve = !_reserved && !_isReserving && !isSoldOut;
+    final buttonLabel = _isReserving
+        ? (Directionality.of(context) == TextDirection.rtl
+              ? 'جارٍ الحجز...'
+              : 'Reserving...')
+        : _reserved
+        ? locale.bagelMysteryBagReservedState
+        : isSoldOut
+        ? (Directionality.of(context) == TextDirection.rtl
+              ? 'نفدت الكمية'
+              : 'Sold out')
+        : locale.bagDetailsReservePickup;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
@@ -920,21 +1146,23 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         ),
       ),
       child: GestureDetector(
-        onTap: () => setState(() => _reserved = !_reserved),
+        onTap: canReserve ? _reserveProduct : null,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: _reserved ? KaccentColor : KprimaryColor,
+            color: _reserved
+                ? KaccentColor
+                : isSoldOut
+                ? Colors.grey
+                : KprimaryColor,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(color: KdividerColor, width: 1),
           ),
           child: Center(
             child: Text(
-              _reserved
-                  ? locale.bagelMysteryBagReservedState
-                  : locale.bagDetailsReservePickup,
+              buttonLabel,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,

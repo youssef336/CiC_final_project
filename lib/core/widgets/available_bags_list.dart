@@ -50,9 +50,11 @@ class AvailableBagsList extends StatelessWidget {
             final cardWidth = (constraints.maxWidth * 0.78).clamp(260.0, 320.0);
 
             return SizedBox(
+              width: constraints.maxWidth,
               height: 345,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
                 itemCount: bags.length,
                 itemBuilder: (context, index) {
                   final bag = bags[index];
