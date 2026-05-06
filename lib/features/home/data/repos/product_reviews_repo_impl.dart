@@ -18,47 +18,52 @@ class ProductReviewsRepoImpl implements ProductReviewsRepo {
     return _firestore.collection(BackEndEndpoints.getProducts).doc(productId);
   }
 
+  List<ReviewEntity> _parseReviews(Map<String, dynamic>? productData) {
+    if (productData == null) {
+      return <ReviewEntity>[];
+    }
+
+    final reviewsData = productData['reviews'];
+    if (reviewsData == null || reviewsData is! List) {
+      return <ReviewEntity>[];
+    }
+
+    return reviewsData.map((reviewData) {
+      if (reviewData is Map<String, dynamic>) {
+        return ReviewModel.fromJson(reviewData).toEntity();
+      }
+
+      if (reviewData is Map) {
+        return ReviewModel.fromJson(
+          Map<String, dynamic>.from(reviewData),
+        ).toEntity();
+      }
+
+      throw Exception('Invalid review data format');
+    }).toList();
+  }
+
+  @override
+  Future<Either<Failure, List<ReviewEntity>>> fetchProductReviews({
+    required String productId,
+  }) async {
+    try {
+      final snapshot = await _productDocument(productId).get();
+      return Right(_parseReviews(snapshot.data()));
+    } on FirebaseException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to fetch reviews.'));
+    } on CustomException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (_) {
+      return const Left(ServerFailure('Failed to fetch reviews.'));
+    }
+  }
+
   @override
   Stream<List<ReviewEntity>> watchProductReviews({required String productId}) {
     return _productDocument(productId).snapshots().map((snapshot) {
       try {
-        final productData = snapshot.data();
-        if (productData == null) {
-          print('Product document is null for productId: $productId');
-          return <ReviewEntity>[];
-        }
-
-        if (!productData.containsKey('reviews')) {
-          print(
-            'Product does not have reviews field for productId: $productId',
-          );
-          return <ReviewEntity>[];
-        }
-
-        final reviewsData = productData['reviews'];
-        if (reviewsData == null) {
-          print('Reviews field is null for productId: $productId');
-          return <ReviewEntity>[];
-        }
-
-        if (reviewsData is! List) {
-          print(
-            'Reviews field is not a list for productId: $productId, type: ${reviewsData.runtimeType}',
-          );
-          return <ReviewEntity>[];
-        }
-
-        final reviewsList = reviewsData;
-        print('Found ${reviewsList.length} reviews for productId: $productId');
-
-        return reviewsList.map((reviewData) {
-          if (reviewData is Map<String, dynamic>) {
-            return ReviewModel.fromJson(reviewData).toEntity();
-          } else {
-            print('Invalid review data format: ${reviewData.runtimeType}');
-            throw Exception('Invalid review data format');
-          }
-        }).toList();
+        return _parseReviews(snapshot.data());
       } catch (e) {
         print('Error processing reviews for productId $productId: $e');
         return <ReviewEntity>[];

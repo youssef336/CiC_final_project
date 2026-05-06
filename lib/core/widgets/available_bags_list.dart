@@ -19,37 +19,38 @@ class AvailableBagsList extends StatelessWidget {
       children: [
         /// Section Header
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               Text(
                 S.of(context)!.availableBagsSwipeHint,
                 style: TextStyle(
                   color: isDark ? KaccentColor : KprimaryColor,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
                 ),
               ),
             ],
           ),
         ),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: 24),
 
         /// Horizontal List
         LayoutBuilder(
           builder: (context, constraints) {
-            final cardWidth = (constraints.maxWidth * 0.72).clamp(220.0, 280.0);
+            final cardWidth = (constraints.maxWidth * 0.78).clamp(260.0, 320.0);
 
             return SizedBox(
-              height: 250,
+              height: 345,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: bags.length,
@@ -63,7 +64,7 @@ class AvailableBagsList extends StatelessWidget {
                     oldPrice: bag.oldPrice,
                     bagsLeft: bag.bagsLeft,
                     rating: bag.rating,
-                    bagItemModel: null,
+                    bagItemModel: bag,
                   );
                 },
               ),

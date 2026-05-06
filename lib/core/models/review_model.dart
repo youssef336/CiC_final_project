@@ -39,16 +39,17 @@ class ReviewModel {
     userId: userId,
   );
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json, {String? id}) =>
-      ReviewModel(
-        id: id ?? json['id'] ?? '',
-        name: json['name'],
-        image: json['image'],
-        rating: json['rating'],
-        review: json['review'],
-        date: json['date'],
-        userId: json['userId'],
-      );
+  factory ReviewModel.fromJson(Map<String, dynamic> json, {String? id}) {
+    return ReviewModel(
+      id: id ?? (json['id']?.toString() ?? ''),
+      name: json['name']?.toString() ?? '',
+      image: json['image']?.toString() ?? '',
+      rating: (json['rating'] as num?) ?? 0,
+      review: json['review']?.toString() ?? '',
+      date: json['date']?.toString() ?? '',
+      userId: json['userId']?.toString(),
+    );
+  }
 
   Map<String, Object?> toJson() => {
     'id': id,

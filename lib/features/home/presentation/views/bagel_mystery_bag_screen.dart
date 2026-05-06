@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
-import 'package:mysterybag/core/models/product_model.dart';
+import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/features/home/domains/repos/product_reviews_repo.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bagel_customer_reviews_section.dart';
@@ -16,7 +16,7 @@ class BagelMysteryBagScreen extends StatefulWidget {
 
   const BagelMysteryBagScreen({super.key, required this.product});
 
-  final ProductModel product;
+  final ProductEntity product;
 
   @override
   State<BagelMysteryBagScreen> createState() => _BagelMysteryBagScreenState();
@@ -50,6 +50,65 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Color _secondaryTextColor(BuildContext context) {
     return _isDark(context) ? KdarkModeTextSecondary : KlightModeTextSecondary;
+  }
+
+  String _productTitle(BuildContext context) {
+    return Directionality.of(context) == TextDirection.rtl
+        ? widget.product.nameAr
+        : widget.product.nameEn;
+  }
+
+  String _restaurantName(BuildContext context) {
+    final restaurantName = widget.product.restaurantName?.trim();
+    if (restaurantName != null && restaurantName.isNotEmpty) {
+      return restaurantName;
+    }
+
+    return S.of(context)!.bagelMysteryBagStoreName;
+  }
+
+  String _pickupTime(BuildContext context) {
+    final pickupTime = widget.product.pickupTime?.trim();
+    if (pickupTime != null && pickupTime.isNotEmpty) {
+      return pickupTime;
+    }
+
+    return S.of(context)!.bagelMysteryBagPickupTimeValue;
+  }
+
+  String _ingredients(BuildContext context) {
+    if (widget.product.detectedItems.isNotEmpty) {
+      return widget.product.detectedItems.join(', ');
+    }
+
+    final description = widget.product.description.trim();
+    if (description.isNotEmpty) {
+      return description;
+    }
+
+    return S.of(context)!.bagelMysteryBagDescription;
+  }
+
+  String _locationValue(BuildContext context) {
+    return S.of(context)!.bagelMysteryBagLocationValue;
+  }
+
+  String _contactValue() {
+    return '+201111303553';
+  }
+
+  double _currentPrice() {
+    return widget.product.price.toDouble();
+  }
+
+  double _oldPrice() {
+    return widget.product.oldPrice > 0
+        ? widget.product.oldPrice.toDouble()
+        : widget.product.price.toDouble();
+  }
+
+  String _bagsLeft() {
+    return widget.product.bagsLeft.toString();
   }
 
   @override
@@ -90,7 +149,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                         icon: Icons.access_time_rounded,
                         iconBg: KsecondaryColor.withOpacity(0.7),
                         label: S.of(context)!.bagelMysteryBagPickupTimeLabel,
-                        value: S.of(context)!.bagelMysteryBagPickupTimeValue,
+                        value: _pickupTime(context),
                         hasArrow: false,
                       ),
                       _buildDivider(),
@@ -98,7 +157,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                         icon: Icons.location_on_rounded,
                         iconBg: KsecondaryColor.withOpacity(0.7),
                         label: S.of(context)!.bagelMysteryBagLocationLabel,
-                        value: S.of(context)!.bagelMysteryBagLocationValue,
+                        value: _locationValue(context),
                         hasArrow: true,
                       ),
                       _buildDivider(),
@@ -106,7 +165,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                         icon: Icons.phone_rounded,
                         iconBg: KsecondaryColor.withOpacity(0.7),
                         label: S.of(context)!.bagelMysteryBagContactLabel,
-                        value: '+201111303553',
+                        value: _contactValue(),
                         hasArrow: true,
                       ),
                       _buildDivider(),
@@ -144,25 +203,37 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Widget _buildHeroSection(BuildContext context) {
     final locale = S.of(context)!;
+    final heroImage = widget.product.imageUrl?.trim();
 
     return SizedBox(
       height: 280,
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Background gradient
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [KprimaryColor, KprimaryColorDark, KaccentColor],
-              ),
+            decoration: BoxDecoration(
+              gradient: heroImage == null || heroImage.isEmpty
+                  ? const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [KprimaryColor, KprimaryColorDark, KaccentColor],
+                    )
+                  : null,
+              image: heroImage == null || heroImage.isEmpty
+                  ? null
+                  : DecorationImage(
+                      image: heroImage.startsWith('http')
+                          ? NetworkImage(heroImage)
+                          : AssetImage(heroImage),
+                      fit: BoxFit.cover,
+                    ),
             ),
+            child: heroImage == null || heroImage.isEmpty
+                ? const SizedBox.expand()
+                : Container(color: Colors.black.withOpacity(0.25)),
           ),
 
-          // Decorative bagel circles
-          ..._buildBagelDecorations(),
+          // Decorative bagel circles removed
 
           // Back button
           PositionedDirectional(
@@ -208,7 +279,10 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                   outlined: true,
                 ),
                 const SizedBox(height: 8),
-                _buildBadge(label: locale.bagCardBagsLeft('3'), filled: true),
+                _buildBadge(
+                  label: locale.bagCardBagsLeft(_bagsLeft()),
+                  filled: true,
+                ),
                 const SizedBox(height: 8),
                 _buildBadge(
                   label: locale.restaurantDistanceKilometers('2.2'),
@@ -223,51 +297,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
     );
   }
 
-  List<Widget> _buildBagelDecorations() {
-    final bagels = [
-      {'top': 0.15, 'left': 0.08, 'size': 110.0},
-      {'top': 0.04, 'left': 0.36, 'size': 130.0},
-      {'top': 0.18, 'left': 0.60, 'size': 100.0},
-    ];
-
-    return bagels.map((b) {
-      final size = b['size'] as double;
-      return Positioned(
-        top: 280 * (b['top'] as double),
-        left: MediaQuery.of(context).size.width * (b['left'] as double),
-        child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: const RadialGradient(
-              center: Alignment(-0.3, -0.3),
-              colors: [KaccentColor, KprimaryColorDark],
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 16,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Center(
-            child: Container(
-              width: size * 0.35,
-              height: size * 0.35,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [KprimaryColorLight, KsecondaryColor],
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    }).toList();
-  }
+  // Decorative bagel decorations removed as requested.
 
   Widget _buildBadge({
     required String label,
@@ -300,8 +330,6 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   }
 
   Widget _buildStoreHeader() {
-    final locale = S.of(context)!;
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -335,7 +363,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                locale.bagelMysteryBagStoreName,
+                _restaurantName(context),
                 style: TextStyle(
                   fontSize: 13,
                   color: _secondaryTextColor(context),
@@ -343,7 +371,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
               ),
               const SizedBox(height: 4),
               Text(
-                locale.bagelMysteryBagTitle,
+                _productTitle(context),
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
@@ -383,6 +411,8 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Widget _buildPriceBox() {
     final locale = S.of(context)!;
+    final currentPrice = _currentPrice();
+    final oldPrice = _oldPrice();
 
     return Container(
       padding: const EdgeInsets.all(18),
@@ -429,29 +459,18 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
           const SizedBox(height: 8),
           RichText(
             text: TextSpan(
-              children: [
-                const TextSpan(
-                  text: '35 ',
-                  style: TextStyle(
-                    fontSize: 38,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.green,
-                  ),
-                ),
-                TextSpan(
-                  text: locale.bagCurrencySuffix,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.green,
-                  ),
-                ),
-              ],
+              text:
+                  '${currentPrice.toStringAsFixed(0)} ${locale.bagCurrencySuffix}',
+              style: const TextStyle(
+                fontSize: 38,
+                fontWeight: FontWeight.w900,
+                color: Colors.green,
+              ),
             ),
           ),
           const SizedBox(height: 4),
           Text(
-            '75 ${locale.bagCurrencySuffix}',
+            '${oldPrice.toStringAsFixed(0)} ${locale.bagCurrencySuffix}',
             style: TextStyle(
               fontSize: 16,
               color: _secondaryTextColor(context),
@@ -471,7 +490,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
               ),
               const SizedBox(width: 8),
               Text(
-                locale.bagelMysteryBagAvailableCount('3'),
+                locale.bagelMysteryBagAvailableCount(_bagsLeft()),
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -486,13 +505,11 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
   }
 
   Widget _buildWhatsInBag() {
-    final locale = S.of(context)!;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          locale.bagDetailsWhatInsideTitle,
+          S.of(context)!.bagDetailsWhatInsideTitle,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w800,
@@ -501,7 +518,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         ),
         const SizedBox(height: 10),
         Text(
-          locale.bagelMysteryBagDescription,
+          _ingredients(context),
           style: TextStyle(
             fontSize: 15,
             color: _secondaryTextColor(context),

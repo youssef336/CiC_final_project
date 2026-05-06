@@ -39,7 +39,7 @@ class FirestoreServices implements DatabaseServies {
         }
       }
       var result = await data.get();
-      return result.docs.map((e) => e.data()).toList();
+      return result.docs.map((e) => {...e.data(), 'documentId': e.id}).toList();
     }
   }
 

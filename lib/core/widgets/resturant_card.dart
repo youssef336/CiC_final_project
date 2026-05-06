@@ -7,10 +7,7 @@ import 'restaurant_info_widget.dart';
 class RestaurantCard extends StatelessWidget {
   final RestaurantEntity restaurant;
 
-  const RestaurantCard({
-    super.key,
-    required this.restaurant,
-  });
+  const RestaurantCard({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +16,20 @@ class RestaurantCard extends StatelessWidget {
       height: 220,
       child: Stack(
         children: [
-
           /// Background Food Image
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
-            child: Image.asset(
-              restaurant.foodImage,
+            child: Container(
               width: double.infinity,
               height: double.infinity,
-              fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: restaurant.foodImage.startsWith('http')
+                      ? NetworkImage(restaurant.foodImage)
+                      : AssetImage(restaurant.foodImage),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
 
@@ -37,10 +39,7 @@ class RestaurantCard extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.black.withOpacity(0.8),
-                    Colors.transparent,
-                  ],
+                  colors: [Colors.black.withOpacity(0.8), Colors.transparent],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),
@@ -55,7 +54,6 @@ class RestaurantCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   StatusBadgesWidget(
                     isAvailable: restaurant.isAvailable,
                     isOpenNow: restaurant.isOpenNow,
@@ -66,9 +64,7 @@ class RestaurantCard extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      RestaurantLogoWidget(
-                        imagePath: restaurant.logoImage,
-                      ),
+                      RestaurantLogoWidget(imagePath: restaurant.logoImage),
                       const SizedBox(width: 12),
                       Expanded(
                         child: RestaurantInfoWidget(

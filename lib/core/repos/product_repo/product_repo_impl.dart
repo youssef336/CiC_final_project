@@ -28,8 +28,9 @@ class ProductRepoImpl extends ProductRepo {
           .map((e) => ProductModel.fromJson(e).toEntity())
           .toList();
       return right(products);
-    } catch (e) {
-      return left(const ServerFailure('Failed to get products'));
+    } catch (e, st) {
+      print('Error in getBestSellingProduct: $e\n$st');
+      return left(ServerFailure(e.toString()));
     }
   }
 
@@ -47,8 +48,9 @@ class ProductRepoImpl extends ProductRepo {
           .toList();
 
       return right(productsEntity);
-    } catch (e) {
-      return const Left(ServerFailure('Failed to get product'));
+    } catch (e, st) {
+      print('Error in getProducts: $e\n$st');
+      return Left(ServerFailure(e.toString()));
     }
   }
 
@@ -67,8 +69,9 @@ class ProductRepoImpl extends ProductRepo {
           .map((e) => ProductModel.fromJson(e).toEntity())
           .toList();
       return right(products);
-    } catch (e) {
-      return left(const ServerFailure('Failed to get products'));
+    } catch (e, st) {
+      print('Error in getBestSellingProductMoreLimit: $e\n$st');
+      return left(ServerFailure(e.toString()));
     }
   }
 

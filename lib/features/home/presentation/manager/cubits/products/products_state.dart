@@ -1,0 +1,28 @@
+import 'package:equatable/equatable.dart';
+import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/core/errors/failures.dart';
+
+abstract class ProductsState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class ProductsInitial extends ProductsState {}
+
+class ProductsLoading extends ProductsState {}
+
+class ProductsSuccess extends ProductsState {
+  final List<ProductEntity> products;
+  ProductsSuccess(this.products);
+
+  @override
+  List<Object?> get props => [products];
+}
+
+class ProductsFailure extends ProductsState {
+  final Failure failure;
+  ProductsFailure(this.failure);
+
+  @override
+  List<Object?> get props => [failure];
+}

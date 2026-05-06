@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/models/bag_item_model.dart';
 import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
@@ -11,7 +12,7 @@ class BagCard extends StatelessWidget {
   final double rating;
   final double width;
 
-  final bagItemModel;
+  final BagItemModel? bagItemModel;
   const BagCard({
     super.key,
     required this.width,
@@ -30,19 +31,18 @@ class BagCard extends StatelessWidget {
     return Container(
       width: width,
       margin: const EdgeInsets.only(left: 6, top: 3, right: 6, bottom: 10),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(28),
         boxShadow: [
-          // Shadow in all directions
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.shade300.withOpacity(0.5),
-            blurRadius: 2,
-            spreadRadius: 2,
-            offset: const Offset(0, 0),
+                ? Colors.black.withOpacity(0.24)
+                : Colors.black.withOpacity(0.08),
+            blurRadius: 18,
+            spreadRadius: 1,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
@@ -55,30 +55,37 @@ class BagCard extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
                     color: isDark ? KdarkModeTextColor : KlightModeTextColor,
                   ),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? KaccentColor.withOpacity(0.2)
-                      : KaccentColor.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xFFF7F2E8),
+                  borderRadius: BorderRadius.circular(18),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.star, size: 14, color: KaccentColor),
-                    const SizedBox(width: 4),
+                    const Icon(
+                      Icons.star_rounded,
+                      size: 18,
+                      color: KaccentColor,
+                    ),
+                    const SizedBox(width: 6),
                     Text(
                       rating.toString(),
                       style: TextStyle(
                         color: isDark
                             ? KdarkModeTextColor
                             : KlightModeTextColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
@@ -87,12 +94,14 @@ class BagCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 18),
 
           Text(
-            '$oldPrice ${S.of(context)!.bagCurrencySuffix}',
+            '${oldPrice.toStringAsFixed(1)} ${S.of(context)!.bagCurrencySuffix}',
             style: TextStyle(
               decoration: TextDecoration.lineThrough,
+              fontSize: 17,
+              fontWeight: FontWeight.w500,
               color: isDark
                   ? KdarkModeTextSecondary
                   : Theme.of(
@@ -101,12 +110,14 @@ class BagCard extends StatelessWidget {
             ),
           ),
 
+          const SizedBox(height: 6),
+
           Text(
-            '$price ${S.of(context)!.bagCurrencySuffix}',
+            '${price.toStringAsFixed(1)} ${S.of(context)!.bagCurrencySuffix}',
             style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.green,
+              fontSize: 23,
+              fontWeight: FontWeight.w800,
+              color: Color(0xFF4CAF50),
             ),
           ),
 
@@ -114,33 +125,43 @@ class BagCard extends StatelessWidget {
 
           Text(
             S.of(context)!.bagCardBagsLeft(bagsLeft.toString()),
-            style: TextStyle(
-              color: isDark ? KdarkModeTextSecondary : KaccentColor,
+            style: const TextStyle(
+              color: Color(0xFFC6A56A),
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
             ),
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 18),
 
           SizedBox(
             width: double.infinity,
+            height: 64,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(
-                  context,
-                ).pushNamed(BagelMysteryBagScreen.routeName);
+                final product = bagItemModel?.product;
+                if (product == null) {
+                  return;
+                }
+
+                Navigator.of(context).pushNamed(
+                  BagelMysteryBagScreen.routeName,
+                  arguments: product,
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: KaccentColor,
+                backgroundColor: const Color(0xFFC79E68),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(18),
                 ),
+                elevation: 0,
               ),
               child: Text(
                 S.of(context)!.bagCardReserve,
-                style: TextStyle(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
