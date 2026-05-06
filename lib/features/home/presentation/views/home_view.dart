@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) =>
-          ProductsCubit(getIt<ProductRepo>())..loadProducts(restaurantLimit: 3),
+          ProductsCubit(getIt<ProductRepo>())..loadProducts(restaurantLimit: 2),
       child: Scaffold(
         appBar: AppBar(title: Text(S.of(context)!.homeViewTitle)),
         body: const HomeViewBody(),

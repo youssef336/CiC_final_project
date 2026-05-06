@@ -17,6 +17,9 @@ class ProductsCubit extends Cubit<ProductsState> {
     String? restaurantId,
     int? restaurantLimit,
   }) async {
+    print(
+      '📦 ProductsCubit.loadProducts: limit=$limit, restaurantId=$restaurantId, restaurantLimit=$restaurantLimit',
+    );
     await _productsSubscription?.cancel();
     emit(ProductsLoading());
     try {

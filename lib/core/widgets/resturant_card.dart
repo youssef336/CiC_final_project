@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'status_badges_widget.dart';
 import 'restaurant_logo_widget.dart';
@@ -6,8 +7,8 @@ import 'restaurant_info_widget.dart';
 
 class RestaurantCard extends StatelessWidget {
   final RestaurantEntity restaurant;
-
-  const RestaurantCard({super.key, required this.restaurant});
+  ProductEntity? product;
+  RestaurantCard({super.key, required this.restaurant, this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class RestaurantCard extends StatelessWidget {
               height: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: _getImageProvider(restaurant),
+                  image: NetworkImage(restaurant.foodImage),
+
                   fit: BoxFit.cover,
                 ),
               ),
@@ -61,7 +63,7 @@ class RestaurantCard extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      RestaurantLogoWidget(imagePath: restaurant.logoImage),
+                      RestaurantLogoWidget(restaurant: restaurant),
                       const SizedBox(width: 12),
                       Expanded(
                         child: RestaurantInfoWidget(
@@ -82,18 +84,24 @@ class RestaurantCard extends StatelessWidget {
   }
 
   ImageProvider _getImageProvider(RestaurantEntity restaurant) {
-    // Prioritize restaurantImageUrl from Firebase
+    print(
+      '🖼️ RestaurantCard image: name=${restaurant.name}, restaurantImageUrl=${restaurant.restaurantImageUrl}, foodImage=${restaurant.foodImage}',
+    );
+    // Prioritize restaurantImageUrl from Firebase only if it's not a QR code
     if (restaurant.restaurantImageUrl?.isNotEmpty == true) {
       final url = restaurant.restaurantImageUrl!.trim();
-      if (url.startsWith('http')) {
+      if (url.startsWith('http') && !url.toLowerCase().contains('qrcode')) {
+        print('🖼️ Using NetworkImage from restaurantImageUrl: $url');
         return NetworkImage(url);
       }
     }
 
-    // Fall back to foodImage
+    // Fall back to foodImage (product image)
     if (restaurant.foodImage.startsWith('http')) {
+      print('🖼️ Using NetworkImage from foodImage: ${restaurant.foodImage}');
       return NetworkImage(restaurant.foodImage);
     }
+    print('🖼️ Using AssetImage: ${restaurant.foodImage}');
     return AssetImage(restaurant.foodImage);
   }
 }

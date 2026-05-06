@@ -73,6 +73,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
     for (final product in products) {
       final restaurantKey = _restaurantKey(product);
+      print(
+        '🏠 Grouping product ${product.nameEn}: restaurantImageUrl=${product.restaurantImageUrl}, imageUrl=${product.imageUrl}',
+      );
       final section = groupedProducts.putIfAbsent(
         restaurantKey,
         () => _RestaurantProductsSection(

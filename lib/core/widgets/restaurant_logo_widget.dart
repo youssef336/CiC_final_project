@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 
 class RestaurantLogoWidget extends StatelessWidget {
-  final String imagePath;
-
-  const RestaurantLogoWidget({super.key, required this.imagePath});
+  final RestaurantEntity restaurant;
+  const RestaurantLogoWidget({super.key, required this.restaurant});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class RestaurantLogoWidget extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(imagePath),
+              image: _getImageProvider(restaurant),
               fit: BoxFit.cover,
             ),
           ),
@@ -30,4 +30,26 @@ class RestaurantLogoWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+ImageProvider _getImageProvider(RestaurantEntity restaurant) {
+  print(
+    '🖼️ RestaurantCard image: name=${restaurant.name}, restaurantImageUrl=${restaurant.restaurantImageUrl}, foodImage=${restaurant.foodImage}',
+  );
+  // Prioritize restaurantImageUrl from Firebase only if it's not a QR code
+  if (restaurant.restaurantImageUrl?.isNotEmpty == true) {
+    final url = restaurant.restaurantImageUrl!.trim();
+    if (url.startsWith('http') && !url.toLowerCase().contains('qrcode')) {
+      print('🖼️ Using NetworkImage from restaurantImageUrl: $url');
+      return NetworkImage(url);
+    }
+  }
+
+  // Fall back to foodImage (product image)
+  if (restaurant.foodImage.startsWith('http')) {
+    print('🖼️ Using NetworkImage from foodImage: ${restaurant.foodImage}');
+    return NetworkImage(restaurant.foodImage);
+  }
+  print('🖼️ Using AssetImage: ${restaurant.foodImage}');
+  return AssetImage(restaurant.foodImage);
 }

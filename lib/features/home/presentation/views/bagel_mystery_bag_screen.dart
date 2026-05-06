@@ -474,7 +474,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   Widget _buildHeroSection(BuildContext context, int bagsLeft) {
     final locale = S.of(context)!;
-    final heroImage = widget.product.imageUrl?.trim();
+    final heroImage = widget.product.imageUrl.trim();
 
     return SizedBox(
       height: 280,
@@ -483,14 +483,14 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         children: [
           Container(
             decoration: BoxDecoration(
-              gradient: heroImage == null || heroImage.isEmpty
+              gradient: heroImage.isEmpty
                   ? const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [KprimaryColor, KprimaryColorDark, KaccentColor],
                     )
                   : null,
-              image: heroImage == null || heroImage.isEmpty
+              image: heroImage.isEmpty
                   ? null
                   : DecorationImage(
                       image: heroImage.startsWith('http')
@@ -499,7 +499,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                       fit: BoxFit.cover,
                     ),
             ),
-            child: heroImage == null || heroImage.isEmpty
+            child: heroImage.isEmpty
                 ? const SizedBox.expand()
                 : Container(color: Colors.black.withOpacity(0.25)),
           ),
@@ -616,14 +616,15 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
             ),
             border: Border.all(color: KdividerColor),
           ),
-          child: const Center(
-            child: Text(
-              "G's",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
-                color: KprimaryColor,
-                letterSpacing: -1,
+          child: Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: Image.network(
+                widget.product.restaurantImageUrl ??
+                    widget.restaurant?.logoImage ??
+                    'https://via.placeholder.com/150',
+
+                fit: BoxFit.cover,
               ),
             ),
           ),

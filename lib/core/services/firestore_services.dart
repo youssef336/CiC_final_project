@@ -193,10 +193,17 @@ class FirestoreServices implements DatabaseServies {
       final restaurantData = restaurantDoc.data();
       final restaurantId = restaurantDoc.id;
       final restaurantName = restaurantData['name'] ?? 'Unknown';
+      final restaurantImageUrl =
+          restaurantData['RestaurantimageUrl'] ??
+          restaurantData['restaurantImageUrl'] ??
+          restaurantData['imageurl'] ??
+          restaurantData['imageUrl'] ??
+          restaurantData['logoImage'] ??
+          '';
       final productsArray = restaurantData['products'] as List<dynamic>? ?? [];
 
       print(
-        '🔥 Restaurant "$restaurantName" has ${productsArray.length} products',
+        '🔥 Restaurant "$restaurantName" has ${productsArray.length} products, restaurantImageUrl=$restaurantImageUrl',
       );
 
       for (final product in productsArray) {
@@ -218,6 +225,7 @@ class FirestoreServices implements DatabaseServies {
             'documentId': canonicalId,
             'restaurantId': restaurantId,
             'restaurantName': restaurantName,
+            'restaurantImageUrl': restaurantImageUrl,
           };
 
           productsById[canonicalId] = candidate;
@@ -266,24 +274,47 @@ class FirestoreServices implements DatabaseServies {
     Query<Map<String, dynamic>> restaurantsQuery = firestore.collection(
       'resturants',
     );
+    print(
+      '🔥 [watch] filterRestaurantId=$filterRestaurantId, restaurantLimit=$restaurantLimit',
+    );
     if (filterRestaurantId != null) {
       restaurantsQuery = restaurantsQuery.where(
         FieldPath.documentId,
         isEqualTo: filterRestaurantId,
       );
+      print(
+        '🔥 [watch] Applied where clause for restaurantId=$filterRestaurantId',
+      );
     } else if (restaurantLimit != null) {
       restaurantsQuery = restaurantsQuery.limit(restaurantLimit);
+      print('🔥 [watch] Applied limit($restaurantLimit) to restaurants query');
+    } else {
+      print('🔥 [watch] No filter or limit applied — fetching ALL restaurants');
     }
 
     return restaurantsQuery.snapshots().map((restaurantsSnapshot) {
+      print(
+        '🔥 [watch] Snapshot returned ${restaurantsSnapshot.docs.length} restaurant docs',
+      );
       final Map<String, Map<String, dynamic>> productsById = {};
 
       for (final restaurantDoc in restaurantsSnapshot.docs) {
         final restaurantData = restaurantDoc.data();
         final restaurantId = restaurantDoc.id;
         final restaurantName = restaurantData['name'] ?? 'Unknown';
+        final restaurantImageUrl =
+            restaurantData['RestaurantimageUrl'] ??
+            restaurantData['restaurantImageUrl'] ??
+            restaurantData['imageurl'] ??
+            restaurantData['imageUrl'] ??
+            restaurantData['logoImage'] ??
+            '';
         final productsArray =
             restaurantData['products'] as List<dynamic>? ?? [];
+
+        print(
+          '🔥 [watch] Restaurant "$restaurantName" has ${productsArray.length} products, restaurantImageUrl=$restaurantImageUrl',
+        );
 
         for (final product in productsArray) {
           if (product is Map<String, dynamic>) {
@@ -301,6 +332,7 @@ class FirestoreServices implements DatabaseServies {
               'documentId': canonicalId,
               'restaurantId': restaurantId,
               'restaurantName': restaurantName,
+              'restaurantImageUrl': restaurantImageUrl,
             };
           }
         }

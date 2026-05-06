@@ -107,6 +107,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           product:
               product ??
               ProductEntity(
+                imageUrl: '',
                 documentId: 'default',
                 nameEn: 'Mystery Bag',
                 nameAr: 'حقيبة مفاجأة',

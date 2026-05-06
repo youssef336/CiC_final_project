@@ -173,7 +173,7 @@ class ProductModel {
       restaurantId: restaurantId,
       restaurantImageUrl: restaurantImageUrl,
       avgRating: avgRating,
-      imageUrl: imageurl,
+      imageUrl: imageurl!,
     );
   }
 }

@@ -89,6 +89,8 @@ class ProductRepoImpl extends ProductRepo {
       query['restaurantLimit'] = restaurantLimit;
     }
 
+    print('🔍 ProductRepoImpl.watchProducts query=$query');
+
     await for (final data in databaseServies.watchData(
       path: BackEndEndpoints.getProducts,
       query: query.isEmpty ? null : query,
