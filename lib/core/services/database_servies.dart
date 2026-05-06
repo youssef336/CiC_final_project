@@ -5,6 +5,12 @@ abstract class DatabaseServies {
     String? documentId,
   });
 
+  Stream<dynamic> watchData({
+    required String path,
+    String? docuementId,
+    Map<String, dynamic>? query,
+  });
+
   Future<dynamic> getData({
     required String path,
     String? docuementId,

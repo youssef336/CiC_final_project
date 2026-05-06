@@ -101,7 +101,7 @@ class _ReviewComposerBottomSheetState extends State<ReviewComposerBottomSheet> {
         showErrorBar(context, failure.message);
       },
       (_) {
-        Navigator.of(context).pop();
+        Navigator.of(context).pop(true);
         showErrorBar(context, locale.reviewComposerSuccessMessage);
       },
     );

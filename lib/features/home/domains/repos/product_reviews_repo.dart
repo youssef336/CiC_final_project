@@ -4,6 +4,10 @@ import 'package:mysterybag/core/entities/review_entity.dart';
 import 'package:mysterybag/core/errors/failures.dart';
 
 abstract class ProductReviewsRepo {
+  Future<Either<Failure, List<ReviewEntity>>> fetchProductReviews({
+    required String productId,
+  });
+
   Stream<List<ReviewEntity>> watchProductReviews({required String productId});
 
   Stream<ReviewAnalyticsEntity> watchProductReviewAnalytics({

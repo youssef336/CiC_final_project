@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
 import 'widgets/home_custom_bottom_navigation_bar.dart';
 
 import 'widgets/main_view_body_bloc_listener.dart';
@@ -33,10 +31,7 @@ class _MainViewState extends State<MainView> {
           setState(() {});
         },
       ),
-      body: BlocProvider(
-        create: (_) => CartCubit(),
-        child: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
-      ),
+      body: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
     );
   }
 }

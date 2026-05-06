@@ -19,39 +19,42 @@ class AvailableBagsList extends StatelessWidget {
       children: [
         /// Section Header
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               Text(
                 S.of(context)!.availableBagsSwipeHint,
                 style: TextStyle(
                   color: isDark ? KaccentColor : KprimaryColor,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
                 ),
               ),
             ],
           ),
         ),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
 
         /// Horizontal List
         LayoutBuilder(
           builder: (context, constraints) {
-            final cardWidth = (constraints.maxWidth * 0.72).clamp(220.0, 280.0);
+            final cardWidth = (constraints.maxWidth * 0.74).clamp(230.0, 280.0);
 
             return SizedBox(
-              height: 250,
+              width: constraints.maxWidth,
+              height: 230,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
                 itemCount: bags.length,
                 itemBuilder: (context, index) {
                   final bag = bags[index];
@@ -63,7 +66,7 @@ class AvailableBagsList extends StatelessWidget {
                     oldPrice: bag.oldPrice,
                     bagsLeft: bag.bagsLeft,
                     rating: bag.rating,
-                    bagItemModel: null,
+                    bagItemModel: bag,
                   );
                 },
               ),

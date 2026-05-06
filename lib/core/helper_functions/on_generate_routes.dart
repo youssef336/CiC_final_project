@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/entities/demo_products.dart';
-import 'package:mysterybag/core/models/product_model.dart';
+import 'package:mysterybag/core/entities/product_entity.dart';
+import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/features/auth/presentation/views/Sign_in_view.dart';
 import 'package:mysterybag/features/auth/presentation/views/sign_up_view.dart';
 import 'package:mysterybag/features/check_out/presentation/views/check_out_view.dart';
@@ -84,27 +85,44 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProfileViewPointsPage.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileViewPointsPage());
     case BagelMysteryBagScreen.routeName:
-      final product = settings.arguments as ProductModel?;
+      final arguments = settings.arguments;
+      ProductEntity? product;
+      RestaurantEntity? restaurant;
+
+      if (arguments is ProductEntity) {
+        product = arguments;
+      } else if (arguments is Map) {
+        final productValue = arguments['product'];
+        final restaurantValue = arguments['restaurant'];
+        if (productValue is ProductEntity) {
+          product = productValue;
+        }
+        if (restaurantValue is RestaurantEntity) {
+          restaurant = restaurantValue;
+        }
+      }
+
       return MaterialPageRoute(
         builder: (_) => BagelMysteryBagScreen(
           product:
               product ??
-              ProductModel(
+              ProductEntity(
+                imageUrl: '',
                 documentId: 'default',
                 nameEn: 'Mystery Bag',
                 nameAr: 'حقيبة مفاجأة',
                 code: 'default',
                 description: 'A delicious mystery bag',
                 price: 0,
-                isfeatured: false,
-                sellingCount: 0,
-                experationMonths: 1,
+                isFeatured: false,
+                reviews: const [],
+                expirationsMonths: 1,
                 isOrganic: false,
                 numbersOfCalories: 0,
                 avgRating: 0,
                 unitAmount: 1,
-                reviews: [],
               ),
+          restaurant: restaurant,
         ),
       );
 
