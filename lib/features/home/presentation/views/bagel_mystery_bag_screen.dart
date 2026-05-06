@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/core/entities/review_analytics_entity.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
@@ -596,27 +597,43 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
           ),
         ),
         const SizedBox(width: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: KsecondaryColor,
-            border: Border.all(color: KaccentColor.withOpacity(0.25)),
-            borderRadius: BorderRadius.circular(12),
+        StreamBuilder<ReviewAnalyticsEntity>(
+          stream: _reviewsRepo.watchProductReviewAnalytics(
+            productId: widget.product.documentId,
           ),
-          child: const Row(
-            children: [
-              Icon(Icons.star_rounded, color: KaccentColor, size: 16),
-              SizedBox(width: 4),
-              Text(
-                "5.0",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: KaccentColor,
-                ),
+          initialData: ReviewAnalyticsEntity(
+            productId: widget.product.documentId,
+            reviewCount: 0,
+            averageRating: widget.product.avgRating,
+            ratingBreakdown: const {},
+          ),
+          builder: (context, snapshot) {
+            final averageRating =
+                snapshot.data?.averageRating ?? widget.product.avgRating;
+
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: KsecondaryColor,
+                border: Border.all(color: KaccentColor.withOpacity(0.25)),
+                borderRadius: BorderRadius.circular(12),
               ),
-            ],
-          ),
+              child: Row(
+                children: [
+                  const Icon(Icons.star_rounded, color: KaccentColor, size: 16),
+                  const SizedBox(width: 4),
+                  Text(
+                    averageRating.toStringAsFixed(1),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: KaccentColor,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ],
     );
@@ -1053,8 +1070,8 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
     );
   }
 
-  void _showReviewComposer() {
-    showModalBottomSheet(
+  Future<void> _showReviewComposer() async {
+    final submitted = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -1063,15 +1080,19 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         reviewsRepo: _reviewsRepo,
       ),
     );
+
+    if (submitted == true && mounted) {
+      await context.read<ProductsCubit>().loadProducts();
+    }
   }
 
-  void _editReview(ReviewEntity review) {
+  Future<void> _editReview(ReviewEntity review) async {
     // Add current user ID to the review for editing
     final reviewWithUserId = review.copyWith(
       userId: FirebaseAuth.instance.currentUser?.uid,
     );
 
-    showModalBottomSheet(
+    final submitted = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -1081,6 +1102,10 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         existingReview: reviewWithUserId,
       ),
     );
+
+    if (submitted == true && mounted) {
+      await context.read<ProductsCubit>().loadProducts();
+    }
   }
 
   void _deleteReview(String reviewId) async {
@@ -1103,6 +1128,9 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         }
       },
       (_) {
+        if (mounted) {
+          context.read<ProductsCubit>().loadProducts();
+        }
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(locale.reviewComposerDeleteSuccess)),

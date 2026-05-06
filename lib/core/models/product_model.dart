@@ -138,7 +138,9 @@ class ProductModel {
           : (safeString(json['imageUrl']).isNotEmpty
                 ? safeString(json['imageUrl'])
                 : null),
-      avgRating: getAvgRating(parsedReviews),
+      avgRating: safeNum(json['avgRating']) > 0
+          ? safeNum(json['avgRating'])
+          : getAvgRating(parsedReviews),
     );
   }
 
