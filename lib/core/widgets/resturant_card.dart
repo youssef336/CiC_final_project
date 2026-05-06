@@ -11,8 +11,7 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(16),
+    return SizedBox(
       height: 220,
       child: Stack(
         children: [

@@ -76,6 +76,32 @@ class ProductRepoImpl extends ProductRepo {
   }
 
   @override
+  Stream<Either<Failure, List<ProductEntity>>> watchProducts({
+    String? restaurantId,
+  }) async* {
+    final query = <String, dynamic>{};
+
+    if (restaurantId != null && restaurantId.isNotEmpty) {
+      query['restaurantId'] = restaurantId;
+    }
+
+    await for (final data in databaseServies.watchData(
+      path: BackEndEndpoints.getProducts,
+      query: query.isEmpty ? null : query,
+    )) {
+      try {
+        final products = (data as List<Map<String, dynamic>>)
+            .map((e) => ProductModel.fromJson(e).toEntity())
+            .toList();
+        yield right(products);
+      } catch (e, st) {
+        print('Error in watchProducts: $e\n$st');
+        yield left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
   Future<Either<Failure, List<ProductEntity>>> getProductsWithLimit(
     int limit, {
     String? restaurantId,

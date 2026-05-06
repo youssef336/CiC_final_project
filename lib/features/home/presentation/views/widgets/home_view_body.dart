@@ -129,9 +129,29 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     final products = state is ProductsSuccess
                         ? state.products
                         : <ProductEntity>[];
+                    // Debug: log when HomeViewBody rebuilds and product counts
+                    print(
+                      '🏠 HomeViewBody rebuild: products=${products.length} state=${state.runtimeType}',
+                    );
                     final restaurantSections = products.isNotEmpty
                         ? _groupProductsByRestaurant(products)
                         : <_RestaurantProductsSection>[];
+
+                    // Debug: print grouped product counts and bagsLeft for each
+                    for (final section in restaurantSections) {
+                      final first = section.products.isNotEmpty
+                          ? section.products.first
+                          : null;
+                      if (first != null) {
+                        print(
+                          '🏷️ Section ${section.restaurant.name} products=${section.products.length} example bagsLeft=${first.bagsLeft}',
+                        );
+                      } else {
+                        print(
+                          '🏷️ Section ${section.restaurant.name} products=0',
+                        );
+                      }
+                    }
 
                     return Column(
                       children: [
@@ -154,7 +174,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                               isOpenNow: true,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 12),
                           AvailableBagsList(
                             title: S.of(context)!.availableBagsTitle,
                             bags: _defaultBags(context),
@@ -162,7 +182,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         ] else ...[
                           for (final section in restaurantSections) ...[
                             RestaurantCard(restaurant: section.restaurant),
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 12),
                             AvailableBagsList(
                               title: S.of(context)!.availableBagsTitle,
                               bags: _buildBags(
@@ -171,7 +191,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                 section.restaurant,
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const SizedBox(height: 16),
                           ],
                         ],
                       ],

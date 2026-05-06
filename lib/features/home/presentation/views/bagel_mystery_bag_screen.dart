@@ -11,6 +11,7 @@ import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_state.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
 import 'package:mysterybag/features/home/domains/repos/product_reviews_repo.dart';
 import 'package:mysterybag/features/home/presentation/views/widgets/bagel_customer_reviews_section.dart';
@@ -64,18 +65,52 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
       productData['id']?.toString().trim() ?? '',
     }..removeWhere((value) => value.isEmpty);
 
+    // Debug: print candidate ids and current doc id
+    try {
+      print(
+        '🔍 _matchesEmbeddedProduct: currentDocumentId="$currentDocumentId" candidateIds=$candidateIds title=${productData['title'] ?? productData['nameEn']}',
+      );
+    } catch (_) {}
+
     if (currentDocumentId.isNotEmpty &&
         candidateIds.contains(currentDocumentId)) {
       return true;
     }
 
-    final title = productData['title']?.toString().trim() ?? '';
-    if (title.isEmpty) {
-      return false;
+    return false;
+  }
+
+  bool _matchesLiveProduct(ProductEntity product) {
+    final currentDocumentId = widget.product.documentId.trim();
+    final candidateDocumentIds = <String>{
+      product.documentId.trim(),
+      product.restaurantId?.trim() ?? '',
+    }..removeWhere((value) => value.isEmpty);
+
+    if (currentDocumentId.isNotEmpty &&
+        candidateDocumentIds.contains(currentDocumentId)) {
+      return true;
     }
 
-    return title == widget.product.nameEn.trim() ||
-        title == widget.product.nameAr.trim();
+    return false;
+  }
+
+  ProductEntity? _liveProductFromState(ProductsState state) {
+    if (state is! ProductsSuccess) {
+      return null;
+    }
+
+    for (final product in state.products) {
+      if (_matchesLiveProduct(product)) {
+        return product;
+      }
+    }
+
+    return null;
+  }
+
+  int _bagsLeftFromState(ProductsState state) {
+    return _liveProductFromState(state)?.bagsLeft ?? _currentBagsLeft;
   }
 
   Future<void> _fetchRestaurantLocation() async {
@@ -230,12 +265,8 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         : widget.product.price.toDouble();
   }
 
-  String _bagsLeft() {
-    return _currentBagsLeft.toString();
-  }
-
-  Future<void> _reserveProduct() async {
-    if (_isReserving || _reserved || _currentBagsLeft <= 0) {
+  Future<void> _reserveProduct(int bagsLeft) async {
+    if (_isReserving || _reserved || bagsLeft <= 0) {
       return;
     }
 
@@ -265,15 +296,31 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
         final data = snapshot.data();
         final products = List<dynamic>.from(data?['products'] as List? ?? []);
-        final productIndex = products.indexWhere((productData) {
-          if (productData is! Map) {
-            return false;
-          }
 
-          return _matchesEmbeddedProduct(
-            Map<String, dynamic>.from(productData),
-          );
-        });
+        // First try exact id match against docId/productId/documentId
+        final currentId = widget.product.documentId.trim();
+        int productIndex = -1;
+        if (currentId.isNotEmpty) {
+          productIndex = products.indexWhere((productData) {
+            if (productData is! Map) return false;
+            final pd = Map<String, dynamic>.from(productData);
+            final candidateIds = <String>{
+              pd['docId']?.toString().trim() ?? '',
+              pd['productId']?.toString().trim() ?? '',
+              pd['documentId']?.toString().trim() ?? '',
+              pd['id']?.toString().trim() ?? '',
+            }..removeWhere((v) => v.isEmpty);
+            final match = candidateIds.contains(currentId);
+            if (match) {
+              try {
+                print(
+                  '✅ reserve exact-id matched product: docId=$currentId title=${pd['title'] ?? pd['nameEn']} bagsLeft=${pd['bagsLeft']}',
+                );
+              } catch (_) {}
+            }
+            return match;
+          });
+        }
 
         if (productIndex == -1) {
           throw StateError('Product not found inside restaurant document');
@@ -299,7 +346,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
       context.read<CartCubit>().addProductToCart(widget.product);
       setState(() {
-        _currentBagsLeft = _currentBagsLeft > 0 ? _currentBagsLeft - 1 : 0;
+        _currentBagsLeft = bagsLeft > 0 ? bagsLeft - 1 : 0;
         _reserved = true;
       });
 
@@ -327,95 +374,105 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: _backgroundColor(context),
-      body: Stack(
-        children: [
-          // Scrollable content
-          CustomScrollView(
-            slivers: [
-              // Hero Image Section
-              SliverToBoxAdapter(child: _buildHeroSection(context)),
+    return BlocBuilder<ProductsCubit, ProductsState>(
+      builder: (context, state) {
+        final bagsLeft = _bagsLeftFromState(state);
 
-              // White Card Content
-              SliverToBoxAdapter(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _cardColor(context),
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(24),
+        return Scaffold(
+          backgroundColor: _backgroundColor(context),
+          body: Stack(
+            children: [
+              // Scrollable content
+              CustomScrollView(
+                slivers: [
+                  // Hero Image Section
+                  SliverToBoxAdapter(
+                    child: _buildHeroSection(context, bagsLeft),
+                  ),
+
+                  // White Card Content
+                  SliverToBoxAdapter(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: _cardColor(context),
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(24),
+                        ),
+                      ),
+                      transform: Matrix4.translationValues(0, -24, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 24),
+
+                          _buildStoreHeader(),
+                          const SizedBox(height: 24),
+                          _buildPriceBox(context, bagsLeft),
+                          const SizedBox(height: 28),
+                          _buildWhatsInBag(),
+                          _buildDivider(),
+                          _buildInfoRow(
+                            icon: Icons.access_time_rounded,
+                            iconBg: KsecondaryColor.withOpacity(0.7),
+                            label: S
+                                .of(context)!
+                                .bagelMysteryBagPickupTimeLabel,
+                            value: _pickupTime(context),
+                            hasArrow: false,
+                          ),
+                          _buildDivider(),
+                          _buildInfoRow(
+                            icon: Icons.location_on_rounded,
+                            iconBg: KsecondaryColor.withOpacity(0.7),
+                            label: S.of(context)!.bagelMysteryBagLocationLabel,
+                            value: _locationValue(context),
+                            hasArrow: true,
+                          ),
+                          _buildDivider(),
+                          _buildInfoRow(
+                            icon: Icons.phone_rounded,
+                            iconBg: KsecondaryColor.withOpacity(0.7),
+                            label: S.of(context)!.bagelMysteryBagContactLabel,
+                            value: _contactValue(),
+                            hasArrow: true,
+                          ),
+                          _buildDivider(),
+                          const SizedBox(height: 8),
+                          _buildAllergens(),
+                          _buildDivider(),
+                          const SizedBox(height: 8),
+                          BagelCustomerReviewsSection(
+                            productId: widget.product.documentId,
+                            reviewsRepo: _reviewsRepo,
+                            onWriteReviewPressed: _showReviewComposer,
+                            currentUserId:
+                                FirebaseAuth.instance.currentUser?.uid ?? '',
+                            onEditReview: _editReview,
+                            onDeleteReview: _deleteReview,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  transform: Matrix4.translationValues(0, -24, 0),
-                  padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 24),
+                ],
+              ),
 
-                      _buildStoreHeader(),
-                      const SizedBox(height: 24),
-                      _buildPriceBox(),
-                      const SizedBox(height: 28),
-                      _buildWhatsInBag(),
-                      _buildDivider(),
-                      _buildInfoRow(
-                        icon: Icons.access_time_rounded,
-                        iconBg: KsecondaryColor.withOpacity(0.7),
-                        label: S.of(context)!.bagelMysteryBagPickupTimeLabel,
-                        value: _pickupTime(context),
-                        hasArrow: false,
-                      ),
-                      _buildDivider(),
-                      _buildInfoRow(
-                        icon: Icons.location_on_rounded,
-                        iconBg: KsecondaryColor.withOpacity(0.7),
-                        label: S.of(context)!.bagelMysteryBagLocationLabel,
-                        value: _locationValue(context),
-                        hasArrow: true,
-                      ),
-                      _buildDivider(),
-                      _buildInfoRow(
-                        icon: Icons.phone_rounded,
-                        iconBg: KsecondaryColor.withOpacity(0.7),
-                        label: S.of(context)!.bagelMysteryBagContactLabel,
-                        value: _contactValue(),
-                        hasArrow: true,
-                      ),
-                      _buildDivider(),
-                      const SizedBox(height: 8),
-                      _buildAllergens(),
-                      _buildDivider(),
-                      const SizedBox(height: 8),
-                      BagelCustomerReviewsSection(
-                        productId: widget.product.documentId,
-                        reviewsRepo: _reviewsRepo,
-                        onWriteReviewPressed: _showReviewComposer,
-                        currentUserId:
-                            FirebaseAuth.instance.currentUser?.uid ?? '',
-                        onEditReview: _editReview,
-                        onDeleteReview: _deleteReview,
-                      ),
-                    ],
-                  ),
-                ),
+              // Fixed Reserve Button
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: _buildReserveButton(bagsLeft),
               ),
             ],
           ),
-
-          // Fixed Reserve Button
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: _buildReserveButton(),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildHeroSection(BuildContext context) {
+  Widget _buildHeroSection(BuildContext context, int bagsLeft) {
     final locale = S.of(context)!;
     final heroImage = widget.product.imageUrl?.trim();
 
@@ -494,7 +551,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
                 ),
                 const SizedBox(height: 8),
                 _buildBadge(
-                  label: locale.bagCardBagsLeft(_bagsLeft()),
+                  label: locale.bagCardBagsLeft(bagsLeft.toString()),
                   filled: true,
                 ),
                 const SizedBox(height: 8),
@@ -639,7 +696,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
     );
   }
 
-  Widget _buildPriceBox() {
+  Widget _buildPriceBox(BuildContext context, int bagsLeft) {
     final locale = S.of(context)!;
     final currentPrice = _currentPrice();
     final oldPrice = _oldPrice();
@@ -720,7 +777,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
               ),
               const SizedBox(width: 8),
               Text(
-                locale.bagelMysteryBagAvailableCount(_bagsLeft()),
+                locale.bagelMysteryBagAvailableCount(bagsLeft.toString()),
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -1144,9 +1201,9 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
     return const Divider(height: 1, color: KdividerColor);
   }
 
-  Widget _buildReserveButton() {
+  Widget _buildReserveButton(int bagsLeft) {
     final locale = S.of(context)!;
-    final isSoldOut = _currentBagsLeft <= 0;
+    final isSoldOut = bagsLeft <= 0;
     final canReserve = !_reserved && !_isReserving && !isSoldOut;
     final buttonLabel = _isReserving
         ? (Directionality.of(context) == TextDirection.rtl
@@ -1174,7 +1231,7 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
         ),
       ),
       child: GestureDetector(
-        onTap: canReserve ? _reserveProduct : null,
+        onTap: canReserve ? () => _reserveProduct(bagsLeft) : null,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           width: double.infinity,

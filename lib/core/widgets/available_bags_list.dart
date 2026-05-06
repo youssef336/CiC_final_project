@@ -19,7 +19,7 @@ class AvailableBagsList extends StatelessWidget {
       children: [
         /// Section Header
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -42,16 +42,16 @@ class AvailableBagsList extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 24),
+        const SizedBox(height: 12),
 
         /// Horizontal List
         LayoutBuilder(
           builder: (context, constraints) {
-            final cardWidth = (constraints.maxWidth * 0.78).clamp(260.0, 320.0);
+            final cardWidth = (constraints.maxWidth * 0.74).clamp(230.0, 280.0);
 
             return SizedBox(
               width: constraints.maxWidth,
-              height: 345,
+              height: 230,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),

@@ -7,6 +7,10 @@ abstract class ProductRepo {
     String? restaurantId,
   });
 
+  Stream<Either<Failure, List<ProductEntity>>> watchProducts({
+    String? restaurantId,
+  });
+
   Future<Either<Failure, List<ProductEntity>>> getProductsWithLimit(
     int limit, {
     String? restaurantId,

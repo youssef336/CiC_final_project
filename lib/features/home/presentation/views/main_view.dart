@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
 import 'widgets/home_custom_bottom_navigation_bar.dart';
 
 import 'widgets/main_view_body_bloc_listener.dart';
@@ -29,6 +31,12 @@ class _MainViewState extends State<MainView> {
         onItemTapped: (int value) {
           currentViewIndex = value;
           setState(() {});
+          // If user navigated to Home tab, ensure products are refreshed.
+          if (value == 0) {
+            try {
+              context.read<ProductsCubit>().loadProducts();
+            } catch (_) {}
+          }
         },
       ),
       body: MainViewBodyBlocListener(currentViewIndex: currentViewIndex),
