@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, deprecated_member_use
 
 // ignore_for_file: unchecked_use_of_nullable_value
 
@@ -70,7 +70,9 @@ class Language_container extends StatelessWidget {
           color: isDark ? KdarkModeCardColor : KlightModeCardColor,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isDark ? KdarkModeTextSecondary.withOpacity(0.2) : KlightModeTextSecondary.withOpacity(0.15),
+            color: isDark
+                ? KdarkModeTextSecondary.withOpacity(0.2)
+                : KlightModeTextSecondary.withOpacity(0.15),
             width: 1,
           ),
         ),
@@ -87,14 +89,18 @@ class Language_container extends StatelessWidget {
                     child: Text(
                       text,
                       style: AppTextStyles.cairoBold19.copyWith(
-                        color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+                        color: isDark
+                            ? KdarkModeTextColor
+                            : KlightModeTextColor,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
                     size: 16,
-                    color: isDark ? KdarkModeTextSecondary : KlightModeTextSecondary,
+                    color: isDark
+                        ? KdarkModeTextSecondary
+                        : KlightModeTextSecondary,
                   ),
                 ],
               ),

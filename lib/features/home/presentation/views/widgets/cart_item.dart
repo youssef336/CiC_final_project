@@ -40,7 +40,7 @@ class CartItem extends StatelessWidget {
                 child: Builder(
                   builder: (context) {
                     final url = cartItemEntity.productEntity.imageUrl;
-                    if (url != null && url.isNotEmpty) {
+                    if (url.isNotEmpty) {
                       return CustomNetworkImage(ImageUrl: url);
                     }
                     return ClipRRect(

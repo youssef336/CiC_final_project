@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/core/models/restaurant_entity_model.dart';
@@ -97,13 +99,13 @@ class RestaurantCard extends StatelessWidget {
 
     // Fall back to foodImage (product image)
     String imagePath = restaurant.foodImage.trim();
-    
+
     // Handle file:// URIs by stripping the scheme
     if (imagePath.startsWith('file://')) {
       imagePath = imagePath.replaceFirst('file://', '');
       print('🖼️ Stripped file:// scheme: $imagePath');
     }
-    
+
     if (imagePath.startsWith('http')) {
       print('🖼️ Using NetworkImage from foodImage: $imagePath');
       return NetworkImage(imagePath);

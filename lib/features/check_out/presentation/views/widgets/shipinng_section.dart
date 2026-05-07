@@ -1,4 +1,4 @@
-// ignore_for_file: unchecked_use_of_nullable_value
+// ignore_for_file: unchecked_use_of_nullable_value, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';

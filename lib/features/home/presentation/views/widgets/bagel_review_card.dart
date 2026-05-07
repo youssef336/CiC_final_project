@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/entities/review_entity.dart';
