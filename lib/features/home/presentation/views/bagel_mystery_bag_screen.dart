@@ -1062,7 +1062,9 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
               CircleAvatar(
                 radius: 20,
                 backgroundImage: review.image.isNotEmpty
-                    ? NetworkImage(review.image)
+                    ? (review.image.startsWith('http')
+                          ? NetworkImage(review.image)
+                          : AssetImage(review.image))
                     : null,
                 child: review.image.isEmpty
                     ? Icon(

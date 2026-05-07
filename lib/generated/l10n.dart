@@ -1027,11 +1027,23 @@ abstract class S {
   /// **'Available'**
   String get statusBadgeAvailable;
 
+  /// No description provided for @statusBadgeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get statusBadgeUnavailable;
+
   /// No description provided for @statusBadgeNow.
   ///
   /// In en, this message translates to:
   /// **'Now'**
   String get statusBadgeNow;
+
+  /// No description provided for @statusBadgeClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get statusBadgeClosed;
 
   /// Number of results displayed in product header
   ///

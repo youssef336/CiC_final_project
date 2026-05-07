@@ -496,7 +496,13 @@ class SAr extends S {
   String get statusBadgeAvailable => 'متاح';
 
   @override
+  String get statusBadgeUnavailable => 'غير متاح';
+
+  @override
   String get statusBadgeNow => 'الآن';
+
+  @override
+  String get statusBadgeClosed => 'مغلق';
 
   @override
   String productViewResults(String count) {

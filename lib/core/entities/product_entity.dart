@@ -22,6 +22,8 @@ class ProductEntity extends Equatable {
   final String? userEmail;
   final String? restaurantId;
   final String? restaurantImageUrl;
+  final bool? restaurantIsAvailable;
+  final bool? restaurantIsOpenNow;
 
   final bool isFeatured;
   final String imageUrl;
@@ -55,6 +57,8 @@ class ProductEntity extends Equatable {
     this.userEmail,
     this.restaurantId,
     this.restaurantImageUrl,
+    this.restaurantIsAvailable,
+    this.restaurantIsOpenNow,
     this.avgRating = 0,
     required this.imageUrl,
   });

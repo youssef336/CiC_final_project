@@ -30,26 +30,34 @@ class RestaurantLogoWidget extends StatelessWidget {
       ),
     );
   }
-}
 
-ImageProvider _getImageProvider(RestaurantEntity restaurant) {
-  print(
-    '🖼️ RestaurantCard image: name=${restaurant.name}, restaurantImageUrl=${restaurant.restaurantImageUrl}, foodImage=${restaurant.foodImage}',
-  );
-  // Prioritize restaurantImageUrl from Firebase only if it's not a QR code
-  if (restaurant.restaurantImageUrl?.isNotEmpty == true) {
-    final url = restaurant.restaurantImageUrl!.trim();
-    if (url.startsWith('http') && !url.toLowerCase().contains('qrcode')) {
-      print('🖼️ Using NetworkImage from restaurantImageUrl: $url');
-      return NetworkImage(url);
+  ImageProvider _getImageProvider(RestaurantEntity restaurant) {
+    print(
+      '🖼️ RestaurantLogoWidget image: name=${restaurant.name}, restaurantImageUrl=${restaurant.restaurantImageUrl}, foodImage=${restaurant.foodImage}',
+    );
+    // Prioritize restaurantImageUrl from Firebase only if it's not a QR code
+    if (restaurant.restaurantImageUrl?.isNotEmpty == true) {
+      final url = restaurant.restaurantImageUrl!.trim();
+      if (url.startsWith('http') && !url.toLowerCase().contains('qrcode')) {
+        print('🖼️ Using NetworkImage from restaurantImageUrl: $url');
+        return NetworkImage(url);
+      }
     }
-  }
 
-  // Fall back to foodImage (product image)
-  if (restaurant.foodImage.startsWith('http')) {
-    print('🖼️ Using NetworkImage from foodImage: ${restaurant.foodImage}');
-    return NetworkImage(restaurant.foodImage);
+    // Fall back to foodImage (product image)
+    String imagePath = restaurant.foodImage.trim();
+    
+    // Handle file:// URIs by stripping the scheme
+    if (imagePath.startsWith('file://')) {
+      imagePath = imagePath.replaceFirst('file://', '');
+      print('🖼️ Stripped file:// scheme: $imagePath');
+    }
+    
+    if (imagePath.startsWith('http')) {
+      print('🖼️ Using NetworkImage from foodImage: $imagePath');
+      return NetworkImage(imagePath);
+    }
+    print('🖼️ Using AssetImage: $imagePath');
+    return AssetImage(imagePath);
   }
-  print('🖼️ Using AssetImage: ${restaurant.foodImage}');
-  return AssetImage(restaurant.foodImage);
 }
