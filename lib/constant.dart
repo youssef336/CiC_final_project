@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 // ========== Padding Constants ==========
 const KhorzontalPadding = 16.0;
 const KTopPadding = 16.0;
+const KHomeResturantLimit = 3;
 
 // ========== Primary Colors ==========
 const KprimaryColor = Color(0xFF242328); // Dark Brown (Primary Brand Color)
