@@ -606,26 +606,16 @@ class _BagelMysteryBagScreenState extends State<BagelMysteryBagScreen> {
 
       children: [
         // Logo
-        Container(
-          width: 62,
-          height: 62,
-          decoration: BoxDecoration(
+        Center(
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            gradient: const LinearGradient(
-              colors: [KprimaryColorLight, KsecondaryColor],
-            ),
-            border: Border.all(color: KdividerColor),
-          ),
-          child: Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(14),
-              child: Image.network(
-                widget.product.restaurantImageUrl ??
-                    widget.restaurant?.logoImage ??
-                    'https://via.placeholder.com/150',
-
-                fit: BoxFit.cover,
-              ),
+            child: Image.network(
+              widget.product.restaurantImageUrl ??
+                  widget.restaurant?.logoImage ??
+                  'https://via.placeholder.com/150',
+              cacheHeight: 80,
+              cacheWidth: 80,
+              fit: BoxFit.cover,
             ),
           ),
         ),
