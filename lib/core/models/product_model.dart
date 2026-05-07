@@ -19,6 +19,8 @@ class ProductModel {
   final String? userEmail;
   final String? restaurantId;
   final String? restaurantImageUrl;
+  final bool? restaurantIsAvailable;
+  final bool? restaurantIsOpenNow;
 
   final bool isfeatured;
   final num sellingCount;
@@ -56,6 +58,8 @@ class ProductModel {
     this.userEmail,
     this.restaurantId,
     this.restaurantImageUrl,
+    this.restaurantIsAvailable,
+    this.restaurantIsOpenNow,
     this.imageurl,
   });
 
@@ -71,6 +75,12 @@ class ProductModel {
     }
 
     bool safeBool(dynamic v) => v == true || v == 'true' || v == 1;
+    bool? nullableBool(dynamic v) {
+      if (v == null) return null;
+      if (v == true || v == 'true' || v == 1) return true;
+      if (v == false || v == 'false' || v == 0) return false;
+      return null;
+    }
 
     List<String> parseStringList(dynamic raw) {
       if (raw is! List) return <String>[];
@@ -136,6 +146,8 @@ class ProductModel {
       restaurantImageUrl: safeString(json['restaurantImageUrl']).isNotEmpty
           ? safeString(json['restaurantImageUrl'])
           : null,
+        restaurantIsAvailable: nullableBool(json['restaurantIsAvailable']),
+        restaurantIsOpenNow: nullableBool(json['restaurantIsOpenNow']),
       isOrganic: safeBool(json['isOrganic']),
       isfeatured: safeBool(json['isfeatured']) || safeBool(json['isFeatured']),
       imageurl: safeString(json['imageurl']).isNotEmpty
@@ -172,6 +184,8 @@ class ProductModel {
       userEmail: userEmail,
       restaurantId: restaurantId,
       restaurantImageUrl: restaurantImageUrl,
+      restaurantIsAvailable: restaurantIsAvailable,
+      restaurantIsOpenNow: restaurantIsOpenNow,
       avgRating: avgRating,
       imageUrl: imageurl!,
     );

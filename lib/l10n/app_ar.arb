@@ -193,7 +193,9 @@
   "bagTitleAroussaSandwich": "شنطة سندوتش عروسة",
   "bagTitleMasrawy": "شنطة مصراوي",
   "statusBadgeAvailable": "متاح",
+  "statusBadgeUnavailable": "غير متاح",
   "statusBadgeNow": "الآن",
+  "statusBadgeClosed": "مغلق",
   "productViewResults": "{count} نتيجة",
   "@productViewResults": {
     "description": "عدد نتائج المنتجات",

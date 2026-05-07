@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/repos/product_repo/product_repo.dart';
 import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
@@ -13,7 +14,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) =>
-          ProductsCubit(getIt<ProductRepo>())..loadProducts(restaurantLimit: 2),
+          ProductsCubit(getIt<ProductRepo>())
+            ..loadProducts(restaurantLimit: KHomeResturantLimit),
       child: Scaffold(
         appBar: AppBar(title: Text(S.of(context)!.homeViewTitle)),
         body: const HomeViewBody(),

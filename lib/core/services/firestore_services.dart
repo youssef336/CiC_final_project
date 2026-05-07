@@ -157,6 +157,13 @@ class FirestoreServices implements DatabaseServies {
   Future<List<Map<String, dynamic>>> _fetchProducts({
     Map<String, dynamic>? query,
   }) async {
+    bool? parseNullableBool(dynamic value) {
+      if (value == null) return null;
+      if (value == true || value == 'true' || value == 1) return true;
+      if (value == false || value == 'false' || value == 0) return false;
+      return null;
+    }
+
     String? filterRestaurantId;
     int? restaurantLimit;
     if (query != null && query['restaurantId'] != null) {
@@ -200,6 +207,12 @@ class FirestoreServices implements DatabaseServies {
           restaurantData['imageUrl'] ??
           restaurantData['logoImage'] ??
           '';
+      final restaurantIsAvailable = parseNullableBool(
+        restaurantData['isAvailable'],
+      );
+      final restaurantIsOpenNow = parseNullableBool(
+        restaurantData['isOpend'] ?? restaurantData['isOpenNow'],
+      );
       final productsArray = restaurantData['products'] as List<dynamic>? ?? [];
 
       print(
@@ -226,6 +239,8 @@ class FirestoreServices implements DatabaseServies {
             'restaurantId': restaurantId,
             'restaurantName': restaurantName,
             'restaurantImageUrl': restaurantImageUrl,
+            'restaurantIsAvailable': restaurantIsAvailable,
+            'restaurantIsOpenNow': restaurantIsOpenNow,
           };
 
           productsById[canonicalId] = candidate;
@@ -262,6 +277,13 @@ class FirestoreServices implements DatabaseServies {
   Stream<List<Map<String, dynamic>>> _watchProducts({
     Map<String, dynamic>? query,
   }) {
+    bool? parseNullableBool(dynamic value) {
+      if (value == null) return null;
+      if (value == true || value == 'true' || value == 1) return true;
+      if (value == false || value == 'false' || value == 0) return false;
+      return null;
+    }
+
     String? filterRestaurantId;
     int? restaurantLimit;
     if (query != null && query['restaurantId'] != null) {
@@ -309,6 +331,12 @@ class FirestoreServices implements DatabaseServies {
             restaurantData['imageUrl'] ??
             restaurantData['logoImage'] ??
             '';
+        final restaurantIsAvailable = parseNullableBool(
+          restaurantData['isAvailable'],
+        );
+        final restaurantIsOpenNow = parseNullableBool(
+          restaurantData['isOpend'] ?? restaurantData['isOpenNow'],
+        );
         final productsArray =
             restaurantData['products'] as List<dynamic>? ?? [];
 
@@ -333,6 +361,8 @@ class FirestoreServices implements DatabaseServies {
               'restaurantId': restaurantId,
               'restaurantName': restaurantName,
               'restaurantImageUrl': restaurantImageUrl,
+              'restaurantIsAvailable': restaurantIsAvailable,
+              'restaurantIsOpenNow': restaurantIsOpenNow,
             };
           }
         }

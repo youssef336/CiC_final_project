@@ -83,15 +83,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             name: product.restaurantName?.trim().isNotEmpty == true
                 ? product.restaurantName!.trim()
                 : S.of(context)!.restaurantNameMadbinaZamalek,
-            foodImage: product.imageUrl?.trim().isNotEmpty == true
-                ? product.imageUrl!.trim()
+            foodImage: product.imageUrl.trim().isNotEmpty == true
+              ? product.imageUrl.trim()
                 : 'assets/images/food.png',
             logoImage: 'assets/images/resturant.png',
             branches: S.of(context)!.restaurantBranchesCount('1'),
             distance: S.of(context)!.restaurantDistanceKilometers('2.7'),
             location: S.of(context)!.bagelMysteryBagLocationValue,
-            isAvailable: true,
-            isOpenNow: true,
+            isAvailable: product.restaurantIsAvailable ?? true,
+            isOpenNow: product.restaurantIsOpenNow ?? true,
             restaurantImageUrl:
                 product.restaurantImageUrl?.trim().isNotEmpty == true
                 ? product.restaurantImageUrl!.trim()
@@ -177,8 +177,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                               location: S
                                   .of(context)!
                                   .bagelMysteryBagLocationValue,
-                              isAvailable: true,
-                              isOpenNow: true,
+                              isAvailable: false,
+                              isOpenNow: false,
                               restaurantImageUrl: null,
                             ),
                           ),
@@ -223,8 +223,8 @@ class _RestaurantProductsSection {
 
   String get foodImage {
     for (final product in products) {
-      final imageUrl = product.imageUrl?.trim();
-      if (imageUrl != null && imageUrl.isNotEmpty) {
+      final imageUrl = product.imageUrl.trim();
+      if (imageUrl.isNotEmpty) {
         return imageUrl;
       }
     }

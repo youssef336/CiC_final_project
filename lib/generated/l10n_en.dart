@@ -498,7 +498,13 @@ class SEn extends S {
   String get statusBadgeAvailable => 'Available';
 
   @override
+  String get statusBadgeUnavailable => 'Unavailable';
+
+  @override
   String get statusBadgeNow => 'Now';
+
+  @override
+  String get statusBadgeClosed => 'Closed';
 
   @override
   String productViewResults(String count) {

@@ -16,21 +16,23 @@ class StatusBadgesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (isAvailable)
-          _buildBadge(
-            icon: Icons.check_circle,
-            text: S.of(context)!.statusBadgeAvailable,
-            color: KaccentColor,
-          ),
+        _buildBadge(
+          icon: isAvailable ? Icons.check_circle : Icons.cancel,
+          text: isAvailable
+              ? S.of(context)!.statusBadgeAvailable
+              : S.of(context)!.statusBadgeUnavailable,
+          color: isAvailable ? KaccentColor : Colors.redAccent,
+        ),
 
         const SizedBox(width: 10),
 
-        if (isOpenNow)
-          _buildBadge(
-            icon: Icons.access_time,
-            text: S.of(context)!.statusBadgeNow,
-            color: KprimaryColor,
-          ),
+        _buildBadge(
+          icon: isOpenNow ? Icons.access_time : Icons.access_time_filled,
+          text: isOpenNow
+              ? S.of(context)!.statusBadgeNow
+              : S.of(context)!.statusBadgeClosed,
+          color: isOpenNow ? KprimaryColor : Colors.grey,
+        ),
       ],
     );
   }

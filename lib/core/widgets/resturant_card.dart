@@ -7,8 +7,8 @@ import 'restaurant_info_widget.dart';
 
 class RestaurantCard extends StatelessWidget {
   final RestaurantEntity restaurant;
-  ProductEntity? product;
-  RestaurantCard({super.key, required this.restaurant, this.product});
+  final ProductEntity? product;
+  const RestaurantCard({super.key, required this.restaurant, this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,7 @@ class RestaurantCard extends StatelessWidget {
               height: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(restaurant.foodImage),
-
+                  image: _getImageProvider(restaurant),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -97,11 +96,19 @@ class RestaurantCard extends StatelessWidget {
     }
 
     // Fall back to foodImage (product image)
-    if (restaurant.foodImage.startsWith('http')) {
-      print('🖼️ Using NetworkImage from foodImage: ${restaurant.foodImage}');
-      return NetworkImage(restaurant.foodImage);
+    String imagePath = restaurant.foodImage.trim();
+    
+    // Handle file:// URIs by stripping the scheme
+    if (imagePath.startsWith('file://')) {
+      imagePath = imagePath.replaceFirst('file://', '');
+      print('🖼️ Stripped file:// scheme: $imagePath');
     }
-    print('🖼️ Using AssetImage: ${restaurant.foodImage}');
-    return AssetImage(restaurant.foodImage);
+    
+    if (imagePath.startsWith('http')) {
+      print('🖼️ Using NetworkImage from foodImage: $imagePath');
+      return NetworkImage(imagePath);
+    }
+    print('🖼️ Using AssetImage: $imagePath');
+    return AssetImage(imagePath);
   }
 }

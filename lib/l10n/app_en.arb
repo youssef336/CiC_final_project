@@ -215,7 +215,9 @@
     "bagTitleAroussaSandwich": "Aroussa Sandwich Bag",
     "bagTitleMasrawy": "Masrawy Bag",
     "statusBadgeAvailable": "Available",
+    "statusBadgeUnavailable": "Unavailable",
     "statusBadgeNow": "Now",
+    "statusBadgeClosed": "Closed",
     "productViewResults": "{count} results",
   "@productViewResults": {
     "description": "Number of results displayed in product header",
