@@ -19,6 +19,7 @@ class SigninView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: Custom_app_bar(context, title: S.of(context)!.onLoginLogin),
       // body: const LoginViewBody(),
       body: BlocProvider(

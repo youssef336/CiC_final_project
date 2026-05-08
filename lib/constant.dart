@@ -19,8 +19,8 @@ const KdarkModeTextColor = Color(0xFFECE6D0); // Light Beige Text
 const KdarkModeTextSecondary = Color(0xFFC9BDA8); // Muted Light Beige
 
 // ========== Light Mode Colors ==========
-const KlightModeBgColor = Color(0xFFF5F2ED); // Off-White Background
-const KlightModeCardColor = Color(0xFFFFFFFF); // White Cards
+const KlightModeBgColor = Color(0xFFF5EFD7); // Beige Background
+const KlightModeCardColor = Color(0xFFF5EFD7); // Beige Cards/Surface
 const KlightModeTextColor = Color(0xFF242328); // Dark Brown Text
 const KlightModeTextSecondary = Color(0xFF6B6B6B); // Gray Text
 
