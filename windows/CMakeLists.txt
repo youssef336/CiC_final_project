@@ -23,6 +23,13 @@ else()
       "Debug" "Profile" "Release")
   endif()
 endif()
+
+# Ensure NuGet is discoverable for Windows plugins (e.g. flutter_inappwebview_windows).
+# WinGet installs a stable shim at %LOCALAPPDATA%\Microsoft\WinGet\Links\nuget.exe.
+set(_WINGET_LINKS_DIR "$ENV{LOCALAPPDATA}/Microsoft/WinGet/Links")
+if(EXISTS "${_WINGET_LINKS_DIR}/nuget.exe")
+  set(ENV{PATH} "${_WINGET_LINKS_DIR};$ENV{PATH}")
+endif()
 # Define settings for the Profile build mode.
 set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 set(CMAKE_SHARED_LINKER_FLAGS_PROFILE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
@@ -31,6 +38,11 @@ set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE}")
 
 # Use Unicode for all projects.
 add_definitions(-DUNICODE -D_UNICODE)
+
+# Fix MSVC parallel builds writing the same .pdb (C1041).
+if(MSVC)
+  add_compile_options(/FS)
+endif()
 
 # Compilation settings that should be applied to most targets.
 #

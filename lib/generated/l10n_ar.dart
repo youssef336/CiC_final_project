@@ -102,6 +102,21 @@ class SAr extends S {
   String get homeViewWelcomeAppbar => 'صباح الخير!';
 
   @override
+  String get homeBestSellersTitle => 'الأكثر مبيعًا';
+
+  @override
+  String get homeBestSellersViewAll => 'عرض الكل';
+
+  @override
+  String get homeFeaturedItemTitle => 'عنصر مميز';
+
+  @override
+  String get homeFeaturedItemSubtitle => 'عرض خاص';
+
+  @override
+  String get homeFeaturedItemShopNow => 'تسوق الآن';
+
+  @override
   String get buttonNavigationBarEntityHome => 'الرئيسية';
 
   @override
@@ -144,10 +159,106 @@ class SAr extends S {
   String get checkOutViewShipingSubtitle2 => 'تحديد طريقة الدفع';
 
   @override
+  String get checkOutViewPaymentMethodTitle => 'طريقة الدفع';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewUseSavedCard => 'استخدام البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewDeleteCard => 'حذف البطاقة';
+
+  @override
+  String get checkOutViewCardHolderName => 'اسم حامل البطاقة';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'أدخل اسم حامل البطاقة';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'رقم البطاقة أو البطاقة المحفوظة';
+
+  @override
+  String get checkOutViewCardNumber => 'رقم البطاقة';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'أدخل رقم بطاقة صالح';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'أدخل تاريخ انتهاء صالح';
+
+  @override
+  String get checkOutViewInvalidCvv => 'أدخل CVV صالح';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'يتم حفظ آخر 4 أرقام فقط على هذا الجهاز.';
+
+  @override
   String get checkOutViewPayWithPayPal => 'الدفع باستخدام PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'الدفع بالفيزا';
+
+  @override
+  String get checkOutViewPlaceOrder => 'تأكيد الطلب';
+
+  @override
   String get checkOutViewNext => 'التالي';
+
+  @override
+  String get checkOutViewShipingTitle3 => 'الدفع ببطاقة فيزا';
+
+  @override
+  String get checkOutViewShipingSubtitle3 =>
+      'يتم حفظ البطاقة على هذا الجهاز فقط';
+
+  @override
+  String get checkOutViewConfirmPaymentVisa => 'تأكيد الدفع';
+
+  @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟';
+
+  @override
+  String get checkOutViewConfirmOrderCash => 'تأكيد الطلب';
+
+  @override
+  String get checkOutViewVisaMissing => 'احفظ بيانات فيزا قبل الدفع.';
+
+  @override
+  String get visaDetailsTitle => 'بيانات فيزا';
+
+  @override
+  String get visaDetailsCardNumber => 'رقم البطاقة';
+
+  @override
+  String get visaDetailsCardHolder => 'الاسم على البطاقة';
+
+  @override
+  String get visaDetailsExpiry => 'انتهاء الصلاحية (شهر/سنة)';
+
+  @override
+  String get visaDetailsCvv => 'رمز الأمان';
+
+  @override
+  String get visaDetailsSave => 'حفظ ومتابعة';
+
+  @override
+  String get visaDetailsDelete => 'حذف';
+
+  @override
+  String get visaDetailsSavedLabel => 'بطاقة محفوظة';
+
+  @override
+  String visaDetailsEndsWith(String last4) {
+    return 'تنتهي بـ $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'سيتم التأكيد ببطاقة فيزا المحفوظة (وليس PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'ملخص الطلب:';
@@ -162,7 +273,10 @@ class SAr extends S {
   String get orderSummaryWidgetTotal => 'الإجمالي';
 
   @override
-  String get orderCubitBlocConsumer => 'تم تسجيل الطلب بنجاح';
+  String get orderCashSuccessMessage => 'تم تسجيل طلب الدفع عند الاستلام بنجاح';
+
+  @override
+  String get orderVisaSuccessMessage => 'تم إتمام الدفع بالفيزا بنجاح';
 
   @override
   String get addressSummaryWidgetTitle => 'عنوان التوصيل:';
@@ -246,6 +360,12 @@ class SAr extends S {
   String get pointsPagePointsToGo => 'نقطة متبقية!';
 
   @override
+  String get pointsPageAdd => 'إضافة';
+
+  @override
+  String get pointsPageDelete => 'حذف';
+
+  @override
   String get productGridViewPlaceholder => 'منتج';
 
   @override
@@ -310,4 +430,313 @@ class SAr extends S {
 
   @override
   String get googleSignInFailedError => 'فشل تسجيل الدخول عبر جوجل';
+
+  @override
+  String get availableBagsSwipeHint => 'اسحب ←';
+
+  @override
+  String get bagCurrencySuffix => 'ج.م';
+
+  @override
+  String get bagCardReserve => 'احجز';
+
+  @override
+  String bagCardBagsLeft(String count) {
+    return 'متبقي $count شنطة';
+  }
+
+  @override
+  String get bagDetailsTitle => 'مستري باج عروسة';
+
+  @override
+  String get bagDetailsPriceLabel => 'السعر';
+
+  @override
+  String get bagDetailsCurrentPrice => '50 ج.م';
+
+  @override
+  String get bagDetailsOldPrice => '100 ج.م';
+
+  @override
+  String get bagDetailsWhatInsideTitle => 'ماذا في الشنطة؟';
+
+  @override
+  String get bagDetailsDescription =>
+      'ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.';
+
+  @override
+  String get bagDetailsReservePickup => 'احجز للاستلام';
+
+  @override
+  String get productsViewTitle => 'المنتجات';
+
+  @override
+  String get availableBagsTitle => 'الشنط المتاحة';
+
+  @override
+  String get restaurantNameMadbinaZamalek => 'مطبنة - الزمالك';
+
+  @override
+  String restaurantBranchesCount(String count) {
+    return '$count فرع';
+  }
+
+  @override
+  String restaurantDistanceKilometers(String distance) {
+    return '$distance كيلومتر';
+  }
+
+  @override
+  String get bagTitleAroussaSandwich => 'شنطة سندوتش عروسة';
+
+  @override
+  String get bagTitleMasrawy => 'شنطة مصراوي';
+
+  @override
+  String get statusBadgeAvailable => 'متاح';
+
+  @override
+  String get statusBadgeUnavailable => 'غير متاح';
+
+  @override
+  String get statusBadgeNow => 'الآن';
+
+  @override
+  String get statusBadgeClosed => 'مغلق';
+
+  @override
+  String productViewResults(String count) {
+    return '$count نتيجة';
+  }
+
+  @override
+  String get couponPageTitle => 'كوبون الخصم';
+
+  @override
+  String get couponCodeLabel => 'كود الكوبون الخاص بك';
+
+  @override
+  String get couponPageDescription => 'استخدم هذا الكود لاستبدال نقاطك';
+
+  @override
+  String get couponCopyButton => 'نسخ الكود';
+
+  @override
+  String get couponCopiedMessage => 'تم نسخ كود الكوبون!';
+
+  @override
+  String get couponUniqueText => 'هذا الكود خاص بحسابك';
+
+  @override
+  String get bagelMysteryBagPickupOnlyBadge => '🛍️  للاستلام فقط';
+
+  @override
+  String get bagelMysteryBagStoreName => 'جيز بايجلز آند كوفي - الشيخ زايد';
+
+  @override
+  String get bagelMysteryBagTitle => 'شنطة بايجل مفاجأة';
+
+  @override
+  String bagelMysteryBagAvailableCount(String count) {
+    return 'متاح $count';
+  }
+
+  @override
+  String get bagelMysteryBagDescription =>
+      'قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.';
+
+  @override
+  String get bagelMysteryBagPickupTimeLabel => 'وقت الاستلام';
+
+  @override
+  String get bagelMysteryBagPickupTimeValue => '4:00 م - 11:00 م';
+
+  @override
+  String get bagelMysteryBagLocationLabel => 'الموقع';
+
+  @override
+  String get bagelMysteryBagLocationValue =>
+      'ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142';
+
+  @override
+  String get bagelMysteryBagContactLabel => 'التواصل';
+
+  @override
+  String get bagelMysteryBagIngredientsAndAllergens =>
+      'المكونات والمواد المسببة للحساسية';
+
+  @override
+  String get bagelMysteryBagAllergenNotice =>
+      'المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.';
+
+  @override
+  String get bagelMysteryBagCustomerReviews => 'آراء العملاء';
+
+  @override
+  String get bagelMysteryBagComingSoon => 'قريباً';
+
+  @override
+  String get bagelMysteryBagReviewsComingSoon =>
+      'ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.';
+
+  @override
+  String get bagelMysteryBagReservedState => '✓  تم الحجز! نراك وقت الاستلام';
+
+  @override
+  String get aiChatClearButton => 'مسح المحادثة';
+
+  @override
+  String get aiChatClearDialogTitle => 'مسح كل المحادثة؟';
+
+  @override
+  String get aiChatClearDialogMessage =>
+      'سيتم حذف جميع رسائل المحادثة لهذا الحساب نهائيًا.';
+
+  @override
+  String get aiChatActionCancel => 'إلغاء';
+
+  @override
+  String get aiChatActionClear => 'مسح';
+
+  @override
+  String get aiChatClearSuccess => 'تم مسح جميع رسائل المحادثة.';
+
+  @override
+  String get aiChatClearFailed => 'تعذر مسح المحادثة. حاول مرة أخرى.';
+
+  @override
+  String get aiChatTitle => 'مساعد الطعام';
+
+  @override
+  String get aiChatInputHint => 'اسأل عن الطعام...';
+
+  @override
+  String get foodScanTitle => 'فحص الطعام';
+
+  @override
+  String get foodScanCameraButton => 'الكاميرا';
+
+  @override
+  String get foodScanGalleryButton => 'المعرض';
+
+  @override
+  String get foodScanHeroTitle => 'صوّر الأكل علشان نحلّله';
+
+  @override
+  String get foodScanHeroSubtitle => 'الكاميرا أو المعرض';
+
+  @override
+  String get foodScanTipsTitle => 'نصايح لنتيجة أدق:';
+
+  @override
+  String get foodScanTipGoodLighting => 'إضاءة كويسة';
+
+  @override
+  String get foodScanTipMoveCloser => 'قرّب من الأكل';
+
+  @override
+  String get foodScanTipSimpleBackground => 'خلفية بسيطة';
+
+  @override
+  String get foodScanTipNoBlur => 'بدون تشويش';
+
+  @override
+  String get foodScanAfterPickHint => 'بعد ما تختار صورة هتقدر تعمل:';
+
+  @override
+  String get foodScanFeatureNutrition => 'التغذية والصحة';
+
+  @override
+  String get foodScanFeatureFreshness => 'فحص الطزاجة';
+
+  @override
+  String get foodScanDetectedLabel => 'المكتشف';
+
+  @override
+  String foodScanConfidenceLabel(String value) {
+    return 'الثقة: $value';
+  }
+
+  @override
+  String get foodScanCheckingFreshness => 'جارٍ فحص الطزاجة…';
+
+  @override
+  String get foodScanFreshnessSpoilageCheck => 'فحص الطزاجة / الفساد';
+
+  @override
+  String get foodScanLowConfidenceMessage =>
+      'النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.';
+
+  @override
+  String get reviewComposerTitle => 'شارك تجربتك';
+
+  @override
+  String get reviewComposerSubtitle =>
+      'أخبر الآخرين عن طعم الطعام وكيف كانت عملية الاستلام.';
+
+  @override
+  String get reviewComposerEditTitle => 'تعديل التقييم';
+
+  @override
+  String get reviewComposerEditSubtitle => 'تحديث تقييمك';
+
+  @override
+  String get reviewComposerRatingLabel => 'تقييمك';
+
+  @override
+  String get reviewComposerCommentLabel => 'تعليقك';
+
+  @override
+  String get reviewComposerCommentHint => 'أخبر الآخرين بما فكرت به...';
+
+  @override
+  String get reviewComposerSubmitButton => 'إرسال التقييم';
+
+  @override
+  String get reviewComposerUpdateButton => 'تحديث';
+
+  @override
+  String get reviewComposerSelectRatingError => 'الرجاء اختيار تقييم بالنجوم.';
+
+  @override
+  String get reviewComposerCommentRequiredError =>
+      'الرجاء كتابة تعليق قبل الإرسال.';
+
+  @override
+  String get reviewComposerSuccessMessage => 'تم إرسال تقييمك.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'لم يتمكن من إرسال تقييمك. حاول مرة أخرى.';
+
+  @override
+  String get reviewComposerEditButton => 'تعديل';
+
+  @override
+  String get reviewComposerDeleteButton => 'حذف';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'حذف التقييم؟';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'هل أنت متأكد أنك تريد حذف تقييمك؟';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'إلغاء';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'حذف';
+
+  @override
+  String get reviewComposerDeleteError => 'خطأ في حذف التقييم';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'تم حذف التقييم بنجاح';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'لا توجد تقييمات حتى الآن';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle => 'كن أول من يشارك تجربتك!';
 }

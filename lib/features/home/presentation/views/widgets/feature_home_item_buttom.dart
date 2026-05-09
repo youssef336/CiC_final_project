@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class FeatureHomeItemButtom extends StatelessWidget {
   const FeatureHomeItemButtom({super.key, this.onPressed});
@@ -14,12 +15,15 @@ class FeatureHomeItemButtom extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         onPressed: onPressed,
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: FittedBox(
             child: Text(
-              'Shop Now',
-              style: TextStyle(color: KprimaryColor, fontWeight: FontWeight.bold),
+              S.of(context)!.homeFeaturedItemShopNow,
+              style: const TextStyle(
+                color: KprimaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

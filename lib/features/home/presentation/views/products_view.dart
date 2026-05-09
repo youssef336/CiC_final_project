@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysterybag/core/repos/product_repo/product_repo.dart';
+import 'package:mysterybag/core/services/get_it_service.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
 import 'widgets/products_view_body.dart';
 
 class ProductsView extends StatelessWidget {
@@ -6,6 +10,9 @@ class ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ProductsViewBody();
+    return BlocProvider(
+      create: (_) => ProductsCubit(getIt<ProductRepo>())..loadProducts(),
+      child: const ProductsViewBody(),
+    );
   }
 }

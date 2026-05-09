@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/address_input_section.dart';
 import 'package:mysterybag/features/check_out/presentation/views/widgets/payment_section.dart';
@@ -10,12 +9,38 @@ class CheckOutStepsPageView extends StatelessWidget {
     required this.pageController,
     required this.formKey,
     required this.autoValidateMode,
+    required this.visaFormKey,
+    required this.cardHolderController,
+    required this.cardNumberController,
+    required this.expiryDateController,
+    required this.cvvController,
+    required this.onPaymentMethodChanged,
+    required this.onShippingMethodChanged,
+    required this.addressNameController,
+    required this.addressEmailController,
+    required this.addressLineController,
+    required this.addressCityController,
+    required this.addressFloorController,
+    required this.addressPhoneController,
   });
 
   final PageController pageController;
   final GlobalKey<FormState> formKey;
+  final GlobalKey<FormState> visaFormKey;
+  final TextEditingController cardHolderController;
+  final TextEditingController cardNumberController;
+  final TextEditingController expiryDateController;
+  final TextEditingController cvvController;
+  final VoidCallback onPaymentMethodChanged;
+  final VoidCallback onShippingMethodChanged;
+  final TextEditingController addressNameController;
+  final TextEditingController addressEmailController;
+  final TextEditingController addressLineController;
+  final TextEditingController addressCityController;
+  final TextEditingController addressFloorController;
+  final TextEditingController addressPhoneController;
 
-  final ValueListenable<AutovalidateMode> autoValidateMode;
+  final AutovalidateMode autoValidateMode;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +59,17 @@ class CheckOutStepsPageView extends StatelessWidget {
 
   List<Widget> getPages() {
     return [
-      const ShipinngSection(),
-      AddressInputSection(autoValidateMode: autoValidateMode, formKey: formKey),
+      ShipinngSection(onSelectionChanged: onShippingMethodChanged),
+      AddressInputSection(
+        autoValidateMode: autoValidateMode,
+        formKey: formKey,
+        nameController: addressNameController,
+        emailController: addressEmailController,
+        addressController: addressLineController,
+        cityController: addressCityController,
+        floorController: addressFloorController,
+        phoneController: addressPhoneController,
+      ),
       PaymentSection(pageController: pageController),
     ];
   }

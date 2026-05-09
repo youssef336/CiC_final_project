@@ -4,11 +4,23 @@ import 'package:mysterybag/core/helper_functions/get_avg_rating.dart';
 import 'review_model.dart';
 
 class ProductModel {
+  final String documentId;
   final String nameEn;
   final String nameAr;
   final String code;
   final String description;
   final num price;
+  final num oldPrice;
+  final int bagsLeft;
+  final String? restaurantName;
+  final String? branchLocation;
+  final String? pickupTime;
+  final List<String> detectedItems;
+  final String? userEmail;
+  final String? restaurantId;
+  final String? restaurantImageUrl;
+  final bool? restaurantIsAvailable;
+  final bool? restaurantIsOpenNow;
 
   final bool isfeatured;
   final num sellingCount;
@@ -20,7 +32,9 @@ class ProductModel {
   final num ratingCount = 0;
   final int unitAmount;
   final List<ReviewModel> reviews;
+
   ProductModel({
+    this.documentId = '',
     required this.nameEn,
     required this.nameAr,
 
@@ -35,37 +49,122 @@ class ProductModel {
     required this.price,
     required this.isOrganic,
     required this.isfeatured,
+    this.oldPrice = 0,
+    this.bagsLeft = 0,
+    this.detectedItems = const [],
+    this.restaurantName,
+    this.branchLocation,
+    this.pickupTime,
+    this.userEmail,
+    this.restaurantId,
+    this.restaurantImageUrl,
+    this.restaurantIsAvailable,
+    this.restaurantIsOpenNow,
     this.imageurl,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
+  factory ProductModel.fromJson(
+    Map<String, dynamic> json, {
+    String? documentId,
+  }) {
+    String safeString(dynamic v) => v?.toString() ?? '';
+    num safeNum(dynamic v) {
+      if (v is num) return v;
+      if (v is String) return num.tryParse(v) ?? 0;
+      return 0;
+    }
+
+    bool safeBool(dynamic v) => v == true || v == 'true' || v == 1;
+    bool? nullableBool(dynamic v) {
+      if (v == null) return null;
+      if (v == true || v == 'true' || v == 1) return true;
+      if (v == false || v == 'false' || v == 0) return false;
+      return null;
+    }
+
+    List<String> parseStringList(dynamic raw) {
+      if (raw is! List) return <String>[];
+      return raw
+          .map((item) => item?.toString().trim() ?? '')
+          .where((item) => item.isNotEmpty)
+          .toList();
+    }
+
+    List<ReviewModel> parseReviews(dynamic reviewsRaw) {
+      if (reviewsRaw == null) return <ReviewModel>[];
+      if (reviewsRaw is List) {
+        return reviewsRaw.map((e) {
+          if (e is Map<String, dynamic>) return ReviewModel.fromJson(e);
+          if (e is Map) {
+            return ReviewModel.fromJson(Map<String, dynamic>.from(e));
+          }
+          return ReviewModel.fromJson({});
+        }).toList();
+      }
+      return <ReviewModel>[];
+    }
+
+    final parsedReviews = parseReviews(json['reviews']);
+    final title = safeString(json['title']);
+    final resolvedNameEn = safeString(json['nameEn']).isNotEmpty
+        ? safeString(json['nameEn'])
+        : title;
+    final resolvedNameAr = safeString(json['nameAr']).isNotEmpty
+        ? safeString(json['nameAr'])
+        : resolvedNameEn;
+    final resolvedDocumentId = documentId ?? safeString(json['documentId']);
+
     return ProductModel(
-      nameEn: json['nameEn'],
-      nameAr: json['nameAr'],
-      code: json['code'],
-      description: json['description'],
-      experationMonths: json['experationMonths'],
-      numbersOfCalories: json['numbersOfCalories'],
-      unitAmount: json['unitAmount'],
-      sellingCount: json['sellingCount'],
-      reviews: json['reviews'] != null
-          ? List<ReviewModel>.from(
-              json['reviews'].map(
-                (e) => ReviewModel.fromJson(e as Map<String, dynamic>),
-              ),
-            )
-          : [],
-      price: json['price'],
-      isOrganic: json['isOrganic'],
-      isfeatured: json['isfeatured'],
-      imageurl: json['imageurl'],
-      avgRating: getAvgRating(json['reviews']),
+      documentId: resolvedDocumentId,
+      nameEn: resolvedNameEn,
+      nameAr: resolvedNameAr,
+      code: safeString(json['code']),
+      description: safeString(json['description']).isNotEmpty
+          ? safeString(json['description'])
+          : parseStringList(json['detectedItems']).join(', '),
+      experationMonths: safeNum(json['experationMonths']).toInt(),
+      numbersOfCalories: safeNum(json['numbersOfCalories']).toInt(),
+      unitAmount: safeNum(json['unitAmount']).toInt(),
+      sellingCount: safeNum(json['sellingCount']),
+      reviews: parsedReviews,
+      price: safeNum(json['price']),
+      oldPrice: safeNum(json['oldPrice']),
+      bagsLeft: safeNum(json['bagsLeft']).toInt(),
+      detectedItems: parseStringList(json['detectedItems']),
+      restaurantName: safeString(json['restaurantName']).isNotEmpty
+          ? safeString(json['restaurantName'])
+          : null,
+      pickupTime: safeString(json['pickupTime']).isNotEmpty
+          ? safeString(json['pickupTime'])
+          : null,
+      userEmail: safeString(json['userEmail']).isNotEmpty
+          ? safeString(json['userEmail'])
+          : null,
+      restaurantId: safeString(json['restaurantId']).isNotEmpty
+          ? safeString(json['restaurantId'])
+          : null,
+      restaurantImageUrl: safeString(json['restaurantImageUrl']).isNotEmpty
+          ? safeString(json['restaurantImageUrl'])
+          : null,
+        restaurantIsAvailable: nullableBool(json['restaurantIsAvailable']),
+        restaurantIsOpenNow: nullableBool(json['restaurantIsOpenNow']),
+      isOrganic: safeBool(json['isOrganic']),
+      isfeatured: safeBool(json['isfeatured']) || safeBool(json['isFeatured']),
+      imageurl: safeString(json['imageurl']).isNotEmpty
+          ? safeString(json['imageurl'])
+          : (safeString(json['imageUrl']).isNotEmpty
+                ? safeString(json['imageUrl'])
+                : null),
+      avgRating: safeNum(json['avgRating']) > 0
+          ? safeNum(json['avgRating'])
+          : getAvgRating(parsedReviews),
     );
   }
 
   // product_model.dart
   ProductEntity toEntity() {
     return ProductEntity(
+      documentId: documentId,
       nameAr: nameAr,
       nameEn: nameEn,
       code: code,
@@ -77,7 +176,18 @@ class ProductModel {
       unitAmount: unitAmount,
       isOrganic: isOrganic,
       isFeatured: isfeatured,
-      imageUrl: imageurl,
+      oldPrice: oldPrice,
+      bagsLeft: bagsLeft,
+      restaurantName: restaurantName,
+      pickupTime: pickupTime,
+      detectedItems: detectedItems,
+      userEmail: userEmail,
+      restaurantId: restaurantId,
+      restaurantImageUrl: restaurantImageUrl,
+      restaurantIsAvailable: restaurantIsAvailable,
+      restaurantIsOpenNow: restaurantIsOpenNow,
+      avgRating: avgRating,
+      imageUrl: imageurl!,
     );
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
@@ -55,7 +57,75 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
         builder: (context, points, _) {
           return Column(
             children: [
-              const SizedBox(height: 40),
+              SizedBox(height: MediaQuery.of(context).padding.top + 8),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: KhorzontalPadding,
+                ),
+                child: SizedBox(
+                  height: 40,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(999),
+                            onTap: () => Navigator.of(context).maybePop(),
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? KdarkModeCardColor
+                                    : Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(
+                                      isDark ? 0.22 : 0.08,
+                                    ),
+                                    blurRadius: 8,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: IconTheme(
+                                  data: IconThemeData(
+                                    size: 20,
+                                    color: isDark
+                                        ? KdarkModeTextColor
+                                        : KlightModeTextColor,
+                                  ),
+                                  child: const BackButtonIcon(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 52),
+                        child: Text(
+                          S.of(context)!.profileViewPoints,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.cairoBold19.copyWith(
+                            color: isDark ? KdarkModeTextColor : KprimaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 8),
 
               // Points Display Card
               Padding(
@@ -141,7 +211,7 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
                   IntrinsicWidth(
                     stepWidth: 20,
                     child: CustomButtom(
-                      text: "add",
+                      text: S.of(context)!.pointsPageAdd,
                       onPressed: () {
                         _addPoints(50);
                       },
@@ -150,7 +220,7 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
                   IntrinsicWidth(
                     stepWidth: 20,
                     child: CustomButtom(
-                      text: "delete",
+                      text: S.of(context)!.pointsPageDelete,
                       onPressed: () {
                         _addPoints(
                           -Prefs.getInt(Kpoints) > -50

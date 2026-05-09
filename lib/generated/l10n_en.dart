@@ -103,6 +103,21 @@ class SEn extends S {
   String get homeViewWelcomeAppbar => 'Good Morning !..';
 
   @override
+  String get homeBestSellersTitle => 'Best Sellers';
+
+  @override
+  String get homeBestSellersViewAll => 'View All';
+
+  @override
+  String get homeFeaturedItemTitle => 'Featured Item';
+
+  @override
+  String get homeFeaturedItemSubtitle => 'Special Offer';
+
+  @override
+  String get homeFeaturedItemShopNow => 'Shop Now';
+
+  @override
   String get buttonNavigationBarEntityHome => 'Home';
 
   @override
@@ -145,10 +160,105 @@ class SEn extends S {
   String get checkOutViewShipingSubtitle2 => 'Select Payment Method';
 
   @override
+  String get checkOutViewPaymentMethodTitle => 'Payment method';
+
+  @override
+  String get checkOutViewSavedCardTitle => 'Saved card';
+
+  @override
+  String get checkOutViewUseSavedCard => 'Use saved card';
+
+  @override
+  String get checkOutViewDeleteCard => 'Delete card';
+
+  @override
+  String get checkOutViewCardHolderName => 'Cardholder name';
+
+  @override
+  String get checkOutViewEnterCardHolderName => 'Enter cardholder name';
+
+  @override
+  String get checkOutViewCardNumberOrSaved => 'Card number or saved card';
+
+  @override
+  String get checkOutViewCardNumber => 'Card number';
+
+  @override
+  String get checkOutViewInvalidCardNumber => 'Enter a valid card number';
+
+  @override
+  String get checkOutViewInvalidExpiryDate => 'Enter a valid expiry date';
+
+  @override
+  String get checkOutViewInvalidCvv => 'Enter a valid CVV';
+
+  @override
+  String get checkOutViewOnlySaveLast4 =>
+      'Only the last 4 digits are stored on this device.';
+
+  @override
   String get checkOutViewPayWithPayPal => 'Pay with PayPal';
 
   @override
+  String get checkOutViewPayWithVisa => 'Pay with Visa';
+
+  @override
+  String get checkOutViewPlaceOrder => 'Place Order';
+
+  @override
   String get checkOutViewNext => 'Next';
+
+  @override
+  String get checkOutViewShipingTitle3 => 'Pay with Visa';
+
+  @override
+  String get checkOutViewShipingSubtitle3 => 'Card saved on this device only';
+
+  @override
+  String get checkOutViewConfirmPaymentVisa => 'Confirm payment';
+
+  @override
+  String get checkOutViewConfirmPaymentVisaMessage =>
+      'Are you sure you want to pay with Visa?';
+
+  @override
+  String get checkOutViewConfirmOrderCash => 'Place order';
+
+  @override
+  String get checkOutViewVisaMissing => 'Save your Visa card before paying.';
+
+  @override
+  String get visaDetailsTitle => 'Visa details';
+
+  @override
+  String get visaDetailsCardNumber => 'Card number';
+
+  @override
+  String get visaDetailsCardHolder => 'Name on card';
+
+  @override
+  String get visaDetailsExpiry => 'Expiry (MM/YY)';
+
+  @override
+  String get visaDetailsCvv => 'CVV';
+
+  @override
+  String get visaDetailsSave => 'Save and continue';
+
+  @override
+  String get visaDetailsDelete => 'Delete';
+
+  @override
+  String get visaDetailsSavedLabel => 'Saved card';
+
+  @override
+  String visaDetailsEndsWith(String last4) {
+    return 'Ends with $last4';
+  }
+
+  @override
+  String get paymentSectionVisaHint =>
+      'You will confirm with your saved Visa card (not PayPal).';
 
   @override
   String get orderSummaryWidgetTitle => 'Order Summary :';
@@ -163,7 +273,11 @@ class SEn extends S {
   String get orderSummaryWidgetTotal => 'Total';
 
   @override
-  String get orderCubitBlocConsumer => 'Order Placed Successfully';
+  String get orderCashSuccessMessage =>
+      'Cash on delivery order placed successfully';
+
+  @override
+  String get orderVisaSuccessMessage => 'Visa payment completed successfully';
 
   @override
   String get addressSummaryWidgetTitle => 'Delivery Address :';
@@ -247,6 +361,12 @@ class SEn extends S {
   String get pointsPagePointsToGo => 'points to go!';
 
   @override
+  String get pointsPageAdd => 'Add';
+
+  @override
+  String get pointsPageDelete => 'Delete';
+
+  @override
   String get productGridViewPlaceholder => 'Product';
 
   @override
@@ -312,4 +432,314 @@ class SEn extends S {
 
   @override
   String get googleSignInFailedError => 'Google Sign-In failed';
+
+  @override
+  String get availableBagsSwipeHint => 'Swipe →';
+
+  @override
+  String get bagCurrencySuffix => 'EGP';
+
+  @override
+  String get bagCardReserve => 'Reserve';
+
+  @override
+  String bagCardBagsLeft(String count) {
+    return '$count Bags left';
+  }
+
+  @override
+  String get bagDetailsTitle => 'Mystery Bag Arousa';
+
+  @override
+  String get bagDetailsPriceLabel => 'Price';
+
+  @override
+  String get bagDetailsCurrentPrice => '50 EGP';
+
+  @override
+  String get bagDetailsOldPrice => '100 EGP';
+
+  @override
+  String get bagDetailsWhatInsideTitle => 'What is in the bag?';
+
+  @override
+  String get bagDetailsDescription =>
+      'One Arousa sandwich made with pita bread, served with crispy fries and a refreshing drink.';
+
+  @override
+  String get bagDetailsReservePickup => 'Reserve for pickup';
+
+  @override
+  String get productsViewTitle => 'Products';
+
+  @override
+  String get availableBagsTitle => 'Available bags';
+
+  @override
+  String get restaurantNameMadbinaZamalek => 'Madbina - Zamalek';
+
+  @override
+  String restaurantBranchesCount(String count) {
+    return '$count branch';
+  }
+
+  @override
+  String restaurantDistanceKilometers(String distance) {
+    return '$distance kilometers';
+  }
+
+  @override
+  String get bagTitleAroussaSandwich => 'Aroussa Sandwich Bag';
+
+  @override
+  String get bagTitleMasrawy => 'Masrawy Bag';
+
+  @override
+  String get statusBadgeAvailable => 'Available';
+
+  @override
+  String get statusBadgeUnavailable => 'Unavailable';
+
+  @override
+  String get statusBadgeNow => 'Now';
+
+  @override
+  String get statusBadgeClosed => 'Closed';
+
+  @override
+  String productViewResults(String count) {
+    return '$count results';
+  }
+
+  @override
+  String get couponPageTitle => 'Your Coupon';
+
+  @override
+  String get couponCodeLabel => 'Your Coupon Code';
+
+  @override
+  String get couponPageDescription => 'Use this code to redeem your points';
+
+  @override
+  String get couponCopyButton => 'Copy Code';
+
+  @override
+  String get couponCopiedMessage => 'Coupon code copied!';
+
+  @override
+  String get couponUniqueText => 'This code is unique to your account';
+
+  @override
+  String get bagelMysteryBagPickupOnlyBadge => '🛍️  Pickup Only';
+
+  @override
+  String get bagelMysteryBagStoreName => 'G\'s Bagels & Coffee - Sheikh Zayed';
+
+  @override
+  String get bagelMysteryBagTitle => 'Bagel Mystery Bag';
+
+  @override
+  String bagelMysteryBagAvailableCount(String count) {
+    return '$count available';
+  }
+
+  @override
+  String get bagelMysteryBagDescription =>
+      'Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.';
+
+  @override
+  String get bagelMysteryBagPickupTimeLabel => 'Pickup Time';
+
+  @override
+  String get bagelMysteryBagPickupTimeValue => '4:00 PM - 11:00 PM';
+
+  @override
+  String get bagelMysteryBagLocationLabel => 'Location';
+
+  @override
+  String get bagelMysteryBagLocationValue =>
+      'The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142';
+
+  @override
+  String get bagelMysteryBagContactLabel => 'Contact';
+
+  @override
+  String get bagelMysteryBagIngredientsAndAllergens =>
+      'Ingredients & Allergens';
+
+  @override
+  String get bagelMysteryBagAllergenNotice =>
+      'The shop did not specify allergens. Please contact them to make sure.';
+
+  @override
+  String get bagelMysteryBagCustomerReviews => 'Customer Reviews';
+
+  @override
+  String get bagelMysteryBagComingSoon => 'Coming Soon';
+
+  @override
+  String get bagelMysteryBagReviewsComingSoon =>
+      'Customer reviews will be available soon to help you make informed decisions.';
+
+  @override
+  String get bagelMysteryBagReservedState => '✓  Reserved! See you at pickup';
+
+  @override
+  String get aiChatClearButton => 'Clear Chat';
+
+  @override
+  String get aiChatClearDialogTitle => 'Clear all chat?';
+
+  @override
+  String get aiChatClearDialogMessage =>
+      'This will permanently remove all chat messages for this account.';
+
+  @override
+  String get aiChatActionCancel => 'Cancel';
+
+  @override
+  String get aiChatActionClear => 'Clear';
+
+  @override
+  String get aiChatClearSuccess => 'All chat messages were cleared.';
+
+  @override
+  String get aiChatClearFailed => 'Could not clear chat. Please try again.';
+
+  @override
+  String get aiChatTitle => 'Food Assistant';
+
+  @override
+  String get aiChatInputHint => 'Ask about food...';
+
+  @override
+  String get foodScanTitle => 'Food Scan';
+
+  @override
+  String get foodScanCameraButton => 'Camera';
+
+  @override
+  String get foodScanGalleryButton => 'Gallery';
+
+  @override
+  String get foodScanHeroTitle => 'Take a food photo to analyze';
+
+  @override
+  String get foodScanHeroSubtitle => 'Camera or Gallery';
+
+  @override
+  String get foodScanTipsTitle => 'Tips for better results:';
+
+  @override
+  String get foodScanTipGoodLighting => 'Good lighting';
+
+  @override
+  String get foodScanTipMoveCloser => 'Move closer';
+
+  @override
+  String get foodScanTipSimpleBackground => 'Simple background';
+
+  @override
+  String get foodScanTipNoBlur => 'No blur';
+
+  @override
+  String get foodScanAfterPickHint => 'After selecting an image you can:';
+
+  @override
+  String get foodScanFeatureNutrition => 'Nutrition & Health';
+
+  @override
+  String get foodScanFeatureFreshness => 'Freshness Check';
+
+  @override
+  String get foodScanDetectedLabel => 'Detected';
+
+  @override
+  String foodScanConfidenceLabel(String value) {
+    return 'Confidence: $value';
+  }
+
+  @override
+  String get foodScanCheckingFreshness => 'Checking freshness…';
+
+  @override
+  String get foodScanFreshnessSpoilageCheck => 'Freshness / Spoilage Check';
+
+  @override
+  String get foodScanLowConfidenceMessage =>
+      'Result is not confident enough. Try another photo with better lighting.';
+
+  @override
+  String get reviewComposerTitle => 'Share your experience';
+
+  @override
+  String get reviewComposerSubtitle =>
+      'Tell others what the food tasted like and how the pickup went.';
+
+  @override
+  String get reviewComposerEditTitle => 'Edit Review';
+
+  @override
+  String get reviewComposerEditSubtitle => 'Update your review';
+
+  @override
+  String get reviewComposerRatingLabel => 'Your rating';
+
+  @override
+  String get reviewComposerCommentLabel => 'Your comment';
+
+  @override
+  String get reviewComposerCommentHint => 'Tell others what you thought...';
+
+  @override
+  String get reviewComposerSubmitButton => 'Submit review';
+
+  @override
+  String get reviewComposerUpdateButton => 'Update';
+
+  @override
+  String get reviewComposerSelectRatingError => 'Please choose a star rating.';
+
+  @override
+  String get reviewComposerCommentRequiredError =>
+      'Please write a comment before submitting.';
+
+  @override
+  String get reviewComposerSuccessMessage => 'Your review was submitted.';
+
+  @override
+  String get reviewComposerFailureMessage =>
+      'Could not submit your review. Please try again.';
+
+  @override
+  String get reviewComposerEditButton => 'Edit';
+
+  @override
+  String get reviewComposerDeleteButton => 'Delete';
+
+  @override
+  String get reviewComposerDeleteConfirmTitle => 'Delete Review?';
+
+  @override
+  String get reviewComposerDeleteConfirmMessage =>
+      'Are you sure you want to delete your review?';
+
+  @override
+  String get reviewComposerDeleteConfirmCancel => 'Cancel';
+
+  @override
+  String get reviewComposerDeleteConfirmDelete => 'Delete';
+
+  @override
+  String get reviewComposerDeleteError => 'Error deleting review';
+
+  @override
+  String get reviewComposerDeleteSuccess => 'Review deleted successfully';
+
+  @override
+  String get reviewComposerNoReviewsTitle => 'No reviews yet';
+
+  @override
+  String get reviewComposerNoReviewsSubtitle =>
+      'Be the first to share your experience!';
 }

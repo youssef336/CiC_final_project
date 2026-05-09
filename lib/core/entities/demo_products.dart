@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
 
 /// Demo products for testing checkout functionality
@@ -15,7 +16,7 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: true,
     isOrganic: true,
-    imageUrl: null,
+    imageUrl: const AssetImage("assets/images/apples.png").toString(),
   ),
   ProductEntity(
     nameEn: 'Organic Bananas',
@@ -29,7 +30,7 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: true,
     isOrganic: true,
-    imageUrl: null,
+    imageUrl: const AssetImage("assets/images/bananas.png").toString(),
   ),
   ProductEntity(
     nameEn: 'Carrots Bundle',
@@ -43,7 +44,7 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: false,
     isOrganic: true,
-    imageUrl: null,
+    imageUrl: const AssetImage("assets/images/carrots.png").toString(),
   ),
   ProductEntity(
     nameEn: 'Tomato Mix',
@@ -57,7 +58,7 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: true,
     isOrganic: false,
-    imageUrl: null,
+    imageUrl: const AssetImage("assets/images/tomatoes.png").toString(),
   ),
   ProductEntity(
     nameEn: 'Broccoli Fresh',
@@ -71,7 +72,7 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: false,
     isOrganic: true,
-    imageUrl: null,
+    imageUrl: "assets/images/broccoli.png",
   ),
   ProductEntity(
     nameEn: 'Orange Citrus',
@@ -85,6 +86,6 @@ final List<ProductEntity> demoProducts = [
     unitAmount: 1,
     isFeatured: true,
     isOrganic: false,
-    imageUrl: null,
+    imageUrl: "assets/images/oranges.png",
   ),
 ];

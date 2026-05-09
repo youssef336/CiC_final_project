@@ -36,7 +36,7 @@ class CheckOutStage extends StatelessWidget {
   }
 }
 
-List<String> getSteps(context) => [
+List<String> getSteps(BuildContext context) => [
   S.of(context)!.checkOutViewTitle,
   S.of(context)!.checkOutViewAddress,
   S.of(context)!.checkOutViewPayment,

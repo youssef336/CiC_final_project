@@ -3,40 +3,89 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+
 import 'package:mysterybag/constant.dart';
 import 'package:mysterybag/core/cubits/locale/locale_cubit.dart';
 import 'package:mysterybag/core/cubits/theme/theme_cubit.dart';
+import 'package:mysterybag/core/helper_functions/themes.dart';
 import 'package:mysterybag/core/helper_functions/on_generate_routes.dart';
-import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/core/services/shared_preferences_singletone.dart';
+import 'package:mysterybag/core/services/get_it_service.dart';
 import 'package:mysterybag/features/home/presentation/manager/cubits/cart/cart_cubit.dart';
+import 'package:mysterybag/features/home/presentation/manager/cubits/products/products_cubit.dart';
+import 'package:mysterybag/core/repos/product_repo/product_repo.dart';
+
+import 'package:mysterybag/features/home/domain/entities/cart_entites.dart';
+import 'package:mysterybag/features/home/domain/entities/cart_item_entity.dart';
+import 'package:mysterybag/core/entities/product_entity.dart';
 import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/firebase_options.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await Prefs.init();
+
+  // Firebase init (سيبيه عادي)
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } on FirebaseException catch (e) {
+    if (e.code != 'duplicate-app') {
+      rethrow;
+    }
+  } catch (e) {
+    if (!e.toString().toLowerCase().contains('duplicate-app')) {
+      rethrow;
+    }
+  }
+
   setupGetIt();
+
+  await Prefs.init();
+
+  // 🟢 Fake Cart Data
+  final fakeCart = CartEntites([
+    CartItemEntity(
+      productEntity: ProductEntity(
+        nameEn: "Test Product",
+        nameAr: "منتج تجريبي",
+        code: "123",
+        description: "This is a test product",
+        price: 100,
+        reviews: [],
+        expirationsMonths: 12,
+        numbersOfCalories: 200,
+        unitAmount: 1,
+        isFeatured: true,
+        imageUrl: "",
+      ),
+      count: 2,
+    ),
+  ]);
+
   runApp(
     Phoenix(
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<LocaleCubit>(create: (context) => LocaleCubit()),
-          BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
-          BlocProvider<CartCubit>(create: (context) => CartCubit()),
+          BlocProvider(create: (_) => LocaleCubit()),
+          BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => CartCubit()),
+          BlocProvider(
+            create: (_) => ProductsCubit(getIt<ProductRepo>())..loadProducts(),
+          ),
         ],
-        child: const MysteryBag(),
+        child: MysteryBag(fakeCart: fakeCart),
       ),
     ),
   );
 }
 
 class MysteryBag extends StatelessWidget {
-  const MysteryBag({super.key});
+  const MysteryBag({super.key, required this.fakeCart});
 
-  // This widget is the root of your application.
+  final CartEntites fakeCart;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocaleCubit, LocaleState>(
@@ -44,108 +93,19 @@ class MysteryBag extends StatelessWidget {
         return BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, themeState) {
             String locale = Prefs.getString(Klocale);
+
             return MaterialApp(
-              // ========== Dark Theme ==========
-              darkTheme: ThemeData(
-                brightness: Brightness.dark,
-                scaffoldBackgroundColor: KdarkModeBgColor,
-                primaryColor: KprimaryColor,
-                colorScheme: const ColorScheme.dark(
-                  brightness: Brightness.dark,
-                  primary: KprimaryColor,
-                  onPrimary: KlightModeCardColor,
-                  secondary: KprimaryColorLight,
-                  onSecondary: KprimaryColorDark,
-                  surface: KdarkModeCardColor,
-                  onSurface: KdarkModeTextColor,
-                  error: KprimaryColorDark,
-                  onError: KsecondaryColor,
-                ).copyWith(
-                  surfaceContainer: KdarkModeCardColor,
-                ),
-                appBarTheme: const AppBarTheme(
-                  backgroundColor: KprimaryColor,
-                  foregroundColor: KsecondaryColor,
-                  elevation: 0,
-                ),
-                cardColor: KdarkModeCardColor,
-                dividerColor: KprimaryColorLight.withOpacity(0.2),
-                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-                  backgroundColor: KprimaryColor,
-                  selectedItemColor: KprimaryColorLight,
-                  unselectedItemColor: KdarkModeTextSecondary,
-                ),
-                floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                  backgroundColor: KprimaryColorLight,
-                  foregroundColor: KprimaryColorDark,
-                ),
-                inputDecorationTheme: InputDecorationTheme(
-                  filled: true,
-                  fillColor: KdarkModeCardColor,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KprimaryColorLight.withOpacity(0.3)),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: KprimaryColorLight, width: 2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  hintStyle: const TextStyle(color: KdarkModeTextSecondary),
-                ),
-              ),
-              // ========== Light Theme ==========
-              theme: ThemeData(
-                brightness: Brightness.light,
-                scaffoldBackgroundColor: KlightModeBgColor,
-                primaryColor: KprimaryColorLight,
-                colorScheme: const ColorScheme.light(
-                  brightness: Brightness.light,
-                  primary: KprimaryColorLight,
-                  onPrimary: KprimaryColorDark,
-                  secondary: KprimaryColor,
-                  onSecondary: KsecondaryColor,
-                  surface: KlightModeCardColor,
-                  onSurface: KlightModeTextColor,
-                  error: KprimaryColorDark,
-                  onError: KsecondaryColor,
-                ).copyWith(
-                  surfaceContainer: KlightModeCardColor,
-                ),
-                appBarTheme: const AppBarTheme(
-                  backgroundColor: KprimaryColorLight,
-                  foregroundColor: KprimaryColorDark,
-                  elevation: 0,
-                ),
-                cardColor: KlightModeCardColor,
-                dividerColor: KdisabledColor.withOpacity(0.2),
-                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-                  backgroundColor: KlightModeCardColor,
-                  selectedItemColor: KprimaryColor,
-                  unselectedItemColor: KlightModeTextSecondary,
-                ),
-                floatingActionButtonTheme: const FloatingActionButtonThemeData(
-                  backgroundColor: KprimaryColor,
-                  foregroundColor: KlightModeCardColor,
-                ),
-                inputDecorationTheme: InputDecorationTheme(
-                  filled: true,
-                  fillColor: KlightModeCardColor,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: KdisabledColor.withOpacity(0.3)),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: KprimaryColor, width: 2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  hintStyle: const TextStyle(color: KlightModeTextSecondary),
-                ),
-              ),
-              themeMode: themeState,
+              debugShowCheckedModeBanner: false,
               title: 'Mystery Bag',
 
+              // 🎨 Themes
+              theme: LightColorTheme(),
+              darkTheme: DarkColorTheme(),
+              themeMode: themeState,
+
+              // 🌍 Localization
               localizationsDelegates: const [
-                S.delegate, // Generated by Flutter Intl / gen-l10n
+                S.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
@@ -156,11 +116,8 @@ class MysteryBag extends StatelessWidget {
                   : localeState is LocaleChangedtoArabic
                   ? const Locale('ar')
                   : Locale(locale.isEmpty ? 'ar' : locale),
-
               onGenerateRoute: onGenerateRoute,
               initialRoute: SplashView.routeName,
-              // initialRoute: '/bagDetails',
-              debugShowCheckedModeBanner: false,
             );
           },
         );

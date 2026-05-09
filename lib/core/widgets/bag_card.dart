@@ -1,6 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
-import 'package:mysterybag/features/home/presentation/views/widgets/bag_details_view.dart';
+import 'package:mysterybag/core/models/bag_item_model.dart';
+import 'package:mysterybag/features/home/presentation/views/bagel_mystery_bag_screen.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class BagCard extends StatelessWidget {
   final String title;
@@ -8,10 +12,12 @@ class BagCard extends StatelessWidget {
   final double oldPrice;
   final int bagsLeft;
   final double rating;
+  final double width;
 
-  final bagItemModel;
+  final BagItemModel? bagItemModel;
   const BagCard({
     super.key,
+    required this.width,
     required this.title,
     required this.price,
     required this.oldPrice,
@@ -24,26 +30,33 @@ class BagCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // Debug: log when a bag card is built to observe bagsLeft
+    try {
+      print('🧾 BagCard build: $title bagsLeft=$bagsLeft width=$width');
+    } catch (_) {}
+
     return Container(
-      width: 260,
+      width: width,
+
       margin: const EdgeInsets.only(left: 6, top: 3, right: 6, bottom: 10),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(28),
         boxShadow: [
-          // Shadow in all directions
           BoxShadow(
             color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black.withOpacity(0.3)
-                : Colors.grey.shade300.withOpacity(0.5),
-            blurRadius: 2,
-            spreadRadius: 2,
-            offset: const Offset(0, 0),
+                ? Colors.black.withOpacity(0.24)
+                : Colors.black.withOpacity(0.08),
+            blurRadius: 18,
+            spreadRadius: 1,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -52,30 +65,37 @@ class BagCard extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 17,
                     color: isDark ? KdarkModeTextColor : KlightModeTextColor,
                   ),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? KaccentColor.withOpacity(0.2)
-                      : KaccentColor.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xFFF7F2E8),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.star, size: 14, color: KaccentColor),
-                    const SizedBox(width: 4),
+                    const Icon(
+                      Icons.star_rounded,
+                      size: 15,
+                      color: KaccentColor,
+                    ),
+                    const SizedBox(width: 3),
                     Text(
-                      rating.toString(),
+                      rating.toStringAsFixed(1),
                       style: TextStyle(
                         color: isDark
                             ? KdarkModeTextColor
                             : KlightModeTextColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ],
@@ -84,56 +104,77 @@ class BagCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
 
           Text(
-            "$oldPrice EGP",
+            '${oldPrice.toStringAsFixed(1)} ${S.of(context)!.bagCurrencySuffix}',
             style: TextStyle(
               decoration: TextDecoration.lineThrough,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
               color: isDark
                   ? KdarkModeTextSecondary
-                  : Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                  : Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.color?.withOpacity(0.6),
             ),
           ),
 
+          const SizedBox(height: 0),
+
           Text(
-            "$price EGP",
+            '${price.toStringAsFixed(1)} ${S.of(context)!.bagCurrencySuffix}',
             style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.green,
+              fontSize: 19,
+              fontWeight: FontWeight.w800,
+              color: Color(0xFF4CAF50),
             ),
           ),
 
-          const Spacer(),
+          const SizedBox(height: 4),
 
           Text(
-            "$bagsLeft Bags left",
-            style: TextStyle(
-              color: isDark ? KdarkModeTextSecondary : KaccentColor,
+            S.of(context)!.bagCardBagsLeft(bagsLeft.toString()),
+            style: const TextStyle(
+              color: Color(0xFFC6A56A),
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
             ),
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: 14),
 
           SizedBox(
             width: double.infinity,
+            height: 48,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(BagDetailsView.routeName);
+                final product = bagItemModel?.product;
+                if (product == null) {
+                  return;
+                }
+
+                Navigator.of(context).pushNamed(
+                  BagelMysteryBagScreen.routeName,
+                  arguments: {
+                    'product': product,
+                    'restaurant': bagItemModel?.restaurant,
+                  },
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: KaccentColor,
+                backgroundColor: const Color(0xFFC79E68),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
+                elevation: 0,
               ),
               child: Text(
-                "Reserve",
-                style: TextStyle(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black
-                      : Colors.white,
+                S.of(context)!.bagCardReserve,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

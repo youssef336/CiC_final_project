@@ -277,6 +277,36 @@ abstract class S {
   /// **'Good Morning !..'**
   String get homeViewWelcomeAppbar;
 
+  /// No description provided for @homeBestSellersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Sellers'**
+  String get homeBestSellersTitle;
+
+  /// No description provided for @homeBestSellersViewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get homeBestSellersViewAll;
+
+  /// No description provided for @homeFeaturedItemTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Item'**
+  String get homeFeaturedItemTitle;
+
+  /// No description provided for @homeFeaturedItemSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special Offer'**
+  String get homeFeaturedItemSubtitle;
+
+  /// No description provided for @homeFeaturedItemShopNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop Now'**
+  String get homeFeaturedItemShopNow;
+
   /// No description provided for @buttonNavigationBarEntityHome.
   ///
   /// In en, this message translates to:
@@ -361,17 +391,197 @@ abstract class S {
   /// **'Select Payment Method'**
   String get checkOutViewShipingSubtitle2;
 
+  /// No description provided for @checkOutViewPaymentMethodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment method'**
+  String get checkOutViewPaymentMethodTitle;
+
+  /// No description provided for @checkOutViewSavedCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved card'**
+  String get checkOutViewSavedCardTitle;
+
+  /// No description provided for @checkOutViewUseSavedCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Use saved card'**
+  String get checkOutViewUseSavedCard;
+
+  /// No description provided for @checkOutViewDeleteCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete card'**
+  String get checkOutViewDeleteCard;
+
+  /// No description provided for @checkOutViewCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardholder name'**
+  String get checkOutViewCardHolderName;
+
+  /// No description provided for @checkOutViewEnterCardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter cardholder name'**
+  String get checkOutViewEnterCardHolderName;
+
+  /// No description provided for @checkOutViewCardNumberOrSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number or saved card'**
+  String get checkOutViewCardNumberOrSaved;
+
+  /// No description provided for @checkOutViewCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get checkOutViewCardNumber;
+
+  /// No description provided for @checkOutViewInvalidCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid card number'**
+  String get checkOutViewInvalidCardNumber;
+
+  /// No description provided for @checkOutViewInvalidExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid expiry date'**
+  String get checkOutViewInvalidExpiryDate;
+
+  /// No description provided for @checkOutViewInvalidCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid CVV'**
+  String get checkOutViewInvalidCvv;
+
+  /// No description provided for @checkOutViewOnlySaveLast4.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the last 4 digits are stored on this device.'**
+  String get checkOutViewOnlySaveLast4;
+
   /// No description provided for @checkOutViewPayWithPayPal.
   ///
   /// In en, this message translates to:
   /// **'Pay with PayPal'**
   String get checkOutViewPayWithPayPal;
 
+  /// No description provided for @checkOutViewPayWithVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Visa'**
+  String get checkOutViewPayWithVisa;
+
+  /// No description provided for @checkOutViewPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get checkOutViewPlaceOrder;
+
   /// No description provided for @checkOutViewNext.
   ///
   /// In en, this message translates to:
   /// **'Next'**
   String get checkOutViewNext;
+
+  /// No description provided for @checkOutViewShipingTitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Visa'**
+  String get checkOutViewShipingTitle3;
+
+  /// No description provided for @checkOutViewShipingSubtitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'Card saved on this device only'**
+  String get checkOutViewShipingSubtitle3;
+
+  /// No description provided for @checkOutViewConfirmPaymentVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm payment'**
+  String get checkOutViewConfirmPaymentVisa;
+
+  /// No description provided for @checkOutViewConfirmPaymentVisaMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to pay with Visa?'**
+  String get checkOutViewConfirmPaymentVisaMessage;
+
+  /// No description provided for @checkOutViewConfirmOrderCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Place order'**
+  String get checkOutViewConfirmOrderCash;
+
+  /// No description provided for @checkOutViewVisaMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Save your Visa card before paying.'**
+  String get checkOutViewVisaMissing;
+
+  /// No description provided for @visaDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa details'**
+  String get visaDetailsTitle;
+
+  /// No description provided for @visaDetailsCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get visaDetailsCardNumber;
+
+  /// No description provided for @visaDetailsCardHolder.
+  ///
+  /// In en, this message translates to:
+  /// **'Name on card'**
+  String get visaDetailsCardHolder;
+
+  /// No description provided for @visaDetailsExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry (MM/YY)'**
+  String get visaDetailsExpiry;
+
+  /// No description provided for @visaDetailsCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV'**
+  String get visaDetailsCvv;
+
+  /// No description provided for @visaDetailsSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save and continue'**
+  String get visaDetailsSave;
+
+  /// No description provided for @visaDetailsDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get visaDetailsDelete;
+
+  /// No description provided for @visaDetailsSavedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved card'**
+  String get visaDetailsSavedLabel;
+
+  /// No description provided for @visaDetailsEndsWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends with {last4}'**
+  String visaDetailsEndsWith(String last4);
+
+  /// No description provided for @paymentSectionVisaHint.
+  ///
+  /// In en, this message translates to:
+  /// **'You will confirm with your saved Visa card (not PayPal).'**
+  String get paymentSectionVisaHint;
 
   /// No description provided for @orderSummaryWidgetTitle.
   ///
@@ -397,11 +607,17 @@ abstract class S {
   /// **'Total'**
   String get orderSummaryWidgetTotal;
 
-  /// No description provided for @orderCubitBlocConsumer.
+  /// No description provided for @orderCashSuccessMessage.
   ///
   /// In en, this message translates to:
-  /// **'Order Placed Successfully'**
-  String get orderCubitBlocConsumer;
+  /// **'Cash on delivery order placed successfully'**
+  String get orderCashSuccessMessage;
+
+  /// No description provided for @orderVisaSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa payment completed successfully'**
+  String get orderVisaSuccessMessage;
 
   /// No description provided for @addressSummaryWidgetTitle.
   ///
@@ -565,6 +781,18 @@ abstract class S {
   /// **'points to go!'**
   String get pointsPagePointsToGo;
 
+  /// No description provided for @pointsPageAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get pointsPageAdd;
+
+  /// No description provided for @pointsPageDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get pointsPageDelete;
+
   /// No description provided for @productGridViewPlaceholder.
   ///
   /// In en, this message translates to:
@@ -684,6 +912,576 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Google Sign-In failed'**
   String get googleSignInFailedError;
+
+  /// No description provided for @availableBagsSwipeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe →'**
+  String get availableBagsSwipeHint;
+
+  /// No description provided for @bagCurrencySuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get bagCurrencySuffix;
+
+  /// No description provided for @bagCardReserve.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserve'**
+  String get bagCardReserve;
+
+  /// Number of mystery bags still available
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Bags left'**
+  String bagCardBagsLeft(String count);
+
+  /// No description provided for @bagDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mystery Bag Arousa'**
+  String get bagDetailsTitle;
+
+  /// No description provided for @bagDetailsPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get bagDetailsPriceLabel;
+
+  /// No description provided for @bagDetailsCurrentPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'50 EGP'**
+  String get bagDetailsCurrentPrice;
+
+  /// No description provided for @bagDetailsOldPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'100 EGP'**
+  String get bagDetailsOldPrice;
+
+  /// No description provided for @bagDetailsWhatInsideTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is in the bag?'**
+  String get bagDetailsWhatInsideTitle;
+
+  /// No description provided for @bagDetailsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'One Arousa sandwich made with pita bread, served with crispy fries and a refreshing drink.'**
+  String get bagDetailsDescription;
+
+  /// No description provided for @bagDetailsReservePickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserve for pickup'**
+  String get bagDetailsReservePickup;
+
+  /// No description provided for @productsViewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get productsViewTitle;
+
+  /// No description provided for @availableBagsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Available bags'**
+  String get availableBagsTitle;
+
+  /// No description provided for @restaurantNameMadbinaZamalek.
+  ///
+  /// In en, this message translates to:
+  /// **'Madbina - Zamalek'**
+  String get restaurantNameMadbinaZamalek;
+
+  /// Restaurant branch count label
+  ///
+  /// In en, this message translates to:
+  /// **'{count} branch'**
+  String restaurantBranchesCount(String count);
+
+  /// Distance to restaurant in kilometers
+  ///
+  /// In en, this message translates to:
+  /// **'{distance} kilometers'**
+  String restaurantDistanceKilometers(String distance);
+
+  /// No description provided for @bagTitleAroussaSandwich.
+  ///
+  /// In en, this message translates to:
+  /// **'Aroussa Sandwich Bag'**
+  String get bagTitleAroussaSandwich;
+
+  /// No description provided for @bagTitleMasrawy.
+  ///
+  /// In en, this message translates to:
+  /// **'Masrawy Bag'**
+  String get bagTitleMasrawy;
+
+  /// No description provided for @statusBadgeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get statusBadgeAvailable;
+
+  /// No description provided for @statusBadgeUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get statusBadgeUnavailable;
+
+  /// No description provided for @statusBadgeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get statusBadgeNow;
+
+  /// No description provided for @statusBadgeClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get statusBadgeClosed;
+
+  /// Number of results displayed in product header
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results'**
+  String productViewResults(String count);
+
+  /// No description provided for @couponPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Coupon'**
+  String get couponPageTitle;
+
+  /// No description provided for @couponCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Coupon Code'**
+  String get couponCodeLabel;
+
+  /// No description provided for @couponPageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this code to redeem your points'**
+  String get couponPageDescription;
+
+  /// No description provided for @couponCopyButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Code'**
+  String get couponCopyButton;
+
+  /// No description provided for @couponCopiedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coupon code copied!'**
+  String get couponCopiedMessage;
+
+  /// No description provided for @couponUniqueText.
+  ///
+  /// In en, this message translates to:
+  /// **'This code is unique to your account'**
+  String get couponUniqueText;
+
+  /// No description provided for @bagelMysteryBagPickupOnlyBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'🛍️  Pickup Only'**
+  String get bagelMysteryBagPickupOnlyBadge;
+
+  /// No description provided for @bagelMysteryBagStoreName.
+  ///
+  /// In en, this message translates to:
+  /// **'G\'s Bagels & Coffee - Sheikh Zayed'**
+  String get bagelMysteryBagStoreName;
+
+  /// No description provided for @bagelMysteryBagTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bagel Mystery Bag'**
+  String get bagelMysteryBagTitle;
+
+  /// Availability label for the bagel mystery bag
+  ///
+  /// In en, this message translates to:
+  /// **'{count} available'**
+  String bagelMysteryBagAvailableCount(String count);
+
+  /// No description provided for @bagelMysteryBagDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Two freshly baked bagels with a surprise twist! Each mystery bag contains two delicious bagels, limited to sesame, plain, and everything varieties - perfect for a tasty snack or sharing.'**
+  String get bagelMysteryBagDescription;
+
+  /// No description provided for @bagelMysteryBagPickupTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup Time'**
+  String get bagelMysteryBagPickupTimeLabel;
+
+  /// No description provided for @bagelMysteryBagPickupTimeValue.
+  ///
+  /// In en, this message translates to:
+  /// **'4:00 PM - 11:00 PM'**
+  String get bagelMysteryBagPickupTimeValue;
+
+  /// No description provided for @bagelMysteryBagLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get bagelMysteryBagLocationLabel;
+
+  /// No description provided for @bagelMysteryBagLocationValue.
+  ///
+  /// In en, this message translates to:
+  /// **'The Isle, Juhayna Sq, Sheikh Zayed, Giza 3235142'**
+  String get bagelMysteryBagLocationValue;
+
+  /// No description provided for @bagelMysteryBagContactLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get bagelMysteryBagContactLabel;
+
+  /// No description provided for @bagelMysteryBagIngredientsAndAllergens.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients & Allergens'**
+  String get bagelMysteryBagIngredientsAndAllergens;
+
+  /// No description provided for @bagelMysteryBagAllergenNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'The shop did not specify allergens. Please contact them to make sure.'**
+  String get bagelMysteryBagAllergenNotice;
+
+  /// No description provided for @bagelMysteryBagCustomerReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Reviews'**
+  String get bagelMysteryBagCustomerReviews;
+
+  /// No description provided for @bagelMysteryBagComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon'**
+  String get bagelMysteryBagComingSoon;
+
+  /// No description provided for @bagelMysteryBagReviewsComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer reviews will be available soon to help you make informed decisions.'**
+  String get bagelMysteryBagReviewsComingSoon;
+
+  /// No description provided for @bagelMysteryBagReservedState.
+  ///
+  /// In en, this message translates to:
+  /// **'✓  Reserved! See you at pickup'**
+  String get bagelMysteryBagReservedState;
+
+  /// No description provided for @aiChatClearButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Chat'**
+  String get aiChatClearButton;
+
+  /// No description provided for @aiChatClearDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all chat?'**
+  String get aiChatClearDialogTitle;
+
+  /// No description provided for @aiChatClearDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently remove all chat messages for this account.'**
+  String get aiChatClearDialogMessage;
+
+  /// No description provided for @aiChatActionCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get aiChatActionCancel;
+
+  /// No description provided for @aiChatActionClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get aiChatActionClear;
+
+  /// No description provided for @aiChatClearSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'All chat messages were cleared.'**
+  String get aiChatClearSuccess;
+
+  /// No description provided for @aiChatClearFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not clear chat. Please try again.'**
+  String get aiChatClearFailed;
+
+  /// No description provided for @aiChatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Assistant'**
+  String get aiChatTitle;
+
+  /// No description provided for @aiChatInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about food...'**
+  String get aiChatInputHint;
+
+  /// No description provided for @foodScanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Scan'**
+  String get foodScanTitle;
+
+  /// No description provided for @foodScanCameraButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get foodScanCameraButton;
+
+  /// No description provided for @foodScanGalleryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get foodScanGalleryButton;
+
+  /// No description provided for @foodScanHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a food photo to analyze'**
+  String get foodScanHeroTitle;
+
+  /// No description provided for @foodScanHeroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera or Gallery'**
+  String get foodScanHeroSubtitle;
+
+  /// No description provided for @foodScanTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tips for better results:'**
+  String get foodScanTipsTitle;
+
+  /// No description provided for @foodScanTipGoodLighting.
+  ///
+  /// In en, this message translates to:
+  /// **'Good lighting'**
+  String get foodScanTipGoodLighting;
+
+  /// No description provided for @foodScanTipMoveCloser.
+  ///
+  /// In en, this message translates to:
+  /// **'Move closer'**
+  String get foodScanTipMoveCloser;
+
+  /// No description provided for @foodScanTipSimpleBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple background'**
+  String get foodScanTipSimpleBackground;
+
+  /// No description provided for @foodScanTipNoBlur.
+  ///
+  /// In en, this message translates to:
+  /// **'No blur'**
+  String get foodScanTipNoBlur;
+
+  /// No description provided for @foodScanAfterPickHint.
+  ///
+  /// In en, this message translates to:
+  /// **'After selecting an image you can:'**
+  String get foodScanAfterPickHint;
+
+  /// No description provided for @foodScanFeatureNutrition.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrition & Health'**
+  String get foodScanFeatureNutrition;
+
+  /// No description provided for @foodScanFeatureFreshness.
+  ///
+  /// In en, this message translates to:
+  /// **'Freshness Check'**
+  String get foodScanFeatureFreshness;
+
+  /// No description provided for @foodScanDetectedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Detected'**
+  String get foodScanDetectedLabel;
+
+  /// Confidence percentage for food detection
+  ///
+  /// In en, this message translates to:
+  /// **'Confidence: {value}'**
+  String foodScanConfidenceLabel(String value);
+
+  /// No description provided for @foodScanCheckingFreshness.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking freshness…'**
+  String get foodScanCheckingFreshness;
+
+  /// No description provided for @foodScanFreshnessSpoilageCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Freshness / Spoilage Check'**
+  String get foodScanFreshnessSpoilageCheck;
+
+  /// No description provided for @foodScanLowConfidenceMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Result is not confident enough. Try another photo with better lighting.'**
+  String get foodScanLowConfidenceMessage;
+
+  /// No description provided for @reviewComposerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your experience'**
+  String get reviewComposerTitle;
+
+  /// No description provided for @reviewComposerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others what the food tasted like and how the pickup went.'**
+  String get reviewComposerSubtitle;
+
+  /// No description provided for @reviewComposerEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Review'**
+  String get reviewComposerEditTitle;
+
+  /// No description provided for @reviewComposerEditSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your review'**
+  String get reviewComposerEditSubtitle;
+
+  /// No description provided for @reviewComposerRatingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rating'**
+  String get reviewComposerRatingLabel;
+
+  /// No description provided for @reviewComposerCommentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your comment'**
+  String get reviewComposerCommentLabel;
+
+  /// No description provided for @reviewComposerCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others what you thought...'**
+  String get reviewComposerCommentHint;
+
+  /// No description provided for @reviewComposerSubmitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit review'**
+  String get reviewComposerSubmitButton;
+
+  /// No description provided for @reviewComposerUpdateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get reviewComposerUpdateButton;
+
+  /// No description provided for @reviewComposerSelectRatingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a star rating.'**
+  String get reviewComposerSelectRatingError;
+
+  /// No description provided for @reviewComposerCommentRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write a comment before submitting.'**
+  String get reviewComposerCommentRequiredError;
+
+  /// No description provided for @reviewComposerSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your review was submitted.'**
+  String get reviewComposerSuccessMessage;
+
+  /// No description provided for @reviewComposerFailureMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not submit your review. Please try again.'**
+  String get reviewComposerFailureMessage;
+
+  /// No description provided for @reviewComposerEditButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get reviewComposerEditButton;
+
+  /// No description provided for @reviewComposerDeleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewComposerDeleteButton;
+
+  /// No description provided for @reviewComposerDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Review?'**
+  String get reviewComposerDeleteConfirmTitle;
+
+  /// No description provided for @reviewComposerDeleteConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your review?'**
+  String get reviewComposerDeleteConfirmMessage;
+
+  /// No description provided for @reviewComposerDeleteConfirmCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get reviewComposerDeleteConfirmCancel;
+
+  /// No description provided for @reviewComposerDeleteConfirmDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get reviewComposerDeleteConfirmDelete;
+
+  /// No description provided for @reviewComposerDeleteError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting review'**
+  String get reviewComposerDeleteError;
+
+  /// No description provided for @reviewComposerDeleteSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Review deleted successfully'**
+  String get reviewComposerDeleteSuccess;
+
+  /// No description provided for @reviewComposerNoReviewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet'**
+  String get reviewComposerNoReviewsTitle;
+
+  /// No description provided for @reviewComposerNoReviewsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Be the first to share your experience!'**
+  String get reviewComposerNoReviewsSubtitle;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

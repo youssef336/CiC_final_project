@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysterybag/constant.dart';
+import 'package:mysterybag/generated/l10n.dart';
 
 class StatusBadgesWidget extends StatelessWidget {
   final bool isAvailable;
@@ -15,21 +16,23 @@ class StatusBadgesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (isAvailable)
-          _buildBadge(
-            icon: Icons.check_circle,
-            text: "Available",
-            color: KaccentColor,
-          ),
+        _buildBadge(
+          icon: isAvailable ? Icons.check_circle : Icons.cancel,
+          text: isAvailable
+              ? S.of(context)!.statusBadgeAvailable
+              : S.of(context)!.statusBadgeUnavailable,
+          color: isAvailable ? KaccentColor : Colors.redAccent,
+        ),
 
         const SizedBox(width: 10),
 
-        if (isOpenNow)
-          _buildBadge(
-            icon: Icons.access_time,
-            text: "Now",
-            color: KprimaryColor,
-          ),
+        _buildBadge(
+          icon: isOpenNow ? Icons.access_time : Icons.access_time_filled,
+          text: isOpenNow
+              ? S.of(context)!.statusBadgeNow
+              : S.of(context)!.statusBadgeClosed,
+          color: isOpenNow ? KprimaryColor : Colors.grey,
+        ),
       ],
     );
   }
@@ -40,10 +43,7 @@ class StatusBadgesWidget extends StatelessWidget {
     required Color color,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 14,
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(25),

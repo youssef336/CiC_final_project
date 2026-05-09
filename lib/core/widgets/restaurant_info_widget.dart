@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class RestaurantInfoWidget extends StatelessWidget {
@@ -19,8 +21,8 @@ class RestaurantInfoWidget extends StatelessWidget {
       children: [
         Text(
           name,
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.white,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -39,10 +41,7 @@ class RestaurantInfoWidget extends StatelessWidget {
 
   Widget _infoChip(IconData icon, String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 6,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.4),
         borderRadius: BorderRadius.circular(20),
@@ -51,13 +50,7 @@ class RestaurantInfoWidget extends StatelessWidget {
         children: [
           Icon(icon, size: 14, color: Colors.white),
           const SizedBox(width: 5),
-          Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-            ),
-          ),
+          Text(text, style: const TextStyle(color: Colors.white, fontSize: 13)),
         ],
       ),
     );

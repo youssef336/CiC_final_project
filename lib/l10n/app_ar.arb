@@ -29,6 +29,11 @@
   "onSignupCreateNewAccountText2": "تسجيل الدخول",
   "onSignupTextFeils": "يرجى ملء جميع الحقول",
   "homeViewWelcomeAppbar": "صباح الخير!",
+  "homeBestSellersTitle": "الأكثر مبيعًا",
+  "homeBestSellersViewAll": "عرض الكل",
+  "homeFeaturedItemTitle": "عنصر مميز",
+  "homeFeaturedItemSubtitle": "عرض خاص",
+  "homeFeaturedItemShopNow": "تسوق الآن",
   "buttonNavigationBarEntityHome": "الرئيسية",
   "buttonNavigationBarEntityProducts": "المنتجات",
   "buttonNavigationBarEntityCart": "عربة التسوق",
@@ -43,13 +48,51 @@
   "checkOutViewShipingPrice": "جنيه",
   "checkOutViewShipingError": "يرجى تحديد طريقة الدفع",
   "checkOutViewShipingSubtitle2": "تحديد طريقة الدفع",
+  "checkOutViewPaymentMethodTitle": "طريقة الدفع",
+  "checkOutViewSavedCardTitle": "البطاقة المحفوظة",
+  "checkOutViewUseSavedCard": "استخدام البطاقة المحفوظة",
+  "checkOutViewDeleteCard": "حذف البطاقة",
+  "checkOutViewCardHolderName": "اسم حامل البطاقة",
+  "checkOutViewEnterCardHolderName": "أدخل اسم حامل البطاقة",
+  "checkOutViewCardNumberOrSaved": "رقم البطاقة أو البطاقة المحفوظة",
+  "checkOutViewCardNumber": "رقم البطاقة",
+  "checkOutViewInvalidCardNumber": "أدخل رقم بطاقة صالح",
+  "checkOutViewInvalidExpiryDate": "أدخل تاريخ انتهاء صالح",
+  "checkOutViewInvalidCvv": "أدخل CVV صالح",
+  "checkOutViewOnlySaveLast4": "يتم حفظ آخر 4 أرقام فقط على هذا الجهاز.",
   "checkOutViewPayWithPayPal": "الدفع باستخدام PayPal",
+  "checkOutViewPayWithVisa": "الدفع بالفيزا",
+  "checkOutViewPlaceOrder": "تأكيد الطلب",
   "checkOutViewNext": "التالي",
+  "checkOutViewShipingTitle3": "الدفع ببطاقة فيزا",
+  "checkOutViewShipingSubtitle3": "يتم حفظ البطاقة على هذا الجهاز فقط",
+  "checkOutViewConfirmPaymentVisa": "تأكيد الدفع",
+  "checkOutViewConfirmPaymentVisaMessage": "هل أنت متأكد أنك تريد الدفع باستخدام فيزا؟",
+  "checkOutViewConfirmOrderCash": "تأكيد الطلب",
+  "checkOutViewVisaMissing": "احفظ بيانات فيزا قبل الدفع.",
+  "visaDetailsTitle": "بيانات فيزا",
+  "visaDetailsCardNumber": "رقم البطاقة",
+  "visaDetailsCardHolder": "الاسم على البطاقة",
+  "visaDetailsExpiry": "انتهاء الصلاحية (شهر/سنة)",
+  "visaDetailsCvv": "رمز الأمان",
+  "visaDetailsSave": "حفظ ومتابعة",
+  "visaDetailsDelete": "حذف",
+  "visaDetailsSavedLabel": "بطاقة محفوظة",
+  "visaDetailsEndsWith": "تنتهي بـ {last4}",
+  "@visaDetailsEndsWith": {
+    "placeholders": {
+      "last4": {
+        "type": "String"
+      }
+    }
+  },
+  "paymentSectionVisaHint": "سيتم التأكيد ببطاقة فيزا المحفوظة (وليس PayPal).",
   "orderSummaryWidgetTitle": "ملخص الطلب:",
   "orderSummaryWidgetSubtotal": "المجموع الفرعي:",
   "orderSummaryWidgetShipping": "التوصيل:",
   "orderSummaryWidgetTotal": "الإجمالي",
-  "orderCubitBlocConsumer": "تم تسجيل الطلب بنجاح",
+  "orderCashSuccessMessage": "تم تسجيل طلب الدفع عند الاستلام بنجاح",
+  "orderVisaSuccessMessage": "تم إتمام الدفع بالفيزا بنجاح",
   "addressSummaryWidgetTitle": "عنوان التوصيل:",
   "addressSummaryWidgetChange": "تعديل",
   "addressInputSectionName": "الاسم الكامل",
@@ -77,6 +120,8 @@
   "pointsPageUnlocked": "مفعّل",
   "pointsPageProgress": "التقدم",
   "pointsPagePointsToGo": "نقطة متبقية!",
+  "pointsPageAdd": "إضافة",
+  "pointsPageDelete": "حذف",
   "productGridViewPlaceholder": "منتج",
   "searchProductsHint": "البحث عن المنتجات",
   "loadDemoDataButton": "تحميل بيانات توضيحية",
@@ -104,5 +149,148 @@
   "unknownErrorMessage": "حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقاً.",
   "emailPasswordProblemError": "هناك مشكلة في البريد الإلكتروني أو كلمة المرور",
   "signInCancelledError": "تم إلغاء تسجيل الدخول من قبل المستخدم",
-  "googleSignInFailedError": "فشل تسجيل الدخول عبر جوجل"
+  "googleSignInFailedError": "فشل تسجيل الدخول عبر جوجل",
+  "availableBagsSwipeHint": "اسحب ←",
+  "bagCurrencySuffix": "ج.م",
+  "bagCardReserve": "احجز",
+  "bagCardBagsLeft": "متبقي {count} شنطة",
+  "@bagCardBagsLeft": {
+    "description": "عدد الشنط المتبقية",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagDetailsTitle": "مستري باج عروسة",
+  "bagDetailsPriceLabel": "السعر",
+  "bagDetailsCurrentPrice": "50 ج.م",
+  "bagDetailsOldPrice": "100 ج.م",
+  "bagDetailsWhatInsideTitle": "ماذا في الشنطة؟",
+  "bagDetailsDescription": "ساندوتش عروسة واحد معمول بعيش شامي، معاه بطاطس مقرمشة ومشروب منعش.",
+  "bagDetailsReservePickup": "احجز للاستلام",
+  "productsViewTitle": "المنتجات",
+  "availableBagsTitle": "الشنط المتاحة",
+  "restaurantNameMadbinaZamalek": "مطبنة - الزمالك",
+  "restaurantBranchesCount": "{count} فرع",
+  "@restaurantBranchesCount": {
+    "description": "نص عدد الفروع",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "restaurantDistanceKilometers": "{distance} كيلومتر",
+  "@restaurantDistanceKilometers": {
+    "description": "المسافة إلى المطعم بالكيلومتر",
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "bagTitleAroussaSandwich": "شنطة سندوتش عروسة",
+  "bagTitleMasrawy": "شنطة مصراوي",
+  "statusBadgeAvailable": "متاح",
+  "statusBadgeUnavailable": "غير متاح",
+  "statusBadgeNow": "الآن",
+  "statusBadgeClosed": "مغلق",
+  "productViewResults": "{count} نتيجة",
+  "@productViewResults": {
+    "description": "عدد نتائج المنتجات",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "couponPageTitle": "كوبون الخصم",
+  "couponCodeLabel": "كود الكوبون الخاص بك",
+  "couponPageDescription": "استخدم هذا الكود لاستبدال نقاطك",
+  "couponCopyButton": "نسخ الكود",
+  "couponCopiedMessage": "تم نسخ كود الكوبون!",
+  "couponUniqueText": "هذا الكود خاص بحسابك",
+  "bagelMysteryBagPickupOnlyBadge": "🛍️  للاستلام فقط",
+  "bagelMysteryBagStoreName": "جيز بايجلز آند كوفي - الشيخ زايد",
+  "bagelMysteryBagTitle": "شنطة بايجل مفاجأة",
+  "bagelMysteryBagAvailableCount": "متاح {count}",
+  "@bagelMysteryBagAvailableCount": {
+    "description": "نص عدد المتاح في شنطة البايجل",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "bagelMysteryBagDescription": "قطعتان من البايجل المخبوز الطازج بلمسة مفاجئة. تحتوي كل شنطة مفاجأة على قطعتين لذيذتين من البايجل من نكهات السمسم أو السادة أو الإيفريثينج، مناسبة لوجبة خفيفة أو للمشاركة.",
+  "bagelMysteryBagPickupTimeLabel": "وقت الاستلام",
+  "bagelMysteryBagPickupTimeValue": "4:00 م - 11:00 م",
+  "bagelMysteryBagLocationLabel": "الموقع",
+  "bagelMysteryBagLocationValue": "ذا آيل، ميدان جهينة، الشيخ زايد، الجيزة 3235142",
+  "bagelMysteryBagContactLabel": "التواصل",
+  "bagelMysteryBagIngredientsAndAllergens": "المكونات والمواد المسببة للحساسية",
+  "bagelMysteryBagAllergenNotice": "المتجر لم يحدد مسببات الحساسية. تواصل معهم للتأكد.",
+  "bagelMysteryBagCustomerReviews": "آراء العملاء",
+  "bagelMysteryBagComingSoon": "قريباً",
+  "bagelMysteryBagReviewsComingSoon": "ستتوفر آراء العملاء قريباً لمساعدتك على اتخاذ قرار أفضل.",
+  "bagelMysteryBagReservedState": "✓  تم الحجز! نراك وقت الاستلام",
+  "aiChatClearButton": "مسح المحادثة",
+  "aiChatClearDialogTitle": "مسح كل المحادثة؟",
+  "aiChatClearDialogMessage": "سيتم حذف جميع رسائل المحادثة لهذا الحساب نهائيًا.",
+  "aiChatActionCancel": "إلغاء",
+  "aiChatActionClear": "مسح",
+  "aiChatClearSuccess": "تم مسح جميع رسائل المحادثة.",
+  "aiChatClearFailed": "تعذر مسح المحادثة. حاول مرة أخرى.",
+  "aiChatTitle": "مساعد الطعام",
+  "aiChatInputHint": "اسأل عن الطعام...",
+  "foodScanTitle": "فحص الطعام",
+  "foodScanCameraButton": "الكاميرا",
+  "foodScanGalleryButton": "المعرض",
+  "foodScanHeroTitle": "صوّر الأكل علشان نحلّله",
+  "foodScanHeroSubtitle": "الكاميرا أو المعرض",
+  "foodScanTipsTitle": "نصايح لنتيجة أدق:",
+  "foodScanTipGoodLighting": "إضاءة كويسة",
+  "foodScanTipMoveCloser": "قرّب من الأكل",
+  "foodScanTipSimpleBackground": "خلفية بسيطة",
+  "foodScanTipNoBlur": "بدون تشويش",
+  "foodScanAfterPickHint": "بعد ما تختار صورة هتقدر تعمل:",
+  "foodScanFeatureNutrition": "التغذية والصحة",
+  "foodScanFeatureFreshness": "فحص الطزاجة",
+  "foodScanDetectedLabel": "المكتشف",
+  "foodScanConfidenceLabel": "الثقة: {value}",
+  "@foodScanConfidenceLabel": {
+    "description": "نسبة الثقة في نتيجة التعرف",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "foodScanCheckingFreshness": "جارٍ فحص الطزاجة…",
+  "foodScanFreshnessSpoilageCheck": "فحص الطزاجة / الفساد",
+  "foodScanLowConfidenceMessage": "النتيجة غير موثوقة بما يكفي. جرّب صورة أوضح بإضاءة أفضل.",
+  "reviewComposerTitle": "شارك تجربتك",
+  "reviewComposerSubtitle": "أخبر الآخرين عن طعم الطعام وكيف كانت عملية الاستلام.",
+  "reviewComposerEditTitle": "تعديل التقييم",
+  "reviewComposerEditSubtitle": "تحديث تقييمك",
+  "reviewComposerRatingLabel": "تقييمك",
+  "reviewComposerCommentLabel": "تعليقك",
+  "reviewComposerCommentHint": "أخبر الآخرين بما فكرت به...",
+  "reviewComposerSubmitButton": "إرسال التقييم",
+  "reviewComposerUpdateButton": "تحديث",
+  "reviewComposerSelectRatingError": "الرجاء اختيار تقييم بالنجوم.",
+  "reviewComposerCommentRequiredError": "الرجاء كتابة تعليق قبل الإرسال.",
+  "reviewComposerSuccessMessage": "تم إرسال تقييمك.",
+  "reviewComposerFailureMessage": "لم يتمكن من إرسال تقييمك. حاول مرة أخرى.",
+  "reviewComposerEditButton": "تعديل",
+  "reviewComposerDeleteButton": "حذف",
+  "reviewComposerDeleteConfirmTitle": "حذف التقييم؟",
+  "reviewComposerDeleteConfirmMessage": "هل أنت متأكد أنك تريد حذف تقييمك؟",
+  "reviewComposerDeleteConfirmCancel": "إلغاء",
+  "reviewComposerDeleteConfirmDelete": "حذف",
+  "reviewComposerDeleteError": "خطأ في حذف التقييم",
+  "reviewComposerDeleteSuccess": "تم حذف التقييم بنجاح",
+  "reviewComposerNoReviewsTitle": "لا توجد تقييمات حتى الآن",
+  "reviewComposerNoReviewsSubtitle": "كن أول من يشارك تجربتك!"
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -156,11 +158,11 @@ class _CustomappBarPointsState extends State<CustomappBarPoints>
                 ),
               ),
               if (state.showFloating)
-                SlideTransition(
-                  position: _floatAnimation,
-                  child: Positioned(
-                    right: 0,
-                    top: 0,
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: SlideTransition(
+                    position: _floatAnimation,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
