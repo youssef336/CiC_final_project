@@ -43,7 +43,7 @@ class AuthRepoImplemtation extends AuthRepo {
         passwordHash: HashHelper.passwordHash(password),
       );
       await addUserData(user: userEntity);
-
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       await DeleteUser(user);
