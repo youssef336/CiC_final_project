@@ -120,9 +120,7 @@ class MyWidget extends StatelessWidget {
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            S.of(context)!.couponDiscountApplied(discount.toString()),
-          ),
+          content: Text(S.of(context)!.couponDiscountApplied(discount.toString())),
           backgroundColor: Colors.green,
         ),
       );
