@@ -131,41 +131,58 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               children: [
                 const CustomHomeAppBar(),
                 const SizedBox(height: KTopPadding),
-                BlocBuilder<ProductsCubit, ProductsState>(
+                BlocConsumer<ProductsCubit, ProductsState>(
+                  listener: (context, state) {
+                    if (state is ProductsSuccess) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            S.of(context)!.demoDataLoadedMessage,
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  },
                   builder: (context, state) {
-                    final products = state is ProductsSuccess
+                    if (state is ProductsLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    final allProducts = state is ProductsSuccess
                         ? state.products
                         : <ProductEntity>[];
-                    // Debug: log when HomeViewBody rebuilds and product counts
-                    print(
-                      '🏠 HomeViewBody rebuild: products=${products.length} state=${state.runtimeType}',
-                    );
+                    
+                    // أخذ 3 منتجات فقط كما طلبت
+                    final products = allProducts.take(3).toList();
+
+                    if (products.isEmpty && state is ProductsSuccess) {
+                      return const Center(child: Text("لا يوجد منتجات متاحة"));
+                    }
+
                     final restaurantSections = products.isNotEmpty
                         ? _groupProductsByRestaurant(products)
                         : <_RestaurantProductsSection>[];
 
-                    // Debug: print grouped product counts and bagsLeft for each
-                    for (final section in restaurantSections) {
-                      final first = section.products.isNotEmpty
-                          ? section.products.first
-                          : null;
-                      if (first != null) {
-                        print(
-                          '🏷️ Section ${section.restaurant.name} products=${section.products.length} example bagsLeft=${first.bagsLeft}',
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: restaurantSections.length,
+                      itemBuilder: (context, index) {
+                        final section = restaurantSections[index];
+                        final bags = _buildBags(context, section.products, section.restaurant);
+
+                        return Column(
+                          children: [
+                            RestaurantCard(restaurant: section.restaurant),
+                            AvailableBagsList(
+                              title: S.of(context)!.availableBagsTitle,
+                              bags: bags,
+                            ),
+                            const SizedBox(height: 16),
+                          ],
                         );
-                      } else {
-                        print(
-                          '🏷️ Section ${section.restaurant.name} products=0',
-                        );
-                      }
-                    }
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          S.of(context)!.demoDataLoadedMessage,
-                        ),
-                        duration: const Duration(seconds: 2),
-                      ),
+                      },
                     );
                   },
                 ),

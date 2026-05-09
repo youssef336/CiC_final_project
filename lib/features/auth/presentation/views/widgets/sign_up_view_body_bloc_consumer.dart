@@ -15,7 +15,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit, SignupCubitState>(
       listener: (context, state) {
         if (state is SignupCubitSuccess) {
-          Navigator.pop(context);
+          Navigator.pushReplacementNamed(context, '/home');
         }
         if (state is SignupCubitError) {
           showErrorBar(context, state.message);
