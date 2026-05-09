@@ -49,7 +49,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         content: Text(
                           S.of(context)!.demoDataLoadedMessage,
                         ),
-                        duration: Duration(seconds: 2),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                   },

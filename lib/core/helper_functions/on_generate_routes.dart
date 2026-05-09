@@ -13,7 +13,7 @@ import 'package:mysterybag/features/splash/presentation/views/splash_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 class _ErrorPage extends StatelessWidget {
-  const _ErrorPage({super.key});
+  const _ErrorPage();
 
   @override
   Widget build(BuildContext context) {
