@@ -159,50 +159,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         );
                       }
                     }
-
-                    return Column(
-                      children: [
-                        if (restaurantSections.isEmpty) ...[
-                          RestaurantCard(
-                            restaurant: RestaurantEntity(
-                              name: S.of(context)!.restaurantNameMadbinaZamalek,
-                              foodImage: 'assets/images/food.png',
-                              logoImage: 'assets/images/resturant.png',
-                              branches: S
-                                  .of(context)!
-                                  .restaurantBranchesCount('1'),
-                              distance: S
-                                  .of(context)!
-                                  .restaurantDistanceKilometers('2.7'),
-                              location: S
-                                  .of(context)!
-                                  .bagelMysteryBagLocationValue,
-                              isAvailable: false,
-                              isOpenNow: false,
-                              restaurantImageUrl: null,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          AvailableBagsList(
-                            title: S.of(context)!.availableBagsTitle,
-                            bags: _defaultBags(context),
-                          ),
-                        ] else ...[
-                          for (final section in restaurantSections) ...[
-                            RestaurantCard(restaurant: section.restaurant),
-                            const SizedBox(height: 12),
-                            AvailableBagsList(
-                              title: S.of(context)!.availableBagsTitle,
-                              bags: _buildBags(
-                                context,
-                                section.products,
-                                section.restaurant,
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                          ],
-                        ],
-                      ],
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          S.of(context)!.demoDataLoadedMessage,
+                        ),
+                        duration: const Duration(seconds: 2),
+                      ),
                     );
                   },
                 ),

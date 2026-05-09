@@ -31,9 +31,11 @@ class _SigninViewBodyState extends State<SigninViewBody> {
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
-      child: SingleChildScrollView(
+    return Container(
+      color: KlightModeBgColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: KhorzontalPadding),
+        child: SingleChildScrollView(
         child: Form(
           key: formKey,
           autovalidateMode: autoValidateMode,
@@ -119,6 +121,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

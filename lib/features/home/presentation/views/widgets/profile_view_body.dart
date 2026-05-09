@@ -100,18 +100,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   color: Theme.of(context).dividerColor,
                 ),
                 ProfileViewItem(
-                  headText: S.of(context)!.profileViewFavourites,
-                  icon: Icons.favorite_outline_outlined,
-                  onPressed: () {
-                    // Navigator.pushNamed(context, ProfileViewFavPage.routeName);
-                  },
-                ),
-                Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
-                ProfileViewItem(
                   headText: S.of(context)!.profileViewPoints,
                   icon: Icons.point_of_sale,
                   onPressed: () {
