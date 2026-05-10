@@ -131,78 +131,58 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               children: [
                 const CustomHomeAppBar(),
                 const SizedBox(height: KTopPadding),
-                BlocBuilder<ProductsCubit, ProductsState>(
+                BlocConsumer<ProductsCubit, ProductsState>(
+                  listener: (context, state) {
+                    if (state is ProductsSuccess) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            S.of(context)!.demoDataLoadedMessage,
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  },
                   builder: (context, state) {
-                    final products = state is ProductsSuccess
+                    if (state is ProductsLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    final allProducts = state is ProductsSuccess
                         ? state.products
                         : <ProductEntity>[];
-                    // Debug: log when HomeViewBody rebuilds and product counts
-                    print(
-                      '🏠 HomeViewBody rebuild: products=${products.length} state=${state.runtimeType}',
-                    );
+                    
+                    // أخذ 3 منتجات فقط كما طلبت
+                    final products = allProducts.take(3).toList();
+
+                    if (products.isEmpty && state is ProductsSuccess) {
+                      return const Center(child: Text("لا يوجد منتجات متاحة"));
+                    }
+
                     final restaurantSections = products.isNotEmpty
                         ? _groupProductsByRestaurant(products)
                         : <_RestaurantProductsSection>[];
 
-                    // Debug: print grouped product counts and bagsLeft for each
-                    for (final section in restaurantSections) {
-                      final first = section.products.isNotEmpty
-                          ? section.products.first
-                          : null;
-                      if (first != null) {
-                        print(
-                          '🏷️ Section ${section.restaurant.name} products=${section.products.length} example bagsLeft=${first.bagsLeft}',
-                        );
-                      } else {
-                        print(
-                          '🏷️ Section ${section.restaurant.name} products=0',
-                        );
-                      }
-                    }
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: restaurantSections.length,
+                      itemBuilder: (context, index) {
+                        final section = restaurantSections[index];
+                        final bags = _buildBags(context, section.products, section.restaurant);
 
-                    return Column(
-                      children: [
-                        if (restaurantSections.isEmpty) ...[
-                          RestaurantCard(
-                            restaurant: RestaurantEntity(
-                              name: S.of(context)!.restaurantNameMadbinaZamalek,
-                              foodImage: 'assets/images/food.png',
-                              logoImage: 'assets/images/resturant.png',
-                              branches: S
-                                  .of(context)!
-                                  .restaurantBranchesCount('1'),
-                              distance: S
-                                  .of(context)!
-                                  .restaurantDistanceKilometers('2.7'),
-                              location: S
-                                  .of(context)!
-                                  .bagelMysteryBagLocationValue,
-                              isAvailable: false,
-                              isOpenNow: false,
-                              restaurantImageUrl: null,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          AvailableBagsList(
-                            title: S.of(context)!.availableBagsTitle,
-                            bags: _defaultBags(context),
-                          ),
-                        ] else ...[
-                          for (final section in restaurantSections) ...[
+                        return Column(
+                          children: [
                             RestaurantCard(restaurant: section.restaurant),
-                            const SizedBox(height: 12),
                             AvailableBagsList(
                               title: S.of(context)!.availableBagsTitle,
-                              bags: _buildBags(
-                                context,
-                                section.products,
-                                section.restaurant,
-                              ),
+                              bags: bags,
                             ),
                             const SizedBox(height: 16),
                           ],
-                        ],
-                      ],
+                        );
+                      },
                     );
                   },
                 ),
