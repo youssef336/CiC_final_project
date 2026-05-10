@@ -29,6 +29,8 @@ class BagCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    const ratingBadgeColor = Color(0xFFF3E7D2);
+    const ratingTextColor = Color(0xFFB89A68);
 
     // Debug: log when a bag card is built to observe bagsLeft
     try {
@@ -73,28 +75,26 @@ class BagCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
+                  horizontal: 10,
+                  vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF7F2E8),
-                  borderRadius: BorderRadius.circular(16),
+                  color: ratingBadgeColor,
+                  borderRadius: BorderRadius.circular(14),
                 ),
                 child: Row(
                   children: [
                     const Icon(
                       Icons.star_rounded,
-                      size: 15,
-                      color: KaccentColor,
+                      size: 14,
+                      color: ratingTextColor,
                     ),
                     const SizedBox(width: 3),
                     Text(
                       rating.toStringAsFixed(1),
-                      style: TextStyle(
-                        color: isDark
-                            ? KdarkModeTextColor
-                            : KlightModeTextColor,
-                        fontSize: 15,
+                      style: const TextStyle(
+                        color: ratingTextColor,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

@@ -85,44 +85,58 @@ class _AiChatViewState extends State<AiChatView> {
     final ref = _messagesRef();
     if (ref == null) return;
 
-    _fireSub = ref.orderBy('createdAt', descending: false).snapshots().listen((
-      snap,
-    ) {
-      final loaded = <_ChatMessage>[];
-      for (final d in snap.docs) {
-        final data = d.data();
-        final text = (data['text'] ?? '').toString();
-        final isUser = (data['isUser'] ?? false) == true;
-        final createdAt = data['createdAt'];
-        final clientTs = data['clientTs'];
+    _fireSub = ref
+        .orderBy('createdAt', descending: false)
+        .snapshots()
+        .listen(
+          (snap) {
+            final loaded = <_ChatMessage>[];
+            for (final d in snap.docs) {
+              final data = d.data();
+              final text = (data['text'] ?? '').toString();
+              final isUser = (data['isUser'] ?? false) == true;
+              final createdAt = data['createdAt'];
+              final clientTs = data['clientTs'];
 
-        DateTime ts = DateTime.now();
-        if (createdAt is Timestamp) {
-          ts = createdAt.toDate();
-        } else if (clientTs is Timestamp) {
-          ts = clientTs.toDate();
-        }
+              DateTime ts = DateTime.now();
+              if (createdAt is Timestamp) {
+                ts = createdAt.toDate();
+              } else if (clientTs is Timestamp) {
+                ts = clientTs.toDate();
+              }
 
-        if (text.trim().isEmpty) continue;
-        loaded.add(_ChatMessage(id: d.id, text: text, isUser: isUser, ts: ts));
-      }
+              if (text.trim().isEmpty) continue;
+              loaded.add(
+                _ChatMessage(id: d.id, text: text, isUser: isUser, ts: ts),
+              );
+            }
 
-      if (!mounted) return;
-      setState(() {
-        final greeting = _messages.isNotEmpty ? _messages.first : null;
-        _messages
-          ..clear()
-          ..add(
-            greeting ??
-                _ChatMessage(
-                  text: _welcomeMessage,
-                  isUser: false,
-                  ts: DateTime.now(),
-                ),
-          )
-          ..addAll(loaded);
-      });
-    });
+            if (!mounted) return;
+            setState(() {
+              final greeting = _messages.isNotEmpty ? _messages.first : null;
+              _messages
+                ..clear()
+                ..add(
+                  greeting ??
+                      _ChatMessage(
+                        text: _welcomeMessage,
+                        isUser: false,
+                        ts: DateTime.now(),
+                      ),
+                )
+                ..addAll(loaded);
+            });
+          },
+          onError: (error, stackTrace) {
+            debugPrint('Firestore chat stream error: $error');
+            if (!mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Unable to load chat messages right now.'),
+              ),
+            );
+          },
+        );
   }
 
   @override

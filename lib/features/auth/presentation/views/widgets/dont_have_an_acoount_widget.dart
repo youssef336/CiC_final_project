@@ -11,19 +11,20 @@ import 'package:mysterybag/features/auth/presentation/views/sign_up_view.dart';
 import 'package:mysterybag/generated/l10n.dart';
 
 Text DontHaveAnAcoountWidget(BuildContext context) {
+  final isDark = Theme.of(context).brightness == Brightness.dark;
   return Text.rich(
     TextSpan(
       children: [
         TextSpan(
           text: S.of(context)!.onLoginCreateAccountText,
           style: AppTextStyles.bodyBaseSemibold.copyWith(
-            color: const Color(0xFF949D9E) /* Grayscale-600 */,
+            color: isDark ? KdarkModeTextSecondary : const Color(0xFF949D9E),
           ),
         ),
         TextSpan(
           text: ' ',
           style: AppTextStyles.bodyBaseSemibold.copyWith(
-            color: const Color(0xFF616A6B),
+            color: isDark ? KdarkModeTextSecondary : const Color(0xFF616A6B),
           ),
         ),
 
@@ -34,7 +35,7 @@ Text DontHaveAnAcoountWidget(BuildContext context) {
             },
           text: S.of(context)!.onLoginCreateAccount,
           style: AppTextStyles.bodyBaseSemibold.copyWith(
-            color: KprimaryColor /* Grayscale-600 */,
+            color: isDark ? KaccentColor : KprimaryColor,
           ),
         ),
       ],

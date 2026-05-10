@@ -42,21 +42,26 @@ class ProductsCubit extends Cubit<ProductsState> {
             restaurantId: restaurantId,
             restaurantLimit: restaurantLimit,
           )
-          .listen((result) {
-            result.fold((failure) => emit(ProductsFailure(failure)), (
-              products,
-            ) {
-              print('📦 Products refreshed: ${products.length} products');
-              for (final p in products) {
-                try {
-                  print(
-                    '🔖 product documentId=${p.documentId} restaurantId=${p.restaurantId} title=${p.nameEn} bagsLeft=${p.bagsLeft}',
-                  );
-                } catch (_) {}
-              }
-              emit(ProductsSuccess(products));
-            });
-          });
+          .listen(
+            (result) {
+              result.fold((failure) => emit(ProductsFailure(failure)), (
+                products,
+              ) {
+                print('📦 Products refreshed: ${products.length} products');
+                for (final p in products) {
+                  try {
+                    print(
+                      '🔖 product documentId=${p.documentId} restaurantId=${p.restaurantId} title=${p.nameEn} bagsLeft=${p.bagsLeft}',
+                    );
+                  } catch (_) {}
+                }
+                emit(ProductsSuccess(products));
+              });
+            },
+            onError: (error) {
+              emit(ProductsFailure(ServerFailure(error.toString())));
+            },
+          );
     } catch (e) {
       print('❌ Error loading products: $e');
       emit(ProductsFailure(ServerFailure(e.toString())));
