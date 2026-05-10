@@ -21,14 +21,16 @@ class RestaurantCard extends StatelessWidget {
           /// Background Food Image
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: _getImageProvider(restaurant),
-                  fit: BoxFit.cover,
-                ),
+            child: SizedBox.expand(
+              child: Image(
+                image: _getImageProvider(restaurant),
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/images/food.png',
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
           ),

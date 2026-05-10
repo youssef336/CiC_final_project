@@ -21,13 +21,15 @@ class RestaurantLogoWidget extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(18),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: _getImageProvider(restaurant),
+        child: Image(
+          image: _getImageProvider(restaurant),
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Image.asset(
+              'assets/images/resturant.png',
               fit: BoxFit.cover,
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
