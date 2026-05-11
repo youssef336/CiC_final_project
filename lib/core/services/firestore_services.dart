@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mysterybag/core/services/database_servies.dart';
 
@@ -95,9 +97,18 @@ class FirestoreServices implements DatabaseServies {
     Map<String, dynamic>? query,
   }) {
     if (docuementId != null) {
-      return firestore.collection(path).doc(docuementId).snapshots().map((doc) {
-        return doc.data();
-      });
+      return firestore
+          .collection(path)
+          .doc(docuementId)
+          .snapshots()
+          .map((doc) {
+            return doc.data();
+          })
+          .handleError((error, stackTrace) {
+            print(
+              '🔥 watchData doc stream error for "$path/$docuementId": $error',
+            );
+          });
     }
 
     if (path == 'products') {
@@ -139,10 +150,16 @@ class FirestoreServices implements DatabaseServies {
       }
     }
 
-    return data.snapshots().map(
-      (snapshot) =>
-          snapshot.docs.map((e) => {...e.data(), 'documentId': e.id}).toList(),
-    );
+    return data
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((e) => {...e.data(), 'documentId': e.id})
+              .toList(),
+        )
+        .handleError((error, stackTrace) {
+          print('🔥 watchData collection stream error for "$path": $error');
+        });
   }
 
   @override
@@ -314,79 +331,92 @@ class FirestoreServices implements DatabaseServies {
       print('🔥 [watch] No filter or limit applied — fetching ALL restaurants');
     }
 
-    return restaurantsQuery.snapshots().map((restaurantsSnapshot) {
-      print(
-        '🔥 [watch] Snapshot returned ${restaurantsSnapshot.docs.length} restaurant docs',
-      );
-      final Map<String, Map<String, dynamic>> productsById = {};
+    return restaurantsQuery.snapshots().transform(
+      StreamTransformer<
+        QuerySnapshot<Map<String, dynamic>>,
+        List<Map<String, dynamic>>
+      >.fromHandlers(
+        handleData: (restaurantsSnapshot, sink) {
+          print(
+            '🔥 [watch] Snapshot returned ${restaurantsSnapshot.docs.length} restaurant docs',
+          );
+          final Map<String, Map<String, dynamic>> productsById = {};
 
-      for (final restaurantDoc in restaurantsSnapshot.docs) {
-        final restaurantData = restaurantDoc.data();
-        final restaurantId = restaurantDoc.id;
-        final restaurantName = restaurantData['name'] ?? 'Unknown';
-        final restaurantImageUrl =
-            restaurantData['RestaurantimageUrl'] ??
-            restaurantData['restaurantImageUrl'] ??
-            restaurantData['imageurl'] ??
-            restaurantData['imageUrl'] ??
-            restaurantData['logoImage'] ??
-            '';
-        final restaurantIsAvailable = parseNullableBool(
-          restaurantData['isAvailable'],
-        );
-        final restaurantIsOpenNow = parseNullableBool(
-          restaurantData['isOpend'] ?? restaurantData['isOpenNow'],
-        );
-        final productsArray =
-            restaurantData['products'] as List<dynamic>? ?? [];
+          for (final restaurantDoc in restaurantsSnapshot.docs) {
+            final restaurantData = restaurantDoc.data();
+            final restaurantId = restaurantDoc.id;
+            final restaurantName = restaurantData['name'] ?? 'Unknown';
+            final restaurantImageUrl =
+                restaurantData['RestaurantimageUrl'] ??
+                restaurantData['restaurantImageUrl'] ??
+                restaurantData['imageurl'] ??
+                restaurantData['imageUrl'] ??
+                restaurantData['logoImage'] ??
+                '';
+            final restaurantIsAvailable = parseNullableBool(
+              restaurantData['isAvailable'],
+            );
+            final restaurantIsOpenNow = parseNullableBool(
+              restaurantData['isOpend'] ?? restaurantData['isOpenNow'],
+            );
+            final productsArray =
+                restaurantData['products'] as List<dynamic>? ?? [];
 
-        print(
-          '🔥 [watch] Restaurant "$restaurantName" has ${productsArray.length} products, restaurantImageUrl=$restaurantImageUrl',
-        );
+            print(
+              '🔥 [watch] Restaurant "$restaurantName" has ${productsArray.length} products, restaurantImageUrl=$restaurantImageUrl',
+            );
 
-        for (final product in productsArray) {
-          if (product is Map<String, dynamic>) {
-            final docId =
-                product['productId'] ??
-                product['docId'] ??
-                product['documentId'] ??
-                product['id'];
-            final canonicalId = (docId?.toString().trim().isNotEmpty == true)
-                ? docId.toString().trim()
-                : '${restaurantId}_${(product['title'] ?? product['nameEn'] ?? '').toString()}';
+            for (final product in productsArray) {
+              if (product is Map<String, dynamic>) {
+                final docId =
+                    product['productId'] ??
+                    product['docId'] ??
+                    product['documentId'] ??
+                    product['id'];
+                final canonicalId =
+                    (docId?.toString().trim().isNotEmpty == true)
+                    ? docId.toString().trim()
+                    : '${restaurantId}_${(product['title'] ?? product['nameEn'] ?? '').toString()}';
 
-            productsById[canonicalId] = {
-              ...product,
-              'documentId': canonicalId,
-              'restaurantId': restaurantId,
-              'restaurantName': restaurantName,
-              'restaurantImageUrl': restaurantImageUrl,
-              'restaurantIsAvailable': restaurantIsAvailable,
-              'restaurantIsOpenNow': restaurantIsOpenNow,
-            };
+                productsById[canonicalId] = {
+                  ...product,
+                  'documentId': canonicalId,
+                  'restaurantId': restaurantId,
+                  'restaurantName': restaurantName,
+                  'restaurantImageUrl': restaurantImageUrl,
+                  'restaurantIsAvailable': restaurantIsAvailable,
+                  'restaurantIsOpenNow': restaurantIsOpenNow,
+                };
+              }
+            }
           }
-        }
-      }
 
-      final allProducts = productsById.values.toList();
+          final allProducts = productsById.values.toList();
 
-      if (query != null) {
-        if (query['limit'] != null) {
-          final limit = query['limit'] as int;
-          if (allProducts.length > limit) {
-            allProducts.removeRange(limit, allProducts.length);
+          if (query != null) {
+            if (query['limit'] != null) {
+              final limit = query['limit'] as int;
+              if (allProducts.length > limit) {
+                allProducts.removeRange(limit, allProducts.length);
+              }
+            }
+            if (query['orderBy'] != null &&
+                query['orderBy'] == 'sellingCount') {
+              allProducts.sort((a, b) {
+                final aCount = (a['sellingCount'] as num?)?.toInt() ?? 0;
+                final bCount = (b['sellingCount'] as num?)?.toInt() ?? 0;
+                return bCount.compareTo(aCount);
+              });
+            }
           }
-        }
-        if (query['orderBy'] != null && query['orderBy'] == 'sellingCount') {
-          allProducts.sort((a, b) {
-            final aCount = (a['sellingCount'] as num?)?.toInt() ?? 0;
-            final bCount = (b['sellingCount'] as num?)?.toInt() ?? 0;
-            return bCount.compareTo(aCount);
-          });
-        }
-      }
 
-      return allProducts;
-    });
+          sink.add(allProducts);
+        },
+        handleError: (error, stackTrace, sink) {
+          print('🔥 [watch] products stream error: $error');
+          sink.add(<Map<String, dynamic>>[]);
+        },
+      ),
+    );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mysterybag/core/entities/review_analytics_entity.dart';
@@ -129,21 +131,41 @@ class ProductReviewsRepoImpl implements ProductReviewsRepo {
 
   @override
   Stream<List<ReviewEntity>> watchProductReviews({required String productId}) {
-    return _firestore.collection('resturants').snapshots().map((snapshot) {
-      try {
-        for (final restaurantDoc in snapshot.docs) {
-          final product = _findEmbeddedProduct(restaurantDoc.data(), productId);
-          if (product != null) {
-            return _parseReviews(product);
-          }
-        }
+    return _firestore
+        .collection('resturants')
+        .snapshots()
+        .transform(
+          StreamTransformer<
+            QuerySnapshot<Map<String, dynamic>>,
+            List<ReviewEntity>
+          >.fromHandlers(
+            handleData: (snapshot, sink) {
+              try {
+                for (final restaurantDoc in snapshot.docs) {
+                  final product = _findEmbeddedProduct(
+                    restaurantDoc.data(),
+                    productId,
+                  );
+                  if (product != null) {
+                    sink.add(_parseReviews(product));
+                    return;
+                  }
+                }
 
-        return <ReviewEntity>[];
-      } catch (e) {
-        print('Error processing reviews for productId $productId: $e');
-        return <ReviewEntity>[];
-      }
-    });
+                sink.add(<ReviewEntity>[]);
+              } catch (e) {
+                print('Error processing reviews for productId $productId: $e');
+                sink.add(<ReviewEntity>[]);
+              }
+            },
+            handleError: (error, stackTrace, sink) {
+              print(
+                'Firestore reviews stream error for productId $productId: $error',
+              );
+              sink.add(<ReviewEntity>[]);
+            },
+          ),
+        );
   }
 
   @override

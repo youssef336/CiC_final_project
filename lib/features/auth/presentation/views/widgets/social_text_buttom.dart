@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mysterybag/constant.dart';
 
 import 'package:mysterybag/core/utils/text_styles.dart';
 
@@ -15,14 +16,21 @@ class SocialTextButtom extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = isDark ? KdarkModeCardColor : KlightModeCardColor;
+    final borderColor = isDark
+        ? KprimaryColorLight.withValues(alpha: 0.25)
+        : const Color(0xFFDCDEDE);
+    final textColor = isDark ? KdarkModeTextColor : const Color(0xFF0C0D0D);
+
     return SizedBox(
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),
+            side: BorderSide(color: borderColor, width: 1),
           ),
         ),
         onPressed: onPressed,
@@ -35,9 +43,7 @@ class SocialTextButtom extends StatelessWidget {
           title: Text(
             textAlign: TextAlign.center,
             text,
-            style: AppTextStyles.bodyBaseSemibold.copyWith(
-              color: const Color(0xFF0C0D0D),
-            ),
+            style: AppTextStyles.bodyBaseSemibold.copyWith(color: textColor),
           ),
         ),
       ),
