@@ -72,7 +72,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor, // background color
+      color: KlightModeBgColor,
       child: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -81,7 +81,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
               CurvedAnimation(parent: _controller, curve: Curves.easeOut),
             ),
             child: Image.asset(
-              "assets/icon/icon.png",
+              "assets/icon/icon12.png",
               width: 180,
               height: 180,
               fit: BoxFit.contain,

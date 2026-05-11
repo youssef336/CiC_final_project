@@ -92,7 +92,7 @@ flutter:
     - assets/images/
     - assets/images/bold/
     - assets/images/outline/
-    - assets/icon/icon.png
+    - assets/icon/icon12.png
     - assets/tflite/food_model.tflite
     - assets/tflite/labels.txt
 
