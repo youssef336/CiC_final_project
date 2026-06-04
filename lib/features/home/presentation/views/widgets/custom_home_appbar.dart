@@ -1,6 +1,6 @@
 // ignore_for_file: camel_case_types
-
 // ignore_for_file: unchecked_use_of_nullable_value
+// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,36 +35,94 @@ class CustomHomeAppBar_body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String avatar = Prefs.getString(Kavatar);
-    return ListTile(
-      contentPadding: const EdgeInsets.all(0),
-      leading: BlocBuilder<AvatarCubit, AvatarState>(
-        builder: (context, state) {
-          if (state is ChangeAvatar) {
-            avatar = state.avatar;
-          }
-          return Image.asset(
-            avatar.isEmpty ? AssetsData.light().images.Avatar_1_png : avatar,
-          );
-        },
-      ),
-      title: Text(
-        S.of(context)!.homeViewWelcomeAppbar,
-        style: AppTextStyles.cairoRegular.copyWith(
-          color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.grey,
-        ),
-      ),
-      subtitle: Text(getUser().name, style: AppTextStyles.cairoBold),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const CustomappBarPoints(),
-          const SizedBox(width: 8),
-          Visibility(
-            visible: showNotification,
-            child: const NotificationWidget(),
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Row(
+      children: [
+        // Left side: User Avatar and Info
+        Expanded(
+          child: Row(
+            children: [
+              // Avatar with circular clip, border, and shadow
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: KaccentColor.withOpacity(0.5),
+                    width: 2,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.08),
+                      blurRadius: 8,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: ClipOval(
+                  child: BlocBuilder<AvatarCubit, AvatarState>(
+                    builder: (context, state) {
+                      if (state is ChangeAvatar) {
+                        avatar = state.avatar;
+                      }
+                      return Image.asset(
+                        avatar.isEmpty
+                            ? AssetsData.light().images.Avatar_1_png
+                            : avatar,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              // User greeting and name
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      S.of(context)!.homeViewWelcomeAppbar,
+                      style: AppTextStyles.cairoRegular.copyWith(
+                        color: isDark ? KdarkModeTextSecondary : KlightModeTextSecondary,
+                        fontSize: 12,
+                        height: 1.1,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      getUser().name,
+                      style: AppTextStyles.cairoBold.copyWith(
+                        color: isDark ? KdarkModeTextColor : KlightModeTextColor,
+                        fontSize: 16,
+                        height: 1.2,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        const SizedBox(width: 12),
+        // Right side: Points and Notification widgets
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CustomappBarPoints(),
+            const SizedBox(width: 8),
+            Visibility(
+              visible: showNotification,
+              child: const NotificationWidget(),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

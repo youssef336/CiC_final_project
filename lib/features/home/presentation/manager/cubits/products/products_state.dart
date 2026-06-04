@@ -13,10 +13,11 @@ class ProductsLoading extends ProductsState {}
 
 class ProductsSuccess extends ProductsState {
   final List<ProductEntity> products;
-  ProductsSuccess(this.products);
+  final DateTime _timestamp;
+  ProductsSuccess(this.products) : _timestamp = DateTime.now();
 
   @override
-  List<Object?> get props => [products];
+  List<Object?> get props => [products, _timestamp];
 }
 
 class ProductsFailure extends ProductsState {

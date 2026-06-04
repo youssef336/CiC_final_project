@@ -72,7 +72,8 @@ Future<void> main() async {
           BlocProvider(create: (_) => ThemeCubit()),
           BlocProvider(create: (_) => CartCubit()),
           BlocProvider(
-            create: (_) => ProductsCubit(getIt<ProductRepo>())..loadProducts(),
+            create: (_) => ProductsCubit(getIt<ProductRepo>())
+              ..loadProducts(restaurantLimit: KHomeResturantLimit),
           ),
         ],
         child: MysteryBag(fakeCart: fakeCart),

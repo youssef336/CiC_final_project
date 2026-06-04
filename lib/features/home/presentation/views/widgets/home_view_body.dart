@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, unused_element
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysterybag/core/entities/product_entity.dart';
@@ -130,7 +132,15 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             child: Column(
               children: [
                 const CustomHomeAppBar(),
-                const SizedBox(height: KTopPadding),
+                const SizedBox(height: 12),
+                Divider(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? KdarkModeTextColor.withOpacity(0.15)
+                      : KdividerColor,
+                  thickness: 1.2,
+                  height: 1.2,
+                ),
+                const SizedBox(height: 16),
                 BlocConsumer<ProductsCubit, ProductsState>(
                   listener: (context, state) {
                     if (state is ProductsSuccess) {
@@ -149,12 +159,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       return const Center(child: CircularProgressIndicator());
                     }
 
-                    final allProducts = state is ProductsSuccess
+                    final products = state is ProductsSuccess
                         ? state.products
                         : <ProductEntity>[];
-                    
-                    // أخذ 3 منتجات فقط كما طلبت
-                    final products = allProducts.take(3).toList();
 
                     if (products.isEmpty && state is ProductsSuccess) {
                       return const Center(child: Text("لا يوجد منتجات متاحة"));
