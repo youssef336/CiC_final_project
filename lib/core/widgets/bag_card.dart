@@ -39,6 +39,7 @@ class BagCard extends StatelessWidget {
 
     return Container(
       width: width,
+      clipBehavior: Clip.hardEdge,
 
       margin: const EdgeInsets.only(left: 6, top: 3, right: 6, bottom: 10),
       padding: const EdgeInsets.all(12),
@@ -66,6 +67,8 @@ class BagCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 17,
@@ -104,7 +107,7 @@ class BagCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
 
           Text(
             '${oldPrice.toStringAsFixed(1)} ${S.of(context)!.bagCurrencySuffix}',
@@ -131,7 +134,7 @@ class BagCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
 
           Text(
             S.of(context)!.bagCardBagsLeft(bagsLeft.toString()),
@@ -142,7 +145,7 @@ class BagCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: 8),
 
           SizedBox(
             width: double.infinity,

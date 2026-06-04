@@ -149,12 +149,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                       return const Center(child: CircularProgressIndicator());
                     }
 
-                    final allProducts = state is ProductsSuccess
+                    final products = state is ProductsSuccess
                         ? state.products
                         : <ProductEntity>[];
-                    
-                    // أخذ 3 منتجات فقط كما طلبت
-                    final products = allProducts.take(3).toList();
 
                     if (products.isEmpty && state is ProductsSuccess) {
                       return const Center(child: Text("لا يوجد منتجات متاحة"));
