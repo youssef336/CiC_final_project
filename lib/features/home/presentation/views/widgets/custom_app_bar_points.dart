@@ -128,63 +128,85 @@ class _CustomappBarPointsState extends State<CustomappBarPoints>
     return ValueListenableBuilder<_PointsState>(
       valueListenable: _stateNotifier,
       builder: (context, state, _) {
-        return IntrinsicHeight(
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: isDark ? KaccentColor : KprimaryColor,
-                  borderRadius: BorderRadius.circular(7),
-                  border: isDark
-                      ? Border.all(
-                          color: KprimaryColorLight.withOpacity(0.5),
-                          width: 1,
-                        )
-                      : null,
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: isDark
+                    ? KaccentColor.withOpacity(0.15)
+                    : KprimaryColorLight.withOpacity(0.7),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: KaccentColor.withOpacity(0.4),
+                  width: 1.2,
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Center(
-                  child: ScaleTransition(
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.stars_rounded,
+                    color: KaccentColor,
+                    size: 18,
+                  ),
+                  const SizedBox(width: 6),
+                  ScaleTransition(
                     scale: _scaleAnimation,
                     child: Text(
-                      '${state.points} ${S.of(context)!.profileViewPoints}',
+                      '${state.points}',
+                      style: AppTextStyles.cairoBold.copyWith(
+                        color: isDark ? KdarkModeTextColor : KprimaryColor,
+                        fontSize: 14,
+                        height: 1.2,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    S.of(context)!.profileViewPoints,
+                    style: AppTextStyles.cairoMedium.copyWith(
+                      color: isDark
+                          ? KdarkModeTextSecondary
+                          : KprimaryColor.withOpacity(0.8),
+                      fontSize: 11,
+                      height: 1.2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (state.showFloating)
+              Positioned(
+                right: 0,
+                top: -12,
+                child: SlideTransition(
+                  position: _floatAnimation,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xff4CAF50),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      '+${state.increasedPoints}',
                       style: AppTextStyles.cairoRegular.copyWith(
-                        color: isDark ? KprimaryColorDark : Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        height: 1.2,
                       ),
                     ),
                   ),
                 ),
               ),
-              if (state.showFloating)
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  child: SlideTransition(
-                    position: _floatAnimation,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xff4CAF50),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        '+${state.increasedPoints}',
-                        style: AppTextStyles.cairoRegular.copyWith(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+          ],
         );
       },
     );
