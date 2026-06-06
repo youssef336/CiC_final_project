@@ -95,6 +95,8 @@ class CartItem extends StatelessWidget {
                     BlocBuilder<LocaleCubit, LocaleState>(
                       builder: (context, localeState) {
                         final isAr = localeState is LocaleChangedtoArabic;
+                        final isDark = Theme.of(context).brightness == Brightness.dark;
+                        final weightColor = isDark ? KdarkModeTextSecondary : KlightModeTextSecondary;
                         return Text.rich(
                           TextSpan(
                             children: [
@@ -102,13 +104,13 @@ class CartItem extends StatelessWidget {
                                 text:
                                     "${cartItemEntity.calculateTotalWeight()}",
                                 style: AppTextStyles.cairoRegular.copyWith(
-                                  color: KsecondaryColor,
+                                  color: weightColor,
                                 ),
                               ),
                               TextSpan(
                                 text: isAr ? 'كيلو' : 'Kg',
                                 style: AppTextStyles.cairoRegular.copyWith(
-                                  color: KsecondaryColor,
+                                  color: weightColor,
                                 ),
                               ),
                             ],
@@ -127,6 +129,8 @@ class CartItem extends StatelessWidget {
                         BlocBuilder<LocaleCubit, LocaleState>(
                           builder: (context, localeState) {
                             final isAr = localeState is LocaleChangedtoArabic;
+                            final isDark = Theme.of(context).brightness == Brightness.dark;
+                            final priceColor = isDark ? KsecondaryColor : KprimaryColor;
                             return Text.rich(
                               TextSpan(
                                 children: [
@@ -135,14 +139,14 @@ class CartItem extends StatelessWidget {
                                         '${cartItemEntity.calculateTotalPrice()}',
                                     style: AppTextStyles.cairoBold.copyWith(
                                       fontSize: 16,
-                                      color: KsecondaryColor,
+                                      color: priceColor,
                                     ),
                                   ),
                                   TextSpan(
                                     text: isAr ? 'جنيه' : 'EGP',
                                     style: AppTextStyles.cairoBold.copyWith(
                                       fontSize: 16,
-                                      color: KsecondaryColor,
+                                      color: priceColor,
                                     ),
                                   ),
                                 ],
