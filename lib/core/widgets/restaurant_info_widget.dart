@@ -39,10 +39,7 @@ class RestaurantInfoWidget extends StatelessWidget {
 
   Widget _infoChip(IconData icon, String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 6,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.4),
         borderRadius: BorderRadius.circular(20),
@@ -51,13 +48,7 @@ class RestaurantInfoWidget extends StatelessWidget {
         children: [
           Icon(icon, size: 14, color: Colors.white),
           const SizedBox(width: 5),
-          Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-            ),
-          ),
+          Text(text, style: const TextStyle(color: Colors.white, fontSize: 13)),
         ],
       ),
     );

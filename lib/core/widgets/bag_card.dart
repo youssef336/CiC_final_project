@@ -8,15 +8,15 @@ class BagCard extends StatelessWidget {
   final double rating;
 
   final bagItemModel;
-    const BagCard({
-      super.key,
-      required this.title,
-      required this.price,
-      required this.oldPrice,
-      required this.bagsLeft,
-      required this.rating,
-      required this.bagItemModel
-    });
+  const BagCard({
+    super.key,
+    required this.title,
+    required this.price,
+    required this.oldPrice,
+    required this.bagsLeft,
+    required this.rating,
+    required this.bagItemModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,7 @@ class BagCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade200,
-            blurRadius: 10,
-          ),
-        ],
+        boxShadow: [BoxShadow(color: Colors.grey.shade200, blurRadius: 10)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,16 +44,18 @@ class BagCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: Colors.orange.shade50,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.star,
-                        size: 14, color: Color.fromARGB(255, 255, 153, 0)),
+                    const Icon(
+                      Icons.star,
+                      size: 14,
+                      color: Color.fromARGB(255, 255, 153, 0),
+                    ),
                     const SizedBox(width: 4),
                     Text(rating.toString()),
                   ],
@@ -90,9 +87,7 @@ class BagCard extends StatelessWidget {
 
           Text(
             "$bagsLeft Bags left",
-            style: const TextStyle(
-              color: Colors.orange,
-            ),
+            style: const TextStyle(color: Colors.orange),
           ),
 
           const SizedBox(height: 10),
@@ -107,11 +102,12 @@ class BagCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text("Reserve",
+              child: const Text(
+                "Reserve",
                 style: TextStyle(color: Colors.white),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
