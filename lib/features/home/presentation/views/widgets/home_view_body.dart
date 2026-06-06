@@ -141,19 +141,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   height: 1.2,
                 ),
                 const SizedBox(height: 16),
-                BlocConsumer<ProductsCubit, ProductsState>(
-                  listener: (context, state) {
-                    if (state is ProductsSuccess) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            S.of(context)!.demoDataLoadedMessage,
-                          ),
-                          duration: const Duration(seconds: 2),
-                        ),
-                      );
-                    }
-                  },
+                BlocBuilder<ProductsCubit, ProductsState>(
                   builder: (context, state) {
                     if (state is ProductsLoading) {
                       return const Center(child: CircularProgressIndicator());

@@ -57,7 +57,7 @@ class ProfileViewLogout {
           child: Text(
             S.of(context)!.profileViewLogoutText2,
             style: TextStyle(
-              color: isDark ? KprimaryColorLight : KsecondaryColor,
+              color: isDark ? KprimaryColorLight : KprimaryColor,
               fontWeight: FontWeight.w600,
             ),
           ),

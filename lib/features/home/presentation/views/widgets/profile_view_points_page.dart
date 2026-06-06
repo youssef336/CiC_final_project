@@ -206,32 +206,32 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  IntrinsicWidth(
-                    stepWidth: 20,
-                    child: CustomButtom(
-                      text: S.of(context)!.pointsPageAdd,
-                      onPressed: () {
-                        _addPoints(50);
-                      },
-                    ),
-                  ),
-                  IntrinsicWidth(
-                    stepWidth: 20,
-                    child: CustomButtom(
-                      text: S.of(context)!.pointsPageDelete,
-                      onPressed: () {
-                        _addPoints(
-                          -Prefs.getInt(Kpoints) > -50
-                              ? -50
-                              : -Prefs.getInt(Kpoints),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     IntrinsicWidth(
+              //       stepWidth: 20,
+              //       child: CustomButtom(
+              //         text: S.of(context)!.pointsPageAdd,
+              //         onPressed: () {
+              //           _addPoints(50);
+              //         },
+              //       ),
+              //     ),
+              //     IntrinsicWidth(
+              //       stepWidth: 20,
+              //       child: CustomButtom(
+              //         text: S.of(context)!.pointsPageDelete,
+              //         onPressed: () {
+              //           _addPoints(
+              //             -Prefs.getInt(Kpoints) > -50
+              //                 ? -50
+              //                 : -Prefs.getInt(Kpoints),
+              //           );
+              //         },
+              //       ),
+              //     ),
+              //   ],
+              // ),
               const SizedBox(height: 16),
               // Discount Tiers List
               Expanded(

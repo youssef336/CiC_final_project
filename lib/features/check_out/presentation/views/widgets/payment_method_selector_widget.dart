@@ -69,7 +69,7 @@ class _PaymentMethodCard extends StatelessWidget {
     final subtitleColor = isDark
         ? KdarkModeTextSecondary
         : KlightModeTextSecondary;
-    final priceColor = isDark ? KsecondaryColor : KprimaryColorLight;
+    final priceColor = isDark ? KsecondaryColor : KprimaryColor;
     final cardBackgroundColor = isDark
         ? KdarkModeCardColor
         : const Color(0x33D9D9D9);
