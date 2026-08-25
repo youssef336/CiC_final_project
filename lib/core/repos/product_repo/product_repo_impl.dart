@@ -188,7 +188,7 @@ class ProductRepoImpl extends ProductRepo {
       // First get all products
       final result = await getProducts(restaurantId: restaurantId);
 
-      return result.fold((failure) => left(failure), (products) {
+      return await result.fold((failure) => left(failure), (products) {
         // Filter products where nameEn or nameAr contains the query (case insensitive)
         final filteredProducts = products.where((product) {
           final queryLower = query.toLowerCase();
