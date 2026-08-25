@@ -24,11 +24,11 @@ class _ProfileViewPointsPageState extends State<ProfileViewPointsPage> {
     _pointsNotifier = ValueNotifier<int>(Prefs.getInt(Kpoints));
   }
 
-  void _addPoints(int amount) {
-    final newPoints = _pointsNotifier.value + amount;
-    Prefs.setInt(Kpoints, newPoints);
-    _pointsNotifier.value = newPoints;
-  }
+  // void _addPoints(int amount) {
+  //   final newPoints = _pointsNotifier.value + amount;
+  //   Prefs.setInt(Kpoints, newPoints);
+  //   _pointsNotifier.value = newPoints;
+  // }
 
   @override
   void dispose() {
