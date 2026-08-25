@@ -40,6 +40,13 @@ tasks.register<Delete>("clean") {
 }
 
 allprojects {
+    // 1. إجبار الجافا على الإصدار 17
+    tasks.withType<JavaCompile>().configureEach {
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
+    }
+    
+    // 2. إجبار الكوتلن على الإصدار 17
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
