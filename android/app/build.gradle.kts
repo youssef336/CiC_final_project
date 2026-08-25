@@ -58,28 +58,3 @@ dependencies {
     // implementation("com.google.firebase:firebase-crashlytics")
 }
 
-subprojects {
-    afterEvaluate { project ->
-        if (project.hasProperty('android')) {
-            project.android {
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
-                }
-            }
-        }
-        
-        // إجبار الكوتلن كمان في الحزم الخارجية
-        if (project.hasProperty('kotlinOptions')) {
-            project.kotlinOptions {
-                jvmTarget = '17'
-            }
-        }
-        
-        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
-}
